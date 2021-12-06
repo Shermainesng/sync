@@ -12,6 +12,12 @@ class DeliverablesController < ApplicationController
     redirect_to project_path(@project)
   end
 
+  def destroy
+    @deliverable = Deliverable.find(params[:id])
+    @deliverable.destroy
+    redirect_to project_path(@deliverable.project)
+  end
+
   private
   def deliverable_params
     params.require(:deliverable).permit(:type, :due_date, :description)

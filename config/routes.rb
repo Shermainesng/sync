@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :projects do
     resources :deliverables, only: [:new, :create]
   end
+
+  resources :deliverables, only: [:destroy]
 end
