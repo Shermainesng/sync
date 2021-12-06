@@ -1,0 +1,8 @@
+<p>New project: enter project details</p>
+<%= simple_form_for @project do |f| %>
+  <%= f.input :project_users, placeholder: "client name" %>
+  <%= f.input :name, placeholder: "project name" %>
+  <%= f.input :description, placeholder: "project name" %>
+  <%= f.input :project_end, placeholder: "end date" %>
+  <%= f.submit %>
+<% end %>
