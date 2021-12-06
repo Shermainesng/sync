@@ -7,7 +7,7 @@ puts "Creating brands"
   User.create!({
     email: Faker::Internet.email,
     password: "123456",
-    username: Faker::Commerce.brand + "#{rand(1..5)}",
+    username: Faker::Commerce.brand + "#{rand(1..10)}",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     account_type: "brand",

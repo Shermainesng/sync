@@ -1,0 +1,14 @@
+<%= render 'form' %>
+
+
+<%= render 'deliverables/new' %>
+
+<ul data-insert-deliverables-target="list">
+</ul>
+  <%= simple_form_for @project, data: {controller: "update-project", update_project_target: "form"} do |f| %>
+    <%= f.input :name, placeholder: "project name", input_html: {data_update_project_target: "brand"} %>
+    <%= f.input :description, placeholder: "project name" %>
+    <%= f.input :project_end, placeholder: "end date" %>
+    <%= f.submit %>
+  <% end %>
+  <%= render "deliverables/new" %>

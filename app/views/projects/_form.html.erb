@@ -1,0 +1,24 @@
+<%= simple_form_for @project, action:"projects/#{@project.id}", method: :patch, data: {controller: "update-project", update_project_target: "form"} do |f| %>
+    <%= f.input :brand, name: "brand_name",
+    input_html: {
+      data: {
+        update_project_target: "brand",
+        action: "focusout->update-project#updateProject"
+        }}%>
+    <%= f.input :name, name: "project_name",  input_html: {
+      data: {
+        update_project_target: "projectName",
+        action: "focusout->update-project#updateProject"
+        }}%>
+    <%= f.input :description, name: "description", input_html: {
+      data: {
+        update_project_target: "description",
+        action: "focusout->update-project#updateProject"
+        }}%>
+    <%= f.input :project_end, name: "project_end",  input_html: {
+      data: {
+        update_project_target: "projectEnd",
+        action: "focusout->update-project#updateProject"
+        }} %>
+    <%= f.submit %>
+  <% end %>
