@@ -1,0 +1,7 @@
+<h3>Add new deliverable</h3>
+<%= simple_form_for [@project, @deliverable] do |f| %>
+  <%= f.input :type, placeholder: 'IG Post' %>
+  <%= f.input :due_date, as: :date, html5: true %>
+  <%= f.input :description, placeholder: 'Describe the deliverable!' %>
+  <%= f.submit class:'btn btn-primary' %>
+<% end %>
