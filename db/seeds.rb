@@ -1,20 +1,25 @@
 puts "Cleaning database"
 User.destroy_all
+Project.destroy_all
+Deliverable.destroy_all
 
 puts "Creating brands"
+
+random_brands =
 
 10.times do
   User.create!({
     email: Faker::Internet.email,
     password: "123456",
-    username: Faker::Commerce.brand + "#{rand(1..10)}",
+    username: Faker::Commerce.brand + Faker::Verb.base,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     account_type: "brand",
     profile_pic: Faker::Company.logo
-  })
+    })
+
+  puts "Creating projects for #{User.last.username}"
   2.times do
-    puts "Creating projects for #{User.last.username}"
     Project.create!({
       user: User.last,
       name: Faker::Marketing.buzzwords,
@@ -22,8 +27,9 @@ puts "Creating brands"
       status: ['Pending', 'Saved', 'Ongoing', 'Completed'].sample,
       description: Faker::Company.bs
     })
+
+    puts "Creating deliverables for #{Project.last.name}"
     3.times do
-      puts "Creating deliverables for #{Project.last.name}"
       Deliverable.create!({
         project: Project.last,
         deliverable_type: ["IG Post", "Tik Tok Video", "Photoshoot", "IG Story", "FB Post"].sample,

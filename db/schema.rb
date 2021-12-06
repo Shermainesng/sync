@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_12_06_092500) do
     t.string "status"
     t.text "description"
     t.bigint "user_id"
+    t.string "brand"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
