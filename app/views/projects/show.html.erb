@@ -1,6 +1,8 @@
 <h1>Review project</h1>
 
-<h2><%= @project.user %></h2>
 <h3><%= @project.name %></h3>
 <p><%= @project.description %></p>
-<% raise %>
+
+<p><%= @project.deliverable.due_date %></p>
+<p><%= @project.deliverable.type %></p>
+<p><%= @project.deliverable.description %></p>

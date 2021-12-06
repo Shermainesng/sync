@@ -22,6 +22,15 @@ puts "Creating brands"
       status: ['Pending', 'Saved', 'Ongoing', 'Completed'].sample,
       description: Faker::Company.bs
     })
+    3.times do
+      puts "Creating deliverables for #{Project.last.name}"
+      Deliverable.create!({
+        project: Project.last,
+        deliverable_type: ["IG Post", "Tik Tok Video", "Photoshoot", "IG Story", "FB Post"].sample,
+        due_date: Faker::Date.between(from: '2021-12-12', to: '2022-02-12'),
+        description: Faker::Company.bs
+      })
+    end
   end
 end
 
