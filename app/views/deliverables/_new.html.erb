@@ -1,0 +1,15 @@
+<form data-insert-deliverables-target="form" action="/signup" method="post">
+  <p>
+    <label for="type">Type</label><br>
+    <input type="text" name="type" placeholder="type" id="due_date">
+  </p>
+  <p>
+    <label for="due_date">Due Date</label><br>
+    <input type="date" name="due_date" placeholder="due date" id="due_date">
+  </p>
+  <p>
+    <label for="description">Description</label><br>
+    <textarea name="description" placeholder="Describe the deliverable!"></textarea>
+  </p>
+  <input data-action="click->insert-deliverables#createDeliverable" type="submit" value="Add">
+</form>
