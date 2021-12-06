@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :projects, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
-  validates :type, presence: true
+  validates :account_type, presence: true
 end
