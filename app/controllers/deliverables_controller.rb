@@ -6,10 +6,7 @@ class DeliverablesController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html { redirect_to deliverable_path(@deliverable) }
-      format.json # Follow the classic Rails flow and look for a create.json view
-    end
+
   end
 
   def create
@@ -19,7 +16,11 @@ class DeliverablesController < ApplicationController
     @project.save!
     @deliverable.save!
 
-    redirect_to deliverable_path(@deliverable)
+    respond_to do |format|
+        format.html { redirect_to deliverable_path(@deliverable) }
+        format.json # Follow the classic Rails flow and look for a create.json view
+        format.text {render partial: 'deliverables/deliverable',  locals: { deliverable: @deliverable }, formats: [:html] }
+    end
   end
 
   def destroy

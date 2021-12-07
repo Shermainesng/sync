@@ -23,12 +23,12 @@ export default class extends Controller {
     // send the form data to the server
     fetch(this.formTarget.action, {
       method: 'POST',
-      headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
+      headers: { 'Accept': "text/plain", 'X-CSRF-Token': csrfToken() },
       body: new FormData(this.formTarget)
       // goes to controller in ruby here!!tes
       // save the deliverable under the project
     })
-      .then(response => response.json())
+      .then(response => response.text())
       .then((data) => {
         // when the response comes back
 
@@ -38,7 +38,7 @@ export default class extends Controller {
         this.listTarget.insertAdjacentHTML("beforeend",data);
 
         //testing
-        console.log(data);
+        // console.log(data);
         console.log("created deliverable");
 
       });
