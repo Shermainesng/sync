@@ -10,6 +10,10 @@ export default class extends Controller {
     console.log("update project controller here");
   }
 
+  initialize (){
+    this.timer
+  }
+
   updateProject() {
 
     fetch(this.formTarget.action, {

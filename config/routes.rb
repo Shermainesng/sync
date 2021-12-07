@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resources :deliverables, only: [:new, :create]
   end
 
-  resources :deliverables, only: [:destroy]
+  resources :deliverables, only: [:show, :destroy]
 end
