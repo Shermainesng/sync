@@ -10,8 +10,8 @@ class DraftsController < ApplicationController
   end
 
   def show
-    @deliverable = Deliverable.find(params[:deliverable_id])
     @draft = Draft.find(params[:id])
+    @deliverable = @draft.deliverable
     @comments = @draft.comments
   end
 

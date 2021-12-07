@@ -1,0 +1,8 @@
+<%= simple_form_for [@draft, @comment], data: {insert_comments_target: "form"} do |f| %>
+  <%= f.input :content, name: "content",
+    input_html: {
+      data: {
+        insert_comments_target: "content"
+        }}%>
+  <%= f.submit "Add comment", data:{ action: "click->insert-comments#addComment"} %>
+<% end %>
