@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @deliverables = @project.deliverables
     @deliverable = Deliverable.new
   end
 
