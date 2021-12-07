@@ -5,6 +5,11 @@ class DeliverablesController < ApplicationController
     @deliverable = Deliverable.new
   end
 
+  def show
+    @project = @deliverable.project
+    @drafts = @deliverable.drafts
+  end
+  
   def create
     @project = Project.find(params[:project_id])
     @deliverable = Deliverable.new(deliverable_params)

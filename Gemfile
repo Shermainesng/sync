@@ -44,6 +44,8 @@ group :development, :test do  gem 'pry-byebug'
 end
 
 group :development do
+  gem 'letter_opener'
+
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
@@ -66,5 +68,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~> 4.6.1'
+
+gem "launchy", "~> 2.5"
 gem 'carrierwave', '~> 2.0'
 gem 'bootstrap-sass'
