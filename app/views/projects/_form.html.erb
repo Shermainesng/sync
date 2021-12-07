@@ -3,21 +3,21 @@
     input_html: {
       data: {
         update_project_target: "brand",
-        action: "focusout->update-project#updateProject"
+        action: "keyup->update-project#updateProject"
         }}%>
     <%= f.input :name, name: "project_name",  input_html: {
       data: {
         update_project_target: "projectName",
-        action: "focusout->update-project#updateProject"
+        action: "keyup->update-project#updateProject"
         }}%>
     <%= f.input :description, name: "description", input_html: {
       data: {
         update_project_target: "description",
-        action: "focusout->update-project#updateProject"
+        action: "keyup->update-project#updateProject"
         }}%>
     <%= f.input :project_end, name: "project_end",  input_html: {
       data: {
         update_project_target: "projectEnd",
-        action: "focusout->update-project#updateProject"
+        action: "change->update-project#updateProject"
         }} %>
   <% end %>
