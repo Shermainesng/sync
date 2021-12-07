@@ -8,7 +8,7 @@ class ProjectConfirmationsController < ApplicationController
                       .send_project
                       .deliver_now!
 
-    redirect_to new_project_path
+    redirect_to root_path
   end
 
   private
