@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [:edit, :update, :show]
 
   def show
-    @project = Project.find(params[:id])
     @deliverables = @project.deliverables
   end
 
@@ -17,26 +17,33 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @deliverables = @project.deliverables
+    @deliverable = Deliverable.new
   end
 
   def update
-    @project = Project.find(params[:id])
     new = params[:project]
     @project.update!(
       brand: new[:brand],
       name: new[:name],
-      project_end: new[:project_end],
+      project_end: "#{new["project_end(1i)"]}-#{new["project_end(2i)"]}-#{new["project_end(3i)"]}",
       description: new[:description]
     )
 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to edit_project_path(@project) }
-        format.json # Follow the classic Rails flow and look for a create.json view
-      else
-        format.html { render 'projects/show' }
-        format.json # Follow the classic Rails flow and look for a create.json view
-      end
-    end
+    # respond_to do |format|
+    #   if @project.save
+    #     format.html { redirect_to edit_project_path(@project) }
+    #     format.json # Follow the classic Rails flow and look for a create.json view
+    #   else
+    #     format.html { render 'projects/show' }
+    #     format.json # Follow the classic Rails flow and look for a create.json view
+    #   end
+    # end
+  end
+
+  private
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end

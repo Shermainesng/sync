@@ -4,25 +4,30 @@ import { csrfToken } from "@rails/ujs";
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["brand", "projectName", "description", "form"]
+  static targets = ["brand", "projectName", "description", "form", "projectEnd"]
 
   connect() {
-    console.log("con");
+    console.log("update project controller here");
   }
 
-  updateProject(e) {
-    // e.preventDefault();
+  initialize (){
+    this.timer
+  }
 
-    fetch(this.formTarget.action, {
-      method: 'PATCH',
-      headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
-      body: new FormData(this.formTarget)
-      // goes to controller in ruby here!!
-    })
-      .then(response =>response.json())
-      .then(() => {
-        console.log("updated");
-      });
+  updateProject() {
+    clearTimeout(this.timer);
 
+    this.timer = setTimeout(()=>{
+      fetch(this.formTarget.action, {
+        method: 'PATCH',
+        headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
+        body: new FormData(this.formTarget)
+        // goes to controller in ruby here!!
+      })
+        .then(response => response.json())
+        .then(() => {
+          console.log("updated project");
+        });
+    }, 500);
   }
 }
