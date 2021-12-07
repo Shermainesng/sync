@@ -1,4 +1,4 @@
-<%= simple_form_for @project, action:"projects/#{@project.id}", method: :patch, data: {controller: "update-project", update_project_target: "form"} do |f| %>
+<%= simple_form_for @project, action:"projects/#{@project.id}", method: :post, data: {controller: "update-project", update_project_target: "form"} do |f| %>
     <%= f.input :brand, name: "brand_name",
     input_html: {
       data: {
@@ -20,4 +20,5 @@
         update_project_target: "projectEnd",
         action: "change->update-project#updateProject"
         }} %>
+    <%= f.submit "Create Project" %>
   <% end %>
