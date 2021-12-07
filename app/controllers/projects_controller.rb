@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [:edit, :update, :show]
 
   def show
-    @project = Project.find(params[:id])
     @deliverables = @project.deliverables
   end
 
@@ -21,7 +21,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
     new = params[:project]
     @project.update!(
       brand: new[:brand],
@@ -39,5 +38,11 @@ class ProjectsController < ApplicationController
         format.json # Follow the classic Rails flow and look for a create.json view
       end
     end
+  end
+
+  private
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end

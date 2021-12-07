@@ -6,6 +6,7 @@ Deliverable.destroy_all
 puts "Creating main user"
 
 User.create!({
+
   email: "testuser@gmail.com",
   password: "123456",
   username: "testuser",
@@ -26,6 +27,7 @@ User.create!({
   })
 
     puts "Creating deliverables for #{Project.last.name}"
+
     3.times do
       Deliverable.create!({
         project: Project.last,
