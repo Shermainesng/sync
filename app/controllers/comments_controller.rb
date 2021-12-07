@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def new
-    @draft = draft.find(params[:draft_id])
+    @draft = Draft.find(params[:draft_id])
     @comment = Comment.new
   end
 
@@ -8,9 +8,10 @@ class CommentsController < ApplicationController
     @draft = Draft.find(params[:draft_id])
     @comment = Comment.new(comment_params)
     @draft.comments << @comment
-    @draft.save!
+    @comment.user = current_user
+    @draft.user = current_user
     @comment.save!
-    raise
+    @draft.save!
 
     respond_to do |format|
       format.html { redirect_to draft_path(@draft) }

@@ -1,11 +1,11 @@
 <div class="container d-flex">
   <div class="w-25">
-    <%= comment.content %>
+    <%= comment.created_at %>
   </div>
   <div class="flex-grow-1">
     <div class="card">
       <div class="card-body">
-        <p class="card-title">Add content</p>
+        <p class="card-title"><%= comment.content %></p>
       </div>
     </div>
   </div>

@@ -13,6 +13,7 @@ class DraftsController < ApplicationController
     @draft = Draft.find(params[:id])
     @deliverable = @draft.deliverable
     @comments = @draft.comments
+    @comment = Comment.new
   end
 
   def create

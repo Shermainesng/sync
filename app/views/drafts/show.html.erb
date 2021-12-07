@@ -1,5 +1,5 @@
-<h1><%= @draft.deliverable.deliverable_type %><h1>
-<h3><%= @draft.deliverable.description %><h3>
+<h1><%= @draft.deliverable.deliverable_type %></h1>
+<h3><%= @draft.deliverable.description %></h3>
 <div>
   <% if @draft.attachment.content_type == "application/pdf" %>
     <%= link_to "Download PDF", @draft.attachment.url, target: :blank %>
