@@ -15,17 +15,19 @@ export default class extends Controller {
   }
 
   updateProject() {
+    clearTimeout(this.timer);
 
-    fetch(this.formTarget.action, {
-      method: 'PATCH',
-      headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
-      body: new FormData(this.formTarget)
-      // goes to controller in ruby here!!
-    })
-      .then(response =>response.json())
-      .then(() => {
-        console.log("updated project");
-      });
-
+    this.timer = setTimeout(()=>{
+      fetch(this.formTarget.action, {
+        method: 'PATCH',
+        headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
+        body: new FormData(this.formTarget)
+        // goes to controller in ruby here!!
+      })
+        .then(response => response.json())
+        .then(() => {
+          console.log("updated project");
+        });
+    }, 500);
   }
 }
