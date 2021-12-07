@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @projects = Project.all
+    @deliverables = Deliverable.all
   end
 end
