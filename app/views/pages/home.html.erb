@@ -1,16 +1,18 @@
-<div class="container border" style="height: 800px;">
-  <div class="row h-100">
-    <div class="col-3 border">
-      <h1>Sync</h1>
-      <a href="<%=new_project_path%>" class="btn btn-primary">+ New project</a>
+<div class="container border vh-100 d-flex">
+  <div class="container col-3 border">
+    <h1>Sync</h1>
+    <a href="<%=new_project_path%>" class="btn btn-primary">+ New project</a>
+  </div>
+  <div class="col-9">
+    <div class="border h-50">
+      <h2>Upcoming Tasks</h2>
     </div>
-    <div class="col-9">
-      <div class="border h-50">
-        <h2>Upcoming Tasks</h2>
-      </div>
-      <div class="border h-50">
-        <h2>Projects</h2>
-        <%= render @projects %>
+    <div class="border h-50">
+      <h2>Projects</h2>
+      <div class="row">
+        <div class="card-deck">
+          <%= render @projects %>
+        </div>
       </div>
     </div>
   </div>

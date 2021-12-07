@@ -13,8 +13,9 @@
   <div>
     <% @project.deliverables.each do |deliv| %>
     <div class="container d-flex">
-      <div>
-        <%= deliv.due_date.strftime("%e %b") %>
+      <div class="d-flex flex-column">
+        <p><%= deliv.due_date.strftime("%b") %></p>
+        <p><%= deliv.due_date.strftime("%e")%></p>
       </div>
       <div class="border flex-grow-1">
         <%= deliv.deliverable_type %>
@@ -34,6 +35,7 @@
     </div>
     <p><%= @deliverable.description %></p>
     <div class="d-flex flex-column">
+      <a href="<%=new_deliverable_draft_path(@deliverable)%>" class="btn btn-primary">Submit new draft</a>
       <%= render @drafts %>
     </div>
   </div>
