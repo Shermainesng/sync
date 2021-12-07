@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :deliverables, only: [:show, :destroy] do
-    resources :drafts, only: [:new, :create]
+    resources :drafts, only: [:new, :create, :index, :show]
   end
 end
