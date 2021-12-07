@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :projects do
-    resources :deliverables, only: [:new, :create]
+    resources :deliverables, only: [:index, :new, :create]
   end
   post "projects/:id/", to: "projects#show"
 
   resources :deliverables, only: [:show, :destroy] do
     resources :drafts, only: [:new, :create, :index, :show]
   end
+
 end
