@@ -1,1 +1,13 @@
 // Specific CSS for your home-page
+.custom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.custom-container {
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+.custom-row {
+  display: grid;
+}
