@@ -1,15 +1,19 @@
-<form data-insert-deliverables-target="form" action="/signup" method="post">
-  <p>
-    <label for="type">Type</label><br>
-    <input type="text" name="type" placeholder="type" id="due_date">
-  </p>
-  <p>
-    <label for="due_date">Due Date</label><br>
-    <input type="date" name="due_date" placeholder="due date" id="due_date">
-  </p>
-  <p>
-    <label for="description">Description</label><br>
-    <textarea name="description" placeholder="Describe the deliverable!"></textarea>
-  </p>
-  <input data-action="click->insert-deliverables#createDeliverable" type="submit" value="Add">
-</form>
+
+<%= simple_form_for [@project, @deliverable] do |f| %>
+  <%= f.input :deliverable_type, name: "deliverable_type",
+    input_html: {
+      data: {
+        insert_deliverables_target: "deliverable_type",
+        }}%>
+  <%= f.input :due_date, name: "due_date",
+    input_html: {
+      data: {
+        insert_deliverables_target: "due_date",
+        }}%>
+  <%= f.input :description, name: "description",
+    input_html: {
+      data: {
+        insert_deliverables_target: "description",
+        }}%>
+  <%= f.button :submit, input_html: { data: {action: "click->insert-deliverables#createDeliverable"}}%>
+<% end %>

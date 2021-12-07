@@ -7,9 +7,19 @@ class DeliverablesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @deliverable = Deliverable.new(deliverable_params)
-    @project.deliverable = @deliverable
+    @project.deliverables << @deliverable
+    @project.save!
     @deliverable.save!
-    redirect_to project_path(@project)
+
+    respond_to do |format|
+      if @deliverable.save
+        format.html { redirect_to edit_project_path(@project) }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render 'projects/show' }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
+    end
   end
 
   def destroy
@@ -20,6 +30,6 @@ class DeliverablesController < ApplicationController
 
   private
   def deliverable_params
-    params.require(:deliverable).permit(:type, :due_date, :description)
+    params.require(:deliverable).permit(:deliverable_type, :due_date, :description)
   end
 end

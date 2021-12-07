@@ -7,11 +7,10 @@ export default class extends Controller {
   static targets = ["brand", "projectName", "description", "form"]
 
   connect() {
-    console.log("con");
+    console.log("update project controller here");
   }
 
-  updateProject(e) {
-    // e.preventDefault();
+  updateProject() {
 
     fetch(this.formTarget.action, {
       method: 'PATCH',
@@ -21,7 +20,7 @@ export default class extends Controller {
     })
       .then(response =>response.json())
       .then(() => {
-        console.log("updated");
+        console.log("updated project");
       });
 
   }

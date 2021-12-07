@@ -1,12 +1,19 @@
-<%= render 'form' %>
+<h1>enter Project Details</h1>
 
-<%= render 'deliverables/new' %>
+<div class="container">
+  <%= render 'form' %>
+</div>
 
-<ul data-insert-deliverables-target="list">
-</ul>
-  <%= simple_form_for @project, data: {controller: "update-project", update_project_target: "form"} do |f| %>
-    <%= f.input :name, placeholder: "project name", input_html: {data_update_project_target: "brand"} %>
-    <%= f.input :description, placeholder: "project name" %>
-    <%= f.input :project_end, placeholder: "end date" %>
-    <%= f.submit %>
-  <% end %>
+
+<div class="container" data-controller="insert-deliverables">
+  <div class="d-flex justify-content-center">
+    <div>
+      <ul data-insert-deliverables-target="list">
+        <li>test</li>
+      </ul>
+    </div>
+    <div>
+      <%= render 'deliverables/new' %>
+    </div>
+  </div>
+</div>
