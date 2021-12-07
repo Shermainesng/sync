@@ -5,6 +5,6 @@ class ConfirmationMailer < ApplicationMailer
     @email_subject = params[:email_subject]
     @email_body = params[:email_body]
 
-    mail(to: @client_email, subject: @email_subject)
+    mail(to: @client_email, subject: @email_subject, body: @email_body)
   end
 end
