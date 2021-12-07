@@ -5,10 +5,20 @@
 </div>
 <%= render @deliverables %>
 
-<form action="/project_confirmations/create" method="POST">
-  <input type="text" name="client_email" placeholder="Email">
-  <input type="text" name="email_subject" placeholder="Subject">
-  <input type="text" name="email_body">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <button type="submit">Confirm</button>
-</form>
+<div data-controller="email-popup" class="custom-email-popup">
+  <button class="custom-popup" data-email-popup-target="button" data-action="click->email-popup#toggle">Send project to <%= @project.brand %></button>
+
+  <form action="/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup d-none" style="width: 20rem;">
+    <div class="form-header-details">
+      <div>Send project to <%= @project.brand %></div>
+      <div data-action="click->email-popup#toggle">X</div>
+    </div>
+    <div class="card-body custom-card-body">
+      <input type="text" name="client_email" placeholder="Email" class="custom-input-field">
+      <input type="text" name="email_subject" placeholder="Subject" class="custom-input-field">
+      <input type="text" name="email_body" class="custom-input-field">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
+    </div>
+  </form>
+</div>

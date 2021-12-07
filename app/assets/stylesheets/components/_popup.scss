@@ -1,0 +1,34 @@
+.custom-email-popup {
+  position: relative;
+}
+
+.custom-popup {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.close-btn:hover {
+  cursor: pointer;
+}
+
+.form-header-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-input-field {
+  margin: 3px 0;
+}
