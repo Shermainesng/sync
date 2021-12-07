@@ -6,28 +6,29 @@ Deliverable.destroy_all
 puts "Creating main user"
 
 User.create!({
-    email: "test@test.com",
-    password: "123456",
-    username: "testuser",
-    first_name: "Test",
-    last_name: "User",
-    account_type: "creator",
-    profile_pic: Faker::Company.logo
+
+  email: "testuser@gmail.com",
+  password: "123456",
+  username: "testuser",
+  first_name: "Test",
+  last_name: "User",
+  account_type: "Creator",
+  profile_pic: Faker::Company.logo
   })
 
 20.times do
-  puts "Creating projects"
-    Project.create!({
-      user: User.last,
-      name: Faker::Marketing.buzzwords,
-      project_end: Faker::Date.between(from: '2021-12-12', to: '2022-02-12'),
-      status: ['Pending', 'Saved', 'Ongoing', 'Completed'].sample,
-      description: Faker::Company.bs,
-      brand: Faker::Verb.base.capitalize + Faker::Commerce.brand
-    })
+  Project.create!({
+    user: User.last,
+    name: Faker::Marketing.buzzwords,
+    project_end: Faker::Date.between(from: '2021-12-12', to: '2022-02-12'),
+    status: ['Pending', 'Saved', 'Ongoing', 'Completed'].sample,
+    description: Faker::Company.bs,
+    brand: Faker::Verb.base.capitalize + Faker::Commerce.brand
+  })
+
+    puts "Creating deliverables for #{Project.last.name}"
 
     3.times do
-      puts "Creating deliverables for #{Project.last.name}"
       Deliverable.create!({
         project: Project.last,
         deliverable_type: ["IG Post", "Tik Tok Video", "Photoshoot", "IG Story", "FB Post"].sample,
