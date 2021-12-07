@@ -10,10 +10,11 @@
     <div>
       <h2>Deliverables added:</h2>
       <ul data-insert-deliverables-target="list">
-        <li>test</li>
+        <%= render @deliverables%>
       </ul>
     </div>
     <div>
+      <h2>Add a new deliverable here:</h2>
       <%= render 'deliverables/new' %>
     </div>
   </div>
