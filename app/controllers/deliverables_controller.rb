@@ -7,8 +7,8 @@ class DeliverablesController < ApplicationController
 
   def show
     respond_to do |format|
-        format.html { redirect_to deliverable_path(@deliverable) }
-        format.json # Follow the classic Rails flow and look for a create.json view
+      format.html { redirect_to deliverable_path(@deliverable) }
+      format.json # Follow the classic Rails flow and look for a create.json view
     end
   end
 
