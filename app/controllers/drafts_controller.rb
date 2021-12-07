@@ -1,11 +1,18 @@
 class DraftsController < ApplicationController
+  # def index
+  #   @deliverable = Deliverable.find(params[:deliverable_id])
+  #   @drafts = @deliverable.drafts
+  # end
+
   def new
     @deliverable = Deliverable.find(params[:deliverable_id])
     @draft = Draft.new
   end
 
   def show
+    @deliverable = Deliverable.find(params[:deliverable_id])
     @draft = Draft.find(params[:id])
+    @comments = @draft.comments
   end
 
   def create
@@ -14,7 +21,7 @@ class DraftsController < ApplicationController
     @draft.deliverable = @deliverable
     @draft.user = current_user
     if @draft.save!
-      redirect_to deliverable_draft_path(@deliverable, @draft), notice: "Your draft has been uploaded."
+      redirect_to deliverable_path(@draft), notice: "Your draft has been uploaded."
     else
       render "new"
     end

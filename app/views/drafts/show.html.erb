@@ -7,3 +7,9 @@
     <img src="<%= @draft.attachment.url %>" alt="image" width='300' height='300'>
   <% end %>
 </div>
+
+<div>
+  <% @comments.each do |comment| %>
+    <%= comment.content %><br>
+  <% end %>
+</div>

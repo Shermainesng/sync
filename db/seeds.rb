@@ -3,10 +3,19 @@ User.destroy_all
 Project.destroy_all
 Deliverable.destroy_all
 
-puts "Creating main user"
+puts "Creating brand and main user"
+
+brand_user = User.create!({
+  email: "brand@gmail.com",
+  password: "123456",
+  username: "myprotein",
+  first_name: "my",
+  last_name: "protein",
+  account_type: "Brand",
+  profile_pic: Faker::Company.logo
+})
 
 User.create!({
-
   email: "testuser@gmail.com",
   password: "123456",
   username: "testuser",
@@ -45,6 +54,16 @@ User.create!({
         })
         new_draft.user = User.last
         new_draft.save!
+
+        3.times do
+          new_comment = Comment.new({
+            user: brand_user,
+            draft: new_draft,
+            content: Faker::Company.bs
+          })
+
+          new_comment.save!
+        end
       end
     end
 end
