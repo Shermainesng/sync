@@ -1,0 +1,14 @@
+<a href="<%=project_path(project)%>" class="col-4">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= project.name %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= project.brand %></h6>
+      <p class="card-text"><%= project.description %></p>
+      <ul>
+        <% project.deliverables.each do |d| %>
+          <li><%= d.deliverable_type %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</a>
