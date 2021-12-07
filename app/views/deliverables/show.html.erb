@@ -1,0 +1,41 @@
+<%# heading: project details %>
+<div class="container d-flex justify-content-between">
+  <div>
+    <h1><%=@project.brand%>: <%= @project.name %></h1>
+  </div>
+  <div>
+    <h2><%=@project.project_end.strftime("%e %b") %></h2>
+  </div>
+</div>
+
+<div class="container d-flex">
+  <%# list of deliverables %>
+  <div>
+    <% @project.deliverables.each do |deliv| %>
+    <div class="container d-flex">
+      <div>
+        <%= deliv.due_date.strftime("%e %b") %>
+      </div>
+      <div class="border flex-grow-1">
+        <%= deliv.deliverable_type %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%# deliverable in focus %>
+  <div>
+    <div class="container d-flex justify-content-between">
+      <div>
+        <h2><%=@deliverable.deliverable_type%></h2>
+      </div>
+      <div>
+        <h2><%=@deliverable.due_date.strftime("%e %b") %></h2>
+      </div>
+    </div>
+    <p><%= @deliverable.description %></p>
+    <div class="d-flex flex-column">
+      <%= render @drafts %>
+    </div>
+  </div>
+
+</div>
