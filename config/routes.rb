@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   post "projects/:id/", to: "projects#show"
 
   resources :deliverables, only: [:show, :destroy] do
-    resources :drafts, only: [:new, :create, :index, :show]
+    resources :drafts, only: [:new, :create, :show]
   end
 end

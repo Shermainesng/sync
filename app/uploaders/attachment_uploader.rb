@@ -10,7 +10,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
-  uploader = AttachmentUploader.new
+  # uploader = AttachmentUploader.new
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir

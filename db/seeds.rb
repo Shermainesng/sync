@@ -39,7 +39,7 @@ User.create!({
       3.times do
         new_draft = Draft.new({
           deliverable: Deliverable.last,
-          attachment: Faker::Placeholdit.image(size: '50x50', format: 'jpg'),
+          attachment: Faker::Placeholdit.image(format: 'jpg'),
           description: Faker::Company.bs,
           status: "pending"
         })
