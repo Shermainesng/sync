@@ -6,7 +6,8 @@ class DeliverablesController < ApplicationController
   end
 
   def show
-
+    @project = @deliverable.project
+    @drafts = @deliverable.drafts
   end
 
   def create
