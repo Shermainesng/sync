@@ -1,8 +1,8 @@
 <h1>Review project</h1>
-
-<h3><%= @project.name %></h3>
-<p><%= @project.description %></p>
-
+<div class="card">
+  <h3><%= @project.name %></h3>
+  <p><%= @project.description %></p>
+</div>
 <%= render @deliverables %>
 
 <form action="/project_confirmations/create" method="POST">
@@ -13,3 +13,4 @@
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <button type="submit">Confirm</button>
 </form>
+
