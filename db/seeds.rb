@@ -35,6 +35,16 @@ User.create!({
         due_date: Faker::Date.between(from: '2021-12-12', to: '2022-02-12'),
         description: Faker::Company.bs
       })
+
+      3.times do
+        Draft.create!({
+          user: User.last,
+          deliverable: Deliverable.last,
+          attachment: Faker::Placeholdit.image(size: '50x50', format: 'jpg'),
+          description: Faker::Company.bs,
+          status: "pending"
+        })
+      end
     end
 end
 
