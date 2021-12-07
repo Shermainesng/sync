@@ -22,7 +22,7 @@ class DraftsController < ApplicationController
     @draft.deliverable = @deliverable
     @draft.user = current_user
     if @draft.save!
-      redirect_to deliverable_path(@draft), notice: "Your draft has been uploaded."
+      redirect_to draft_path(@draft), notice: "Your draft has been uploaded."
     else
       render "new"
     end
