@@ -8,15 +8,16 @@ Rails.application.routes.draw do
   # patch "/deliverables/:id", to: "deliverables#update" , as: 'update_deliverable'
 
   resources :projects do
-    resources :deliverables, only: [:index, :new, :create]
+    resources :deliverables, only: [:new, :create]
   end
   post "projects/:id/", to: "projects#show"
 
-  resources :deliverables, only: [:show, :destroy, :edit, :update] do
+  resources :deliverables, only: [:show, :destroy, :edit, :update, :index] do
     resources :drafts, only: [:new, :create, :index]
   end
 
   resources :drafts, only: [:show] do
     resources :comments, only: [:index, :new, :create]
   end
+
 end

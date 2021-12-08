@@ -1,8 +1,28 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show]
 
+  def index
+    status = params[:status]
+    name = params[:query]
+
+    @projects = current_user.projects.where(status: status)
+
+    raise
+    unless name.nil?
+      @projects = @projects.where(name: name)
+    end
+
+    # respond_to do |format|
+    #   # format.json {render json: { status: "ok" } }
+    #   # format.text {render plain: "ok"}
+
+    #   format.html { redirect_to root_path}
+    #   format.text { render partial: 'projects/project', collection: @projects, as: :project, formats: [:html] }
+    # end
+  end
+
   def show
-    @deliverables = @project.deliverables
+    @deliverables = @project.deliverables.order(:due_date)
   end
 
   def new
@@ -10,7 +30,8 @@ class ProjectsController < ApplicationController
       user: current_user,
       name: "your project name",
       brand: "your client name",
-      project_end: Date.today
+      project_end: Date.today,
+      status: 'Saved'
     )
 
     redirect_to edit_project_path(@project)
@@ -18,7 +39,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
-    @deliverables = @project.deliverables
+    @deliverables = @project.deliverables.order(:due_date)
     @deliverable = Deliverable.new
   end
 
@@ -28,7 +49,8 @@ class ProjectsController < ApplicationController
       brand: new[:brand],
       name: new[:name],
       project_end: "#{new["project_end(1i)"]}-#{new["project_end(2i)"]}-#{new["project_end(3i)"]}",
-      description: new[:description]
+      description: new[:description],
+      status: 'Pending'
     )
 
     # respond_to do |format|

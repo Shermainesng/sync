@@ -1,5 +1,28 @@
 class DeliverablesController < ApplicationController
   before_action :set_deliverable, only: [:show, :destroy]
+  def index
+    filter = params[:deliv_by] #week or month
+
+    case filter
+      when "week"
+        filtered_date = Date.today + 7
+      when "two_weeks"
+        filtered_date = Date.today + 14
+      when "month"
+        filtered_date = Date.today + 1.month
+    end
+
+    @deliverables= current_user.deliverables.where("due_date <= ?", filtered_date).order(:due_date)
+
+    respond_to do |format|
+      # format.json {render json: { status: "ok" } }
+      # format.text {render plain: "ok"}
+
+      format.html { redirect_to root_path}
+      format.text { render partial: 'deliverables/deliverable', collection: @deliverables, as: :deliverable, formats: [:html] }
+    end
+  end
+
   def new
     @project = Project.find(params[:project_id])
     @deliverable = Deliverable.new
