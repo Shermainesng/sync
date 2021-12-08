@@ -1,5 +1,5 @@
 import { csrfToken } from "@rails/ujs";
-import { Controller } from "stimulus"
+import { Controller } from "stimulus";
 
 export default class extends Controller {
   static targets = ['form', 'input', 'list'];
@@ -9,6 +9,7 @@ export default class extends Controller {
   }
 
   update() {
+
     this.listTarget.innerHTML = "";
     const url = `projects/?query=${this.inputTarget.value}`
     fetch(url, {
@@ -20,3 +21,4 @@ export default class extends Controller {
         });
     }
 }
+    })
