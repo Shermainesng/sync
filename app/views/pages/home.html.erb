@@ -1,5 +1,5 @@
-<div class="vh-100 py-2" style="min-width: 800px;" data-controller="filter">
-  <div class="border h-50 overflow-hidden p-4">
+<div class="h-100 py-4" data-controller="filter">
+  <div class="border p-2 mb-3 upcoming-tasks card-white">
     <div class="d-flex mb-3 align-items-center">
       <h4>Upcoming Tasks
         <select data-filter-target="dropdown" data-action="change->filter#filterTasks">
@@ -15,33 +15,22 @@
       </ul>
     </div>
   </div>
-  <div class="border h-50 p-4">
+  <div class="border p-4 projects card-white">
     <h2>Projects</h2>
 
-    <ul class="nav nav-tabs">
-      <li class="nav-item" >
-        <p class="nav-link active" aria-current="page"
-            data-action="click->filter#filterProjects" data-filter-target="Ongoing">Ongoing</p>
-      </li>
-      <li class="nav-item"
-            data-action="click->filter#filterProjects">
-        <p class="nav-link" data-filter-target="Pending">Pending</p>
-      </li>
-      <li class="nav-item"
-            data-action="click->filter#filterProjects">
-        <p class="nav-link" data-filter-target="Saved">Saved</p>
-      </li>
-      <li class="nav-item" class="nav-item"
-            data-action="click->filter#filterProjects">
-        <p class="nav-link" data-filter-target="Completed">Completed</p>
-      </li>
-      <li class="nav-item" class="nav-item"
-            data-action="click->filter#filterProjects">
-        <p class="nav-link" data-filter-target="All">All</p>
-      </li>
-    </ul>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <p class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true" data-action="click->filter#filterProjects">Ongoing</p>
 
-    <div class="container custom-container">
+        <p class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false"data-action="click->filter#filterProjects">Pending</p>
+
+        <p class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" role="tab" aria-controls="nav-contact" aria-selected="false" data-action="click->filter#filterProjects">Saved</p>
+
+        <p class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" role="tab" aria-controls="nav-contact" aria-selected="false" data-action="click->filter#filterProjects">Completed</p>
+
+        <p class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" role="tab" aria-controls="nav-contact" aria-selected="false" data-action="click->filter#filterProjects">All</p>
+      </div>
+
+    <div class="container projects-container">
       <div class="custom-row" data-filter-target="projects">
         <%= render @projects %>
       </div>

@@ -17,3 +17,12 @@ select {
   border: none;
   border-bottom: 0.5px dashed black;
 }
+
+.upcoming-tasks {
+  height: 300px;
+  overflow: scroll;
+  position: sticky;
+}
+.projects {
+  height: auto;
+}
