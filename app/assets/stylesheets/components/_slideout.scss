@@ -1,0 +1,16 @@
+.slideOutTab {
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  background: white;
+  box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
+  border-radius: 15px 0 0 15px;
+  width: 20vw;
+  height: 100vh;
+  padding: 10px;
+  /* Animation  */
+  transition-property: width;
+  transition-timing-function: ease;
+  transition-duration: 3s;
+}

@@ -3,7 +3,7 @@ import { csrfToken } from "@rails/ujs";
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "form", "list", "edit", "link", "deliverable_type", "due_date", "description", "deliverableType", "deliverableDescription", "deliverableDueDate" ]
+  static targets = [ "form", "list", "edit", "link" ]
 
   createDeliverable(e) {
     e.preventDefault();
@@ -34,6 +34,7 @@ export default class extends Controller {
   edit(e) {
     // e.preventDefault();
     const link = e.target.closest("a")
+    this.editTarget.classList.toggle("d-none")
 
     fetch(link.dataset.href,
       { headers: { 'Accept': 'text/plain' } })
@@ -42,7 +43,11 @@ export default class extends Controller {
         this.editTarget.innerHTML = data
         console.log(this.editTarget);
       })
+  }
 
+  cancel(e) {
+    e.preventDefault()
+    this.editTarget.classList.toggle("d-none")
   }
 }
 
