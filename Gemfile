@@ -74,3 +74,4 @@ gem 'bootstrap', '~> 4.6.1'
 gem "launchy", "~> 2.5"
 gem 'carrierwave', '~> 2.0'
 gem 'bootstrap-sass'
+gem 'has_scope'

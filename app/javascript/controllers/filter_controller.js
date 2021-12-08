@@ -8,7 +8,7 @@ export default class extends Controller {
   filterTasks() {
     this.listTarget.innerHTML = "";
 
-    fetch(`deliverables/?deliv_by=${this.dropdownTarget.value}`, {
+    fetch(`deliverables?deliv_by=${this.dropdownTarget.value}`, {
       headers: { 'Accept': "text/plain" }
     })
       .then((res) => res.text())
@@ -19,15 +19,11 @@ export default class extends Controller {
 
   filterProjects(event) {
     this.projectsTarget.innerHTML="";
-    let url = ""
+    debugger
+    const status =  event.currentTarget.value
+    const name = this.inputTarget.value
 
-    if (event.currentTarget.innerText !== "All") {
-      url = `projects/?deliv_by=${event.currentTarget.innerText}`
-    } else {
-      url = 'projects'
-    }
-
-    fetch(url, {
+    fetch(`projects?filter_status=${status}&filter_name=${name}`, {
         headers: { 'Accept': "text/plain" }
       })
         .then((res) => res.text())
@@ -37,3 +33,15 @@ export default class extends Controller {
         });
     }
 }
+
+// update() {
+//   this.listTarget.innerHTML = "";
+//   const url = `projects/?query=${this.inputTarget.value}`
+//   fetch(url, {
+//     headers: { 'Accept': 'text/plain' }
+//   })
+//     .then(response => response.text())
+//     .then((data) => {
+//       console.log(data);
+//     });
+// }

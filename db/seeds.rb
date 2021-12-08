@@ -30,7 +30,7 @@ User.create!({
     user: User.last,
     name: Faker::Marketing.buzzwords,
     project_end: Faker::Date.between(from: '2021-12-12', to: '2022-02-12'),
-    status: ['Pending', 'Saved', 'Ongoing', 'Completed'].sample,
+    status: ['pending', 'saved', 'ongoing', 'completed'].sample,
     description: Faker::Company.bs,
     brand: Faker::Verb.base.capitalize + Faker::Commerce.brand
   })
