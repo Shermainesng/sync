@@ -1,22 +1,9 @@
-// Visit The Stimulus Handbook for more details
-// https://stimulusjs.org/handbook/introduction
-//
-// This example controller works with specially annotated HTML like:
-//
-// <div data-controller="hello">
-//   <h1 data-target="hello.output"></h1>
-// </div>
 import { csrfToken } from "@rails/ujs";
 
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "form","list"]
-
-  connect() {
-    console.log('insert deliverables controller here');
-
-  }
+  static targets = [ "form", "list", "edit", "link", "deliverable_type", "due_date", "description", "deliverableType", "deliverableDescription", "deliverableDueDate" ]
 
   createDeliverable(e) {
     e.preventDefault();
@@ -42,6 +29,20 @@ export default class extends Controller {
         console.log("created deliverable");
 
       });
+  }
+
+  edit(e) {
+    // e.preventDefault();
+    const link = e.target.closest("a")
+
+    fetch(link.dataset.href,
+      { headers: { 'Accept': 'text/plain' } })
+      .then(response => response.text())
+      .then((data) => {
+        this.editTarget.innerHTML = data
+        console.log(this.editTarget);
+      })
+
   }
 }
 

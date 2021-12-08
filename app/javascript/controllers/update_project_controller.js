@@ -5,10 +5,6 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = ["brand", "projectName", "description", "form", "projectEnd"]
 
-  connect() {
-    console.log("update project controller here");
-  }
-
   initialize (){
     this.timer
   }

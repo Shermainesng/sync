@@ -1,4 +1,4 @@
-<h1>enter Project Details</h1>
+<h1>Enter Project Details</h1>
 
 <div class="container">
   <%= render 'form' %>
@@ -9,7 +9,7 @@
   <div class="d-flex justify-content-center">
     <div>
       <h2>Deliverables added:</h2>
-      <ul data-insert-deliverables-target="list">
+      <ul data-insert-deliverables-target="list" data-action="click->insert-deliverables#edit">
         <%= render @deliverables%>
       </ul>
     </div>
@@ -18,4 +18,6 @@
       <%= render 'deliverables/new' %>
     </div>
   </div>
+
+  <div data-insert-deliverables-target="edit"></div>
 </div>

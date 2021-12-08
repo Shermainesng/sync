@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  # get "deliverables/:id/data", to: "deliverables#data", as: 'deliverables_data'
+  # patch "/deliverables/:id", to: "deliverables#update" , as: 'update_deliverable'
+
   resources :projects do
     resources :deliverables, only: [:new, :create]
   end
   post "projects/:id/", to: "projects#show"
 
-  resources :deliverables, only: [:show, :destroy, :index] do
+  resources :deliverables, only: [:show, :destroy, :edit, :update, :index] do
     resources :drafts, only: [:new, :create, :index]
   end
 
