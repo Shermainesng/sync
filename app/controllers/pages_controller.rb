@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @projects = Project.all
-    @deliverables = Deliverable.all
+    @projects = current_user.projects
+    @deliverables = current_user.deliverables.order(:due_date)
   end
 end

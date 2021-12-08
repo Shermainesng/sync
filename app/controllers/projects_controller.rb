@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show]
 
   def show
-    @deliverables = @project.deliverables
+    @deliverables = @project.deliverables.order(:due_date)
   end
 
   def new
@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
-    @deliverables = @project.deliverables
+    @deliverables = @project.deliverables.order(:due_date)
     @deliverable = Deliverable.new
   end
 
