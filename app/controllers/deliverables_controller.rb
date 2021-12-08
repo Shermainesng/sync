@@ -8,8 +8,9 @@ class DeliverablesController < ApplicationController
   def show
     @project = @deliverable.project
     @drafts = @deliverable.drafts
+
   end
-  
+
   def create
     @project = Project.find(params[:project_id])
     @deliverable = Deliverable.new(deliverable_params)
@@ -18,9 +19,9 @@ class DeliverablesController < ApplicationController
     @deliverable.save!
 
     respond_to do |format|
-        format.html { redirect_to deliverable_path(@deliverable) }
+        format.html { redirect_to edit_project_path(@project) }
         format.json # Follow the classic Rails flow and look for a create.json view
-        format.text {render partial: 'deliverables/deliverable',  locals: { deliverable: @deliverable }, formats: [:html] }
+        format.text {render partial: 'deliverables/deliverable', locals: { deliverable: @deliverable }, formats: [:html] }
     end
   end
 
