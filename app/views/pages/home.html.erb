@@ -8,7 +8,36 @@
   </div>
 </div>
 <div class="border h-50">
+
   <h2>Projects</h2>
+  <form data-controller='project-selector'>
+    <ul>
+      <li data-target="project-selector.option"
+          data-action="click->project-selector#filter">
+        Ongoing
+      </li>
+      <li data-target="project-selector.option"
+          data-action="click->project-selector#filter">
+        Pending
+      </li>
+      <li data-target="project-selector.option"
+          data-action="click->project-selector#filter">
+        Saved
+      </li>
+      <li data-target="project-selector.option"
+          data-action="click->project-selector#filter">
+        Completed
+      </li>
+      <li data-target="project-selector.option"
+          data-action="click->project-selector#filter">
+        All
+      </li>
+    </ul>
+    You chose <input id='option' value="Please Select a status" disabled data-target="project-selector.input">
+    <br />
+    <input type="submit" value="Select the status" disabled data-target="project-selector.submit">
+  </form>
+
   <div class="container custom-container">
     <div class="custom-row">
       <%= render @projects %>
