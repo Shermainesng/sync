@@ -7,7 +7,8 @@ class ProjectConfirmationsController < ApplicationController
                             email_subject: email_params[:email_subject],
                             email_body: email_params[:email_body],
                             user: @user,
-                            project: @project_url)
+                            project: @project,
+                            )
                       .send_project
                       .deliver_now!
 
