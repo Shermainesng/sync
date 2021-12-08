@@ -33,7 +33,26 @@
     <div class="container projects-container">
       <div class="custom-row" data-filter-target="projects">
         <%= render @projects %>
+
+
+    <div data-controller="search-projects">
+      <%= form_with url: projects_path, method: :get, html: { class:'mb-4', data: { search_projects_target: 'form' } } do |f| %>
+        <%= f.text_field :query,
+                          class: "form-control",
+                          placeholder: 'Search for a project',
+                          value: params[:query],
+                          data: {
+                            search_projects_target: 'input',
+                            action: 'keyup->search-projects#update'
+                          } %>
+      <% end %>
+
+      <div class="container custom-container">
+        <ul class="custom-row" data-search-projects-target="list">
+          <%= render @projects %>
+        </ul>
       </div>
     </div>
+
   </div>
 </div>
