@@ -1,0 +1,19 @@
+
+.card-frosted {
+  background: rgba(255, 255, 255, 0.3);
+  mix-blend-mode: normal;
+  /* frosted */
+
+  box-shadow: 2px 2px 10px 1px rgba(176, 176, 176, 0.3);
+  backdrop-filter: blur(20px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 15px;
+}
+
+.card-white {
+  background: #FFFFFF;
+
+  box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
+  border-radius: 15px;
+}
