@@ -5,9 +5,15 @@
 }
 .custom-container {
   overflow-y: scroll;
-  max-height: 100%;
+  max-height: 80%;
 }
 
 .custom-row {
   display: grid;
+}
+
+select {
+  background: none;
+  border: none;
+  border-bottom: 0.5px dashed black;
 }

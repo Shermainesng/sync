@@ -2,7 +2,7 @@ import { csrfToken } from "@rails/ujs";
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["dropdown", "list", "test"]
+  static targets = ["dropdown", "list", "test", "projects", "Ongoing", "Pending", "Saved", "Completed", "All"]
 
   connect() {
     console.log("filter here");
@@ -14,16 +14,41 @@ export default class extends Controller {
   filterTasks() {
     this.listTarget.innerHTML = "";
 
-    console.log("fitlering");
+    // console.log("fitlering");
 
     fetch(`deliverables/?deliv_by=${this.dropdownTarget.value}`, {
-      method: 'GET',
-      headers: { 'Accept': "text/plain", 'X-CSRF-Token': csrfToken() }
+      headers: { 'Accept': "text/plain" }
     })
-      .then((res)=> {res.text()})
+      .then((res) => res.text())
       .then((data)=> {
-        console.log("reached data");
+        // console.log(data);
         this.listTarget.innerHTML= data;
+      });
+  }
+
+  filterProjects() {
+    this.projectsTarget.innerHTML="";
+    // this.optionTargets.forEach((el, i) => {
+    //   el.classList.toggle("active", event.target == el)
+    // })
+    // this.inputTarget.value = event.target.innerText
+    // this.submitTarget.disabled = false
+
+    debugger
+
+    this.filterBy(filter)
+
+
+  }
+
+  filterBy(filter) {
+    fetch(`projects/?status=${filter}`, {
+      headers: { 'Accept': "text/plain" }
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        // console.log(data);
+        this.projectsTarget.innerHTML = data;
       });
   }
 }

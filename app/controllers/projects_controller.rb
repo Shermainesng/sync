@@ -1,6 +1,18 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show]
 
+  def index
+    status = params[:status]
+    @projects = current_user.projects.where(status: status)
+
+    respond_to do |format|
+      # format.json {render json: { status: "ok" } }
+      # format.text {render plain: "ok"}
+
+      format.html { redirect_to root_path}
+      format.text { render partial: 'projects/project', collection: @projects, as: :project, formats: [:html] }
+    end
+  end
   def show
     @deliverables = @project.deliverables.order(:due_date)
   end
