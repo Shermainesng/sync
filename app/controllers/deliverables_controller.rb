@@ -12,12 +12,14 @@ class DeliverablesController < ApplicationController
         filtered_date = Date.today + 1.month
     end
 
-    @deliverables= current_user.deliverables.where("due_date <= ?", filtered_date)
+    @deliverables= current_user.deliverables.where("due_date <= ?", filtered_date).order(:due_date)
 
     respond_to do |format|
-        format.html { redirect_to root_path}
-        # format.json # Follow the classic Rails flow and look for a create.json view
-        format.text {render partial: 'deliverables/index', locals: {deliverables: @deliverables}formats: [:html] }
+      # format.json {render json: { status: "ok" } }
+      # format.text {render plain: "ok"}
+
+      format.html { redirect_to root_path}
+      format.text { render partial: 'deliverables/deliverable', collection: @deliverables, as: :deliverable, formats: [:html] }
     end
   end
 
