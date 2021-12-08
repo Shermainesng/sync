@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # get "deliverables/:id/data", to: "deliverables#data", as: 'deliverables_data'
   # patch "/deliverables/:id", to: "deliverables#update" , as: 'update_deliverable'
+  get 'test', to: "pages#test"
 
   resources :projects do
     resources :deliverables, only: [:new, :create]

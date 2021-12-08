@@ -5,7 +5,11 @@ class PagesController < ApplicationController
 
     date = Date.today + 7
     @deliverables = current_user.deliverables.where("due_date <= ?", date).order(:due_date)
-    @projects = current_user.projects.where(status: "Ongoing")
+    @ongoing = current_user.projects.where(status: "Ongoing")
+    @pending = current_user.projects.where(status: "Pending")
 
+  end
+
+  def test
   end
 end

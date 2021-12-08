@@ -1,24 +1,17 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show]
+  has_scope :filter_status
+  has_scope :filter_name
 
   def index
-    status = params[:status]
-    name = params[:query]
+    @projects = apply_scopes(Project).all
+    respond_to do |format|
+      # format.json {render json: { status: "ok" } }
+      # format.text {render plain: "ok"}
 
-    @projects = current_user.projects.where(status: status)
-
-    raise
-    unless name.nil?
-      @projects = @projects.where(name: name)
+      format.html { redirect_to root_path }
+      format.text { render partial: 'projects/project', collection: @projects, as: :project, formats: [:html] }
     end
-
-    # respond_to do |format|
-    #   # format.json {render json: { status: "ok" } }
-    #   # format.text {render plain: "ok"}
-
-    #   format.html { redirect_to root_path}
-    #   format.text { render partial: 'projects/project', collection: @projects, as: :project, formats: [:html] }
-    # end
   end
 
   def show

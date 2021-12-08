@@ -14,9 +14,11 @@ export default class extends Controller {
     const url = `projects/?query=${this.inputTarget.value}`
     fetch(url, {
       headers: { 'Accept': 'text/plain' }
+      })
+        .then(response => response.text())
+        .then((data) => {
+          console.log(data);
+        });
+    }
+}
     })
-      .then(response => response.text())
-      .then((data) => {
-        // this.listTarget.innerHTML = @;
-        console.log(data);
-      })}}
