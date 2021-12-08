@@ -1,6 +1,6 @@
 <div class="container d-flex">
   <div class="w-25">
-    <%= deliverable.due_date %>
+    <%= deliverable.due_date.strftime("%e %b") %>
   </div>
   <div class="flex-grow-1">
     <a href="<%=deliverable_path(deliverable)%>">

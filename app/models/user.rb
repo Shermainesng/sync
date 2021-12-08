@@ -5,6 +5,7 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable
 
   has_many :projects, dependent: :destroy
+  has_many :deliverables, through: :projects
 
   validates :username, presence: true, uniqueness: true
   validates :account_type, presence: true

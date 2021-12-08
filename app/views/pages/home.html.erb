@@ -1,10 +1,17 @@
 
-<div class="border h-50">
-  <h2>Upcoming Tasks</h2>
+<div class="border h-50 overflow-hidden" data-controller="filter">
+  <div class="d-flex mb-3 align-items-center justify-content-between">
+    <h2>Upcoming Tasks</h2>
+    <select data-filter-target="dropdown" data-action="change->filter#filterTasks">
+      <option value="week">Week</option>
+      <option value="month">Month</option>
+    </select>
+  </div>
+  <a href="deliverables/?deliv_by=week">test</a>
   <div class="container custom-container">
-    <div class="deliv-row">
+    <ul data-filter-target="list">
       <%= render @deliverables %>
-    </div>
+    </ul>
   </div>
 </div>
 <div class="border h-50">
