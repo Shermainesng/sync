@@ -27,8 +27,6 @@ export default class extends Controller {
 
   filterProjects() {
     clearTimeout(this.timer);
-
-
     this.timer = setTimeout(() => {
       this.projectsTarget.innerHTML = "";
 
@@ -41,6 +39,9 @@ export default class extends Controller {
         });
 
     }, 500);
+  }
 
-    }
+  prevent(e){
+    e.preventDefault();
+  }
 }

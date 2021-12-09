@@ -37,7 +37,7 @@
       </ul>
     </div>
     <div>
-      <%= form_with url: projects_path, method: :get, html: { class:'mb-4',  data: { filter_target: 'form' } } do |f| %>
+      <%= form_with url: projects_path, method: :get, html: { class:'mb-4',  data: { filter_target: 'form', action: "filter#prevent" } } do |f| %>
         <%= f.text_field :query,
                           class: "form-control",
                           placeholder: 'Search for a project',
