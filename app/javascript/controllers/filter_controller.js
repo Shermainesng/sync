@@ -2,7 +2,7 @@ import { csrfToken } from "@rails/ujs";
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["dropdown", "deliverables", "projects", "input"]
+  static targets = ["dropdown", "deliverables", "projects", "input", "form"]
 
   connect () {
     console.log("filter connected");
@@ -28,8 +28,17 @@ export default class extends Controller {
   filterProjects() {
     clearTimeout(this.timer);
 
+
     this.timer = setTimeout(() => {
-      debugger
+      console.log(`input Target: ${this.inputTarget}`);
+      console.log(this.inputTarget);
+
+      console.log(`project Target:`);
+      console.log(this.projectsTarget.innerHTML);
+
+
+      const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
+
       this.projectsTarget.innerHTML = "";
 
       fetch(`projects?&filter_name=${this.inputTarget.value}`, {
