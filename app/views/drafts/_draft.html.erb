@@ -1,17 +1,17 @@
-<div class="container d-flex">
-  <div style="min-width: 150px;">
-    <p>last submitted</p>
-    <p><%= draft.created_at.strftime("%e %b") %></p>
+<div class="container d-flex align-items-center">
+  <div class="date-card">
+    <p>submitted</p>
+    <p><strong><%= draft.created_at.strftime("%e %b") %></strong></p>
   </div>
   <div class="flex-grow-1">
-    <div class="card">
+    <div class="card rounded-custom">
       <div class="d-flex justify-content-between">
         <div class="card-body">
           <h5 class="card-title"><%= draft.description %></h5>
         </div>
         <div>
           <p class="card-text"><%= draft.status %></p>
-          <%= link_to  "show draft details", draft_path(draft) %>>
+          <%= link_to  "View Comments", draft_path(draft) %>>
         </div>
       </div>
     </div>
