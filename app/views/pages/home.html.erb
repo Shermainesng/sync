@@ -1,4 +1,4 @@
-<div class="h-100 py-4" data-controller="filter">
+<div class="h-100 py-4 w-100" data-controller="filter">
   <div class="border p-2 mb-3 upcoming-tasks card-white">
     <div class="d-flex mb-3 align-items-center">
       <h4>Upcoming Tasks
@@ -10,84 +10,64 @@
       </h4>
     </div>
     <div class="container custom-container">
-      <ul data-filter-target="list">
+      <ul data-filter-target="deliverables">
         <%= render @deliverables %>
       </ul>
     </div>
   </div>
-  <div class="border p-4 projects card-white">
-    <h2>Projects</h2>
-
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ongoing</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pending</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-      </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <ul>
-            <% @ongoing.each do |proj|%>
-              <li><%= proj.status%></li>
-            <% end %>
-          </ul>
-      </div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-        <% @pending.each do |proj|%>
-            <li><%= proj.status%></li>
-          <% end %>
-      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-    </div>
-
-
-
+  <div>
+    <div class="border p-4 projects card-white d-flex justify-content-between">
       <div>
-        <%= form_with url: projects_path, method: :get, html: { class:'mb-4', data: { search_projects_target: 'form' } } do |f| %>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#ongoing" role="tab" aria-controls="home" aria-selected="true">Ongoing</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="profile" aria-selected="false">Pending</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="contact" aria-selected="false">Completed</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="saved-tab" data-toggle="tab" href="#saved" role="tab" aria-controls="contact" aria-selected="false">Saved</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="contact" aria-selected="false">All</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <%= form_with url: projects_path, method: :get, html: { class:'mb-4' } do |f| %>
           <%= f.text_field :query,
                             class: "form-control",
                             placeholder: 'Search for a project',
                             value: params[:query],
                             data: {
                               filter_target: 'input',
-                              action: 'keyup->search-projects#update'
+                              action: 'keyup->filter#filterProjects'
                             } %>
         <% end %>
       </div>
     </div>
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-ongoing" role="tabpanel" aria-labelledby="nav-home-tab">
-        <ul>
-          <% @ongoing.each do |proj|%>
-            <li><%= proj.status%></li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="tab-pane fade" id="nav-pending" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <ul>
-          <% @pending.each do |proj|%>
-            <li><%= proj.status%></li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
-      </div>
-
-    <div class="container projects-container">
-      <div class="custom-row" data-filter-target="projects">
-        <%=   %>
-
-
-      <div class="container custom-container">
-        <ul class="custom-row" data-search-projects-target="list">
-          <%=  %>
-        </ul>
+      <div data-filter-target="projects">
+        <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="ongoing" role="tabpanel" aria-labelledby="home-tab">
+          <%= render @ongoing %>
+        </div>
+        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="profile-tab">
+          <%= render @pending %>
+        </div>
+        <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="contact-tab">
+          <%= render @completed %>
+        </div>
+        <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="contact-tab">
+          <%= render @saved %>
+        </div>
+        <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="contact-tab">
+          <%= render @all %>
+        </div>
       </div>
     </div>
-
   </div>
+
 </div>

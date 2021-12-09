@@ -1,17 +1,18 @@
-<div class="container d-flex">
+<div class="container d-flex card-white">
   <div class="w-25">
     <%= deliverable.due_date.strftime("%e %b") %>
   </div>
-  <div>
-    <div class="flex-grow-1">
-       <a data-href="/deliverables/<%= deliverable.id %>/edit" data-insert-deliverables-target="link">
-        <div class="card">
-          <div class="card-body">
+  <div class="w-75">
+    <a data-href="/deliverables/<%= deliverable.id %>/edit" data-insert-deliverables-target="link">
+      <div>
+        <div class="d-flex justify-content-between">
+          <div>
             <h5 class="card-title" data-insert-deliverables-target="deliverableType"><%= deliverable.deliverable_type %></h5>
             <p class="card-text" data-insert-deliverables-target="deliverableDescription"><%= deliverable.description %></p>
           </div>
+          <%= link_to  "Delete", deliverable_path(deliverable), method: :delete %>
         </div>
-      </a>
-    </div>
+      </div>
+    </a>
   </div>
 </div>
