@@ -1,24 +1,21 @@
-<h1>Enter Project Details</h1>
-
-<div class="container">
-  <%= render 'form' %>
-</div>
-
-
-<div class="container" data-controller="insert-deliverables">
-  <div class="d-flex justify-content-center">
-    <div>
-      <h2>Deliverables added:</h2>
-      <ul data-insert-deliverables-target="list" data-action="click->insert-deliverables#edit">
-        <%= render @deliverables%>
-      </ul>
-    </div>
-    <div>
-      <h2>Add a new deliverable here:</h2>
-      <%= render 'deliverables/new' %>
-    </div>
+<div class="custom-form-layout">
+  <div class="container">
+    <%= render 'form' %>
   </div>
 
-  <div class="slideOutTab d-none" data-insert-deliverables-target="edit"></div>
+  <div class="container" data-controller="insert-deliverables">
+    <div class="deliverable-form-show">
+      <div class="custom-list mr-3">
+        <ul data-insert-deliverables-target="list" data-action="click->insert-deliverables#edit">
+          <%= render @deliverables%>
+        </ul>
+      </div>
+      <div>
+        <%= render 'deliverables/new' %>
+      </div>
+    </div>
 
+    <div class="slideOutTab d-none" data-insert-deliverables-target="edit"></div>
+
+  </div>
 </div>
