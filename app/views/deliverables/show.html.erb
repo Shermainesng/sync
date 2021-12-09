@@ -1,45 +1,31 @@
-<%# heading: project details %>
-<div class="container d-flex justify-content-between">
-  <div>
-    <h1><%=@project.brand%>: <%= @project.name %></h1>
-  </div>
-  <div>
-    <h2><%=@project.project_end.strftime("%e %b") %></h2>
-  </div>
-</div>
-
-<div class="container d-flex">
-  <%# list of deliverables %>
-  <div>
-    <% @project.deliverables.each do |deliv| %>
-    <div class="container d-flex" >
-      <div class="d-flex flex-column p-1">
-        <p><%= deliv.due_date.strftime("%b") %></p>
-        <p><%= deliv.due_date.strftime("%e")%></p>
-      </div>
-      <div class="border flex-grow-1 p-1">
-        <a href="<%=deliverable_path(deliv)%>">
-          <p><%= deliv.deliverable_type %></p>
-        </a>
-      </div>
+<div class="container p-4">
+  <%# heading %>
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <h1><%=@project.brand%>: <%= @project.name %></h1>
+      <h2><%= @project.description %></h2>
     </div>
-    <% end %>
-  </div>
-
-  <%# deliverable in focus %>
-  <div>
-    <div class="container d-flex justify-content-between">
-      <div>
-        <h2><%=@deliverable.deliverable_type%></h2>
-      </div>
-      <div>
-        <h2><%=@deliverable.due_date.strftime("%e %b") %></h2>
-      </div>
+    <div>
+      <h2><%= @project.project_end.strftime("%e %b")%></h2>
     </div>
-    <p><%= @deliverable.description %></p>
-    <div class="d-flex flex-column">
-      <a href="<%=new_deliverable_draft_path(@deliverable)%>" class="btn btn-primary">Submit new draft</a>
-      <%= render @drafts %>
   </div>
+  <%# deliverable panel %>
+  <div class="card-frosted d-flex">
+    <div class="col-3">
+      <% @project.deliverables.each do |deliv| %>
+        <div class="d-flex card-white my-2 deliv-card">
+          <div class="mr-2 date">
+            <%= deliv.due_date.strftime("%b") %>
+            <h5><%= deliv.due_date.strftime("%e") %></h5>
+          </div>
+          <div class="flex-shrink-1">
+            <%= deliv.deliverable_type %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-9">
 
+    </div>
+  </div>
 </div>
