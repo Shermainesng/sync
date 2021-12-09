@@ -12,7 +12,7 @@ class DraftsController < ApplicationController
   def show
     @draft = Draft.find(params[:id])
     @deliverable = @draft.deliverable
-    @comments = @draft.comments
+    @comments = @draft.comments.select { |comment| comment.parent_id.nil?}
     @comment = Comment.new
   end
 
