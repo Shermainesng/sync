@@ -1,4 +1,4 @@
-  <div class="container card-frosted deliverable-card">
+  <div class="container card-white deliverable-card">
     <div class="card-deliverable-date">
       <div><%= deliverable.due_date.strftime("%b") %></div>
       <div><%= deliverable.due_date.strftime("%e") %></div>
@@ -7,12 +7,14 @@
       <a data-href="/deliverables/<%= deliverable.id %>/edit" data-insert-deliverables-target="link">
         <div>
           <div class="deliverable-card">
-            <div class="card-deliverable-content">
-              <h5><%= deliverable.deliverable_type %></h5>
-              <div><%= deliverable.description %></div>
-              <% deliverable.tag_list.each do |tag|%>
-                <span class="badge badge-primary custom-badge"><%= tag %></span>
-              <% end %>
+            <div class="card-deliverable-content card-long">
+              <div class="card-custom-subtitle"><%= deliverable.deliverable_type %></div>
+              <div>
+                <%= deliverable.description %>
+                <% deliverable.tag_list.each do |tag|%>
+                  <span class="badge badge-primary custom-badge"><%= tag %></span>
+                <% end %>
+              </div>
             </div>
             <div class="format-link">
               <%= link_to "See Drafts", "/deliverables/#{deliverable.id}" %>
