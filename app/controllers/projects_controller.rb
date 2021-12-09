@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show]
-  has_scope :filter_status
+  # has_scope :filter_status
   has_scope :filter_name
 
   def index
