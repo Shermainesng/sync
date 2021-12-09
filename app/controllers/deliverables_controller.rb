@@ -56,12 +56,6 @@ class DeliverablesController < ApplicationController
 
   def edit
     @deliverable = Deliverable.find(params[:id])
-    @project = Project.find(@deliverable[:project_id])
-    if params[:tag]
-      @deliverables = Deliverable.tagged_with(params[:tag])
-    else
-      @deliverables = Deliverable.all
-    end
     respond_to do |format|
       format.html { redirect_to edit_project_path(@project) }
       format.text {render partial: 'deliverables/update', locals: { deliverable: @deliverable }, formats: [:html]}
@@ -77,7 +71,7 @@ class DeliverablesController < ApplicationController
       deliverable_type: updated[:deliverable_type],
       due_date: "#{updated["due_date(1i)"]}-#{updated["due_date(2i)"]}-#{updated["due_date(3i)"]}",
       description: updated[:description],
-      tag_list: updated[:tag_list]
+      tag_list: updated[:tag_list].split.join(",")
     })
 
     respond_to do |format|
