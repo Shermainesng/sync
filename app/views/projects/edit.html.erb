@@ -1,16 +1,16 @@
 <div class="custom-form-layout">
-  <div class="container">
+  <div class="container pt-4">
     <%= render 'form' %>
   </div>
 
   <div class="container" data-controller="insert-deliverables">
-    <div class="deliverable-form-show">
+    <div class="deliverable-form-show card-frosted">
       <div class="custom-list mr-3">
         <ul data-insert-deliverables-target="list" data-action="click->insert-deliverables#edit">
           <%= render @deliverables%>
         </ul>
       </div>
-      <div>
+      <div class="card-white">
         <%= render 'deliverables/new' %>
       </div>
 
