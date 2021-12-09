@@ -38,12 +38,14 @@ User.create!({
     puts "Creating deliverables for #{Project.last.name}"
 
     3.times do
-      Deliverable.create!({
+      new_deliv = Deliverable.create!({
         project: Project.last,
         deliverable_type: ["IG Post", "Tik Tok Video", "Photoshoot", "IG Story", "FB Post"].sample,
         due_date: Faker::Date.between(from: '2021-12-12', to: '2022-02-12'),
         description: Faker::Company.bs
       })
+      new_deliv.tag_list.add("photography, important", parse: true)
+      new_deliv.save
 
       3.times do
         new_draft = Draft.new({
