@@ -3,10 +3,26 @@
     <%= comment.created_at %>
   </div>
   <div class="flex-grow-1">
-    <div class="card">
+    <div class="card comment" data-insert-comments-target="receiving">
       <div class="card-body">
         <p class="card-title"><%= comment.content %></p>
+        <a class="btn btn-primary" data-insert-comments-target="newReply" data-action="click->insert-comments#newReply" value="<%=new_comment_reply_path(comment)%>">reply</a>
+
+      <%# create a form, but hidden %>
+      <%= simple_form_for [@draft, @comment], data: {insert_comments_target: "form"}, html:{class:"d-none" }  do |f| %>
+      <%= f.input :content, name: "content",
+        input_html: {
+          data: {
+            insert_comments_target: "content"
+            }}%>
+      <%= f.submit "Add comment" %>
+      <% end %>
       </div>
+
     </div>
   </div>
 </div>
+<% links = @comment.replies %>
+<% @replies = links.map {|link| Comment.find(link.receiver_id)} %>
+<%# if the comment has any replies, you iterate it %>
+<%= render partial: 'replies/reply', collection: @replies, as: :reply %>
