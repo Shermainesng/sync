@@ -1,13 +1,12 @@
 
 <%# wrap in controller %>
-<div class="card comment" data-controller="insert-comments">
+<div class="card card-white" data-controller="insert-comments">
   <div class="card-body">
     <p class="card-title"><%= comment.content %></p>
     <% if comment.parent_id.nil? %>
       <a class="btn btn-primary" data-insert-comments-target="newReply"
       data-action="click->insert-comments#newReply">reply</a>
     <%end%>
-<p>parent id<%= comment.parent_id %></p>
     <%# create a form, but hidden %>
     <% if comment.parent_id.nil? %>
       <%= simple_form_for Comment.new, method: :post, url: draft_comments_path(@draft), data: {insert_comments_target: "form", action: "insert-comments#createReply"}, html: {class: "d-none"} do |f| %>
@@ -17,7 +16,7 @@
               insert_comments_target: "content"
               }}%>
         <%= f.hidden_field :parent_id, value: comment.id %>
-        <%= f.submit "reply" %>
+        <%= f.submit "reply"%>
       <% end %>
     <% end %>
   <%# if the comment has any replies, you iterate it %>

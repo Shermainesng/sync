@@ -13,6 +13,7 @@
   <div class="card-frosted d-flex">
     <div class="col-3">
       <% @project.deliverables.each do |deliv| %>
+      <a href="<%=deliverable_path(deliv)%>" class="text-decoration-none">
         <div class="d-flex card-white my-2 deliv-card">
           <div class="mr-2 date">
             <%= deliv.due_date.strftime("%b") %>
@@ -22,22 +23,21 @@
             <%= deliv.deliverable_type %>
           </div>
         </div>
+      </a>
       <% end %>
     </div>
-    <div class="col-9 card-white">
-      <div class="d-flex justify-content-between">
+    <div class="col-9 card-white px-4 py-2">
+      <div class="d-flex justify-content-between align-items-center">
         <div>
-          <%= @deliverable.deliverable_type %>
+          <%= @deliverable.deliverable_type %> <br>
+          <%= @deliverable.description %>
         </div>
         <div>
           Due in <%= pluralize (@deliverable.due_date - Date.today).to_i,"day"%>
         </div>
       </div>
-      <div>
-        <%= @deliverable.description %>
-      </div>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-block text-white submit-draft" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="btn btn-primary btn-block text-white submit-draft my-4" data-toggle="modal" data-target="#exampleModal">
         Submit New Draft
       </button>
       <%= render  @drafts %>

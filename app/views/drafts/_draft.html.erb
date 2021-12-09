@@ -1,16 +1,14 @@
-<div class="d-flex my-2 deliv-drafts">
+<div class="d-flex my-2 deliv-drafts align-items-center">
   <div class="submitted-date">
-    submitted
+    submitted <br>
     <%= draft.created_at.strftime("%b %e, %a") %>
   </div>
   <div class="card summary">
-    <div>
-      <div class="card-body description" style="width: 100;">
-        <%= draft.description %>
-      </div>
-      <div class="comments">
-        <%= link_to  "view comments", draft_path(draft) %>
-      </div>
+    <div class="card-body description">
+      <%= draft.description %>
+    </div>
+    <div class="comments">
+      <%= link_to  "view comments", draft_path(draft) %>
     </div>
   </div>
 </div>
