@@ -1,3 +1,12 @@
 .cancelBtn:hover {
   cursor: pointer;
 }
+
+.submit-form-btn {
+  background-color: $primary;
+  height: fit-content;
+  border-radius: 10px;
+  color: white;
+  border: 0 none;
+  padding: 10px;
+}

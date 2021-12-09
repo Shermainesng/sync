@@ -57,6 +57,7 @@ class DeliverablesController < ApplicationController
   def edit
     @deliverable = Deliverable.find(params[:id])
     respond_to do |format|
+      format.html { redirect_to edit_project_path(@project) }
       format.text {render partial: 'deliverables/update', locals: { deliverable: @deliverable }, formats: [:html]}
     end
   end

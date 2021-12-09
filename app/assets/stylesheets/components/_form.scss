@@ -1,0 +1,22 @@
+.simple_form.custom-form-card {
+  color: transparent;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.custom-form-layout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.add-deliverables-form {
+  width: 100%
+}
+
+.deliverable-form-show {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}

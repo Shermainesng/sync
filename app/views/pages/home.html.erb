@@ -38,7 +38,7 @@
         </ul>
       </div>
       <div>
-        <%= form_with url: projects_path, method: :get, html: { class:'mb-4',  data: { filter_target: 'form' } } do |f| %>
+        <%= form_with url: projects_path, method: :get, html: { data: { filter_target: 'form' } } do |f| %>
           <%= f.text_field :query,
                             class: "form-control",
                             placeholder: 'Search for a project',
@@ -54,7 +54,9 @@
 
     <div class="tab-content" id="myTabContent" data-filter-target="projects">
       <div class="tab-pane fade show active" id="ongoing" role="tabpanel" aria-labelledby="home-tab">
-        <%= render @ongoing %>
+        <div class="row">
+          <%= render @ongoing %>
+        </div>
       </div>
       <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="profile-tab">
         <%= render @pending %>
