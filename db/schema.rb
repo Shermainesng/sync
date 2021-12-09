@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_024231) do
+
+ActiveRecord::Schema.define(version: 2021_12_09_072507) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +70,15 @@ ActiveRecord::Schema.define(version: 2021_12_09_024231) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+
+  create_table "replies", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver_id"], name: "index_replies_on_receiver_id"
+    t.index ["sender_id"], name: "index_replies_on_sender_id"
+
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -95,6 +106,7 @@ ActiveRecord::Schema.define(version: 2021_12_09_024231) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,10 +126,16 @@ ActiveRecord::Schema.define(version: 2021_12_09_024231) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "comments", column: "comments_id"
   add_foreign_key "comments", "drafts"
   add_foreign_key "comments", "users"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
   add_foreign_key "projects", "users"
+
+  add_foreign_key "replies", "comments", column: "receiver_id"
+  add_foreign_key "replies", "comments", column: "sender_id"
+
   add_foreign_key "taggings", "tags"
+
 end
