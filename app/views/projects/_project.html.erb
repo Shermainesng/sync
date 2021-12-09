@@ -1,4 +1,4 @@
-<div class="m-1">
+<div class="col-sm-6 col-md-4 mb-2">
   <a href="<%=project_path(project)%>">
     <div class="card h-100">
       <div class="card-body">
@@ -8,6 +8,7 @@
         <ul>
           <% project.deliverables.each do |d| %>
             <li><%= d.deliverable_type %></li>
+            <p><%= (d.tag_list.split).join(", ") %></p>
           <% end %>
         </ul>
       </div>

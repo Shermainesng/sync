@@ -42,9 +42,9 @@ class DeliverablesController < ApplicationController
     @deliverable.save!
 
     respond_to do |format|
-        format.html { redirect_to edit_project_path(@project) }
-        format.json # Follow the classic Rails flow and look for a create.json view
-        format.text {render partial: 'deliverables/deliverable', locals: { deliverable: @deliverable }, formats: [:html] }
+      format.html { redirect_to edit_project_path(@project) }
+      format.json # Follow the classic Rails flow and look for a create.json view
+      format.text {render partial: 'deliverables/deliverable', locals: { deliverable: @deliverable }, formats: [:html] }
     end
   end
 
@@ -57,6 +57,7 @@ class DeliverablesController < ApplicationController
   def edit
     @deliverable = Deliverable.find(params[:id])
     respond_to do |format|
+      format.html { redirect_to edit_project_path(@project) }
       format.text {render partial: 'deliverables/update', locals: { deliverable: @deliverable }, formats: [:html]}
     end
   end
@@ -69,7 +70,8 @@ class DeliverablesController < ApplicationController
     @deliverable.update!({
       deliverable_type: updated[:deliverable_type],
       due_date: "#{updated["due_date(1i)"]}-#{updated["due_date(2i)"]}-#{updated["due_date(3i)"]}",
-      description: updated[:description]
+      description: updated[:description],
+      tag_list: updated[:tag_list].split.join(",")
     })
 
     respond_to do |format|
@@ -82,7 +84,7 @@ class DeliverablesController < ApplicationController
 
   private
   def deliverable_params
-    params.require(:deliverable).permit(:deliverable_type, :due_date, :description)
+    params.require(:deliverable).permit(:deliverable_type, :due_date, :description, :tag_list)
   end
 
   def set_deliverable
