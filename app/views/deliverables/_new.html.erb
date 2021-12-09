@@ -14,5 +14,7 @@
       data: {
         insert_deliverables_target: "description"
         }}%>
+  <%= f.label :tag_list, "Tags (separated by commas)" %>
+  <%= f.text_field :tag_list %>
   <%= f.submit "add", data:{ action: "click->insert-deliverables#createDeliverable"}%>
 <% end %>

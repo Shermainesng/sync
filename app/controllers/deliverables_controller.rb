@@ -82,7 +82,7 @@ class DeliverablesController < ApplicationController
 
   private
   def deliverable_params
-    params.require(:deliverable).permit(:deliverable_type, :due_date, :description)
+    params.require(:deliverable).permit(:deliverable_type, :due_date, :description, :tag_list)
   end
 
   def set_deliverable
