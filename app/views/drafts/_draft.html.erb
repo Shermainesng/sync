@@ -1,18 +1,15 @@
-<div class="container d-flex">
-  <div style="min-width: 150px;">
-    <p>last submitted</p>
-    <p><%= draft.created_at.strftime("%e %b") %></p>
+<div class="d-flex my-2 deliv-drafts">
+  <div class="submitted-date">
+    submitted
+    <%= draft.created_at.strftime("%b %e, %a") %>
   </div>
-  <div class="flex-grow-1">
-    <div class="card">
-      <div class="d-flex justify-content-between">
-        <div class="card-body">
-          <h5 class="card-title"><%= draft.description %></h5>
-        </div>
-        <div>
-          <p class="card-text"><%= draft.status %></p>
-          <%= link_to  "show draft details", draft_path(draft) %>>
-        </div>
+  <div class="card summary">
+    <div>
+      <div class="card-body description" style="width: 100;">
+        <%= draft.description %>
+      </div>
+      <div class="comments">
+        <%= link_to  "view comments", draft_path(draft) %>
       </div>
     </div>
   </div>

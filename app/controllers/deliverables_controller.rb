@@ -31,6 +31,7 @@ class DeliverablesController < ApplicationController
   def show
     @project = @deliverable.project
     @drafts = @deliverable.drafts
+    @new_draft = Draft.new
 
   end
 

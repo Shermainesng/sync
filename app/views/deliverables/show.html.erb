@@ -24,8 +24,50 @@
         </div>
       <% end %>
     </div>
-    <div class="col-9">
+    <div class="col-9 card-white">
+      <div class="d-flex justify-content-between">
+        <div>
+          <%= @deliverable.deliverable_type %>
+        </div>
+        <div>
+          Due in <%= pluralize (@deliverable.due_date - Date.today).to_i,"day"%>
+        </div>
+      </div>
+      <div>
+        <%= @deliverable.description %>
+      </div>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-block text-white submit-draft" data-toggle="modal" data-target="#exampleModal">
+        Submit New Draft
+      </button>
+      <%= render  @drafts %>
+    </div>
+  </div>
+</div>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload your draft here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for [@deliverable,@new_draft], html: { multipart: true } do |f| %>
+          <%= f.label :attachment %>
+          <%= f.file_field :attachment %>
+          <%= f.text_field :description %>
+          <%= f.submit "Submit Draft", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
