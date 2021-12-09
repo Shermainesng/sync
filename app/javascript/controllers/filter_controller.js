@@ -30,15 +30,6 @@ export default class extends Controller {
 
 
     this.timer = setTimeout(() => {
-      console.log(`input Target: ${this.inputTarget}`);
-      console.log(this.inputTarget);
-
-      console.log(`project Target:`);
-      console.log(this.projectsTarget.innerHTML);
-
-
-      const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
-
       this.projectsTarget.innerHTML = "";
 
       fetch(`projects?&filter_name=${this.inputTarget.value}`, {
