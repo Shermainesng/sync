@@ -1,10 +1,10 @@
-<div class="col-sm-6 col-md-4 mb-2">
-  <a href="<%=project_path(project)%>">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title"><%= project.name %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= project.brand %></h6>
-        <p class="card-text"><%= project.description %></p>
+<div class="col-sm-6 col-md-4 mb-2 card-equal-size">
+  <a href="<%=project_path(project)%>" class="btn-linkless" >
+    <div class="card-white">
+      <div class="card-custom-body">
+        <div class="card-custom-title"><%= project.name %></div>
+        <div class="card-custom-subtitle"><%= project.brand %></div>
+        <div class="card-custom-text"><%= project.description %></div>
         <ul>
           <% project.deliverables.each do |d| %>
             <li><%= d.deliverable_type %></li>
