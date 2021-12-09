@@ -56,11 +56,6 @@ class DeliverablesController < ApplicationController
 
   def edit
     @deliverable = Deliverable.find(params[:id])
-    if params[:tag]
-      @deliverables = Deliverable.tagged_with(params[:tag])
-    else
-      @deliverables = Deliverable.all
-    end
     respond_to do |format|
       format.text {render partial: 'deliverables/update', locals: { deliverable: @deliverable }, formats: [:html]}
     end
