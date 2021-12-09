@@ -4,7 +4,7 @@
   <%= f.input :deliverable_type, name: "deliverable_type"%>
   <%= f.input :due_date, name: "due_date"%>
   <%= f.input :description, name: "description"%>
-  <%= f.label :tag_list, "Tags (separated by commas)" %>
+  <%= f.label :tag_list, "Your Tags (separated by spaces)" %>
   <%= f.text_field :tag_list %>
   <%= f.submit "Update" %>
   <p data-action="click->insert-deliverables#cancel" class="cancelBtn">Cancel</p>

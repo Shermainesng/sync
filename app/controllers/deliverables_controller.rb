@@ -75,7 +75,7 @@ class DeliverablesController < ApplicationController
       deliverable_type: updated[:deliverable_type],
       due_date: "#{updated["due_date(1i)"]}-#{updated["due_date(2i)"]}-#{updated["due_date(3i)"]}",
       description: updated[:description],
-      tag_list: updated[:tag_list]
+      tag_list: updated[:tag_list].split.join(",")
     })
 
     respond_to do |format|
