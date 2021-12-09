@@ -87,4 +87,31 @@
   .comments {
     width: 120px;
   }
+  
+.card-long {
+  width: 550px
+}
+
+.card-equal-size {
+  height: max-content;
+}
+
+.card-custom-body {
+  color: $dark-grey;
+  padding: 5px;
+}
+
+.card-custom-title {
+  color: black;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card-custom-subtitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-custom-text {
+  margin-bottom: 20px;
 }
