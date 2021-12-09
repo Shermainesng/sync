@@ -51,6 +51,43 @@
   color: $dark-grey
 }
 
+.deliv-card {
+  height: 70px;
+  align-items: center;
+  vertical-align: middle;
+
+
+  .date {
+    width: 40px;
+    text-align: center;
+  }
+}
+
+.deliv-drafts {
+  .submitted-date {
+    width: 100px;
+    margin: 0px 5px;
+    font-size: 13px;
+  }
+
+  .summary {
+    border-radius: 10px;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  a {
+    font-size: 13px;
+  }
+
+  .comments {
+    width: 120px;
+  }
+  
 .card-long {
   width: 550px
 }
