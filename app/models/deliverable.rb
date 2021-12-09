@@ -3,5 +3,5 @@ class Deliverable < ApplicationRecord
   has_many :drafts, dependent: :destroy
 
   acts_as_taggable_on :tags
-  acts_as_taggable_on :details, :type #categories
+  acts_as_taggable_on :type, :details
 end
