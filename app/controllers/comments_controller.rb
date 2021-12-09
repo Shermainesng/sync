@@ -7,11 +7,12 @@ class CommentsController < ApplicationController
   def create
     @draft = Draft.find(params[:draft_id])
     @comment = Comment.new(comment_params)
-    @draft.comments << @comment
     @comment.user = current_user
-    @draft.user = current_user
-    @comment.save!
+
+    @draft.comments << @comment
     @draft.save!
+
+    @comment.save!
 
     respond_to do |format|
       format.html { redirect_to draft_path(@draft) }
@@ -22,6 +23,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :parent_id)
   end
 end
