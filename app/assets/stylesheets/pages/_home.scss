@@ -4,7 +4,6 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 .custom-container {
-  overflow-y: scroll;
   max-height: 80%;
 }
 
@@ -20,9 +19,14 @@ select {
 
 .upcoming-tasks {
   height: 300px;
-  overflow: scroll;
   position: sticky;
 }
+
 .projects {
   height: auto;
+}
+
+.custom-list > ul {
+    list-style: none;
+    padding-left: 0;
 }
