@@ -9,6 +9,7 @@
 
   border-radius: 15px;
   padding: 15px;
+  margin-bottom: 10px;
 }
 
 .card-white {
@@ -17,4 +18,35 @@
   padding: 10px;
   box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
   border-radius: 15px;
+}
+
+.format-link {
+  display: flex;
+  flex-direction: column;
+}
+
+.deliverable-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-deliverable-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin-right: 15px;
+  color: $dark-grey;
+  font-weight: bold;
+  font-size: large;
+}
+
+.card-deliverable-details {
+  flex-grow: 1;
+}
+
+.card-deliverable-content {
+  overflow-wrap: break-word;
+  width: 200px;
+  color: $dark-grey
 }

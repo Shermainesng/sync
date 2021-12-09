@@ -1,5 +1,18 @@
+.cancelBtn {
+  border: 1px none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: lightgrey;
+}
+
 .cancelBtn:hover {
   cursor: pointer;
+}
+
+.btn-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .submit-form-btn {
@@ -9,4 +22,19 @@
   color: white;
   border: 0 none;
   padding: 10px;
+  float: right;
+  text-align: center;
+}
+
+.submit-form-btn:hover {
+  background-color: $orange;
+  color: white;
+}
+
+.btn-bold {
+  font-weight: bold;
+}
+
+.btn-linkless {
+  text-decoration: none !important;
 }
