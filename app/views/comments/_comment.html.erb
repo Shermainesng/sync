@@ -3,17 +3,12 @@
 <div class="card card-white" data-controller="insert-comments">
   <div class="card-body">
     <p class="card-title"><%= comment.content %></p>
-    <% if comment.parent_id.nil? %>
-      <a class="btn btn-primary" data-insert-comments-target="newReply"
-      data-action="click->insert-comments#newReply">reply</a>
-    <%end%>
-      <%# if the comment has any replies, you iterate it %>
-
+    <%# if the comment has any replies, you iterate it %>
+    <ul data-insert-comments-target="replies">
       <% unless comment.replies.nil?  %>
-        <%= render partial: "comments/comment", collection: comment.replies, as: :comment %>
+          <%= render partial: "comments/comment", collection: comment.replies, as: :comment %>
       <% end %>
-      <div data-insert-comments-target="replies">
-      </div>
+    </ul>
     <%# create a form, but hidden %>
     <% if comment.parent_id.nil? %>
       <%= simple_form_for Comment.new, method: :post, url: draft_comments_path(@draft), data: {insert_comments_target: "form", action: "insert-comments#createReply"}, html: {class: "d-none"} do |f| %>
@@ -26,5 +21,9 @@
         <%= f.submit "reply"%>
       <% end %>
     <% end %>
+  <% if comment.parent_id.nil? %>
+    <a class="btn btn-primary" data-insert-comments-target="newReply"
+    data-action="click->insert-comments#newReply">reply</a>
+  <%end%>
   </div>
 </div>
