@@ -15,9 +15,9 @@
     <div class="deliverable-form-show card-frosted">
       <p data-insert-deliverables-target="message">nothing here</p>
       <div class="custom-list mr-3">
-        <ul data-insert-deliverables-target="list" data-action="click->insert-deliverables#edit">
+        <ul data-insert-deliverables-target="list">
+          <%= render @deliverables, card_path: "", has_link: false, edit_btn: true %>
         <% #fetch sorted deliverables %>
-          <%= render @deliverables%>
         </ul>
       </div>
       <div class="card-white">

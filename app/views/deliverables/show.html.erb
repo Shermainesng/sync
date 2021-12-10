@@ -34,6 +34,7 @@
         </div>
         <div>
           Due in <%= pluralize (@deliverable.due_date - Date.today).to_i,"day"%>
+          <a href="/projects/<%= @deliverable.project.id %>/edit">Edit</a>
         </div>
       </div>
       <!-- Button trigger modal -->
