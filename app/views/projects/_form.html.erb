@@ -1,12 +1,12 @@
 <%= simple_form_for @project, action:"projects/#{@project.id}", method: :post, data: {controller: "update-project", update_project_target: "form"}, html: { class: "card-white custom-form-card" } do |f| %>
     <div>
-      <%= f.input :brand, name: "brand_name", label:false, html: { class: "custom-form-input" },
+      <%= f.input :brand, name: "brand_name", label:false, placeholder: "brand name", html: { class: "custom-form-input"},
       input_html: {
         data: {
           update_project_target: "brand",
           action: "keyup->update-project#updateProject"
           }}%>
-      <%= f.input :name, name: "project_name", label:false, input_html: {
+      <%= f.input :name, name: "project_name", label:false,  placeholder: "project name", input_html: {
         data: {
           update_project_target: "projectName",
           action: "keyup->update-project#updateProject"

@@ -21,8 +21,8 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.create!(
       user: current_user,
-      name: "your project name",
-      brand: "your client name",
+      name: "",
+      brand: "",
       project_end: Date.today,
       status: 'saved'
     )
@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
       name: new[:name],
       project_end: "#{new["project_end(1i)"]}-#{new["project_end(2i)"]}-#{new["project_end(3i)"]}",
       description: new[:description],
-      status: 'pending'
+      status: 'saved'
     )
 
     # respond_to do |format|
