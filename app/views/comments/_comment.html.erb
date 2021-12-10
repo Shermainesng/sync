@@ -18,7 +18,7 @@
               insert_comments_target: "content"
               }}%>
         <%= f.hidden_field :parent_id, value: comment.id %>
-        <%= f.submit "reply"%>
+        <%= f.submit "reply", data: {insert_comments_target: "submit"} %>
       <% end %>
     <% end %>
   <% if comment.parent_id.nil? %>

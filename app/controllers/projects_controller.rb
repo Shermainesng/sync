@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
       name: "your project name",
       brand: "your client name",
       project_end: Date.today,
-      status: 'Saved'
+      status: 'saved'
     )
 
     redirect_to edit_project_path(@project)
@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
       name: new[:name],
       project_end: "#{new["project_end(1i)"]}-#{new["project_end(2i)"]}-#{new["project_end(3i)"]}",
       description: new[:description],
-      status: 'Pending'
+      status: 'pending'
     )
 
     # respond_to do |format|
