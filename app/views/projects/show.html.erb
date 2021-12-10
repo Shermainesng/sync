@@ -30,7 +30,14 @@
       <input type="text" name="email_body" class="custom-input-field">
       <input type="hidden" name="project" value=<%= @project.id %>>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
+      <button type="submit" class="btn btn-primary btn-sm btn-trigger">Confirm</button>
     </div>
   </form>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+  document.querySelector(".btn-trigger").addEventListener('click', function() {
+    Swal.fire("Yay! Your project is sent successfully");
+  });
+</script>
