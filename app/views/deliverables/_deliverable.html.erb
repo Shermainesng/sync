@@ -16,9 +16,12 @@
                 <% end %>
               </div>
             </div>
+
             <div class="format-link">
               <%= link_to "See Drafts", "/deliverables/#{deliverable.id}" %>
-              <%= link_to  "Delete", deliverable_path(deliverable), method: :delete %>
+              <% if deliverable.project.status=="saved" %>
+                <%= link_to  "Delete", deliverable_path(deliverable), method: :delete %>
+              <% end %>
             </div>
           </div>
         </div>

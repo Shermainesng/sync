@@ -13,6 +13,7 @@
 
   <div class="container" data-controller="insert-deliverables">
     <div class="deliverable-form-show card-frosted">
+      <p data-insert-deliverables-target="message">nothing here</p>
       <div class="custom-list mr-3">
         <ul data-insert-deliverables-target="list" data-action="click->insert-deliverables#edit">
           <%= render @deliverables%>
