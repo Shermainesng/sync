@@ -42,10 +42,12 @@ class DeliverablesController < ApplicationController
     @project.save!
     @deliverable.save!
 
+    @deliverables = @project.deliverables.order(:due_date)
+
     respond_to do |format|
       format.html { redirect_to edit_project_path(@project) }
       format.json # Follow the classic Rails flow and look for a create.json view
-      format.text {render partial: 'deliverables/deliverable', locals: { deliverable: @deliverable }, formats: [:html] }
+      format.text {render partial: 'deliverables/deliverable', collection: @deliverables, as: :deliverable, formats: [:html] }
     end
   end
 

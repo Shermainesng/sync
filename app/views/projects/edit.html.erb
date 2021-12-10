@@ -16,6 +16,7 @@
       <p data-insert-deliverables-target="message">nothing here</p>
       <div class="custom-list mr-3">
         <ul data-insert-deliverables-target="list" data-action="click->insert-deliverables#edit">
+        <% #fetch sorted deliverables %>
           <%= render @deliverables%>
         </ul>
       </div>
