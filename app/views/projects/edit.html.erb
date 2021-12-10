@@ -1,5 +1,7 @@
 <div class="custom-form-layout">
   <div class="container pt-4">
+
+
     <% if @project.status == "saved" %>
       <%= render 'form' %>
     <% else %>
@@ -16,11 +18,11 @@
     <% if @project.deliverables.empty? %>
       <p data-insert-deliverables-target="message">Add your first deliverable here!</p>
     <% end %>
+
       <div class="custom-list mr-3">
         <ul data-insert-deliverables-target="list">
 
           <%= render @deliverables, card_path: "", has_link: false, edit_btn: true %>
-        <% #fetch sorted deliverables %>
         </ul>
       </div>
       <div class="card-white">
