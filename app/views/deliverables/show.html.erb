@@ -59,8 +59,11 @@
       </div>
       <div class="modal-body">
         <%= form_for [@deliverable,@new_draft], html: { multipart: true } do |f| %>
-          <%= f.label :attachment %>
-          <%= f.file_field :attachment %>
+          <div class="attachment">
+            <%= f.label :attachment %>
+            <%= f.file_field :attachment %>
+          </div>
+
           <%= f.text_field :description %>
           <%= f.submit "Submit Draft", class: "btn btn-primary" %>
         <% end %>
