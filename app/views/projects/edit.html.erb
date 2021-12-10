@@ -1,13 +1,23 @@
 <div class="custom-form-layout">
   <div class="container pt-4">
-    <%= render 'form' %>
+    <% if @project.status == "saved" %>
+      <%= render 'form' %>
+    <% else %>
+    <h1>Edit your Existing Project</h1>
+    <div class="card-white">
+      <div class="review-card-title"><%= @project.name %></div>
+      <div class="review-card-description"><%= @project.description %></div>
+    </div>
+    <% end %>
   </div>
 
   <div class="container" data-controller="insert-deliverables">
     <div class="deliverable-form-show card-frosted">
+      <p data-insert-deliverables-target="message">nothing here</p>
       <div class="custom-list mr-3">
         <ul data-insert-deliverables-target="list">
           <%= render @deliverables, card_path: "", has_link: false, edit_btn: true %>
+        <% #fetch sorted deliverables %>
         </ul>
       </div>
       <div class="card-white">

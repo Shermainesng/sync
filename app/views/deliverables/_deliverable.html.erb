@@ -43,10 +43,12 @@
                 <% end %>
               </div>
             </div>
+
             <div class="format-link">
             <% if local_assigns[:edit_btn] %>
               <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->insert-deliverables#edit" data-insert-deliverables-target="link" class="btn btn-primary">Edit</a>
             <% end %>
+
             </div>
           </div>
         </div>
