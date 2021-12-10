@@ -47,7 +47,7 @@ class DeliverablesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to edit_project_path(@project) }
       format.json # Follow the classic Rails flow and look for a create.json view
-      format.text {render partial: 'deliverables/deliverable', locals: { deliverable: @deliverable, has_link: false }, formats: [:html] }
+      format.text { render partial: 'deliverables/deliverable', collection: @deliverables, as: :deliverable, locals: { has_link: false }, formats: [:html] }
 
     end
   end

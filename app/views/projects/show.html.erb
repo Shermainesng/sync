@@ -13,11 +13,11 @@
     <div class="review-card-title"><%= @project.name %></div>
     <div class="review-card-description"><%= @project.description %></div>
   </div>
-  <div class="card-frosted">
-    <%#= render @deliverables, card_path: card_path %>
-    <% @deliverables.each do |deliverable| %>
-      <% deliv_path = path+"#{deliverable.id}" %>
-      <%= render "deliverables/deliverable", card_path: deliv_path, deliverable: deliverable, edit_btn: false %>
+    <div class="card-frosted">
+      <% @deliverables.each do |deliverable| %>
+        <%#= render @deliverables, card_path: card_path %>
+        <% deliv_path = path+"#{deliverable.id}" %>
+        <%= render "deliverables/deliverable", card_path: deliv_path, deliverable: deliverable, has_link: false, edit_btn: false %>
     <% end %>
   </div>
 </div>
