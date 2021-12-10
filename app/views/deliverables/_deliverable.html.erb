@@ -1,4 +1,8 @@
+
 <div class="card-white mb-3 p-3">
+
+  <div class="card-white deliverable-card" data-controller="edit-deliverable" data-edit-deliverable-target="details">
+
   <% if local_assigns[:has_link] %>
     <%= link_to deliverable_path(deliverable), class: "deliverable-card" do %>
       <div class="card-deliverable-date">
@@ -45,10 +49,14 @@
             </div>
 
             <div class="format-link">
-            <% if local_assigns[:edit_btn] %>
-              <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->insert-deliverables#edit" data-insert-deliverables-target="link" class="btn btn-primary">Edit</a>
-            <% end %>
-
+              <%= link_to "See Drafts", "/deliverables/#{deliverable.id}" %>
+              <% if deliverable.project.status=="saved" %>
+                <a class="btn btn-primary" data-action="click->edit-deliverable#delete" data-edit-deliverable-target="delete" value="<%=deliverable_path(deliverable)%>">Delete</a>
+                <a class="btn btn-primary" data-action="click->edit-deliverable#edit" data-edit-deliverable-target="edit" value="<%=deliverable_path(deliverable)%>">Edit</a>
+                <div class="slideOutTab d-none" data-edit-deliverable-target="tab">
+                  <%= render partial: 'deliverables/update', locals: {deliverable: deliverable}%>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

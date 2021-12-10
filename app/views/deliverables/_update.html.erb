@@ -1,11 +1,11 @@
 <h2>Update deliverable: <%= deliverable.deliverable_type %></h2>
 
-<%= simple_form_for deliverable, method: :patch, data: {insert_deliverables_target: "form"} do |f| %>
+<%= simple_form_for deliverable, method: :patch, data: {edit_deliverable_target: "form", action: "submit->edit-deliverable#update" } do |f| %>
   <%= f.input :deliverable_type, name: "deliverable_type"%>
   <%= f.input :due_date, name: "due_date"%>
   <%= f.input :description, name: "description"%>
   <%= f.label :tag_list, "Your Tags (separated by spaces)" %>
   <%= f.text_field :tag_list %>
   <%= f.submit "Update" %>
-  <p data-action="click->insert-deliverables#cancel" class="cancelBtn">Cancel</p>
+  <a data-action="click->edit-deliverable#cancel" class="cancelBtn">Cancel</a>
 <% end %>
