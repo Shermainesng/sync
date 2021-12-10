@@ -11,7 +11,12 @@
     </div>
     <div class="container custom-container custom-list section">
       <ul data-filter-target="deliverables">
-        <%= render @deliverables %>
+        <%#= render @deliverables, card_clickable: true %>
+        <%# <% raise %>
+        <% @deliverables.each do |deliverable| %>
+          <%= render "deliverables/deliverable", deliverable: deliverable, has_link: true, card_path: "/deliverables/#{deliverable.id}", edit_btn: false %>
+        <% end %>
+        <%#= render @deliverables, card_path: "/deliverables/#{@deliverables.ids}" %>
       </ul>
     </div>
   </div>

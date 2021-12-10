@@ -2,8 +2,10 @@
   <div class="d-flex justify-content-between align-items-center">
   <% if @project.status == 'ongoing' %>
     <h1>Existing Project</h1>
+    <% path = "/deliverables/" %>
   <% else %>
     <h1>Review Project</h1>
+    <% path = "#" %>
   <% end %>
     <%= link_to "Edit Project", edit_project_path(@project) %>
   </div>
@@ -12,7 +14,11 @@
     <div class="review-card-description"><%= @project.description %></div>
   </div>
   <div class="card-frosted">
-    <%= render @deliverables %>
+    <%#= render @deliverables, card_path: card_path %>
+    <% @deliverables.each do |deliverable| %>
+      <% deliv_path = path+"#{deliverable.id}" %>
+      <%= render "deliverables/deliverable", card_path: deliv_path, deliverable: deliverable, edit_btn: false %>
+    <% end %>
   </div>
 </div>
 

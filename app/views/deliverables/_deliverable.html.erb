@@ -1,10 +1,37 @@
-  <div class="container card-white deliverable-card">
+<div class="card-white deliverable-card">
+  <% if local_assigns[:has_link] %>
+    <%= link_to deliverable_path(deliverable) do %>
+      <div class="card-deliverable-date">
+        <div><%= deliverable.due_date.strftime("%b") %></div>
+        <div><%= deliverable.due_date.strftime("%e") %></div>
+      </div>
+      <div class="card-deliverable-details">
+        <div class="deliverable-card">
+          <div class="card-deliverable-content card-long">
+            <div class="card-custom-subtitle"><%= deliverable.deliverable_type %></div>
+            <div>
+              <%= deliverable.description %>
+              <% deliverable.tag_list.each do |tag|%>
+                <span class="badge badge-primary custom-badge"><%= tag %></span>
+              <% end %>
+            </div>
+          </div>
+          <div class="format-link">
+            <% if local_assigns[:edit_btn] %>
+              <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->insert-deliverables#edit" data-insert-deliverables-target="link" class="btn btn-primary">Edit</a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+  <% else %>
     <div class="card-deliverable-date">
       <div><%= deliverable.due_date.strftime("%b") %></div>
       <div><%= deliverable.due_date.strftime("%e") %></div>
     </div>
     <div class="card-deliverable-details">
-      <a data-href="/deliverables/<%= deliverable.id %>/edit" data-insert-deliverables-target="link">
         <div>
           <div class="deliverable-card">
             <div class="card-deliverable-content card-long">
@@ -17,11 +44,15 @@
               </div>
             </div>
             <div class="format-link">
-              <%= link_to "See Drafts", "/deliverables/#{deliverable.id}" %>
-              <%= link_to  "Delete", deliverable_path(deliverable), method: :delete %>
+            <% if local_assigns[:edit_btn] %>
+              <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->insert-deliverables#edit" data-insert-deliverables-target="link" class="btn btn-primary">Edit</a>
+            <% end %>
             </div>
           </div>
         </div>
-      </a>
     </div>
   </div>
+
+<% end %>
+
+</div>
