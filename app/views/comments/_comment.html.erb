@@ -7,6 +7,13 @@
       <a class="btn btn-primary" data-insert-comments-target="newReply"
       data-action="click->insert-comments#newReply">reply</a>
     <%end%>
+      <%# if the comment has any replies, you iterate it %>
+
+      <% unless comment.replies.nil?  %>
+        <%= render partial: "comments/comment", collection: comment.replies, as: :comment %>
+      <% end %>
+      <div data-insert-comments-target="replies">
+      </div>
     <%# create a form, but hidden %>
     <% if comment.parent_id.nil? %>
       <%= simple_form_for Comment.new, method: :post, url: draft_comments_path(@draft), data: {insert_comments_target: "form", action: "insert-comments#createReply"}, html: {class: "d-none"} do |f| %>
@@ -19,12 +26,5 @@
         <%= f.submit "reply"%>
       <% end %>
     <% end %>
-  <%# if the comment has any replies, you iterate it %>
-
-  <% unless comment.replies.nil?  %>
-    <%= render partial: "comments/comment", collection: comment.replies, as: :comment %>
-  <% end %>
-  <div data-insert-comments-target="replies">
-  </div>
   </div>
 </div>
