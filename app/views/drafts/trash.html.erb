@@ -1,0 +1,27 @@
+<div class="card-frosted panel">
+  <div class="custom-header">
+    <h1><%= @draft.deliverable.deliverable_type %></h1>
+    <h3><%= @draft.deliverable.description %></h3>
+  </div>
+  <div>
+    <% if @draft.attachment.content_type == "application/pdf" %>
+      <%= link_to "Download PDF", @draft.attachment.url, target: :blank %>
+    <% else %>
+      <img src="<%= @draft.attachment.url %>" alt="image" width='300' height='300'>
+    <% end %>
+  </div>
+
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h2>Comments</h2>
+        <ul>
+          <%= render @comments %>
+        </ul>
+    </div>
+    <div>
+      <%= render 'comments/new' %>
+    </div>
+  </div>
+</div>
+</div>

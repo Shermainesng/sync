@@ -71,9 +71,11 @@
   }
 
   .summary {
+    display: flex;
     border-radius: 10px;
     flex-grow: 1;
     align-items: center;
+    justify-content: space-between;
   }
 
   .description {
@@ -87,10 +89,11 @@
   .comments {
     width: 120px;
   }
+
 }
 
 .card-long {
-  width: 550px
+  width: 550px;
 }
 
 .card-equal-size {
@@ -115,4 +118,5 @@
 
 .card-custom-text {
   margin-bottom: 20px;
+}
 }
