@@ -16,8 +16,9 @@ export default class extends Controller {
       method: 'POST',
       headers: { 'Accept': "text/plain", 'X-CSRF-Token': csrfToken() },
       body: new FormData(this.formTarget)
-      // goes to controller in ruby here!!
+      // goes to deliverablescontroller#create
       // save the deliverable under the project there
+      //fetch all the deliverables back
     })
       .then(response => response.text())
       .then((data) => {
@@ -26,10 +27,11 @@ export default class extends Controller {
         // clear the form
         this.formTarget.reset();
 
-        // Add the html for the newly created deliverable in the listTarget
-        this.listTarget.insertAdjacentHTML("beforeend",data);
+        // fill up the list with the deliverables (sorted)
+        this.listTarget.innerHTML = data;
         this.messageTarget.innerHTML ="";
-        console.log("created deliverable");
+
+        console.log("created deliverables");
       });
   }
 
