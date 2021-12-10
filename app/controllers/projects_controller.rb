@@ -21,8 +21,8 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.create!(
       user: current_user,
-      name: "your project name",
-      brand: "your client name",
+      name: "",
+      brand: "",
       project_end: Date.today,
       status: 'saved'
     )
