@@ -1,6 +1,5 @@
 <div class="h-100 py-4 w-100" data-controller="filter">
   <div class="border p-2 mb-3 upcoming-tasks card-white">
-    <div class="d-flex align-items-center">
       <div class="header">Upcoming Tasks
         <select data-filter-target="dropdown" data-action="change->filter#filterTasks">
           <option value="week">in the next week</option>
@@ -8,15 +7,11 @@
           <option value="month">in the next month</option>
         </select>
       </div>
-    </div>
-    <div class="container custom-container custom-list section">
+    <div class="custom-container custom-list section">
       <ul data-filter-target="deliverables">
-        <%#= render @deliverables, card_clickable: true %>
-        <%# <% raise %>
         <% @deliverables.each do |deliverable| %>
-          <%= render "deliverables/deliverable", deliverable: deliverable, has_link: true, card_path: "/deliverables/#{deliverable.id}", edit_btn: false %>
+          <%= render "deliverables/deliverable", deliverable: deliverable, has_link: true, edit_btn: false %>
         <% end %>
-        <%#= render @deliverables, card_path: "/deliverables/#{@deliverables.ids}" %>
       </ul>
     </div>
   </div>
