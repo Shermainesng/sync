@@ -13,17 +13,17 @@
   <div class="card-frosted d-flex">
     <div class="col-3">
       <% @project.deliverables.each do |deliv| %>
-      <a href="<%=deliverable_path(deliv)%>" class="text-decoration-none">
-        <div class="d-flex card-white my-2 deliv-card">
-          <div class="mr-2 date">
-            <%= deliv.due_date.strftime("%b") %>
-            <h5><%= deliv.due_date.strftime("%e") %></h5>
+        <a href="<%=deliverable_path(deliv)%>" class="text-decoration-none">
+          <div class="d-flex card-white my-2 deliv-card">
+            <div class="mr-2 date">
+              <%= deliv.due_date.strftime("%b") %>
+              <h5><%= deliv.due_date.strftime("%e") %></h5>
+            </div>
+            <div class="flex-shrink-1">
+              <%= deliv.deliverable_type %>
+            </div>
           </div>
-          <div class="flex-shrink-1">
-            <%= deliv.deliverable_type %>
-          </div>
-        </div>
-      </a>
+        </a>
       <% end %>
     </div>
     <div class="col-9 card-white px-4 py-2">
@@ -40,7 +40,7 @@
       <button type="button" class="btn btn-primary btn-block text-white submit-draft my-4" data-toggle="modal" data-target="#exampleModal">
         Submit New Draft
       </button>
-      <%= render  @drafts %>
+      <%= render @drafts %>
     </div>
   </div>
 </div>
