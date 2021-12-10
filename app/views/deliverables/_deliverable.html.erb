@@ -1,4 +1,4 @@
-  <div class="container card-white deliverable-card">
+  <div class="card-white deliverable-card" data-controller="edit-deliverable" data-edit-deliverable-target="details">
     <div class="card-deliverable-date">
       <div><%= deliverable.due_date.strftime("%b") %></div>
       <div><%= deliverable.due_date.strftime("%e") %></div>
@@ -20,7 +20,11 @@
             <div class="format-link">
               <%= link_to "See Drafts", "/deliverables/#{deliverable.id}" %>
               <% if deliverable.project.status=="saved" %>
-                <%= link_to  "Delete", deliverable_path(deliverable), method: :delete %>
+                <a class="btn btn-primary" data-action="click->edit-deliverable#delete" data-edit-deliverable-target="delete" value="<%=deliverable_path(deliverable)%>">Delete</a>
+                <a class="btn btn-primary" data-action="click->edit-deliverable#edit" data-edit-deliverable-target="edit" value="<%=deliverable_path(deliverable)%>">Edit</a>
+                <div class="slideOutTab d-none" data-edit-deliverable-target="tab">
+                  <%= render partial: 'deliverables/update', locals: {deliverable: deliverable}%>
+                </div>
               <% end %>
             </div>
           </div>

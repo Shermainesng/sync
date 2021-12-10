@@ -9,13 +9,15 @@
       <div class="review-card-description"><%= @project.description %></div>
     </div>
     <% end %>
-  </div>
+</div>
 
   <div class="container" data-controller="insert-deliverables">
     <div class="deliverable-form-show card-frosted">
+    <% if @project.deliverables.empty? %>
       <p data-insert-deliverables-target="message">nothing here</p>
+    <% end %>
       <div class="custom-list mr-3">
-        <ul data-insert-deliverables-target="list" data-action="click->insert-deliverables#edit">
+        <ul data-insert-deliverables-target="list">
         <% #fetch sorted deliverables %>
           <%= render @deliverables%>
         </ul>
@@ -26,7 +28,6 @@
 
     </div>
 
-    <div class="slideOutTab d-none" data-insert-deliverables-target="edit"></div>
 
   </div>
 </div>

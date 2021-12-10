@@ -54,7 +54,12 @@ class DeliverablesController < ApplicationController
   def destroy
     @deliverable = Deliverable.find(params[:id])
     @deliverable.destroy
-    redirect_to project_path(@deliverable.project)
+
+    respond_to do |format|
+      format.html { redirect_to edit_project_path(@project) }
+      # format.json # Follow the classic Rails flow and look for a create.json view
+      format.text {render plain: "ok" }
+    end
   end
 
   def edit
@@ -78,10 +83,10 @@ class DeliverablesController < ApplicationController
     })
 
     respond_to do |format|
-        format.html { redirect_to edit_project_path(@project) }
+        # format.html { redirect_to edit_project_path(@project) }
         format.json # Follow the classic Rails flow and look for a create.json view
-        # format.text {render partial: 'deliverables/update.html', locals: { deliverable: @deliverable }}
-        format.text {render plain: 'ok' }
+        format.text {render partial: 'deliverables/deliverable', locals: { deliverable: @deliverable }, formats: [:html]}
+        # format.text {render plain: 'ok' }
     end
   end
 
