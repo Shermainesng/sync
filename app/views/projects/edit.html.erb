@@ -1,6 +1,14 @@
 <div class="custom-form-layout">
   <div class="container pt-4">
-    <%= render 'form' %>
+    <% if @project.status == "saved" %>
+      <%= render 'form' %>
+    <% else %>
+    <h1>Edit your Existing Project</h1>
+    <div class="card-white">
+      <div class="review-card-title"><%= @project.name %></div>
+      <div class="review-card-description"><%= @project.description %></div>
+    </div>
+    <% end %>
   </div>
 
   <div class="container" data-controller="insert-deliverables">
