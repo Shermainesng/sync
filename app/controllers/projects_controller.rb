@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
       name: new[:name],
       project_end: "#{new["project_end(1i)"]}-#{new["project_end(2i)"]}-#{new["project_end(3i)"]}",
       description: new[:description],
-      status: 'pending'
+      status: 'saved'
     )
 
     # respond_to do |format|
