@@ -21,6 +21,7 @@ select {
   height: 300px;
   position: sticky;
   padding: 20px;
+  overflow: hidden;
 }
 
 .projects {
@@ -41,10 +42,24 @@ select {
   list-style: none;
   width: 100%;
   flex-direction: row;
-  padding: 5px;
+  padding: 0 10px;
+
+  li {
+    width: 20%;
+  }
+}
+.action-bar-list {
+  padding-left: 0px !important;
 }
 
-.custom-cat {
-  border: 1px solid white;
-  flex-grow:1 ;
+// filterbar
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    background-color: white;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 10px;
 }
