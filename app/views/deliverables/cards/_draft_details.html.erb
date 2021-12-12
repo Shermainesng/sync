@@ -1,0 +1,14 @@
+<a href="<%=deliverable_path(deliverable)%>" class="text-decoration-none">
+  <div class="d-flex card-white">
+    <div class="">
+      <%= deliverable.due_date.strftime("%b") %>
+      <h5><%= deliverable.due_date.strftime("%e") %></h5>
+    </div>
+    <div class="">
+      <%= deliverable.deliverable_type %>
+      <% deliverable.tag_list.each do |tag|%>
+        <span class="badge badge-primary custom-badge"><%= tag %></span>
+      <% end %>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,24 @@
+<div class="card-white deliverable-card" data-controller="edit-deliverable" data-edit-deliverable-target="details">
+    <%= link_to deliverable_path(deliverable), class: "deliverable-card" do %>
+      <div class="card-deliverable-date">
+        <div><%= deliverable.due_date.strftime("%b") %></div>
+        <div><%= deliverable.due_date.strftime("%e") %></div>
+      </div>
+      <div class="card-deliverable-details">
+        <div class="deliverable-card">
+          <div class="card-deliverable-content card-long">
+            <div class="card-custom-subtitle"><%= deliverable.deliverable_type %></div>
+            <div class="truncate">
+              <%= deliverable.description %>
+              <% deliverable.tag_list.each do |tag|%>
+                <span class="badge badge-primary custom-badge"><%= tag %></span>
+              <% end %>
+            </div>
+          </div>
+          <div class="format-link">
+            <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->email-popups#edit" data-insert-deliverables-target="link" class="btn btn-primary">Edit</a>
+          </div>
+        </div>
+      </div>
+
+    <% end %>

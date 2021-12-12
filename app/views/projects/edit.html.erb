@@ -21,8 +21,7 @@
 
       <div class="custom-list mr-3">
         <ul data-insert-deliverables-target="list">
-
-          <%= render @deliverables, card_path: "", has_link: false, edit_btn: true %>
+          <%= render partial: 'deliverables/cards/project_details', card_path: "", collection: @deliverables, as: :deliverable %>
         </ul>
       </div>
       <div class="card-white">

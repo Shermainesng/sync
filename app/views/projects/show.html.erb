@@ -17,7 +17,7 @@
       <% @deliverables.each do |deliverable| %>
         <%#= render @deliverables, card_path: card_path %>
         <% deliv_path = path+"#{deliverable.id}" %>
-        <%= render "deliverables/deliverable", card_path: deliv_path, deliverable: deliverable, has_link: false, edit_btn: false %>
+        <%= render "deliverables/cards/project_details", card_path: deliv_path, deliverable: deliverable, has_link: false, edit_btn: false %>
     <% end %>
   </div>
 </div>

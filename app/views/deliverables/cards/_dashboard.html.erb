@@ -1,0 +1,17 @@
+<div class="card-white" data-controller="edit-deliverable" data-edit-deliverable-target="details">
+
+  <%= link_to deliverable_path(deliverable), class: "deliverable-card" do %>
+    <div class="card-deliverable-date">
+      <div><%= deliverable.due_date.strftime("%b") %></div>
+      <div><%= deliverable.due_date.strftime("%e") %></div>
+    </div>
+    <div class="card-custom-brand"><%= deliverable.project.brand %></div>
+    <div class="card-custom-campaign"><%= deliverable.project.name %></div>
+    <div class="card-custom-deliv-type"><%= deliverable.deliverable_type %></div>
+    <div class="truncate">
+      <% deliverable.tag_list.each do |tag|%>
+        <span class="badge badge-primary custom-badge"><%= tag %></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
