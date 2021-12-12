@@ -28,15 +28,23 @@ select {
 }
 
 .header {
-  padding: 0 10px;
   font-size: 24px;
 }
 
+.action-panel {
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px;
+}
 .action-bar-categories {
-  width:90%;
+  display: flex;
+  list-style: none;
+  width: 100%;
+  flex-direction: row;
+  padding: 5px;
 }
 
-.list-group-item.custom-cat {
+.custom-cat {
   border: 1px solid white;
-  flex-grow:1;
+  flex-grow:1 ;
 }
