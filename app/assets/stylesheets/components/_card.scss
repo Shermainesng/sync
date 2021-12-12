@@ -16,6 +16,11 @@
   border-radius: 15px;
 }
 
+.card-flat {
+  border-radius: 10px;
+  border: 1px solid $light-grey;
+}
+
 .format-link {
   display: flex;
   flex-direction: column;
@@ -25,6 +30,25 @@
 
 
   // dashboard
+.deliverable-card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 10px;
+  font-size: 15px;
+  color: $dark-grey;
+  text-decoration: none;
+
+  div {
+    width: calc(20% - 5px);
+    margin: 0px 5px;
+  }
+}
+
+a.deliverable-card:hover {
+  text-decoration: none;
+}
 
   .card-deliverable-details {
     flex-grow: 1;
@@ -79,35 +103,7 @@
 }
 
 //dashboard deliverable cards
-.deliverable-card {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px 0 0 10px;
-}
 
-.card-deliverable-date {
-  margin-right: 15px;
-  color: $dark-grey;
-  font-weight: bold;
-  font-size: large;
-  flex-grow: 1;
-  align-self: center;
-}
-
-.card-custom-brand {
-  flex-grow: 1;
-  align-self: center;
-}
-
-.card-custom-campaign {
-  flex-grow: 1;
-}
-
-.card-custom-deliv-type {
-  flex-grow: 1;
-}
 
 .truncate {
   flex-grow: 1;
@@ -128,20 +124,20 @@
 .card-custom-body {
   color: $dark-grey;
   padding: 15px 15px 0 15px;
-}
 
-.card-custom-title {
-  color: black;
-  font-size: 24px;
-  margin-bottom: 10px;
-}
+  .card-custom-title {
+    color: black;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
 
-.card-custom-subtitle {
-  font-weight: bold;
-  margin-bottom: 10px;
-  margin-right: 10px;
-}
+  .card-custom-subtitle {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
 
-.card-custom-text {
-  margin-bottom: 20px;
+  .card-custom-text {
+    margin-bottom: 20px;
+  }
 }
