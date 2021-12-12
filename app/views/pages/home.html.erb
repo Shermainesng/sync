@@ -8,22 +8,20 @@
         </select>
       </div>
 
-      <div class='action-bar-categories'>
-        <ul class="list-group list-group-horizontal">
-          <li class="list-group-item custom-cat">Due Date</li>
-          <li class="list-group-item custom-cat">Brand</li>
-          <li class="list-group-item custom-cat">Campaign</li>
-          <li class="list-group-item custom-cat">Deliverable</li>
-          <li class="list-group-item custom-cat">Tags</li>
+      <div class="action-panel">
+        <ul class="action-bar-categories">
+          <li class="custom-cat">Due Date</li>
+          <li class="custom-cat">Brand</li>
+          <li class="custom-cat">Campaign</li>
+          <li class="custom-cat">Deliverable</li>
+          <li class="custom-cat">Tags</li>
+        </ul>
+        <ul data-filter-target="deliverables">
+            <%= render partial: "deliverables/cards/dashboard", collection: @deliverables, as: :deliverable %>
         </ul>
       </div>
-
-    <div class="custom-container custom-list section">
-      <ul data-filter-target="deliverables">
-          <%= render partial: "deliverables/cards/dashboard", collection: @deliverables, as: :deliverable %>
-      </ul>
-    </div>
   </div>
+
 
   <div class="card-frosted">
     <div class="border p-4 projects card-white d-flex justify-content-between mb-4">
