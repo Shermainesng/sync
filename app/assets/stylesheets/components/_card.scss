@@ -29,7 +29,7 @@
 // all the deliverables
 
 
-  // dashboard
+  // dashboard deliverable
 .deliverable-card {
   display: flex;
   justify-content: space-between;
@@ -50,6 +50,43 @@ a.deliverable-card:hover {
   text-decoration: none;
 }
 
+  // edit project deliverable
+
+.deliverable-edit {
+
+}
+
+  // review project deliverable
+.deliverable-review {
+
+}
+
+  // see drafts page (deliverables#show)
+    // mini deliv summaries
+    .deliverable-mini {
+
+    }
+    // drafts of deliverable
+    .deliverable-drafts {
+
+    }
+
+////
+
+// drafts
+
+.draft-card {
+
+}
+
+// comments
+
+.comment-card {
+
+}
+
+
+//@forward ;
   .card-deliverable-details {
     flex-grow: 1;
   }
@@ -113,9 +150,9 @@ a.deliverable-card:hover {
 }
 //end
 
-.card-long {
-  width: 550px;
-}
+// .card-long {
+//   width: 550px;
+// }
 
 .card-equal-size {
   height: max-content;

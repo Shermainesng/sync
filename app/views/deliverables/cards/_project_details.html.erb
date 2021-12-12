@@ -1,12 +1,12 @@
-<div class="card-white deliverable-card" data-controller="edit-deliverable" data-edit-deliverable-target="details">
+<div class="card-white deliverable-edit" data-controller="edit-deliverable" data-edit-deliverable-target="details">
     <%= link_to deliverable_path(deliverable), class: "deliverable-card" do %>
-      <div class="card-deliverable-date">
+      <div class="date">
         <div><%= deliverable.due_date.strftime("%b") %></div>
         <div><%= deliverable.due_date.strftime("%e") %></div>
       </div>
-      <div class="card-deliverable-details">
-        <div class="deliverable-card">
-          <div class="card-deliverable-content card-long">
+      <div class="details">
+        <div class="">
+          <div class="card-deliverable-content">
             <div class="card-custom-subtitle"><%= deliverable.deliverable_type %></div>
             <div class="truncate">
               <%= deliverable.description %>
