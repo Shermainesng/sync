@@ -7,6 +7,17 @@
           <option value="month">in the next month</option>
         </select>
       </div>
+
+      <div class='action-bar-categories'>
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item custom-cat">Due Date</li>
+          <li class="list-group-item custom-cat">Brand</li>
+          <li class="list-group-item custom-cat">Campaign</li>
+          <li class="list-group-item custom-cat">Deliverable</li>
+          <li class="list-group-item custom-cat">Tags</li>
+        </ul>
+      </div>
+
     <div class="custom-container custom-list section">
       <ul data-filter-target="deliverables">
         <% @deliverables.each do |deliverable| %>
