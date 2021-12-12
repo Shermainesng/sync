@@ -1,5 +1,5 @@
-<div class="h-100 py-4 w-100" data-controller="filter">
-  <div class="border p-2 mb-3 upcoming-tasks card-white">
+<div class="h-100 w-100" data-controller="filter">
+  <div class="upcoming-tasks card-white">
       <div class="header">Upcoming Tasks
         <select data-filter-target="dropdown" data-action="change->filter#filterTasks">
           <option value="week">in the next week</option>
@@ -20,9 +20,7 @@
 
     <div class="custom-container custom-list section">
       <ul data-filter-target="deliverables">
-        <% @deliverables.each do |deliverable| %>
-          <%= render "deliverables/deliverable", deliverable: deliverable, has_link: true, edit_btn: false %>
-        <% end %>
+          <%= render partial: "deliverables/cards/dashboard", collection: @deliverables, as: :deliverable %>
       </ul>
     </div>
   </div>

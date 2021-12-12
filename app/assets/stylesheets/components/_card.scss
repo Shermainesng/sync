@@ -8,9 +8,6 @@
   /* Note: backdrop-filter has minimal browser support */
 
   border-radius: 15px;
-  padding: 15px;
-  margin-bottom: 10px;
-  height:1000px;
 }
 
 .card-white {
@@ -24,21 +21,6 @@
   flex-direction: column;
 }
 
-.deliverable-card {
-  display: flex;
-  justify-content: space-between;
-}
-
-.card-deliverable-date {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: fit-content;
-  margin-right: 15px;
-  color: $dark-grey;
-  font-weight: bold;
-  font-size: large;
-}
 
 .card-deliverable-details {
   flex-grow: 1;
@@ -57,8 +39,8 @@
   vertical-align: middle;
 }
 
-  .date {
-    width: 40px;
+.date {
+  width: 40px;
     text-align: center;
   }
 
@@ -92,6 +74,45 @@
 
 }
 
+//dashboard deliverable cards
+.deliverable-card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 0 0 10px;
+}
+
+.card-deliverable-date {
+  margin-right: 15px;
+  color: $dark-grey;
+  font-weight: bold;
+  font-size: large;
+  flex-grow: 1;
+  align-self: center;
+}
+
+.card-custom-brand {
+  flex-grow: 1;
+  align-self: center;
+}
+
+.card-custom-campaign {
+  flex-grow: 1;
+}
+
+.card-custom-deliv-type {
+  flex-grow: 1;
+}
+
+.truncate {
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+//end
+
 .card-long {
   width: 550px;
 }
@@ -119,12 +140,4 @@
 
 .card-custom-text {
   margin-bottom: 20px;
-}
-
-.truncate {
-  text-overflow: ellipsis;
-
-  /* Needed to make it work */
-  overflow: hidden;
-  white-space: nowrap;
 }

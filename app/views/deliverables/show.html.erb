@@ -12,19 +12,7 @@
   <%# deliverable panel %>
   <div class="card-frosted d-flex">
     <div class="col-3">
-      <% @project.deliverables.each do |deliv| %>
-        <a href="<%=deliverable_path(deliv)%>" class="text-decoration-none">
-          <div class="d-flex card-white my-2 deliv-card">
-            <div class="mr-2 date">
-              <%= deliv.due_date.strftime("%b") %>
-              <h5><%= deliv.due_date.strftime("%e") %></h5>
-            </div>
-            <div class="flex-shrink-1">
-              <%= deliv.deliverable_type %>
-            </div>
-          </div>
-        </a>
-      <% end %>
+      <%= render partial: "deliverables/cards/draft_details", collection: @deliverables, as: :deliverable %>
     </div>
     <div class="col-9 card-white px-4 py-2">
       <div class="d-flex justify-content-between align-items-center">
