@@ -1,4 +1,4 @@
-<div class="container p-4">
+<div class="container p-0">
   <div class="d-flex justify-content-between align-items-center">
   <% if @project.status == 'ongoing' %>
     <h1>Existing Project</h1>
@@ -9,33 +9,36 @@
   <% end %>
     <%= link_to "Edit Project", edit_project_path(@project) %>
   </div>
-  <div class="card-white">
+  <div class="card-white py-3 pl-3 mb-4">
     <div class="review-card-title"><%= @project.name %></div>
     <div class="review-card-description"><%= @project.description %></div>
   </div>
-  <div class="card-frosted">
-    <%= render "deliverables/cards/review", collection: @deliverables, deliverable: @deliverable %>
+
+  <div class="card-frosted d-flex flex-column pt-2 pb-5">
+    <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
   </div>
 </div>
 
-<div data-controller="email-popup">
-  <button class="custom-popup" data-email-popup-target="button" data-action="click->email-popup#toggle">Send project to <%= @project.brand %></button>
+<% if @project.status == "saved" %>
+  <div data-controller="email-popup">
+    <button class="custom-popup" data-email-popup-target="button" data-action="click->email-popup#toggle">Send project to <%= @project.brand %></button>
 
-  <form action="/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup d-none" style="width: 20rem;">
-    <div class="form-header-details">
-      <div>Send project to <%= @project.brand %></div>
-      <div class="close-btn" data-action="click->email-popup#toggle">X</div>
-    </div>
-    <div class="card-body custom-card-body">
-      <input type="text" name="client_email" placeholder="Email" class="custom-input-field">
-      <input type="text" name="email_subject" placeholder="Subject" class="custom-input-field">
-      <input type="text" name="email_body" class="custom-input-field">
-      <input type="hidden" name="project" value=<%= @project.id %>>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <button type="submit" class="btn btn-primary btn-sm btn-trigger">Confirm</button>
-    </div>
-  </form>
-</div>
+    <form action="/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup d-none" style="width: 20rem;">
+      <div class="form-header-details">
+        <div>Send project to <%= @project.brand %></div>
+        <div class="close-btn" data-action="click->email-popup#toggle">X</div>
+      </div>
+      <div class="card-body custom-card-body">
+        <input type="text" name="client_email" placeholder="Email" class="custom-input-field">
+        <input type="text" name="email_subject" placeholder="Subject" class="custom-input-field">
+        <input type="text" name="email_body" class="custom-input-field">
+        <input type="hidden" name="project" value=<%= @project.id %>>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <button type="submit" class="btn btn-primary btn-sm btn-trigger">Confirm</button>
+      </div>
+    </form>
+  </div>
+<% end %>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script>

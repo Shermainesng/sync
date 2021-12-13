@@ -1,2 +1,35 @@
-<div class="card-white deliverable-review">
+
+<div class="card-white-and-date mx-auto">
+  <% if @project.status != "saved" %>
+    <%= link_to deliverable_path(deliverable[1]) do %>
+      <div class='card-animation'>
+        <div class="date-cat">
+          <%= deliverable[0].strftime("%b") %>
+          <%= deliverable[0].strftime("%e") %>,
+          <%= deliverable[0].strftime("%a") %>
+        </div>
+        <div class="card-white deliverable-review">
+          <h3><%= deliverable[1].first.deliverable_type %></h3>
+          <p><%= deliverable[1].first.description %><p>
+          <% deliverable[1].first.tag_list.each do |tag|%>
+            <span class="badge badge-primary custom-badge"><%= tag %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="date-cat">
+      <%= deliverable[0].strftime("%b") %>
+      <%= deliverable[0].strftime("%e") %>,
+      <%= deliverable[0].strftime("%a") %>
+    </div>
+    <div class="card-white deliverable-review">
+      <h3><%= deliverable[1].first.deliverable_type %></h3>
+      <p><%= deliverable[1].first.description %><p>
+      <% deliverable[1].first.tag_list.each do |tag|%>
+        <span class="badge badge-primary custom-badge"><%= tag %></span>
+      <% end %>
+    </div>
+  <% end %>
 </div>
+

@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show]
   # has_scope :filter_status
   has_scope :filter_name
+  has_scope :status
 
   def index
     @projects = apply_scopes(Project).all
@@ -16,6 +17,7 @@ class ProjectsController < ApplicationController
 
   def show
     @deliverables = @project.deliverables.order(:due_date)
+    @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
   end
 
   def new

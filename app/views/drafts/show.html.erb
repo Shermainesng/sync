@@ -1,14 +1,11 @@
-<div class="card-frosted " data-controller="toggle">
+<div class="card-frosted draft-panel" data-controller="toggle">
   <div class="d-flex justify-content-between align-items-center">
     <div class="custom-header">
       <h1><%= @draft.deliverable.deliverable_type %></h1>
       <h3><%= @draft.deliverable.description %></h3>
     </div>
-    <div>
-      <a data-action="click->toggle#newComment"><i class="fas fa-comment-alt"></i></a>
-    </div>
   </div>
-  <div class="d-flex">
+  <div class="d-flex align-items-start">
     <div class="preview">
       <% if @draft.attachment.content_type == "application/pdf" %>
         <%= link_to "Download PDF", @draft.attachment.url, target: :blank %>
@@ -16,11 +13,15 @@
         <img src="<%= @draft.attachment.url %>" alt="image" width='300' height='300'>
       <% end %>
     </div>
-    <div>
+    <div class="comments-list">
+      <div class="new-comment">
+        <a class="comment-btn"data-toggle-target="button" data-action="click->toggle#newComment">Add new comment</i></a>
+        <div data-toggle-target="commentForm" class="d-none">
+          <%= render 'comments/new'%>
+        </div>
+      </div>
       <%= render @comments %>
     </div>
   </div>
-  <div data-toggle-targets="commentForm">
-    <%= render 'comments/new' %>
-  </div>
+
 </div>

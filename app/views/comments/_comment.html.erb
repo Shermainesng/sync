@@ -1,30 +1,48 @@
-
-<%# wrap in controller %>
-<div class="comment-card card-white" data-controller="insert-comments">
-  <div class="card-body">
-    <small><em class="text-muted"><%= distance_of_time_in_words_to_now(comment.created_at) %> ago - <%= comment.user.first_name %></em></small><br>
-    <p class="card-title"><%= comment.content %></p>
+<% if comment.parent_id.nil? %>
+  <div class="comment-card card-white" data-controller="insert-comments">
+    <div class="author-details">
+      <div>
+        <img src="<%=comment.user.profile_pic%>" alt="avatar" class="avatar">
+      </div>
+      <div>
+        <p><%= comment.user.first_name %></p>
+        <p>
+          <% if (Time.now - comment.created_at)< 1.hour%>
+            <%= distance_of_time_in_words_to_now(comment.created_at)%> ago
+          <% else %>
+            <%= comment.created_at.strftime("%I:%M%p %b %e") %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="comment-content">
+      <p><%= comment.content %></p>
+    </div>
     <%# if the comment has any replies, you iterate it %>
-    <ul data-insert-comments-target="replies">
+    <div data-insert-comments-target="replies">
       <% unless comment.replies.nil?  %>
-          <%= render partial: "comments/comment", collection: comment.replies, as: :comment %>
+          <%= render partial: "comments/reply", collection: comment.replies, as: :comment %>
       <% end %>
-    </ul>
+    </div>
     <%# create a form, but hidden %>
     <% if comment.parent_id.nil? %>
       <%= simple_form_for Comment.new, method: :post, url: draft_comments_path(@draft), data: {insert_comments_target: "form", action: "insert-comments#createReply"}, html: {class: "d-none"} do |f| %>
-        <%= f.input :content, name: "content",
+        <%= f.input :content, placeholder: "comment here", label: false,
           input_html: {
             data: {
               insert_comments_target: "content"
               }}%>
         <%= f.hidden_field :parent_id, value: comment.id %>
-        <%= f.submit "reply", data: {insert_comments_target: "submit"} %>
+        <%= f.submit "reply", data: {insert_comments_target: "submit"}, class: "comment-btn" %>
       <% end %>
     <% end %>
-  <% if comment.parent_id.nil? %>
-    <a class="btn btn-primary" data-insert-comments-target="newReply"
-    data-action="click->insert-comments#newReply">reply</a>
-  <%end%>
+    <div class="text-right">
+      <% if comment.parent_id.nil? %>
+        <a class="comment-btn" data-insert-comments-target="newReply"
+        data-action="click->insert-comments#newReply">reply</a>
+      <%end%>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render partial: "comments/reply", locals: {comment: comment} %>
+<% end %>

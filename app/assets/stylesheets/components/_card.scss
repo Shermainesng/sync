@@ -69,9 +69,25 @@ a.deliverable-card:hover {
   padding: 0 5px;
 }
 
-  // review project deliverable
+// review project deliverable
+.date-cat {
+  font-size:larger;
+  font-weight:bold;
+  padding-left:5px;
+}
+.card-white-and-date {
+  padding: 25px 16px 0 16px;
+  width:75%;
+}
+.card-white-and-date a {
+  text-decoration: none;
+  color: $dark-grey;
+}
 .deliverable-review {
-
+  padding: 15px 0 10px 15px;
+  p {
+  margin-bottom: 8px;
+  }
 }
 
   // see drafts page (deliverables#show)
@@ -89,15 +105,21 @@ a.deliverable-card:hover {
 // drafts
 
 .draft-card {
-
 }
 
 // comments
 
 .comment-card {
-
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
+.reply-card {
+
+}
 
 //@forward ;
   .card-deliverable-details {
@@ -159,29 +181,52 @@ a.deliverable-card:hover {
 .card-equal-size {
   height: max-content;
 }
+
 //project cards!
+
 .card-custom-title {
   font-weight: bold;
 }
 
+.card-animation {
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  cursor: pointer;
+}
+.card-animation:hover {
+  transform: scale(1.05);
+}
 
 .card-custom-body {
   color: $dark-grey;
-  padding: 15px 15px 0 15px;
+  padding: 20px 15px 0 20px;
 
   .card-custom-title {
     color: black;
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: bold;
   }
 
   .card-custom-subtitle {
     font-weight: bold;
-    margin-bottom: 10px;
     margin-right: 10px;
+    margin-left:10px;
   }
 
   .card-custom-text {
     margin-bottom: 20px;
   }
+    ul {
+      padding-inline-start:0;
+    }
+    ul li {
+      list-style-type: none;
+    }
+
+    i {
+      margin-right:6px;
+      font-weight: bold;
+      background: -webkit-linear-gradient(#26ECA2, #03A4F5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 }
