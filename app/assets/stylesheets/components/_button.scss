@@ -42,3 +42,22 @@
 .submit-draft {
   border-radius: 10px;
 }
+
+.comment-btn {
+  width: fit-content;
+  background-color: $primary;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+}
+
+.comment-btn:hover {
+  text-decoration: none;
+  border: 1px solid $primary;
+  background-color: white;
+  color: $primary;
+  transition: 150ms;
+}
