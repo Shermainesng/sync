@@ -1,3 +1,17 @@
+// colored buttons
+.btn-sync-success{
+  background-color: $sync-success;
+  color: white;
+}
+.btn-sync-danger{
+  background-color: $sync-danger;
+}
+.btn-sync-info {
+  background-color: $light-grey;
+  color: $dark-grey;
+}
+/////
+
 .cancelBtn {
   border: 1px none;
   border-radius: 10px;
@@ -44,7 +58,9 @@
 }
 
 .submit-draft {
-  border-radius: 10px;
+  border-radius: 7px;
+  color: white;
+  cursor: pointer;
 }
 
 
@@ -78,4 +94,11 @@
   background-color: white;
   color: $primary;
   transition: 150ms;
+}
+
+.view-draft-btn {
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 5px;
+
 }

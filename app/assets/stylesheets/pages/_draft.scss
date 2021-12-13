@@ -8,6 +8,7 @@
   width:100%;
   border-radius: 20px;
   border: 2px dashed black;
+  margin: 10px 0px;
 }
 
 .preview {
@@ -22,6 +23,7 @@
 
 .comments-list {
   width:30%;
+  overflow-y: scroll;
 }
 
 .new-comment {

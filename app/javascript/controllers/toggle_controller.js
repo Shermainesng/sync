@@ -12,4 +12,5 @@ export default class extends Controller {
     this.commentFormTarget.classList.toggle("d-none");
     this.buttonTarget.classList.toggle("d-none");
   }
+
 }
