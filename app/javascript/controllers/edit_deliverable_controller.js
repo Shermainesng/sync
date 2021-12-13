@@ -20,13 +20,14 @@ export default class extends Controller {
 
   delete() {
     console.log("deleting");
-    fetch(this.deleteTarget.attributes.value.value, {
+    fetch(this.deleteTarget.dataset.href, {
       method: 'DELETE',
       headers: { 'Accept': 'text/plain', 'X-CSRF-Token': csrfToken()  } })
       .then(response => response.text())
       .then((data) => {
         console.log(data);
         this.detailsTarget.innerHTML = ""
+        this.detailsTarget.classList.toggle("d-none")
       })
   }
 
@@ -38,7 +39,7 @@ export default class extends Controller {
     e.preventDefault();
 
     fetch(this.formTarget.action, {
-      method: 'POST',
+      method: 'PATCH',
       headers: { 'Accept': "text/plain", 'X-CSRF-Token': csrfToken() },
       body: new FormData(this.formTarget)
       // goes to deliverablescontroller#update
@@ -52,8 +53,10 @@ export default class extends Controller {
         // clear the form
         this.formTarget.reset();
 
+        console.log(data);
         // fill up the list with the deliverables (sorted)
-        this.detailsTarget.innerHTML = data;
+        console.log(this.detailsTarget.innerHTML);
+        this.detailsTarget.outerHTML = data;
         this.tabTarget.classList.toggle("d-none");
 
         console.log("update deliverable");

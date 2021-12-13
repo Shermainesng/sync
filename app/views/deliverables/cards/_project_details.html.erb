@@ -1,24 +1,26 @@
-<div class="card-white deliverable-edit" data-controller="edit-deliverable" data-edit-deliverable-target="details">
-    <%= link_to deliverable_path(deliverable), class: "deliverable-card" do %>
-      <div class="date">
-        <div><%= deliverable.due_date.strftime("%b") %></div>
-        <div><%= deliverable.due_date.strftime("%e") %></div>
-      </div>
-      <div class="details">
-        <div class="">
-          <div class="card-deliverable-content">
-            <div class="card-custom-subtitle"><%= deliverable.deliverable_type %></div>
-            <div class="truncate">
-              <%= deliverable.description %>
-              <% deliverable.tag_list.each do |tag|%>
-                <span class="badge badge-primary custom-badge"><%= tag %></span>
-              <% end %>
-            </div>
-          </div>
-          <div class="format-link">
-            <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->email-popups#edit" data-insert-deliverables-target="link" class="btn btn-primary">Edit</a>
-          </div>
-        </div>
-      </div>
+<div class="deliverable-edit p-1 m-1" data-controller="edit-deliverable" data-edit-deliverable-target="details">
+  <div class="deliverable-edit-date">
+    <div><%= deliverable.due_date.strftime("%b") %></div>
+    <div><%= deliverable.due_date.strftime("%e") %></div>
+  </div>
 
-    <% end %>
+  <div class="card-deliverable-content">
+    <div class="card-custom-title"><%= deliverable.deliverable_type %></div>
+    <div class="truncate">
+      <%= deliverable.description %>
+    </div>
+    <div>
+      <% deliverable.tag_list.each do |tag|%>
+        <span class="badge badge-primary custom-badge"><%= tag %></span>
+      <% end %>
+    </div>
+  </div>
+  <div class="format-link">
+    <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->edit-deliverable#edit" class="btn custom-edit-btn">Edit</a>
+    <a data-href="/deliverables/<%= deliverable.id %>" data-confirm="Are you sure you want to delete?" data-edit-deliverable-target="delete" data-action="click->edit-deliverable#delete" class="deletelBtn">Delete</a>
+  </div>
+
+  <div class="slideOutTab d-none" data-edit-deliverable-target="tab">
+    <%= render partial: 'deliverables/update', locals: {deliverable: deliverable}%>
+  </div>
+</div>

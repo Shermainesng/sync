@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.deletelBtn:hover {
+  cursor: pointer;
+}
+
 .btn-flex {
   display: flex;
   align-items: center;
@@ -22,7 +26,7 @@
   color: white;
   border: 0 none;
   padding: 10px;
-  float: right;
+  // float: right;
   text-align: center;
 }
 
@@ -41,4 +45,17 @@
 
 .submit-draft {
   border-radius: 10px;
+}
+
+.custom-edit-btn {
+  width: -webkit-fill-available;
+  background-color: #94B3FD;
+  border-radius: 5px;
+  color: black;
+  padding: 4px 12px;
+  margin-bottom: 5px;
+}
+
+.new-btn-position {
+  float: right;
 }

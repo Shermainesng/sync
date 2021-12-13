@@ -21,10 +21,6 @@
   border: 1px solid $light-grey;
 }
 
-.format-link {
-  display: flex;
-  flex-direction: column;
-}
 
 // all the deliverables
 
@@ -53,7 +49,24 @@ a.deliverable-card:hover {
   // edit project deliverable
 
 .deliverable-edit {
+  display: flex;
+  border: 1px solid $dark-grey;
+  border-radius: 10px;
+}
 
+.card-deliverable-content {
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  width: 230px;
+  color: $dark-grey;
+  padding: 0 5px;
+}
+
+.deliverable-edit-date {
+  width: 40px;
+  text-align: center;
+  padding: 0 5px;
 }
 
   // review project deliverable
@@ -91,23 +104,12 @@ a.deliverable-card:hover {
     flex-grow: 1;
   }
 
-.card-deliverable-content {
-  display: flex;
-  overflow-wrap: break-word;
-  width: 200px;
-  color: $dark-grey
-}
 
 .deliv-card {
   height: 70px;
   align-items: center;
   vertical-align: middle;
 }
-
-.date {
-  width: 40px;
-    text-align: center;
-  }
 
 
 .deliv-drafts {
@@ -158,6 +160,11 @@ a.deliverable-card:hover {
   height: max-content;
 }
 //project cards!
+.card-custom-title {
+  font-weight: bold;
+}
+
+
 .card-custom-body {
   color: $dark-grey;
   padding: 15px 15px 0 15px;
