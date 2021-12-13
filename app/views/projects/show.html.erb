@@ -14,7 +14,7 @@
     <div class="review-card-description"><%= @project.description %></div>
   </div>
 
-  <div class="card-frosted d-flex flex-column pt-2 pb-5">
+  <div class="card-frosted d-flex flex-column pt-4 pb-5">
     <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
   </div>
 </div>
