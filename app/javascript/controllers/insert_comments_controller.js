@@ -15,7 +15,7 @@ export default class extends Controller {
   }
 
   newReply(){
-    // this.repliesTarget.classList.toggle("d-none");
+    this.newReplyTarget.classList.toggle("d-none");
     this.formTarget.classList.toggle("d-none");
   }
 
@@ -40,7 +40,8 @@ export default class extends Controller {
   viewReplies() {
     this.repliesTarget.classList.toggle("d-none");
     this.viewMoreTarget.classList.toggle("d-none");
-    this.formTarget.classList.toggle("d-none")
+    this.newReplyTarget.classList.add("d-none");
+    this.formTarget.classList.remove("d-none")
   }
 
 }
