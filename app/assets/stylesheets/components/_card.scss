@@ -56,9 +56,25 @@ a.deliverable-card:hover {
 
 }
 
-  // review project deliverable
+// review project deliverable
+.date-cat {
+  font-size:larger;
+  font-weight:bold;
+  padding-left:5px;
+}
+.card-white-and-date {
+  padding: 25px 16px 0 16px;
+  width:75%;
+}
+.card-white-and-date a {
+  text-decoration: none;
+  color: $dark-grey;
+}
 .deliverable-review {
-
+  padding: 15px 0 10px 15px;
+  p {
+  margin-bottom: 8px;
+  }
 }
 
   // see drafts page (deliverables#show)
@@ -157,10 +173,19 @@ a.deliverable-card:hover {
 .card-equal-size {
   height: max-content;
 }
+
 //project cards!
+.card-animation {
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  cursor: pointer;
+}
+.card-animation:hover {
+  transform: scale(1.05);
+}
+
 .card-custom-body {
   color: $dark-grey;
-  padding: 20px 15px 0 15px;
+  padding: 20px 15px 0 20px;
 
   .card-custom-title {
     color: black;
@@ -171,11 +196,18 @@ a.deliverable-card:hover {
   .card-custom-subtitle {
     font-weight: bold;
     margin-right: 10px;
+    margin-left:10px;
   }
 
   .card-custom-text {
     margin-bottom: 20px;
   }
+    ul {
+      padding-inline-start:0;
+    }
+    ul li {
+      list-style-type: none;
+    }
 
     i {
       margin-right:6px;

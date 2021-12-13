@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
 
   def show
     @deliverables = @project.deliverables.order(:due_date)
+    @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
   end
 
   def new
