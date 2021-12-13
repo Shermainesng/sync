@@ -1,5 +1,7 @@
-.preview {
-  min-width: 80%;
+.draft-panel {
+  height: 1000px;
+  overflow-y: scroll;
+  padding: 10px;
 }
 
 .attachment {
@@ -9,6 +11,34 @@
   border: 2px dashed black;
 }
 
+.preview {
+  flex-grow: 1;
+  margin-right: 10px;
+  background-color: rgba(84, 83, 83, 0.3);
+}
+
+.comments-list {
+  width:25%;
+}
+
+.new-comment {
+  margin-bottom: 10px;
+}
 .comment-form {
 
+}
+.comment-content {
+  padding: 5px 0px;
+}
+
+.author-details {
+  display: flex;
+  align-items: center;
+
+  p {
+    line-height: 10px;
+    font-size:12px;
+    vertical-align: middle;
+    margin: 2px 0px;
+  }
 }

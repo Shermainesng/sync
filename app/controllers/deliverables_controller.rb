@@ -19,7 +19,7 @@ class DeliverablesController < ApplicationController
       # format.text {render plain: "ok"}
 
       format.html { redirect_to root_path}
-      format.text { render partial: 'deliverables/deliverable', collection: @deliverables, as: :deliverable, formats: [:html] }
+      format.text { render partial: 'deliverables/cards/dashboard', collection: @deliverables, as: :deliverable, formats: [:html] }
     end
   end
 
