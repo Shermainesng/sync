@@ -19,11 +19,16 @@
       <p><%= comment.content %></p>
     </div>
     <%# if the comment has any replies, you iterate it %>
-    <div data-insert-comments-target="replies">
-      <% unless comment.replies.nil?  %>
-          <%= render partial: "comments/reply", collection: comment.replies, as: :comment %>
-      <% end %>
+    <% if (comment.replies.length >= 3 )%>
+      <div data-insert-comments-target="replies" class="d-none">
+    <% else %>
+      <div data-insert-comments-target="replies">
+    <% end %>
+      <%= render partial: "comments/reply", collection: comment.replies, as: :comment %>
     </div>
+    <% if comment.replies.length >= 3 %>
+      <a class="comment-btn" data-insert-comments-target="viewMore" data-action="click->insert-comments#viewReplies">view more</a>
+    <% end %>
     <%# create a form, but hidden %>
     <% if comment.parent_id.nil? %>
       <%= simple_form_for Comment.new, method: :post, url: draft_comments_path(@draft), data: {insert_comments_target: "form", action: "insert-comments#createReply"}, html: {class: "d-none"} do |f| %>
