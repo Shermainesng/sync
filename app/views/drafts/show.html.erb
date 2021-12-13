@@ -5,7 +5,7 @@
       <h3><%= @draft.deliverable.description %></h3>
     </div>
   </div>
-  <div class="d-flex">
+  <div class="d-flex align-items-start">
     <div class="preview">
       <% if @draft.attachment.content_type == "application/pdf" %>
         <%= link_to "Download PDF", @draft.attachment.url, target: :blank %>
@@ -13,7 +13,7 @@
         <img src="<%= @draft.attachment.url %>" alt="image" width='300' height='300'>
       <% end %>
     </div>
-    <div class="comments-list section">
+    <div class="comments-list">
       <div class="new-comment">
         <a class="comment-btn"data-toggle-target="button" data-action="click->toggle#newComment">Add new comment</i></a>
         <div data-toggle-target="commentForm" class="d-none">

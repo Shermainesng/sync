@@ -1,7 +1,6 @@
 .draft-panel {
-  height: 1000px;
-  overflow-y: scroll;
-  padding: 10px;
+  min-height: 50vh;
+  padding: 12px;
 }
 
 .attachment {
@@ -14,11 +13,15 @@
 .preview {
   flex-grow: 1;
   margin-right: 10px;
-  background-color: rgba(84, 83, 83, 0.3);
+  background-color: white;
+  position: sticky;
+  top: 33px;
+  border-radius: 10px;
+  min-height: 50vh;
 }
 
 .comments-list {
-  width:25%;
+  width:30%;
 }
 
 .new-comment {
