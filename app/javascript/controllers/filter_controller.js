@@ -40,6 +40,8 @@ export default class extends Controller {
 
   filterProjects(e) {
     let status = e.currentTarget.innerText;
+    // e.currentTarget.classList.toggle("disabled");
+
     if (status === "All") {
       status = "";
     }

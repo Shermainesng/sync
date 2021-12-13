@@ -28,6 +28,13 @@ select {
   height: auto;
 }
 
+.projects-filter {
+  margin-bottom: 10px;
+  a {
+    cursor: pointer;
+  }
+}
+
 .header {
   font-size: 24px;
 }
