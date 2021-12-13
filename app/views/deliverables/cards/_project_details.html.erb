@@ -6,7 +6,7 @@
       <div><%= deliverable.due_date.strftime("%Y") %></div>
     </div>
 
-    <div class="card-deliverable-content">
+    <div class="card-deliverable-content truncate">
       <div class="card-custom-title truncate"><%= deliverable.deliverable_type %></div>
       <div>
         <% deliverable.tag_list.each do |tag|%>
