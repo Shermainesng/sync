@@ -11,17 +11,22 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
+// $primary: $blue
 $primary:    #94B3FD;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
 $warning:    rgb(194, 137, 31);
-$light-grey: rgb(189, 189, 189);
+
+$sync-success: rgb(157, 221, 157);
+$sync-danger:  $orange;
 
 $orange: #FFD3B9;
 $purple: #B983FF;
 $pink: #EB8DE4;
 $dark-grey: #707070;
+$light-grey: rgb(189, 189, 189);
+
 
 // Buttons & inputs' radius
 $border-radius:    2px;

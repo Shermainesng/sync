@@ -1,14 +1,14 @@
-<div class="container p-4">
-  <%# heading %>
-  <div class="d-flex justify-content-between align-items-center">
-    <div>
-      <h1><%=@project.brand%>: <%= @project.name %></h1>
-      <h2><%= @project.description %></h2>
-    </div>
+<div class="container">
+<%# heading %>
+<div class="d-flex project-head justify-content-between align-items-center">
+  <div>
+    <h1><%=@project.brand%>: <%= @project.name %></h1>
+    <h2><%= @project.description %></h2>
     <div>
       <h2><%= @project.project_end.strftime("%e %b")%></h2>
     </div>
   </div>
+
   <%# deliverable panel %>
   <div class="card-frosted d-flex">
     <div class="col-3">
@@ -24,17 +24,16 @@
           Due in <%= pluralize (@deliverable.due_date - Date.today).to_i,"day"%>
           <a href="/projects/<%= @deliverable.project.id %>/edit">Edit</a>
         </div>
+
       </div>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-block text-white submit-draft my-4" data-toggle="modal" data-target="#exampleModal">
-        Submit New Draft
-      </button>
-      <%= render @drafts %>
     </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-block submit-draft my-4" data-toggle="modal" data-target="#exampleModal">
+      Submit New Draft
+    </button>
+    <%= render @drafts %>
   </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -46,15 +45,15 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
         <%= form_for [@deliverable,@new_draft], html: { multipart: true } do |f| %>
           <div class="attachment">
-            <%= f.label :attachment %>
-            <%= f.file_field :attachment %>
+            <%= f.label :attachment, "Upload your draft here" %>
+            <%= f.file_field :attachment%>
           </div>
 
-          <%= f.text_field :description %>
-          <%= f.submit "Submit Draft", class: "btn btn-primary" %>
+          <%= f.text_field :description, placeholder: "add a message here" %>
+          <%= f.submit "Submit Draft", class: "" %>
         <% end %>
       </div>
       <div class="modal-footer">

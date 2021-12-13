@@ -51,13 +51,6 @@ a.deliverable-card:hover {
   background:#ae9afe;
   color:white;
 }
-.card-animation-small {
-  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-  cursor: pointer;
-}
-.card-animation-small:hover {
-  transform: scale(1.02);
-}
 
 // edit project deliverable
 
@@ -102,15 +95,47 @@ a.deliverable-card:hover {
   }
 }
 
-  // see drafts page (deliverables#show)
-    // mini deliv summaries
-    .deliverable-mini {
+// see drafts page (deliverables#show)
+  // mini deliv summaries
+  .deliverable-mini {
 
-    }
-    // drafts of deliverable
-    .deliverable-drafts {
+  }
+  // drafts of deliverable
+.deliv-drafts {
+  padding: 5px;
+  color: black;
 
-    }
+  .submitted-date {
+    width: 100px;
+    margin: 0px 5px;
+    font-size: 10px;
+    color: gray;
+  }
+
+  .summary {
+    display: flex;
+    border-radius: 10px;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .status {
+
+  }
+
+}
+
+  .deliv-drafts:hover {
+    background-color: rgba(51, 50, 50, 0.1);
+    border-radius: 10px;
+    transition: 150ms;
+  }
 
 ////
 
@@ -146,35 +171,6 @@ a.deliverable-card:hover {
 }
 
 
-.deliv-drafts {
-  .submitted-date {
-    width: 100px;
-    margin: 0px 5px;
-    font-size: 13px;
-  }
-
-  .summary {
-    display: flex;
-    border-radius: 10px;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .description {
-    font-size: 14px;
-  }
-
-  a {
-    font-size: 13px;
-  }
-
-  .comments {
-    width: 120px;
-  }
-
-}
-
 //dashboard deliverable cards
 
 
@@ -205,7 +201,7 @@ a.deliverable-card:hover {
   cursor: pointer;
 }
 .card-animation:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .card-custom-body {
