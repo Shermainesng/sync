@@ -1,6 +1,6 @@
 <% if comment.parent_id.nil? %>
   <div class="comment-card card-white" data-controller="insert-comments">
-    <div data-action="click->insert-comments#newReply">
+    <div>
       <div class="author-details">
         <div>
           <img src="<%=comment.user.profile_pic%>" alt="avatar" class="avatar">
@@ -26,8 +26,10 @@
     </div>
     <% if comment.replies.length >= 3 %>
       <a class="see-more" data-insert-comments-target="viewMore" data-action="click->insert-comments#viewReplies">see <%=comment.replies.length%> comments</a>
-      <a class="comment-btn d-none" data-insert-comments-target="newReply"  action="click->insert-comments#newReply">reply</a>
     <% end %>
+    <div class='text-right'>
+      <a class="comment-btn" data-insert-comments-target="newReply"  data-action="click->insert-comments#newReply">reply</a>
+    </div>
 
     <%# create a form, but hidden %>
     <% if comment.parent_id.nil? %>
