@@ -11,18 +11,22 @@
     <% end %>
 </div>
 
-  <div class="deliverable-form-show card-frosted my-3" data-controller="insert-deliverables">
-    <% if @project.deliverables.empty? %>
-      <p data-insert-deliverables-target="message">Add your first deliverable here!</p>
-    <% end %>
+  <div class="deliverable-form-show card-frosted my-3 p-3" data-controller="insert-deliverables">
+    <div>
+      <% if @project.deliverables.empty? %>
+        <div data-insert-deliverables-target="message">Add your first deliverable here!</div>
+      <% end %>
 
-    <div class="custom-list mr-3">
-      <ul data-insert-deliverables-target="list">
-        <%= render partial: 'deliverables/cards/project_details', card_path: "", collection: @deliverables, as: :deliverable %>
-      </ul>
+      <div class="custom-list mr-3">
+        <ul data-insert-deliverables-target="list" class="custom-list">
+          <%= render partial: 'deliverables/cards/project_details', collection: @deliverables, as: :deliverable %>
+        </ul>
+      </div>
     </div>
-    <div class="">
-      <%= render 'deliverables/new' %>
+    <div data-controller="edit-deliverable">
+      <div class="deliverable-form-new card-white p-3">
+        <%= render 'deliverables/new' %>
+      </div>
     </div>
   </div>
 </div>

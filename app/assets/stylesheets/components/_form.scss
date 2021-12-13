@@ -5,10 +5,20 @@
   padding: 10px;
 }
 
+label.optional {
+  color: $dark-grey;
+}
+
+.form-margin-bottom {
+  margin-bottom: 0.5rem !important;
+}
+
+
 .custom-form-layout {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  height: fit-content;
 }
 
 .add-deliverables-form {
@@ -17,10 +27,12 @@
 
 .deliverable-form-show {
   display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
 }
 
 .form-header-details {
   display: flex;
+}
+
+.deliverable-form-new {
+  width: -webkit-fill-available;
 }

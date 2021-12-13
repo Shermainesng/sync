@@ -1,7 +1,4 @@
-
-
-
-  <div class="card-white deliverable-card" data-controller="edit-deliverable" data-edit-deliverable-target="details">
+<div class="card-white deliverable-card" data-controller="edit-deliverable" data-edit-deliverable-target="details">
 
   <% if local_assigns[:has_link] %>
     <%= link_to deliverable_path(deliverable), class: "deliverable-card" do %>
@@ -21,9 +18,7 @@
             </div>
           </div>
           <div class="format-link">
-            <% if local_assigns[:edit_btn] %>
-              <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->email-popups#edit" data-insert-deliverables-target="link" class="btn btn-primary">Edit</a>
-            <% end %>
+            <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->email-popups#edit" data-insert-deliverables-target="link" class="btn btn-primary">Edit</a>
           </div>
         </div>
       </div>

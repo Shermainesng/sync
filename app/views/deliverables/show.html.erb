@@ -1,8 +1,12 @@
+<div class="container">
 <%# heading %>
 <div class="d-flex project-head justify-content-between align-items-center">
   <div>
     <h1><%=@project.brand%>: <%= @project.name %></h1>
     <h2><%= @project.description %></h2>
+    <div>
+      <h2><%= @project.project_end.strftime("%e %b")%></h2>
+    </div>
   </div>
   <div>
     <h2><%= @project.project_end.strftime("%e %b")%></h2>
