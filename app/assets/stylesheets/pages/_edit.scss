@@ -1,0 +1,12 @@
+.custom-form-layout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 200px;
+}
+
+.deliverable-form-show {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}

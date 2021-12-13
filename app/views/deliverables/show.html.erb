@@ -14,9 +14,9 @@
     <div class="col-3">
       <%= render partial: "deliverables/cards/draft_details", collection: @deliverables, as: :deliverable %>
     </div>
-    <div class="col-9 card-white px-4 py-2">
+    <div class="col-9 card-white px-4 py-2 deliverable-drafts">
       <div class="d-flex justify-content-between align-items-center">
-        <div>
+        <div class>
           <%= @deliverable.deliverable_type %> <br>
           <%= @deliverable.description %>
         </div>

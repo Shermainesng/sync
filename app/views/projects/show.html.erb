@@ -13,12 +13,8 @@
     <div class="review-card-title"><%= @project.name %></div>
     <div class="review-card-description"><%= @project.description %></div>
   </div>
-    <div class="card-frosted">
-      <% @deliverables.each do |deliverable| %>
-        <%#= render @deliverables, card_path: card_path %>
-        <% deliv_path = path+"#{deliverable.id}" %>
-        <%= render "deliverables/cards/project_details", card_path: deliv_path, deliverable: deliverable, has_link: false, edit_btn: false %>
-    <% end %>
+  <div class="card-frosted">
+    <%= render "deliverables/cards/review", collection: @deliverables, deliverable: deliverable %>
   </div>
 </div>
 
