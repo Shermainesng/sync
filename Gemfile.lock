@@ -1,4 +1,11 @@
 GEM
+  remote: https://rails-assets.org/
+  specs:
+    rails-assets-es6-promise (4.2.4)
+    rails-assets-sweetalert2 (5.1.1)
+      rails-assets-es6-promise
+
+GEM
   remote: https://rubygems.org/
   specs:
     actioncable (6.1.4.1)
@@ -245,6 +252,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.7)
+    sweet-alert2-rails (0.1.0)
     thor (1.1.0)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -303,11 +311,13 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
+  rails-assets-sweetalert2 (~> 5.1.1)!
   redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver
   simple_form
   spring
+  sweet-alert2-rails
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
