@@ -135,6 +135,7 @@ a.deliverable-card:hover {
     background-color: rgba(51, 50, 50, 0.1);
     border-radius: 10px;
     transition: 150ms;
+    color: black;
   }
 
 ////
@@ -156,6 +157,10 @@ a.deliverable-card:hover {
 
 .reply-card {
 
+  hr {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+  }
 }
 
 //@forward ;

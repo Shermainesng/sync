@@ -1,52 +1,49 @@
 <% if comment.parent_id.nil? %>
   <div class="comment-card card-white" data-controller="insert-comments">
-    <div class="author-details">
-      <div>
-        <img src="<%=comment.user.profile_pic%>" alt="avatar" class="avatar">
+    <div data-action="click->insert-comments#newReply">
+      <div class="author-details">
+        <div>
+          <img src="<%=comment.user.profile_pic%>" alt="avatar" class="avatar">
+        </div>
+        <div>
+          <p><%= comment.user.first_name %></p>
+          <p>
+            <% if (Time.now - comment.created_at)< 1.hour%>
+              <%= distance_of_time_in_words_to_now(comment.created_at)%> ago
+            <% else %>
+              <%= comment.created_at.strftime("%I:%M%p %b %e") %>
+            <% end %>
+          </p>
+        </div>
       </div>
-      <div>
-        <p><%= comment.user.first_name %></p>
-        <p>
-          <% if (Time.now - comment.created_at)< 1.hour%>
-            <%= distance_of_time_in_words_to_now(comment.created_at)%> ago
-          <% else %>
-            <%= comment.created_at.strftime("%I:%M%p %b %e") %>
-          <% end %>
-        </p>
+      <div class="comment-content">
+        <p><%= comment.content %></p>
       </div>
-    </div>
-    <div class="comment-content">
-      <p><%= comment.content %></p>
     </div>
     <%# if the comment has any replies, you iterate it %>
-    <% if (comment.replies.length >= 3 )%>
-      <div data-insert-comments-target="replies" class="d-none">
-    <% else %>
-      <div data-insert-comments-target="replies">
-    <% end %>
+    <div data-insert-comments-target="replies" <%if (comment.replies.length >= 3 ) %> class="d-none" <%end%>>
       <%= render partial: "comments/reply", collection: comment.replies, as: :comment %>
     </div>
     <% if comment.replies.length >= 3 %>
-      <a class="comment-btn" data-insert-comments-target="viewMore" data-action="click->insert-comments#viewReplies">view more</a>
+      <a class="see-more" data-insert-comments-target="viewMore" data-action="click->insert-comments#viewReplies">see <%=comment.replies.length%> comments</a>
+      <a class="comment-btn d-none" data-insert-comments-target="newReply"  action="click->insert-comments#newReply">reply</a>
     <% end %>
+
     <%# create a form, but hidden %>
     <% if comment.parent_id.nil? %>
-      <%= simple_form_for Comment.new, method: :post, url: draft_comments_path(@draft), data: {insert_comments_target: "form", action: "insert-comments#createReply"}, html: {class: "d-none"} do |f| %>
+      <%= simple_form_for Comment.new, method: :post, url: draft_comments_path(@draft), data: {insert_comments_target: "form", action: "insert-comments#createReply"}, html: {class: "d-none mt-1"} do |f| %>
         <%= f.input :content, placeholder: "comment here", label: false,
           input_html: {
             data: {
               insert_comments_target: "content"
               }}%>
         <%= f.hidden_field :parent_id, value: comment.id %>
-        <%= f.submit "reply", data: {insert_comments_target: "submit"}, class: "comment-btn" %>
+        <div class="text-right">
+          <%= f.submit "reply", data: {insert_comments_target: "submit"}, class: "comment-btn" %>
+        </div>
       <% end %>
     <% end %>
-    <div class="text-right">
-      <% if comment.parent_id.nil? %>
-        <a class="comment-btn" data-insert-comments-target="newReply"
-        data-action="click->insert-comments#newReply">reply</a>
-      <%end%>
-    </div>
+
   </div>
 <% else %>
   <%= render partial: "comments/reply", locals: {comment: comment} %>
