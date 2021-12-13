@@ -2,10 +2,11 @@
   <div class="deliverable-edit-date">
     <div><%= deliverable.due_date.strftime("%b") %></div>
     <div><%= deliverable.due_date.strftime("%e") %></div>
+    <div><%= deliverable.due_date.strftime("%Y") %></div>
   </div>
 
   <div class="card-deliverable-content">
-    <div class="card-custom-title"><%= deliverable.deliverable_type %></div>
+    <div class="card-custom-title truncate"><%= deliverable.deliverable_type %></div>
     <div class="truncate">
       <%= deliverable.description %>
     </div>

@@ -29,6 +29,7 @@ export default class extends Controller {
 
         // fill up the list with the deliverables (sorted)
         this.listTarget.innerHTML = data;
+        this.messageTarget.classList.add("d-none")
 
         console.log("created deliverables");
       });

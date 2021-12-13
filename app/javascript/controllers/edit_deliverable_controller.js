@@ -44,7 +44,6 @@ export default class extends Controller {
           headers: { 'Accept': 'text/plain', 'X-CSRF-Token': csrfToken()  } })
           .then(response => response.text())
           .then((data) => {
-            console.log(data);
             this.detailsTarget.innerHTML = ""
             this.detailsTarget.classList.toggle("d-none")
           })
