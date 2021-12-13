@@ -2,7 +2,7 @@ import { csrfToken } from "@rails/ujs";
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["dropdown", "deliverables", "projects", "input", "form"]
+  static targets = ["dropdown", "deliverables", "projects", "input", "form", "status"]
 
   connect () {
     console.log("filter connected");
@@ -20,16 +20,13 @@ export default class extends Controller {
       });
   }
 
-
   initialize() {
     this.timer
   }
 
-  filterProjects() {
+  searchProjects() {
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
-      this.projectsTarget.innerHTML = "";
-
       fetch(`projects?&filter_name=${this.inputTarget.value}`, {
         headers: { 'Accept': "text/plain" }
       })
@@ -41,7 +38,24 @@ export default class extends Controller {
     }, 500);
   }
 
-  prevent(e){
+  filterProjects(e) {
+    let status = e.currentTarget.innerText;
+    if (status === "All") {
+      status = "";
+    }
+    this.formTarget.reset();
+
+    fetch(`projects?&status=${status}`, {
+      headers: { 'Accept': "text/plain" }
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        this.projectsTarget.innerHTML = data;
+      });
+  }
+
+  prevent(e) {
     e.preventDefault();
+    console.log("preventing");
   }
 }
