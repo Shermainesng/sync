@@ -1,9 +1,9 @@
 .slideOutTab {
   text-align: center;
   position: fixed;
-  top: -300px;
+  top: -150px;
   right: -120px;
-  background: rgb(209, 209, 209);
+  background: rgb(238, 238, 238);
   box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.089);
   border-radius: 15px 0 0 15px;
   width: 60%;
@@ -13,6 +13,11 @@
 .slide-out-content {
   text-align: left;
   color: $dark-grey;
+
+  .tag-list {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
 
 .format-slideout-btn {

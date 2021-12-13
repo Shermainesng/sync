@@ -1,5 +1,4 @@
 .simple_form.custom-form-card {
-  color: transparent;
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -7,12 +6,20 @@
 
 label.optional {
   color: $dark-grey;
+  margin-bottom: 0.2rem;
 }
 
 .form-margin-bottom {
   margin-bottom: 0.5rem !important;
 }
 
+.new-project-form {
+  width: 75%;
+
+  .form-group {
+    margin-bottom: 0.5rem !important;
+  }
+}
 
 .custom-form-layout {
   display: flex;
@@ -33,6 +40,19 @@ label.optional {
   display: flex;
 }
 
-.deliverable-form-new {
-  width: -webkit-fill-available;
+.project-header-name {
+  display: flex;
+  justify-content: space-between;
+
+  .project_brand {
+    width: 49% !important;
+  }
+
+  .project_name {
+    width: 49% !important;
+  }
+}
+
+.project_project_end {
+  margin-bottom: 0 !important;
 }
