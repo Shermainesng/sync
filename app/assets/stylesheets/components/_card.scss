@@ -18,7 +18,7 @@
 
 .card-flat {
   border-radius: 10px;
-  border: 1px solid $light-grey;
+  height:50px;
 }
 
 
@@ -35,6 +35,7 @@
   font-size: 15px;
   color: $dark-grey;
   text-decoration: none;
+  padding-top:8px;
 
   div {
     width: calc(20% - 5px);
@@ -44,9 +45,21 @@
 
 a.deliverable-card:hover {
   text-decoration: none;
+  color: white;
+}
+.card-flat:hover {
+  background:#ae9afe;
+  color:white;
+}
+.card-animation-small {
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  cursor: pointer;
+}
+.card-animation-small:hover {
+  transform: scale(1.02);
 }
 
-  // edit project deliverable
+// edit project deliverable
 
 .deliverable-edit {
   display: flex;
