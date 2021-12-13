@@ -14,7 +14,7 @@
     <div class="review-card-description"><%= @project.description %></div>
   </div>
   <div class="card-frosted">
-    <%= render "deliverables/cards/review", collection: @deliverables, deliverable: deliverable %>
+    <%= render partial: "deliverables/cards/review", collection: @deliverables, as: :deliverable %>
   </div>
 </div>
 

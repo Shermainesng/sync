@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   newComment() {
-    debugger
     this.commentFormTarget.classList.toggle("d-none");
   }
 }
