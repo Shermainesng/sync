@@ -51,13 +51,6 @@ a.deliverable-card:hover {
   background:#ae9afe;
   color:white;
 }
-.card-animation-small {
-  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-  cursor: pointer;
-}
-.card-animation-small:hover {
-  transform: scale(1.02);
-}
 
 // edit project deliverable
 
@@ -206,7 +199,7 @@ a.deliverable-card:hover {
   cursor: pointer;
 }
 .card-animation:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .card-custom-body {
