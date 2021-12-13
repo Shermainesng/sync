@@ -5,8 +5,8 @@
   <%= f.input :due_date, name: "due_date"%>
   <%= f.input :description, name: "description"%>
   <%= f.label :tag_list, "Tag list" %>
-
-  <%= f.text_field :tag_list, placeholder: "Tags (separated by spaces)" %>
+  <br>
+  <%= f.text_field :tag_list, placeholder: "Tags (separated by spaces)", class: "tag-list" %>
   <div class="format-slideout-btn">
     <%= f.submit "Update", class: "submit-form-btn"%>
     <a data-action="click->edit-deliverable#cancel" class="cancelBtn">Cancel</a>
