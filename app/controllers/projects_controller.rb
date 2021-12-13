@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show]
   # has_scope :filter_status
   has_scope :filter_name
+  has_scope :status
 
   def index
     @projects = apply_scopes(Project).all

@@ -6,4 +6,5 @@ class Project < ApplicationRecord
 
   # scope :filter_status, ->status { where("status ILIKE ?", status) }
   scope :filter_name, ->name { where("name ILIKE ?", "%#{name}%")}
+  scope :status, ->status { where("status ILIKE ?", "%#{status}%")}
 end
