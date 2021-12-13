@@ -76,15 +76,21 @@ a.deliverable-card:hover {
 // drafts
 
 .draft-card {
-
 }
 
 // comments
 
 .comment-card {
-
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
+.reply-card {
+
+}
 
 //@forward ;
   .card-deliverable-details {

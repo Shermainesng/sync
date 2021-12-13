@@ -1,0 +1,21 @@
+<hr>
+<div class="reply-card">
+  <div class="author-details">
+    <div>
+      <img src="<%=comment.user.profile_pic%>" alt="avatar" class="avatar">
+    </div>
+    <div>
+      <p><%= comment.user.first_name %></p>
+      <p>
+        <% if (Time.now - comment.created_at)< 1.hour%>
+          <%= distance_of_time_in_words_to_now(comment.created_at)%> ago
+        <% else %>
+          <%= comment.created_at.strftime("%I:%M%p %b %e") %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <div>
+    <p><%= comment.content %></p>
+  </div>
+</div>
