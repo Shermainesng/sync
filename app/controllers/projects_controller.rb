@@ -59,9 +59,19 @@ class ProjectsController < ApplicationController
     # end
   end
 
+  def confirm
+    @project = Project.find(params[:project_id])
+    @project.status = "ongoing"
+    @project.save!
+    ProjectStatus.with(project: @project, action: "confirmed", user: current_user).deliver(@project.user)
+
+    redirect_to('/test')
+  end
+
   private
 
   def set_project
     @project = Project.find(params[:id])
   end
+
 end

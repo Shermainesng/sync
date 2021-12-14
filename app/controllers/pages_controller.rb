@@ -10,6 +10,12 @@ class PagesController < ApplicationController
     @pending = @all.where(status: "pending")
     @completed = @all.where(status: "completed")
     @saved = @all.where(status: "saved")
-
+    @notifications = current_user.notifications
   end
+
+  # for interacting with demo user
+  def test
+    @projects = Project.where(user: User.find(15))
+  end
+
 end

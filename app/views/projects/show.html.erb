@@ -19,14 +19,14 @@
     <% end %>
     </div>
 
-    <div class="card-white py-3 pl-3 mb-4 d-flex align-items-center justify-content-between">
+    <div class="card-white py-3 px-3 mb-4 d-flex align-items-center justify-content-between">
       <div>
         <div class="review-card-title"><%= @project.name %></div>
         <div class="review-card-description"><%= @project.description %></div>
       </div>
-      <div class="btn-layout">
-        <%= link_to "Edit Project", edit_project_path(@project), class: "review-edit-btn" %> |
-        <div class="review-submit-btn" data-action="click->email-popup#show">Send project</div>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <a class="btn btn-outline-primary" href="<%=edit_project_path(@project)%>">Edit Project</a>
+        <button type="button" class="btn btn-outline-primary" data-action="click->email-popup#show">Send Project</button>
       </div>
     </div>
 
