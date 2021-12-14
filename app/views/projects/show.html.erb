@@ -31,7 +31,7 @@
     </div>
 
     <div class="card-frosted d-flex flex-column p-2">
-      <div class="show-deliverable-header">Deliverables</div>
+      <div class="review-card-description pt-3 pl-3">Deliverables for <%= @project.name %></div>
       <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
     </div>
   </div>
