@@ -12,7 +12,7 @@ brand_user = User.create!({
   first_name: "my",
   last_name: "protein",
   account_type: "Brand",
-  profile_pic: Faker::Company.logo(size: "20x20")
+  profile_pic: Faker::Company.logo
 })
 
 User.create!({

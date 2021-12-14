@@ -1,28 +1,43 @@
-<div class="container p-0">
-  <div class="d-flex justify-content-between align-items-center">
-  <% if @project.status == 'ongoing' %>
-    <h1>Existing Project</h1>
-    <% path = "/deliverables/" %>
-  <% else %>
-    <h1>Review Project</h1>
-    <% path = "#" %>
-  <% end %>
-    <%= link_to "Edit Project", edit_project_path(@project) %>
-  </div>
-  <div class="card-white py-3 pl-3 mb-4">
-    <div class="review-card-title"><%= @project.name %></div>
-    <div class="review-card-description"><%= @project.description %></div>
+<div data-controller="email-popup">
+  <div>
+    <div class="d-flex justify-content-between align-items-center">
+    <% if @project.status == 'ongoing' %>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom">
+          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Existing Project</li>
+        </ol>
+      </nav>
+    <% else %>
+      <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/projects/<%= @project.id %>/edit">Edit Project</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Review Project</li>
+      </ol>
+    </nav>
+    <% end %>
+    </div>
+
+    <div class="card-white py-3 pl-3 mb-4 d-flex align-items-center justify-content-between">
+      <div>
+        <div class="review-card-title"><%= @project.name %></div>
+        <div class="review-card-description"><%= @project.description %></div>
+      </div>
+      <div class="btn-layout">
+        <%= link_to "Edit Project", edit_project_path(@project), class: "review-edit-btn" %> |
+        <div class="review-submit-btn" data-action="click->email-popup#show">Send project</div>
+      </div>
+    </div>
+
+    <div class="card-frosted d-flex flex-column p-2">
+      <div class="show-deliverable-header">Deliverables</div>
+      <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
+    </div>
   </div>
 
-  <div class="card-frosted d-flex flex-column pt-4 pb-5">
-    <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
-  </div>
-</div>
-
-<% if @project.status == "saved" %>
-  <div data-controller="email-popup">
-    <button class="custom-popup" data-email-popup-target="button" data-action="click->email-popup#toggle">Send project to <%= @project.brand %></button>
-
+  <% if @project.status == "saved" %>
+    <button class="custom-popup btn-primary" data-email-popup-target="button" data-action="click->email-popup#toggle">Send project to <%= @project.brand %></button>
     <form action="/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup d-none" style="width: 20rem;">
       <div class="form-header-details">
         <div>Send project to <%= @project.brand %></div>
@@ -31,14 +46,14 @@
       <div class="card-body custom-card-body">
         <input type="text" name="client_email" placeholder="Email" class="custom-input-field">
         <input type="text" name="email_subject" placeholder="Subject" class="custom-input-field">
-        <input type="text" name="email_body" class="custom-input-field">
+        <input type="text" name="email_body" class="custom-input-field custom-email-body">
         <input type="hidden" name="project" value=<%= @project.id %>>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <button type="submit" class="btn btn-primary btn-sm btn-trigger">Confirm</button>
       </div>
     </form>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script>

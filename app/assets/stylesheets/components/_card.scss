@@ -1,12 +1,6 @@
 .card-frosted {
   background: rgba(255, 255, 255, 0.3);
-  mix-blend-mode: normal;
-  /* frosted */
-
   box-shadow: 2px 2px 10px 1px rgba(176, 176, 176, 0.3);
-  backdrop-filter: blur(20px);
-  /* Note: backdrop-filter has minimal browser support */
-
   border-radius: 15px;
 }
 
@@ -58,6 +52,15 @@ a.deliverable-card:hover {
   display: flex;
   border: 1px solid $dark-grey;
   border-radius: 10px;
+  text-decoration: none;
+
+  &.deliverable-active {
+    background-color: #fff;
+  }
+}
+
+.deliverable-active-custom {
+  background-color: #fff;
 }
 
 .card-deliverable-content {
@@ -78,7 +81,8 @@ a.deliverable-card:hover {
 .date-cat {
   font-size:larger;
   font-weight:bold;
-  padding-left:5px;
+  padding-left:10px;
+  padding-bottom:7px;
 }
 .card-white-and-date {
   padding: 16px 16px 0 16px;
@@ -88,10 +92,16 @@ a.deliverable-card:hover {
   text-decoration: none;
   color: $dark-grey;
 }
+.card-white-less-radius {
+  background: #FFFFFF;
+  box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
+  border-radius: 5px;
+}
 .deliverable-review {
-  padding: 15px 0 10px 15px;
-  p {
-  margin-bottom: 8px;
+  padding: 0 0 10px 10px;
+  .deliverable-type {
+  font-size: 24px;
+  font-weight: bold;
   }
 }
 
