@@ -1,13 +1,19 @@
 .slideOutTab {
   text-align: center;
   position: fixed;
-  top: -150px;
-  right: -120px;
+  bottom: 0px;
+  right: 0px;
   background: rgb(238, 238, 238);
   box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.089);
   border-radius: 15px 0 0 15px;
-  width: 60%;
+  width: 40%;
   padding: 10px;
+  transform: translateX(100%);
+  transition:300ms;
+}
+
+.active {
+  transform: translateX(0%);
 }
 
 .slide-out-content {

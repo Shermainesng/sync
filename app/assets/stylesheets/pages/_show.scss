@@ -1,13 +1,52 @@
 .review-card-title {
   color: black;
   font-size: 30px;
-  padding: 0 10px;
+  padding: 0 5px;
+  width: 100%;
 }
 
 .review-card-description {
   color: $dark-grey;
   font-size: 24px;
-  padding: 0 10px;
+  padding: 0 5px;
+  width: 100%;
+}
+
+.review-project-header {
+  display: flex;
+  justify-content: space-between;
+
+  .btn-layout {
+    display: flex;
+  }
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.review-edit-btn {
+  color: black;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.review-submit-btn {
+  background-color: none;
+  border: none;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.review-submit-btn:hover {
+  cursor: pointer;
+  color: $primary;
+}
+
+.show-deliverable-header {
+  font-size: 24px;
+  color: $dark-grey;
+  padding-left: 10px;
 }
 .breadcrumb-custom {
   background-color: transparent;

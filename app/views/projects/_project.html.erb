@@ -1,11 +1,15 @@
-<div class="col-sm-6 col-md-4 mb-4 card-animation">
+<div class="col-sm-6 col-md-4 mb-4 card-animation" data-controller="delete-project">
   <a href="<%=project_path(project)%>" class="btn-linkless" >
     <div class="card-white h-100 mb-4">
       <div class="card-custom-body">
-        <div class="card-custom-title"><%= project.name %></div>
+        <div class="card-custom-title">
+          <%= project.name %>
+        </div>
         <div class="d-flex align-items-center mb-3 mt-3">
           <img class="avatar-bordered" src="<%= project.user.profile_pic %>">
-          <div class="card-custom-subtitle"><%= project.brand %></div>
+          <div class="card-custom-subtitle">
+            <%= project.brand %>
+          </div>
         </div>
         <div class="card-custom-text"><%= project.description %></div>
         <ul>
@@ -22,6 +26,9 @@
           <% end %>
         </ul>
         <div>
+          <%if project.status=="saved"%>
+            <p value="<%=project_path(project)%>" class="btn btn-primary"data-project-target="delete" data-action="click->delete-project#deleteProject">Delete this</p>
+          <% end %>
         </div>
       </div>
     </div>

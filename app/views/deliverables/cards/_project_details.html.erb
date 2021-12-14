@@ -39,7 +39,7 @@
       <a data-href="/deliverables/<%= deliverable.id %>" data-edit-deliverable-target="delete" data-action="click->edit-deliverable#delete" class="deletelBtn">Delete</a>
     </div>
 
-    <div class="slideOutTab d-none" data-edit-deliverable-target="tab">
+    <div class="slideOutTab" data-edit-deliverable-target="tab">
       <%= render partial: 'deliverables/update', locals: {deliverable: deliverable}%>
     </div>
   </div>
