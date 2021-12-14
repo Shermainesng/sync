@@ -53,10 +53,8 @@ export default class extends Controller {
 
   }
 
-
-
   edit() {
-    this.tabTarget.classList.toggle("d-none")
+    this.tabTarget.classList.toggle('active')
   }
 
   update(e){
@@ -81,14 +79,14 @@ export default class extends Controller {
         // fill up the list with the deliverables (sorted)
         console.log(this.detailsTarget.innerHTML);
         this.detailsTarget.outerHTML = data;
-        this.tabTarget.classList.toggle("d-none");
+        this.tabTarget.classList.toggle('active');
 
         console.log("update deliverable");
       });
   }
 
   cancel() {
-    this.tabTarget.classList.toggle("d-none")
+    this.tabTarget.classList.toggle('active')
   }
 
 }
