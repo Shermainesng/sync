@@ -67,6 +67,7 @@ class ProjectsController < ApplicationController
       # format.json # Follow the classic Rails flow and look for a create.json view
       format.text {render plain: "ok" }
     end
+  end
 
   def confirm
     @project = Project.find(params[:project_id])

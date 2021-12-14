@@ -1,10 +1,10 @@
 .custom-list {
-  width: 360px;
+  flex-grow: 1;
 }
 
 .custom-list > ul {
   list-style: none;
-  width: 360px !important;
+  width: inherit;
   margin: 0;
   padding: 0;
 }

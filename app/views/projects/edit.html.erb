@@ -17,18 +17,18 @@
 </div>
 
   <div class="deliverable-form-show card-frosted my-3 p-3" data-controller="insert-deliverables">
-    <div>
+    <div class="col-6">
       <% if @project.deliverables.empty? %>
         <div data-insert-deliverables-target="message">Add your first deliverable here!</div>
       <% end %>
 
-      <div class="custom-list mr-3">
+      <div class="custom-list">
         <ul data-insert-deliverables-target="list" class="custom-list">
           <%= render partial: 'deliverables/cards/project_details', collection: @deliverables, as: :deliverable %>
         </ul>
       </div>
     </div>
-    <div data-controller="edit-deliverable">
+    <div class="col-6" data-controller="edit-deliverable">
       <div class="card-white p-3">
         <%= render 'deliverables/new' %>
       </div>

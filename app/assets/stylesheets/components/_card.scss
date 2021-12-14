@@ -68,6 +68,7 @@ a.deliverable-card:hover {
   flex-direction: column;
   width: 100%;
   color: $dark-grey;
+  overflow-x: hidden;
 }
 
 .deliverable-edit-date {
@@ -97,13 +98,12 @@ a.deliverable-card:hover {
   box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
   border-radius: 5px;
 }
-.deliverable-review {
-  padding: 0 0 10px 10px;
-  .deliverable-type {
-  font-size: 24px;
-  font-weight: bold;
-  }
+
+.deliverable-type {
+font-size: 24px;
+font-weight: bold;
 }
+
 
 // see drafts page (deliverables#show)
   // mini deliv summaries
@@ -190,7 +190,7 @@ a.deliverable-card:hover {
 
 
 .truncate {
-  width: inherit;
+  width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
