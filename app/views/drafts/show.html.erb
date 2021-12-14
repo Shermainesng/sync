@@ -29,17 +29,18 @@
       <div class='pr-4'>
         <p>Deliverable due in  <%= pluralize (@draft.deliverable.due_date - Date.today).to_i,"day"%></p>
       </div>
-
     </div>
+    <p class="pl-3">"<%= @draft.description %>"</p>
+
     <div class="d-flex align-items-start px-3">
       <div class="preview d-flex align-items-center justify justify-content-center">
         <% @draft.attachments.each do |attachment| %>
           <% if attachment.content_type == "application/pdf" %>
             <%= link_to "Download PDF", @draft.attachment.url, target: :blank %>
-        <% else %>
-          <img src="<%= attachment.url %>" alt="image" width='250' height='300' class="flex-grow-1">
+          <% else %>
+            <img src="<%= attachment.url %>" alt="image" width='250' height='300' class="flex-grow-1">
+          <% end %>
         <% end %>
-      <% end %>
       </div>
       <div class="comments-list">
         <div class="new-comment">
