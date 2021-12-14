@@ -6,7 +6,9 @@
     <strong><%=current_user.first_name%></strong>
   </div>
   <div>
-    <h3>Notifications</h3>
-    <%= render partial: 'notifications/notification', collection: @notifications, as: :notif %>
+    <h4>Notifications</h4>
+    <ul id="notification-list">
+      <%= render partial: 'notifications/notification', collection: @notifications, as: :notif %>
+    </ul>
   </div>
 </div>

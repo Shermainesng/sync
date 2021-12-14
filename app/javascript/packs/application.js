@@ -30,6 +30,25 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
+  const notifList = document.querySelector('#notification-list')
+
+  const updateNotif = () => {
+
+    fetch("/notifications", {
+      headers: { 'Accept': "text/plain" }
+      // goes to controller in ruby here!!
+    })
+      .then(response => response.text())
+      .then((data) => {
+        // console.log("refreshed notifs");
+        notifList.innerHTML = data;
+      });
+  }
+
+  if (notifList) {
+    setInterval(updateNotif, 5000);
+  }
+
 });
 
 import "controllers"

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get "/test", to: "pages#test"
 
+  get '/notifications', to: "notifications#index"
+
   resources :projects do
     resources :deliverables,only: [:new, :create]
     get 'confirm', to: "projects#confirm"
