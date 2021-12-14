@@ -9,3 +9,18 @@
   font-size: 24px;
   padding: 0 10px;
 }
+.breadcrumb-custom {
+  background-color: transparent;
+  margin-bottom:0;
+}
+.breadcrumb-item a {
+  text-decoration: none;
+  color:$dark-grey;
+}
+.breadcrumb-item a:hover {
+  color:white;
+  background-image: linear-gradient(to right, #9eb2fd 0%, #b692ff 100%);
+}
+.breadcrumb-item.active {
+  color:black;
+}
