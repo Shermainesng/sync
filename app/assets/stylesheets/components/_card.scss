@@ -52,6 +52,15 @@ a.deliverable-card:hover {
   display: flex;
   border: 1px solid $dark-grey;
   border-radius: 10px;
+  text-decoration: none;
+
+  &.deliverable-active {
+    background-color: #fff;
+  }
+}
+
+.deliverable-active-custom {
+  background-color: #fff;
 }
 
 .card-deliverable-content {
