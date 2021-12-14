@@ -51,10 +51,9 @@
       <div class="modal-body text-center">
         <%= form_for [@deliverable,@new_draft], html: { multipart: true } do |f| %>
           <div class="attachment">
-            <%= f.label :attachment, "Upload your draft here" %>
-            <%= f.file_field :attachment, class: "custom-file-upload" %>
+            <%= f.label :attachment, "Upload your file(s) here" %>
+            <%= f.file_field :attachments, multiple: true, class: "custom-file-upload" %>
           </div>
-
           <%= f.text_field :description, placeholder: "add a message here" %>
           <%= f.submit "Submit Draft", class: "" %>
         <% end %>

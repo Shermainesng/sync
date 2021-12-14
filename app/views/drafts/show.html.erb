@@ -6,12 +6,14 @@
     </div>
   </div>
   <div class="d-flex align-items-start">
-    <div class="preview">
-      <% if @draft.attachment.content_type == "application/pdf" %>
-        <%= link_to "Download PDF", @draft.attachment.url, target: :blank %>
+    <div class="preview d-flex align-items-center justify justify-content-center">
+      <% @draft.attachments.each do |attachment| %>
+        <% if attachment.content_type == "application/pdf" %>
+          <%= link_to "Download PDF", @draft.attachment.url, target: :blank %>
       <% else %>
-        <img src="<%= @draft.attachment.url %>" alt="image" width='300' height='300'>
+        <img src="<%= attachment.url %>" alt="image" width='250' height='300' class="flex-grow-1">
       <% end %>
+    <% end %>
     </div>
     <div class="comments-list">
       <div class="new-comment">

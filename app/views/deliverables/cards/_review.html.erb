@@ -22,14 +22,12 @@
     <% end %>
   <% else %>
     <% deliverable[1].each do |deliv| %>
-      <div class='card-animation'>
-        <div class="card-white deliverable-review mb-3">
-          <h3><%= deliv.deliverable_type %></h3>
-          <p><%= deliv.description %><p>
-          <% deliv.tag_list.each do |tag|%>
-            <span class="badge badge-primary custom-badge"><%= tag %></span>
-          <% end %>
-        </div>
+      <div class="card-white deliverable-review mb-3">
+        <h3><%= deliv.deliverable_type %></h3>
+        <p><%= deliv.description %><p>
+        <% deliv.tag_list.each do |tag|%>
+          <span class="badge badge-primary custom-badge"><%= tag %></span>
+        <% end %>
       </div>
     <% end %>
   <% end %>
