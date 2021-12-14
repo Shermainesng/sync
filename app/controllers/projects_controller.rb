@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:edit, :update, :show]
+  before_action :set_project, only: [:edit, :update, :show, :destroy]
   # has_scope :filter_status
   has_scope :filter_name
   has_scope :status
@@ -57,6 +57,16 @@ class ProjectsController < ApplicationController
     #     format.json # Follow the classic Rails flow and look for a create.json view
     #   end
     # end
+  end
+
+  def destroy
+    @project.destroy
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      # format.json # Follow the classic Rails flow and look for a create.json view
+      format.text {render plain: "ok" }
+    end
   end
 
   private

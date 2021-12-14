@@ -1,6 +1,6 @@
-<div class="col-sm-6 col-md-4 mb-4 card-animation" data-controller="delete-project">
-  <a href="<%=project_path(project)%>" class="btn-linkless" >
-    <div class="card-white h-100 mb-4">
+<div class="col-sm-6 col-md-4 mb-4 card-animation" data-controller="delete-project" data-delete-project-target="card">
+  <a id="link" href="<%=project_path(project)%>" class="btn-deleted" data-delete-project-target="link">
+    <div class="card-white h-100 mb-4" data-delete-project-target="content">
       <div class="card-custom-body">
         <div class="card-custom-title">
           <%= project.name %>
@@ -27,7 +27,7 @@
         </ul>
         <div>
           <%if project.status=="saved"%>
-            <p value="<%=project_path(project)%>" class="btn btn-primary"data-project-target="delete" data-action="click->delete-project#deleteProject">Delete this</p>
+            <div value="<%=project_path(project)%>" class="btn btn-primary" data-delete-project-target="delete" data-action="click->delete-project#deleteProject">Delete this</div>
           <% end %>
         </div>
       </div>
