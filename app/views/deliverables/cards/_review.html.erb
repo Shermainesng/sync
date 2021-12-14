@@ -22,7 +22,7 @@
     <% end %>
   <% else %>
     <% deliverable[1].each do |deliv| %>
-      <div class="card-white deliverable-review mb-3">
+      <div class="card-white-less-radius deliverable-review mb-3 pb-3 pt-3 pl-3">
         <h3><%= deliv.deliverable_type %></h3>
         <p><%= deliv.description %><p>
         <div><%= render 'deliverables/tag', deliverable: deliv%></div>

@@ -20,6 +20,8 @@
               <li><i class="fab fa-tiktok"></i><%= d.deliverable_type %></li>
             <% elsif d.deliverable_type.downcase.include?("facebook") || d.deliverable_type.downcase.include?("fb") %>
               <li><i class="fab fa-facebook-f"></i><%= d.deliverable_type %></li>
+            <% elsif d.deliverable_type.downcase.include?("youtube") %>
+              <li><i class="fab fa-youtube"></i><%= d.deliverable_type %></li>
             <% else %>
               <li><i class="fas fa-hashtag"></i><%= d.deliverable_type %></li>
             <% end %>
