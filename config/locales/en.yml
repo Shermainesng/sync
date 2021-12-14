@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  notifications:
+    project_approved:
+      message: "Project has been approved"

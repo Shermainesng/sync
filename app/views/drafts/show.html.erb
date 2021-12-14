@@ -4,6 +4,9 @@
       <h1><%= @draft.deliverable.deliverable_type %></h1>
       <h3><%= @draft.deliverable.description %></h3>
     </div>
+      <% if (@draft.user != current_user) && (@draft.status!= "approved")%><a class="comment-btn" href="<%=draft_approve_path(@draft)%>">Approve this draft</a> <% end %>
+    <div>
+    </div>
   </div>
   <div class="d-flex align-items-start">
     <div class="preview">
