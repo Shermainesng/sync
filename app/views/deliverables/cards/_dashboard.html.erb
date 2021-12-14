@@ -10,9 +10,7 @@
     <div class="truncate"><%= deliverable.project.name %></div>
     <div class="truncate"><%= deliverable.deliverable_type %></div>
     <div class="truncate">
-      <% deliverable.tag_list.each do |tag|%>
-        <span class="badge badge-primary custom-badge"><%= tag %></span>
-      <% end %>
+      <%= render 'deliverables/tag', deliverable: deliverable %>
     </div>
   <% end %>
 </div>

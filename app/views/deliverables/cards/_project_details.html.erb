@@ -33,9 +33,7 @@
         <%= deliverable.description %>
       </div>
       <div>
-        <% deliverable.tag_list.each do |tag|%>
-          <span class="badge badge-primary custom-badge"><%= tag %></span>
-        <% end %>
+        <%= render 'deliverables/tag', deliverable: deliverable %>
       </div>
     </div>
     <div class="format-link">
