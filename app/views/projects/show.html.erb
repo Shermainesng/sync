@@ -9,24 +9,29 @@
         </ol>
       </nav>
     <% else %>
-      <h1>Review Project</h1>
-      <% path = "#" %>
+      <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/projects/<%= @project.id %>/edit">Edit Project</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Review Project</li>
+      </ol>
+    </nav>
     <% end %>
     </div>
 
-    <div class="card-white py-1 px-1 mb-2 review-project-header">
+    <div class="card-white py-3 px-3 mb-4 d-flex align-items-center justify-content-between">
       <div>
         <div class="review-card-title"><%= @project.name %></div>
         <div class="review-card-description"><%= @project.description %></div>
       </div>
-      <div class="btn-layout">
-        <%= link_to "Edit Project", edit_project_path(@project), class: "review-edit-btn" %> |
-        <div class="review-submit-btn" data-action="click->email-popup#show">Send project</div>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <a class="btn btn-outline-primary" href="<%=edit_project_path(@project)%>">Edit Project</a>
+        <button type="button" class="btn btn-outline-primary" data-action="click->email-popup#show">Send Project</button>
       </div>
     </div>
 
     <div class="card-frosted d-flex flex-column p-2">
-      <div class="show-deliverable-header">Deliverables</div>
+      <div class="review-card-description pt-3 pl-3">Deliverables for <%= @project.name %></div>
       <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
     </div>
   </div>

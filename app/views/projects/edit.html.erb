@@ -1,9 +1,14 @@
+<nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Project</li>
+      </ol>
+    </nav>
 <div class="custom-form-layout">
   <div>
     <% if @project.status == "saved" %>
       <%= render 'form' %>
     <% else %>
-    <h1>Edit your Existing Project</h1>
     <div class="card-white">
       <div class="review-card-title"><%= @project.name %></div>
       <div class="review-card-description"><%= @project.description %></div>

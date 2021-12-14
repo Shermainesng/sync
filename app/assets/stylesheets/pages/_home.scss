@@ -1,4 +1,12 @@
 // Specific CSS for your home-page
+.dropdown-custom {
+  border-bottom:none;
+  background: linear-gradient(to right, #9eb2fd 0%, #b692ff 100%);
+  color:white;
+}
+.dropdown-custom:hover {
+  color:darkgray;
+}
 .custom-row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -22,6 +30,14 @@ select {
   position: sticky;
   padding: 20px;
   overflow: hidden;
+}
+
+.notification {
+  color: black;
+}
+
+.notification:hover {
+  background-color: rgba(51, 50, 50, 0.1);
 }
 
 .projects {
@@ -65,6 +81,15 @@ select {
 
     a {
     cursor: pointer;
+    }
+
+    .nav-link {
+      color:black;
+    }
+
+    .nav-link.active {
+      color:white;
+      background-image: linear-gradient(to right, #9eb2fd 0%, #b692ff 100%);
     }
 }
 

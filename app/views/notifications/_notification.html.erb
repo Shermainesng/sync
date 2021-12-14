@@ -1,0 +1,23 @@
+<hr>
+<a href="<%=notif.to_notification.url%>" class="text-decoration-none">
+  <div class="reply-card notification">
+    <div class="author-details">
+      <div>
+        <img src="<%=notif.to_notification.user.profile_pic%>" alt="avatar" class="avatar">
+      </div>
+      <div>
+        <p><%= notif.to_notification.user.first_name %></p>
+        <p>
+          <% if (Time.now - notif.created_at)< 1.hour%>
+            <%= distance_of_time_in_words_to_now(notif.created_at)%> ago
+          <% else %>
+            <%= notif.created_at.strftime("%I:%M%p %b %e") %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div>
+      <p><%= notif.to_notification.message %></p>
+    </div>
+  </div>
+</a>

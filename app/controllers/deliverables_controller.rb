@@ -1,5 +1,6 @@
 class DeliverablesController < ApplicationController
   before_action :set_deliverable, only: [:show, :destroy]
+
   def index
     filter = params[:deliv_by] #week or month
 
@@ -100,4 +101,5 @@ class DeliverablesController < ApplicationController
   def set_deliverable
     @deliverable = Deliverable.find(params[:id])
   end
+
 end

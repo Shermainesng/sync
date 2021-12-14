@@ -67,6 +67,14 @@ class ProjectsController < ApplicationController
       # format.json # Follow the classic Rails flow and look for a create.json view
       format.text {render plain: "ok" }
     end
+
+  def confirm
+    @project = Project.find(params[:project_id])
+    @project.status = "ongoing"
+    @project.save!
+    ProjectStatus.with(project: @project, action: "confirmed", user: current_user).deliver(@project.user)
+
+    redirect_to('/test')
   end
 
   private
@@ -74,4 +82,5 @@ class ProjectsController < ApplicationController
   def set_project
     @project = Project.find(params[:id])
   end
+
 end

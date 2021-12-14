@@ -28,8 +28,17 @@ class DraftsController < ApplicationController
     end
   end
 
+  def approve
+    @draft = Draft.find(params[:draft_id])
+    @draft.status = "approved"
+    @draft.save!
+    DraftStatus.with(draft: @draft, user: current_user, action: "approved").deliver(@draft.user)
+    redirect_to draft_path(@draft)
+  end
+
   private
   def draft_params
     params.require(:draft).permit(:description, {attachments: []})
   end
+
 end

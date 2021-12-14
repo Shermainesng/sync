@@ -42,7 +42,7 @@ User.create!({
         project: Project.last,
         deliverable_type: ["IG Post", "Tik Tok Video", "Photoshoot", "IG Story", "FB Post"].sample,
         due_date: Faker::Date.between(from: '2021-12-12', to: '2022-02-12'),
-        description: Faker::Company.bs
+        description: Faker::Lorem.paragraph_by_chars
       })
       new_deliv.tag_list.add("photography, important", parse: true)
       new_deliv.save
@@ -51,7 +51,7 @@ User.create!({
         new_draft = Draft.new({
           deliverable: Deliverable.last,
           attachment: Faker::Placeholdit.image(format: 'jpg'),
-          description: Faker::Company.bs,
+          description: Faker::Quotes::Shakespeare.romeo_and_juliet_quote,
           status: "pending"
         })
         new_draft.user = User.last
