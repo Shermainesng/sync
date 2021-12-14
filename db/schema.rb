@@ -132,7 +132,6 @@ ActiveRecord::Schema.define(version: 2021_12_14_033058) do
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "drafts"
   add_foreign_key "comments", "users"
-  add_foreign_key "drafts", "users"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
   add_foreign_key "projects", "users"

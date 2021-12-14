@@ -61,7 +61,7 @@ class DeliverablesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to edit_project_path(@project) }
       # format.json # Follow the classic Rails flow and look for a create.json view
-      format.text {render plain: "ok" }
+      format.text { render plain: "ok" }
     end
   end
 
