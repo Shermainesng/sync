@@ -1,0 +1,7 @@
+<% @projects.each do |proj| %>
+<div class="row">
+  <div class="col-4"><%= link_to proj.name, project_path(proj) %>:</div>
+  <div class="col-4"> <%= proj.status %> <%if proj.status == "pending"%></div>
+  <div class="col-4"><%= link_to  "confirm project", project_confirm_path(proj), class: "btn btn-primary" %><% end %></div>
+</div>
+<% end %>
