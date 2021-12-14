@@ -1,10 +1,10 @@
 <div>
   <div class="upcoming-tasks card-white" data-controller="filter">
       <div class="header">Upcoming Tasks
-        <select data-filter-target="dropdown" data-action="change->filter#filterTasks">
-          <option value="week">in the next week</option>
-          <option value="two_weeks">in the next two weeks</option>
-          <option value="month">in the next month</option>
+        <select data-filter-target="dropdown" data-action="change->filter#filterTasks" class="dropdown-custom">
+            <option value="week">in the next week</option></button>
+            <option value="two_weeks">in the next two weeks</option>
+            <option value="month">in the next month</option>
         </select>
       </div>
 
@@ -24,9 +24,9 @@
 
   <div class="card-frosted my-3 p-4 projects" data-controller="filter">
     <div class="d-flex justify-content-between projects-filter mb-4" data-filter-target="status">
-      <ul class="filter-bar" id="myTab" role="tablist">
+      <ul class="filter-bar nav nav-tabs" id="myTab" role="tablist">
         <li role="presentation">
-          <a class="nav-link" data-toggle="tab" data-action="click->filter#filterProjects" value="ongoing">Ongoing</a>
+          <a class="nav-link active" data-toggle="tab" data-action="click->filter#filterProjects" value="ongoing">Ongoing</a>
         </li>
         <li  role="presentation">
           <a class="nav-link" data-toggle="tab" data-action="click->filter#filterProjects" value="pending">Pending</a>
