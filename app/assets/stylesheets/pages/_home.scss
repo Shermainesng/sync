@@ -1,4 +1,13 @@
 // Specific CSS for your home-page
+.dropdown-custom {
+  border-bottom:1px dashed navy;
+  background:#d5cdf7;
+  background-image: linear-gradient(to right, #e0dcf3 0%, #d2c0f5 100%);
+  color:black;
+}
+.dropdown-custom:hover {
+  color:darkgray;
+}
 .custom-row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -73,5 +82,14 @@ select {
 
     a {
     cursor: pointer;
+    }
+
+    .nav-link {
+      color:black;
+    }
+
+    .nav-link.active {
+      color:white;
+      background-image: linear-gradient(to right, #9eb2fd 0%, #b692ff 100%);
     }
 }
