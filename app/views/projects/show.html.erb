@@ -9,8 +9,13 @@
         </ol>
       </nav>
     <% else %>
-      <h1>Review Project</h1>
-      <% path = "#" %>
+      <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/projects/<%= @project.id %>/edit">Edit Project</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Review Project</li>
+      </ol>
+    </nav>
     <% end %>
     </div>
 
