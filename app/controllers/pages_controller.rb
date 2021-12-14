@@ -16,7 +16,6 @@ class PagesController < ApplicationController
   # for interacting with demo user
   def test
     @projects = Project.where(user: User.find(15))
-
   end
 
 end

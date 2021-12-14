@@ -40,4 +40,5 @@ class DraftsController < ApplicationController
   def draft_params
     params.require(:draft).permit(:description, {attachments: []})
   end
+
 end
