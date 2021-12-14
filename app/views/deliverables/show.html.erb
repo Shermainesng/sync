@@ -1,9 +1,18 @@
 <div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom">
+      <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="/projects/<%= @project.id %>">Existing Project</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Deliverables</li>
+    </ol>
+  </nav>
 <%# heading %>
-  <div>
-    <h1><%=@project.brand%>: <%= @project.name %></h1>
-    <h2><%= @project.description %></h2>
+  <div class="card-white py-3 pl-3 mb-4 d-flex align-items-center justify-content-between">
     <div>
+      <div class="review-card-title"><%=@project.brand%>: <%= @project.name %></div>
+      <div class="review-card-description"><%= @project.description %></div>
+    </div>
+    <div class='pr-4'>
       <h2><%= @project.project_end.strftime("%e %b")%></h2>
     </div>
   </div>
@@ -51,10 +60,9 @@
       <div class="modal-body text-center">
         <%= form_for [@deliverable,@new_draft], html: { multipart: true } do |f| %>
           <div class="attachment">
-            <%= f.label :attachment, "Upload your draft here" %>
-            <%= f.file_field :attachment, class: "custom-file-upload" %>
+            <%= f.label :attachment, "Upload your file(s) here" %>
+            <%= f.file_field :attachments, multiple: true, class: "custom-file-upload" %>
           </div>
-
           <%= f.text_field :description, placeholder: "add a message here" %>
           <%= f.submit "Submit Draft", class: "" %>
         <% end %>

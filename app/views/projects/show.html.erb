@@ -1,27 +1,26 @@
-<div data-controller="email-popup">
-  <div>
-    <div class="d-flex justify-content-between align-items-center">
-    <% if @project.status == 'ongoing' %>
-      <% path = "/deliverables/" %>
-    <% else %>
-      <% path = "#" %>
-    <% end %>
-    </div>
-    <div class="card-white py-1 px-1 mb-2 review-project-header">
-      <div>
-        <div class="review-card-title"><%= @project.name %></div>
-        <div class="review-card-description"><%= @project.description %></div>
-      </div>
-      <div class="btn-layout">
-        <%= link_to "Edit Project", edit_project_path(@project), class: "review-edit-btn" %> |
-        <div class="review-submit-btn" data-action="click->email-popup#show">Send project</div>
-      </div>
-    </div>
+<div class="container p-0">
+  <div class="d-flex justify-content-between align-items-center">
+  <% if @project.status == 'ongoing' %>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Existing Project</li>
+      </ol>
+    </nav>
+  <% else %>
+    <h1>Review Project</h1>
+    <% path = "#" %>
+  <% end %>
+    <%= link_to "Edit Project", edit_project_path(@project) %>
+  </div>
+  <div class="card-white py-3 pl-3 mb-4">
+    <div class="review-card-title"><%= @project.brand %>: <%= @project.name %></div>
+    <div class="review-card-description"><%= @project.description %></div>
+  </div>
 
-    <div class="card-frosted d-flex flex-column p-2">
-      <div class="show-deliverable-header">Deliverables</div>
-      <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
-    </div>
+  <div class="card-frosted d-flex flex-column pt-4 pb-5">
+    <h4 class="ml-4">Deliverables for <%= @project.name %></h4>
+    <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
   </div>
 
   <% if @project.status == "saved" %>
