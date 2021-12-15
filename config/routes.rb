@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'confirm', to: "projects#confirm"
     get 'sent', to: "projects#sent"
   end
+
   post "projects/:id/", to: "projects#show"
 
   resources :deliverables, only: [:show, :destroy, :edit, :update, :index] do
