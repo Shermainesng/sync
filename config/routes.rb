@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get '/notifications', to: "notifications#index"
 
+  resources :notifications, only: [:update]
+
   resources :projects do
     resources :deliverables,only: [:new, :create]
     get 'confirm', to: "projects#confirm"
