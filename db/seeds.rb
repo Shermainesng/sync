@@ -1,7 +1,7 @@
-# puts "Cleaning deliverables"
-# Deliverable.destroy_all
-# puts "Cleaning projects"
-# Project.destroy_all
+puts "Cleaning deliverables"
+Deliverable.destroy_all
+puts "Cleaning projects"
+Project.destroy_all
 puts "Cleaning users"
 User.destroy_all
 
@@ -105,7 +105,7 @@ User.create!({
     name: "Polyamory #Unicorn",
     project_end: '2022-02-01',
     status: 'ongoing',
-    description: "Promote Rachel Lark's about polyamory",
+    description: "Promote Rachel Lark's song about polyamory",
     brand_id: syn_user.id
   })
     puts "Creating deliverables for #{Project.last.name}"
