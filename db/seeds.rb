@@ -1,6 +1,8 @@
-puts "Cleaning database"
+puts "Cleaning users"
 User.destroy_all
+puts "Cleaning projects"
 Project.destroy_all
+puts "Cleaning deliverables"
 Deliverable.destroy_all
 
 puts "Creating brand and main user"
