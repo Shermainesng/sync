@@ -29,10 +29,14 @@
     <% end %>
   <% else %>
     <% deliverable[1].each do |deliv| %>
-      <div class="card-white-less-radius mb-3 p-3">
-        <h3><%= deliv.deliverable_type %></h3>
-        <p class="truncate"><%= deliv.description %><p>
-        <div><%= render 'deliverables/tag', deliverable: deliv%></div>
+      <div class='card-animation'>
+        <%= link_to deliverable_path(deliv) do %>
+        <div class="card-white-less-radius mb-3 p-3">
+          <h3><%= deliv.deliverable_type %></h3>
+          <p class="truncate"><%= deliv.description %><p>
+          <div><%= render 'deliverables/tag', deliverable: deliv%></div>
+        </div>
+        <% end %>
       </div>
     <% end %>
   <% end %>
