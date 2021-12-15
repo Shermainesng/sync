@@ -13,7 +13,10 @@
     <div>
       <h4>Notifications</h4>
       <ul id="notification-list">
-        <%= render partial: 'notifications/notification', collection: @notifications, as: :notif %>
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
       </ul>
     </div>
   </div>
