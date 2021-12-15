@@ -63,8 +63,10 @@
             <%= f.label :attachment, "Upload your file(s) here" %>
             <%= f.file_field :attachments, multiple: true, class: "custom-file-upload" %>
           </div>
-          <%= f.text_field :description, placeholder: "add a message here" %>
-          <%= f.submit "Submit Draft", class: "" %>
+          <div class="draft-text-area d-flex flex-column justify-content-center align-items-center">
+            <%= f.text_area :description, placeholder: "Add your draft description here"%>
+            <%= f.submit "Submit Draft", class: "" %>
+          </div>
         <% end %>
       </div>
       <div class="modal-footer">
