@@ -14,18 +14,24 @@
 .card-flat {
   border-radius: 10px;
   height:50px;
+
+  &:hover{
+    background: linear-gradient(to bottom right, rgba(#d3daf7,0.3) 0%, rgba(#dbc9ff,0.7) 100%);
+    color:white;
+  }
 }
 
 .card-flat-urgent {
   border-radius: 10px;
   height:50px;
-  border: 0.04rem solid red !important;
+  border: 0.04rem solid $sync-danger !important;
+  background-color: rgba($sync-danger,0.1) ;
 }
 .card-flat-urgent:hover {
   border-radius: 10px;
   height:50px;
-  border: 0.5px solid red !important;
-  background-color: $sync-danger;
+  border: 0.5px solid $sync-danger !important;
+  background: linear-gradient(to bottom right, rgba($sync-danger,0.2), rgba($sync-danger,0.6) )
 }
 .card-flat-grey {
   border-radius: 10px;
@@ -58,10 +64,7 @@ a.deliverable-card:hover {
   text-decoration: none;
   color: $dark-grey;
 }
-.card-flat:hover {
-  background: linear-gradient(to right, #d3daf7 0%, #dbc9ff 100%);
-  color:white;
-}
+
 
 // edit project deliverable
 
