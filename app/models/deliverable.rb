@@ -8,8 +8,10 @@ class Deliverable < ApplicationRecord
   acts_as_taggable_on :type, :details
 
   def status
-    if self.drafts.last.status=="approved"
-      "approved"
+    if self.drafts.empty?
+      "in progress"
+    elsif self.drafts.last.status=="approved"
+        "approved"
     else
       "in progress"
     end
