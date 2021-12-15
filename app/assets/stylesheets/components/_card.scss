@@ -119,6 +119,7 @@ a.deliverable-card:hover {
   background: $light-gray;
 }
 .card-white-less-radius-urgent {
+  border-radius: 5px;
   background: $sync-danger;
 }
 .deliverable-type {
