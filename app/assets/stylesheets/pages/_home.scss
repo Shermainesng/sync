@@ -1,10 +1,10 @@
 // Specific CSS for your home-page
 .dropdown-custom {
-  border-bottom:none;
-  background: linear-gradient(to right, #9eb2fd 0%, #b692ff 100%);
-  color:white;
+  border-bottom:1px dashed $purple;
+  color:black;
 }
 .dropdown-custom:hover {
+  border:1px dashed $purple;
   color:darkgray;
 }
 .custom-row {
@@ -101,4 +101,27 @@ select {
 .show-delete-content:hover {
   color: black;
   cursor: default;
+}
+
+//search project
+.custom-rounded {
+  border-radius: 10px;
+
+  // trash icon
+.trash-icon-position {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+
+  i {
+    background: $dark-grey;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  i:hover {
+    background: red;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }

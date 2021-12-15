@@ -64,9 +64,24 @@ a {
   color:black;
 }
 
+//submit new draft
+.draft-text-area textarea {
+  height:200px;
+  width:300px;
+  margin-top:15px;
+  margin-bottom:15px;
+}
+
 .deliverable-title {
   font-size: 24px;
   margin-right: 10px;
+}
+
+.deliverable-due-date{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align: right;
 }
 
 //carousell on show draft page

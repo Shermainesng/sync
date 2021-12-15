@@ -8,6 +8,7 @@
   background: #FFFFFF;
   box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
   border-radius: 15px;
+  position: relative;
 }
 
 .card-flat {
@@ -15,6 +16,16 @@
   height:50px;
 }
 
+.card-flat-urgent {
+  border-radius: 10px;
+  height:50px;
+  background-color: $sync-danger;
+}
+.card-flat-grey {
+  border-radius: 10px;
+  height:50px;
+  background-color: grey;
+}
 
 // all the deliverables
 
@@ -39,7 +50,7 @@
 
 a.deliverable-card:hover {
   text-decoration: none;
-  color: white;
+  color: $dark-grey;
 }
 .card-flat:hover {
   background: linear-gradient(to right, #d3daf7 0%, #dbc9ff 100%);
