@@ -44,7 +44,7 @@
       <div>
         <%= form_with url: projects_path, method: :get, html: { id: "search-tab", href: "#search", data: { filter_target: 'form', action: "submit->filter#prevent", toggle: 'tab' } } do |f| %>
           <%= f.text_field :query,
-                            class: "form-control",
+                            class: "form-control custom-rounded",
                             placeholder: 'Search for a project',
                             value: params[:query],
                             data: {
