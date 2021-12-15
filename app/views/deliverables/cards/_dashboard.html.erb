@@ -1,0 +1,21 @@
+<% if !deliverable.due_date.past? && deliverable.status != 'approved' %>
+  <% if (Date.today ..Date.today+3).cover?(deliverable.due_date) %>
+    <div class="card-flat-urgent border my-1 py-1 card-animation" data-controller="edit-deliverable" data-edit-deliverable-target="details">
+  <% else %>
+    <div class="card-flat border my-1 py-1 card-animation" data-controller="edit-deliverable" data-edit-deliverable-target="details">
+  <% end %>
+      <%= link_to deliverable_path(deliverable), class: "deliverable-card" do %>
+        <div>
+          <%= deliverable.due_date.strftime("%b") %>
+          <%= deliverable.due_date.strftime("%e") %>,
+          <%= deliverable.due_date.strftime("%a") %>
+        </div>
+        <div class="truncate"><%= deliverable.project.brand %></div>
+        <div class="truncate"><%= deliverable.project.name %></div>
+        <div class="truncate"><%= deliverable.deliverable_type %></div>
+        <div class="truncate">
+          <%= render 'deliverables/tag', deliverable: deliverable %>
+        </div>
+      <% end %>
+    </div>
+<% end %>

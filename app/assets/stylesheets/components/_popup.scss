@@ -1,16 +1,13 @@
-.custom-email-popup {
-  position: relative;
-}
-
 .custom-popup {
   position: fixed;
   bottom: 0px;
   right: 0px;
   padding: 10px;
+  border-radius: 10px 10px 0 0;
+  width: 250px;
 }
 
 .close-btn {
-  position: absolute;
   top: 0;
   right: 0;
 }

@@ -8,16 +8,15 @@ import { csrfToken } from "@rails/ujs";
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["form", "replies", "newReply", "submit"];
+  static targets = ["form", "replies", "submit", "viewMore", "newReply"];
 
   connect() {
     console.log("hello from insert-comments-controller!");
   }
 
   newReply(){
-    console.log(this.newReplyTarget)
-    this.formTarget.classList.toggle("d-none");
     this.newReplyTarget.classList.toggle("d-none");
+    this.formTarget.classList.toggle("d-none");
   }
 
   createReply(e){
@@ -37,4 +36,12 @@ export default class extends Controller {
         this.submitTarget.disabled=false;
       });
   }
+
+  viewReplies() {
+    this.repliesTarget.classList.toggle("d-none");
+    this.viewMoreTarget.classList.toggle("d-none");
+    this.newReplyTarget.classList.add("d-none");
+    this.formTarget.classList.remove("d-none")
+  }
+
 }

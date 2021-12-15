@@ -1,12 +1,32 @@
+// colored buttons
+.btn-sync-success{
+  background-color: $sync-success;
+  color: white;
+}
+.btn-sync-danger{
+  background-color: $sync-danger;
+}
+.btn-sync-info {
+  background-color: $light-grey;
+  color: $dark-grey;
+}
+/////
+
 .cancelBtn {
   border: 1px none;
   border-radius: 10px;
   padding: 10px;
+  margin: 0 10px;
   background-color: lightgrey;
 }
 
 .cancelBtn:hover {
   cursor: pointer;
+}
+
+.deletelBtn:hover {
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-flex {
@@ -20,25 +40,72 @@
   height: fit-content;
   border-radius: 10px;
   color: white;
-  border: 0 none;
+  border: 1px solid $primary;
   padding: 10px;
-  float: right;
+  // float: right;
   text-align: center;
 }
 
 .submit-form-btn:hover {
-  background-color: $orange;
-  color: white;
+  background-color: white;
+  border: 1px solid $primary;
+  color: $primary;
 }
 
 .btn-bold {
   font-weight: bold;
 }
 
-.btn-linkless {
-  text-decoration: none !important;
+.btn-deleted {
+  color: $primary;
 }
 
 .submit-draft {
-  border-radius: 10px;
+  border-radius: 7px;
+  color: white;
+  cursor: pointer;
+}
+
+.custom-edit-btn {
+  background-color: #94B3FD;
+  border-radius: 5px;
+  color: black;
+  padding: 4px 12px;
+  margin-bottom: 5px;
+}
+
+.custom-edit-btn:hover {
+  background-color: white;
+  border-color: $primary;
+  color: $primary;
+}
+
+.new-btn-position {
+  float: right;
+}
+
+.comment-btn {
+  background-color: $primary;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.comment-btn:hover {
+  text-decoration: none;
+  border: 1px solid $primary;
+  background-color: white;
+  color: $primary;
+  transition: 150ms;
+}
+
+.view-draft-btn {
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 5px;
+
 }

@@ -7,8 +7,6 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import swal from 'sweetalert';
-
 
 Rails.start()
 Turbolinks.start()
@@ -29,6 +27,25 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
+  const notifList = document.querySelector('#notification-list')
+
+  const updateNotif = () => {
+
+    fetch("/notifications", {
+      headers: { 'Accept': "text/plain" }
+      // goes to controller in ruby here!!
+    })
+      .then(response => response.text())
+      .then((data) => {
+        // console.log("refreshed notifs");
+        notifList.innerHTML = data;
+      });
+  }
+
+  if (notifList) {
+    setInterval(updateNotif, 10000);
+  }
 
 });
 

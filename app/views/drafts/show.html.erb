@@ -1,26 +1,89 @@
-<div class="card-frosted " data-controller="toggle">
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="custom-header">
-      <h1><%= @draft.deliverable.deliverable_type %></h1>
-      <h3><%= @draft.deliverable.description %></h3>
-    </div>
+<div class="container mb-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom">
+      <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="/projects/<%= @draft.deliverable.project.id %>">Existing Project</a></li>
+      <li class="breadcrumb-item"><a href="/deliverables/<%= @draft.deliverable.id%>">Deliverables</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Draft</li>
+    </ol>
+  </nav>
+
+<%# heading %>
+  <div class="card-white py-3 pl-3 mb-4 d-flex align-items-center justify-content-between">
     <div>
-      <a data-action="click->toggle#newComment"><i class="fas fa-comment-alt"></i></a>
+      <div class="review-card-title"><%=@draft.deliverable.project.brand%>: <%= @draft.deliverable.project.name %></div>
+      <div class="review-card-description"><%= @draft.deliverable.project.description %></div>
+    </div>
+      <% if (@draft.user != current_user) && (@draft.status!= "approved")%><a class="comment-btn" href="<%=draft_approve_path(@draft)%>">Approve this draft</a> <% end %>
+    <div>
     </div>
   </div>
-  <div class="d-flex">
-    <div class="preview">
-      <% if @draft.attachment.content_type == "application/pdf" %>
-        <%= link_to "Download PDF", @draft.attachment.url, target: :blank %>
-      <% else %>
-        <img src="<%= @draft.attachment.url %>" alt="image" width='300' height='300'>
-      <% end %>
+
+<%# submitted draft %>
+  <div class="card-frosted draft-panel" data-controller="toggle">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="custom-header py-3 pl-3">
+        <h2 class="mb-0"><%= @draft.deliverable.deliverable_type %></h2>
+        <p class='pl-1 pb-3'>Deliverable due in  <%= pluralize (@draft.deliverable.due_date - Date.today).to_i,"day"%></p>
+        <h3><%= @draft.deliverable.description %></h3>
+      </div>
     </div>
-    <div>
-      <%= render @comments %>
+
+    <div class='d-flex align-items-start flex-row d-flex justify-content-around'>
+      <div class='d-flex flex-column justify-content-start pb-5'>
+        <div id="carouselExampleCaptions" class="carousel slide col-8" data-ride="carousel">
+          <ol class="carousel-indicators">
+          <% @draft.attachments.each_with_index do |attachment,index| %>
+            <% if index == 0 %>
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <% else %>
+              <li data-target="#carouselExampleCaptions" data-slide-to="#{index}"></li>
+            <% end %>
+          <% end %>
+          </ol>
+          <div class="carousel-inner">
+          <% @draft.attachments.each_with_index do |attachment,index| %>
+            <% if index == 0 %>
+              <div class="carousel-item active custom-carousel-item">
+                <img src="<%= attachment.url %>" class="d-block w-100" alt="image">
+              </div>
+            <% else %>
+              <div class="carousel-item custom-carousel-item">
+                <img src="<%= attachment.url %>" class="d-block w-100" alt="image">
+              </div>
+            <% end %>
+          <% end %>
+          </div>
+
+
+          <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+        <div class='pt-4'>
+          <h3>Description:</h3>
+          <p><%= @draft.description %></p>
+        </div>
+      </div>
+
+      <div class="comments-list section col-4 pr-5">
+        <div class="new-comment">
+          <a class="comment-btn" data-toggle-target="button" data-action="click->toggle#newComment">Add new comment</a>
+          <div data-toggle-target="commentForm" class="d-none">
+            <%= render 'comments/new'%>
+          </div>
+        </div>
+        <%= render @comments %>
+      </div>
     </div>
-  </div>
-  <div data-toggle-targets="commentForm" class="d-none">
-    <%= render 'comments/new' %>
   </div>
 </div>
+
+                <%# if attachment.content_type == "application/pdf" %>
+                  <%#= link_to "Download PDF", @draft.attachment.url, target: :blank %>
+                <%# else %>

@@ -1,5 +1,6 @@
 class DeliverablesController < ApplicationController
   before_action :set_deliverable, only: [:show, :destroy]
+
   def index
     filter = params[:deliv_by] #week or month
 
@@ -19,7 +20,7 @@ class DeliverablesController < ApplicationController
       # format.text {render plain: "ok"}
 
       format.html { redirect_to root_path}
-      format.text { render partial: 'deliverables/deliverable', collection: @deliverables, as: :deliverable, formats: [:html] }
+      format.text { render partial: 'deliverables/cards/dashboard', collection: @deliverables, as: :deliverable, formats: [:html] }
     end
   end
 
@@ -30,9 +31,9 @@ class DeliverablesController < ApplicationController
 
   def show
     @project = @deliverable.project
-    @drafts = @deliverable.drafts
+    @deliverables = @project.deliverables
+    @drafts = @deliverable.drafts.order(created_at: :desc)
     @new_draft = Draft.new
-
   end
 
   def create
@@ -47,7 +48,7 @@ class DeliverablesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to edit_project_path(@project) }
       format.json # Follow the classic Rails flow and look for a create.json view
-      format.text {render partial: 'deliverables/deliverable', locals: { deliverable: @deliverable, has_link: false }, formats: [:html] }
+      format.text { render partial: 'deliverables/cards/project_details', collection: @deliverables, as: :deliverable, formats: [:html] }
 
     end
   end
@@ -59,7 +60,7 @@ class DeliverablesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to edit_project_path(@project) }
       # format.json # Follow the classic Rails flow and look for a create.json view
-      format.text {render plain: "ok" }
+      format.text { render plain: "ok" }
     end
   end
 
@@ -86,7 +87,7 @@ class DeliverablesController < ApplicationController
     respond_to do |format|
         # format.html { redirect_to edit_project_path(@project) }
         format.json # Follow the classic Rails flow and look for a create.json view
-        format.text {render partial: 'deliverables/deliverable', locals: { deliverable: @deliverable }, formats: [:html]}
+        format.text {render partial: 'deliverables/cards/project_details', locals: { deliverable: @deliverable }, formats: [:html]}
         # format.text {render plain: 'ok' }
     end
   end
@@ -99,4 +100,5 @@ class DeliverablesController < ApplicationController
   def set_deliverable
     @deliverable = Deliverable.find(params[:id])
   end
+
 end

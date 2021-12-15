@@ -1,11 +1,14 @@
+<nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Project</li>
+      </ol>
+    </nav>
 <div class="custom-form-layout">
-  <div class="container pt-4">
-
-
+  <div>
     <% if @project.status == "saved" %>
       <%= render 'form' %>
     <% else %>
-    <h1>Edit your Existing Project</h1>
     <div class="card-white">
       <div class="review-card-title"><%= @project.name %></div>
       <div class="review-card-description"><%= @project.description %></div>
@@ -13,24 +16,22 @@
     <% end %>
 </div>
 
-  <div class="container" data-controller="insert-deliverables">
-    <div class="deliverable-form-show card-frosted">
-    <% if @project.deliverables.empty? %>
-      <p data-insert-deliverables-target="message">nothing here</p>
-    <% end %>
+  <div class="deliverable-form-show card-frosted my-3 p-3" data-controller="insert-deliverables">
+    <div class="col-6">
+      <% if @project.deliverables.empty? %>
+        <div data-insert-deliverables-target="message">Add your first deliverable here!</div>
+      <% end %>
 
-      <div class="custom-list mr-3">
-        <ul data-insert-deliverables-target="list">
-
-          <%= render @deliverables, card_path: "", has_link: false, edit_btn: true %>
+      <div class="custom-list">
+        <ul data-insert-deliverables-target="list" class="custom-list">
+          <%= render partial: 'deliverables/cards/project_details', collection: @deliverables, as: :deliverable %>
         </ul>
       </div>
-      <div class="card-white">
+    </div>
+    <div class="col-6" data-controller="edit-deliverable">
+      <div class="card-white p-3">
         <%= render 'deliverables/new' %>
       </div>
-
     </div>
-
-
   </div>
 </div>

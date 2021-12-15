@@ -1,5 +1,6 @@
-.preview {
-  min-width: 80%;
+.draft-panel {
+  min-height: 50vh;
+  padding: 12px;
 }
 
 .attachment {
@@ -7,4 +8,49 @@
   width:100%;
   border-radius: 20px;
   border: 2px dashed black;
+  margin: 10px 0px;
+}
+
+.preview {
+  flex-grow: 1;
+  margin-right: 10px;
+  background-color: white;
+  position: sticky;
+  top: 33px;
+  border-radius: 10px;
+  min-height: 50vh;
+}
+
+.comments-list {
+  width:30%;
+  overflow-y: scroll;
+}
+
+.new-comment {
+  margin-bottom: 10px;
+}
+.comment-form {
+
+}
+.comment-content {
+  padding: 5px 0px;
+}
+
+.author-details {
+  display: flex;
+  align-items: center;
+
+  p {
+    line-height: 10px;
+    font-size:12px;
+    vertical-align: middle;
+    margin: 2px 0px;
+  }
+}
+
+a.see-more {
+  cursor: pointer;
+  text-decoration: none;
+  text-align: right;
+  margin-bottom: 10px;
 }

@@ -1,0 +1,12 @@
+<a href="<%=deliverable_path(deliverable)%>" class="deliverable-mini text-decoration-none">
+  <div class="d-flex card-white">
+    <div class="">
+      <%= deliverable.due_date.strftime("%b") %>
+      <h5><%= deliverable.due_date.strftime("%e") %></h5>
+    </div>
+    <div>
+      <%= deliverable.deliverable_type %>
+      <%= render 'deliverables/tag', deliverable: deliverable %>
+    </div>
+  </div>
+</a>

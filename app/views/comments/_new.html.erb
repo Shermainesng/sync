@@ -1,8 +1,10 @@
-<%= simple_form_for [@draft, @comment], data: {insert_comments_target: "form"} do |f| %>
-  <%= f.input :content, name: "content",
+<%= simple_form_for [@draft, @comment], data: {insert_comments_target: "form"}, html: {class: "comment-form"} do |f| %>
+  <%= f.input :content, name: "content", placeholder: "your comment here", label: false,
     input_html: {
       data: {
         insert_comments_target: "content"
         }}%>
-  <%= f.submit "Add comment" %>
+  <div class="text-right">
+    <%= f.submit "Add comment", class: "comment-btn" %>
+  </div>
 <% end %>

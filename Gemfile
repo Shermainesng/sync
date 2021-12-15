@@ -34,6 +34,9 @@ gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'faker'
+gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+gem 'sweet-alert2-rails'
+gem 'noticed', '~> 1.5', '>= 1.5.5'
 
 gem 'dotenv-rails', groups: [:development, :test]
 

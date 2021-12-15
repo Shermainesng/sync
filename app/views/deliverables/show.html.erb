@@ -1,52 +1,55 @@
-<div class="container p-4">
-  <%# heading %>
-  <div class="d-flex justify-content-between align-items-center">
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom">
+      <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="/projects/<%= @project.id %>">Existing Project</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Deliverables</li>
+    </ol>
+  </nav>
+<%# heading %>
+  <div class="card-white py-3 pl-3 mb-4 d-flex align-items-center justify-content-between">
     <div>
-      <h1><%=@project.brand%>: <%= @project.name %></h1>
-      <h2><%= @project.description %></h2>
+      <div class="review-card-title"><%=@project.brand%>: <%= @project.name %></div>
+      <div class="review-card-description"><%= @project.description %></div>
     </div>
-    <div>
+    <div class='pr-4'>
       <h2><%= @project.project_end.strftime("%e %b")%></h2>
     </div>
   </div>
+<div class="d-flex justify-content-between align-items-center">
   <%# deliverable panel %>
-  <div class="card-frosted d-flex">
+  <div class="card-frosted d-flex w-100 p-3">
     <div class="col-3">
-      <% @project.deliverables.each do |deliv| %>
-        <a href="<%=deliverable_path(deliv)%>" class="text-decoration-none">
-          <div class="d-flex card-white my-2 deliv-card">
-            <div class="mr-2 date">
-              <%= deliv.due_date.strftime("%b") %>
-              <h5><%= deliv.due_date.strftime("%e") %></h5>
-            </div>
-            <div class="flex-shrink-1">
-              <%= deliv.deliverable_type %>
-            </div>
-          </div>
-        </a>
-      <% end %>
+      <%= render partial: "deliverables/cards/project_details", collection: @deliverables, as: :deliverable %>
     </div>
-    <div class="col-9 card-white px-4 py-2">
+    <div class="col-9 card-white">
       <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <%= @deliverable.deliverable_type %> <br>
-          <%= @deliverable.description %>
+        <div class="w-60 p-1 col-9">
+          <div class="deliverable-title">
+            <%= @deliverable.deliverable_type %>
+          </div>
+          <%= render 'deliverables/tag', deliverable: @deliverable %>
+          <div class="pt-2">
+            <%= @deliverable.description %>
+          </div>
         </div>
-        <div>
+        <div class="col-3 deliverable-due-date">
           Due in <%= pluralize (@deliverable.due_date - Date.today).to_i,"day"%>
           <a href="/projects/<%= @deliverable.project.id %>/edit">Edit</a>
         </div>
       </div>
+
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-block text-white submit-draft my-4" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="btn btn-primary btn-block submit-draft my-4" data-toggle="modal" data-target="#exampleModal">
         Submit New Draft
       </button>
-      <%= render @drafts %>
-    </div>
+      <% if @drafts.length.zero? %>
+        <p>No drafts yet</p>
+      <% else %>
+        <%= render @drafts %>
+      <% end %>
   </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -58,15 +61,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
         <%= form_for [@deliverable,@new_draft], html: { multipart: true } do |f| %>
           <div class="attachment">
-            <%= f.label :attachment %>
-            <%= f.file_field :attachment %>
+            <%= f.label :attachment, "Upload your file(s) here" %>
+            <%= f.file_field :attachments, multiple: true, class: "custom-file-upload" %>
           </div>
-
-          <%= f.text_field :description %>
-          <%= f.submit "Submit Draft", class: "btn btn-primary" %>
+          <div class="draft-text-area d-flex flex-column justify-content-center align-items-center">
+            <%= f.text_area :description, placeholder: "Add your draft description here"%>
+            <%= f.submit "Submit Draft", class: "" %>
+          </div>
         <% end %>
       </div>
       <div class="modal-footer">
