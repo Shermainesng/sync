@@ -1,12 +1,27 @@
 <div class="custom-form-layout">
   <div class="container pt-4">
-    <%= render 'form' %>
-  </div>
+
+
+    <% if @project.status == "saved" %>
+      <%= render 'form' %>
+    <% else %>
+    <h1>Edit your Existing Project</h1>
+    <div class="card-white">
+      <div class="review-card-title"><%= @project.name %></div>
+      <div class="review-card-description"><%= @project.description %></div>
+    </div>
+    <% end %>
+</div>
 
   <div class="container" data-controller="insert-deliverables">
     <div class="deliverable-form-show card-frosted">
+    <% if @project.deliverables.empty? %>
+      <p data-insert-deliverables-target="message">nothing here</p>
+    <% end %>
+
       <div class="custom-list mr-3">
         <ul data-insert-deliverables-target="list">
+
           <%= render @deliverables, card_path: "", has_link: false, edit_btn: true %>
         </ul>
       </div>
@@ -16,7 +31,6 @@
 
     </div>
 
-    <div class="slideOutTab d-none" data-insert-deliverables-target="edit"></div>
 
   </div>
 </div>

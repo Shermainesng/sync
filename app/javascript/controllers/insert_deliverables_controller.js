@@ -35,24 +35,6 @@ export default class extends Controller {
       });
   }
 
-  edit(e) {
-    // e.preventDefault();
-    const link = e.target.closest("a")
-    this.editTarget.classList.toggle("d-none")
-
-    fetch(link.dataset.href,
-      { headers: { 'Accept': 'text/plain' } })
-      .then(response => response.text())
-      .then((data) => {
-        this.editTarget.innerHTML = data
-        console.log(this.editTarget);
-      })
-  }
-
-  cancel(e) {
-    e.preventDefault()
-    this.editTarget.classList.toggle("d-none")
-  }
 }
 
 
