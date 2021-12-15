@@ -24,10 +24,10 @@ class ProjectsController < ApplicationController
     @project = Project.create!(
       user: current_user,
       name: "",
-      brand: "",
       project_end: Date.today,
       status: 'saved'
     )
+
 
     redirect_to edit_project_path(@project)
   end
