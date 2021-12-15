@@ -19,6 +19,12 @@
 .card-flat-urgent {
   border-radius: 10px;
   height:50px;
+  border: 0.04rem solid red !important;
+}
+.card-flat-urgent:hover {
+  border-radius: 10px;
+  height:50px;
+  border: 0.5px solid red !important;
   background-color: $sync-danger;
 }
 .card-flat-grey {
@@ -89,7 +95,7 @@ a.deliverable-card:hover {
   color: $dark-grey;
 }
 
-// review project deliverable
+// review/existing project deliverable
 .date-cat {
   font-size:larger;
   font-weight:bold;
@@ -109,7 +115,12 @@ a.deliverable-card:hover {
   box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
   border-radius: 5px;
 }
-
+.card-white-less-radius-greyed {
+  background: $light-gray;
+}
+.card-white-less-radius-urgent {
+  background: $sync-danger;
+}
 .deliverable-type {
 font-size: 24px;
 font-weight: bold;

@@ -5,17 +5,24 @@
     <%= deliverable[0].strftime("%e") %>,
     <%= deliverable[0].strftime("%a") %>
   </div>
-
-  <% if @project.status != "saved" %>
+<%# for deliverables in existing project %>
+  <% if @project.status != "saved" && @project.status != "pending" && @project.status != "completed" %>
     <% deliverable[1].each do |deliv| %>
       <div class='card-animation'>
         <%= link_to deliverable_path(deliv) do %>
-
-          <div class="card-white-less-radius mb-3 p-3">
-            <h3><%= deliv.deliverable_type %></h3>
-            <p class="truncate"><%= deliv.description %><p>
-
-            <div><%= render 'deliverables/tag', deliverable: deliv%></div>
+          <% if deliv.due_date.past? %>
+            <div class="card-white-less-radius-greyed mb-3 p-3">
+          <% elsif (Date.today ..Date.today+3).cover?(deliv.due_date)%>
+            <div class="card-white-less-radius-urgent mb-3 p-3">
+          <% else %>
+            <div class="card-white-less-radius mb-3 p-3">
+          <% end %>
+            <% if deliv.status == 'approved' %>
+              <i class="far fa-check-circle"></i>
+            <% end %>
+              <h3><%= deliv.deliverable_type %></h3>
+              <p class="truncate"><%= deliv.description %><p>
+              <div><%= render 'deliverables/tag', deliverable: deliv%></div>
           </div>
         <% end %>
       </div>
@@ -27,7 +34,6 @@
         <p class="truncate"><%= deliv.description %><p>
         <div><%= render 'deliverables/tag', deliverable: deliv%></div>
       </div>
-
     <% end %>
   <% end %>
 </div>
