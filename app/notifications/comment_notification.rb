@@ -26,7 +26,11 @@ class CommentNotification < Noticed::Base
 
   def message
     # t(".message")
-    "#{user.first_name} replied to your comment"
+    if params[:draft].nil?
+      "Replied to your comment"
+    else
+      "Made a new comment on #{params[:draft].deliverable.deliverable_type}"
+    end
   end
 
   def user
