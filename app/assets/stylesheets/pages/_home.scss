@@ -121,13 +121,13 @@ select {
   right: 20px;
 
   i {
-    background: $dark-grey;
+    background: $sync-danger;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   i:hover {
-    background: red;
+    background: #fb5050;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
