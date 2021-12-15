@@ -70,9 +70,12 @@ select {
     background-color: white;
     border-bottom: 1px solid #dee2e6;
     border-radius: 10px;
+    height:40px;
 
     a {
     cursor: pointer;
+    height:40px;
+
     }
 
     .nav-link {
@@ -82,6 +85,8 @@ select {
     .nav-link.active {
       color:white;
       background-image: linear-gradient(to right, #9eb2fd 0%, #b692ff 100%);
+      height:40px;
+
     }
 }
 
@@ -104,8 +109,9 @@ select {
 }
 
 //search project
-.custom-rounded {
+.custom-search {
   border-radius: 10px;
+  height: 40px;
 }
 
   // trash icon
@@ -115,13 +121,13 @@ select {
   right: 20px;
 
   i {
-    background: $dark-grey;
+    background: $sync-danger;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   i:hover {
-    background: red;
+    background: #fb5050;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
