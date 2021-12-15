@@ -3,7 +3,7 @@
   <a href="<%=new_project_path%>" class="submit-form-btn btn-bold btn-linkless">+ New project</a>
   <div class="custom-profile">
     <% if current_user.present? %>
-      <img src="https://imgur.com/fX4ENYV" alt="profile_pic" class="avatar">
+      <img src="<% current_user.profile_pic %>" alt="profile_pic" class="avatar">
       <strong><%= current_user.username %></strong>
     <% else %>
       <strong>Sign in!</strong>
