@@ -111,7 +111,11 @@ select {
   cursor: default;
 }
 
-// trash icon
+//search project
+.custom-rounded {
+  border-radius: 10px;
+
+  // trash icon
 .trash-icon-position {
   position: absolute;
   top: 25px;
