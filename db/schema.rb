@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_033058) do
+ActiveRecord::Schema.define(version: 2021_12_15_073538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,8 @@ ActiveRecord::Schema.define(version: 2021_12_14_033058) do
     t.string "status"
     t.text "description"
     t.bigint "user_id"
-    t.string "brand"
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_projects_on_brand_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -136,5 +137,6 @@ ActiveRecord::Schema.define(version: 2021_12_14_033058) do
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "projects", "users", column: "brand_id"
   add_foreign_key "taggings", "tags"
 end
