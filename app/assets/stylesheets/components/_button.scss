@@ -95,12 +95,17 @@
   cursor: pointer;
 }
 
+
 .comment-btn:hover {
   text-decoration: none;
   border: 1px solid $primary;
   background-color: white;
   color: $primary;
   transition: 150ms;
+}
+
+.block-btn {
+  display: block;
 }
 
 .view-draft-btn {

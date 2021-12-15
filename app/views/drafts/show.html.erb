@@ -29,9 +29,9 @@
       </div>
     </div>
 
-    <div class='d-flex align-items-start flex-row d-flex justify-content-around'>
-      <div class='d-flex flex-column justify-content-start pb-5'>
-        <div id="carouselExampleCaptions" class="carousel slide col-8" data-ride="carousel">
+    <div class='d-flex align-items-start justify-content-between'>
+      <div class='d-flex flex-column justify-content-start pb-5 col-8 preview card-frosted'>
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
           <% @draft.attachments.each_with_index do |attachment,index| %>
             <% if index == 0 %>
@@ -71,9 +71,9 @@
         </div>
       </div>
 
-      <div class="comments-list section col-4 pr-5">
+      <div class="comments-list col-4">
         <div class="new-comment">
-          <a class="comment-btn" data-toggle-target="button" data-action="click->toggle#newComment">Add new comment</a>
+          <a class="comment-btn block-btn" data-toggle-target="button" data-action="click->toggle#newComment">Add new comment</a>
           <div data-toggle-target="commentForm" class="d-none">
             <%= render 'comments/new'%>
           </div>

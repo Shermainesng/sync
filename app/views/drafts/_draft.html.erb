@@ -1,12 +1,12 @@
 <a href="<%=draft_path(draft)%>" class="text-decoration-none">
-  <div class="d-flex deliv-drafts align-items-center card-flat my-1">
+  <div class="deliv-drafts d-flex align-items-center card-flat my-1">
     <div class="submitted-date">
       submitted <br>
       <%= draft.created_at.strftime("%b %e, %a") %>
     </div>
     <div class="summary">
-      <div class="description">
-        <%= draft.description %>
+      <div class="description truncate">
+        <p class="text-left"><%= draft.description %></p>
       </div>
       <div class="status">
       <% case draft.status%>
