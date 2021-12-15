@@ -12,17 +12,14 @@
 }
 
 .preview {
-  flex-grow: 1;
-  margin-right: 10px;
-  background-color: white;
+  // margin-right: 10px;
   position: sticky;
   top: 33px;
   border-radius: 10px;
-  min-height: 50vh;
+  min-height: 70vh;
 }
 
 .comments-list {
-  width:30%;
   overflow-y: scroll;
 }
 

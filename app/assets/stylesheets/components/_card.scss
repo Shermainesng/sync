@@ -127,7 +127,7 @@ font-weight: bold;
   color: black;
 
   .submitted-date {
-    width: 100px;
+    width: 10%;
     margin: 0px 5px;
     font-size: 10px;
     color: gray;
@@ -136,18 +136,16 @@ font-weight: bold;
   .summary {
     display: flex;
     border-radius: 10px;
-    flex-grow: 1;
     align-items: center;
     justify-content: space-between;
     padding: 5px;
+    width: 90%;
   }
 
   .description {
     font-size: 14px;
-  }
-
-  .status {
-
+    width: 70%;
+    text-align: left;
   }
 
 }

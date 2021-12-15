@@ -3,3 +3,12 @@
   color: white;
   width: fit-content;
 }
+
+.overdue {
+  background-color: $sync-danger;
+  color: white;
+  width: fit-content;
+  padding: 2px;
+  border-radius: 5px;
+  font-size: 14px;
+}

@@ -22,9 +22,9 @@
     <div class="col-3">
       <%= render partial: "deliverables/cards/project_details", collection: @deliverables, as: :deliverable %>
     </div>
-    <div class="col-9 card-white">
+    <div class="col-9 card-white py-4 px-3">
       <div class="d-flex justify-content-between align-items-center">
-        <div class="w-60 p-1 col-9">
+        <div class="w-60 col-9">
           <div class="deliverable-title">
             <%= @deliverable.deliverable_type %>
           </div>
@@ -33,8 +33,17 @@
             <%= @deliverable.description %>
           </div>
         </div>
+        <% due_days = (@deliverable.due_date - Date.today).to_i  %>
         <div class="col-3 deliverable-due-date">
-          Due in <%= pluralize (@deliverable.due_date - Date.today).to_i,"day"%>
+          <span class="<%if due_days<0%> overdue <%end%>">
+            <% if due_days == 0 %>
+              Due today
+            <% elsif due_days < 0 %>
+              Overdue by <%= pluralize due_days.abs, "day" %>
+            <% else %>
+              Due in <%= pluralize due_days, "day"%>
+            <% end %>
+          </span>
           <a href="/projects/<%= @deliverable.project.id %>/edit">Edit</a>
         </div>
       </div>
