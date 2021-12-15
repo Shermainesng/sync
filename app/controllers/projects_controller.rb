@@ -73,6 +73,7 @@ class ProjectsController < ApplicationController
   def confirm
     @project = Project.find(params[:project_id])
     @project.status = "ongoing"
+    @project.brand = current_user
     @project.save!
     ProjectStatus.with(project: @project, action: "confirmed", user: current_user).deliver(@project.user)
 

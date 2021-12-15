@@ -44,3 +44,18 @@ $grid-gutter-width: 1.2rem !default;
 
 // p element
 $paragraph-margin-bottom:   0rem !default;
+
+
+$sync-header-lg: 24px;
+$sync-header-md: 18px;
+$sync-header-sm: 14px;
+
+.header-lg {
+  font-size: $sync-header-lg;
+}
+.header-md {
+  font-size: $sync-header-md;
+}
+.header-sm {
+  font-size: $sync-header-sm;
+}
