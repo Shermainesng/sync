@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def test
-    @projects = Project.where(user: User.find(15))
+    @projects = Project.where(user: User.find_by(email: "testuser@gmail.com"))
 
   end
 

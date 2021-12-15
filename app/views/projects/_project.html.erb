@@ -29,7 +29,9 @@
         </ul>
         <div>
           <%if project.status=="saved"%>
-            <div value="<%=project_path(project)%>" class="btn btn-primary" data-delete-project-target="delete" data-action="click->delete-project#deleteProject">Delete this</div>
+            <div value="<%=project_path(project)%>" class="trash-icon-position" data-delete-project-target="delete" data-action="click->delete-project#deleteProject">
+              <i class="fas fa-trash"></i>
+            </div>
           <% end %>
         </div>
       </div>

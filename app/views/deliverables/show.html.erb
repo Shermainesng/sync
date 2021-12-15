@@ -26,7 +26,14 @@
     <div class="deliverable-draft"></div>
       <div class="d-flex justify-content-between align-items-center">
         <div class="w-60">
-          <%= @deliverable.deliverable_type %> <br>
+        <div class="d-flex align-items-center">
+          <div class="deliverable-title">
+            <%= @deliverable.deliverable_type %>
+          </div>
+          <div>
+            <%= render 'deliverables/tag', deliverable: @deliverable %>
+          </div>
+        </div>
           <%= @deliverable.description %>
         </div>
         <div>

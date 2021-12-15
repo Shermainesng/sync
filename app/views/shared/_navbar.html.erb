@@ -10,14 +10,14 @@
         <strong>Sign in!</strong>
       <% end %>
     </div>
-    <div>
-      <h4>Notifications</h4>
-      <ul id="notification-list">
-        <div class="spinner">
-          <div class="dot1"></div>
-          <div class="dot2"></div>
-        </div>
-      </ul>
-    </div>
+
+    <% if user_signed_in? %>
+      <div>
+        <h4>Notifications</h4>
+        <ul id="notification-list">
+          <p>Checking for notifications...</p>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </div>
