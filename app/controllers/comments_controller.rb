@@ -14,10 +14,13 @@ class CommentsController < ApplicationController
 
     @comment.save!
 
-    unless comment_params[:parent_id].nil?
+    if comment_params[:parent_id].nil?
+      CommentNotification.with(comment: @comment, user: current_user, draft: @draft).deliver(@draft.user)
+    else
       @parent = Comment.find(comment_params[:parent_id])
       CommentNotification.with(comment: @comment, user: current_user).deliver(@parent.user)
     end
+
 
     respond_to do |format|
       format.html { redirect_to draft_path(@draft) }

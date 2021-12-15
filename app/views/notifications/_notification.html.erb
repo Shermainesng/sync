@@ -1,12 +1,12 @@
 <hr>
 <a href="<%=notif.to_notification.url%>" data-value="<%=notif.id%>" class="text-decoration-none" data-controller="mark-read" data-mark-read-target="notif" data-action="click->mark-read#markAsRead">
-  <div class="reply-card notification">
-    <div class="author-details">
+  <div class="notification">
+    <div class="author-details py-1">
       <div>
         <img src="<%=notif.to_notification.user.profile_pic%>" alt="avatar" class="avatar">
       </div>
       <div>
-        <p><%= notif.to_notification.user.first_name %></p>
+        <p id="author"><%= notif.to_notification.user.first_name %></p>
         <p>
           <% if (Time.now - notif.created_at)< 1.hour%>
             <%= distance_of_time_in_words_to_now(notif.created_at)%> ago

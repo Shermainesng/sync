@@ -1,23 +1,22 @@
-<div >
-  <div class="card h-100 p-2 card-white">
-    <a href="/" class="logo"><h1>Sync</h1></a>
-    <a href="<%=new_project_path%>" class="submit-form-btn btn-bold btn-linkless">+ New project</a>
-    <div class="custom-profile">
-      <% if current_user.present? %>
-        <img src="https://source.unsplash.com/30x30/?face" alt="profile_pic" class="avatar">
-        <strong><%= current_user.username %></strong>
-      <% else %>
-        <strong>Sign in!</strong>
-      <% end %>
-    </div>
 
-    <% if user_signed_in? %>
-      <div>
-        <h4>Notifications</h4>
-        <ul id="notification-list">
-          <p>Checking for notifications...</p>
-        </ul>
-      </div>
+<div class="card h-100 p-2 card-white">
+  <a href="/" class="logo"><h1>Sync</h1></a>
+  <a href="<%=new_project_path%>" class="submit-form-btn btn-bold btn-linkless">+ New project</a>
+  <div class="custom-profile">
+    <% if current_user.present? %>
+      <img src="https://source.unsplash.com/30x30/?face" alt="profile_pic" class="avatar">
+      <strong><%= current_user.username %></strong>
+    <% else %>
+      <strong>Sign in!</strong>
     <% end %>
   </div>
+
+  <% if user_signed_in? %>
+    <div class="notification-panel">
+      <h4>Notifications</h4>
+      <div id="notification-list">
+        <p>Checking for notifications...</p>
+      </div>
+    </div>
+  <% end %>
 </div>

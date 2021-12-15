@@ -10,9 +10,40 @@
 .nav-stick {
   position: sticky;
   top: 33px;
-  height: 100%;
+  height: 90vh;
 }
 
 .nav-stick > a:hover {
   text-decoration: none;
+}
+
+.notification-panel {
+  padding: 5px 10px;
+  overflow-y: scroll;
+
+  // Notification header
+  h4 {
+    font-size: 18px;
+    color: #444343;
+  }
+
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  // Each notification card
+  .notification {
+    color: black;
+    padding: 0px 5px;
+    font-size: 14px;
+
+    #author {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .notification:hover {
+    background-color: rgba(51, 50, 50, 0.1);
+  }
 }
