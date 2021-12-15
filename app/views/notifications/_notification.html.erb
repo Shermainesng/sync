@@ -1,5 +1,5 @@
 <hr>
-<a href="<%=notif.to_notification.url%>" class="text-decoration-none">
+<a href="<%=notif.to_notification.url%>" data-value="<%=notif.id%>" class="text-decoration-none" data-controller="mark-read" data-mark-read-target="notif" data-action="click->mark-read#markAsRead">
   <div class="reply-card notification">
     <div class="author-details">
       <div>

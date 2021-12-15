@@ -63,6 +63,7 @@ a {
 .breadcrumb-item.active {
   color:black;
 }
+
 //submit new draft
 .draft-text-area textarea {
   height:200px;
@@ -70,6 +71,12 @@ a {
   margin-top:15px;
   margin-bottom:15px;
 }
+
+.deliverable-title {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
 //carousell on show draft page
 .carousel-caption-custom {
   color:black !important;
