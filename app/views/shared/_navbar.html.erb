@@ -10,11 +10,12 @@
         <strong>Sign in!</strong>
       <% end %>
     </div>
+
     <% if user_signed_in? %>
       <div>
         <h4>Notifications</h4>
         <ul id="notification-list">
-          <%= render partial: 'notifications/notification', collection: @notifications, as: :notif %>
+          <p>Checking for notifications...</p>
         </ul>
       </div>
     <% end %>
