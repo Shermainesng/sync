@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :deliverables,only: [:new, :create]
     get 'confirm', to: "projects#confirm"
+    get 'sent', to: "projects#sent"
   end
 
   post "projects/:id/", to: "projects#show"
