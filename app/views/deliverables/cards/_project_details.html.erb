@@ -23,17 +23,21 @@
 
     <div class="card-deliverable-content">
       <div class="card-custom-title truncate"><%= deliverable.deliverable_type %></div>
-      <div class="truncate">
-        <%= deliverable.description %>
-      </div>
-      <div>
-        <%= render 'deliverables/tag', deliverable: deliverable %>
-      </div>
+      <% if local_assigns.has_key? :show %>
+        <div class="truncate">
+          <%= deliverable.description %>
+        </div>
+        <div>
+          <%= render 'deliverables/tag', deliverable: deliverable %>
+        </div>
+      <% end %>
     </div>
-    <div class="format-link">
-      <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->edit-deliverable#edit" class="btn custom-edit-btn">Edit</a>
-      <a data-href="/deliverables/<%= deliverable.id %>" data-edit-deliverable-target="delete" data-action="click->edit-deliverable#delete" class="deletelBtn">Delete</a>
-    </div>
+    <% if local_assigns.has_key? :show %>
+      <div class="format-link">
+        <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->edit-deliverable#edit" class="btn custom-edit-btn">Edit</a>
+        <a data-href="/deliverables/<%= deliverable.id %>" data-edit-deliverable-target="delete" data-action="click->edit-deliverable#delete" class="deletelBtn">Delete</a>
+      </div>
+    <% end %>
 
     <div class="slideOutTab" data-edit-deliverable-target="tab">
       <%= render partial: 'deliverables/update', locals: {deliverable: deliverable}%>

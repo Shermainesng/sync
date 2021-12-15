@@ -11,7 +11,7 @@
 <%# heading %>
   <div class="card-white py-3 pl-3 mb-4 d-flex align-items-center justify-content-between">
     <div>
-      <div class="review-card-title"><%=@draft.deliverable.project.brand%>: <%= @draft.deliverable.project.name %></div>
+      <div class="review-card-title"><%=@draft.deliverable.project.brand.username %>: <%= @draft.deliverable.project.name %></div>
       <div class="review-card-description"><%= @draft.deliverable.project.description %></div>
     </div>
       <% if (@draft.user != current_user) && (@draft.status!= "approved")%><a class="comment-btn" href="<%=draft_approve_path(@draft)%>">Approve this draft</a> <% end %>
