@@ -47,16 +47,18 @@ class ProjectsController < ApplicationController
       description: new[:description],
       status: 'saved'
     )
+  end
 
-    # respond_to do |format|
-    #   if @project.save
-    #     format.html { redirect_to edit_project_path(@project) }
-    #     format.json # Follow the classic Rails flow and look for a create.json view
-    #   else
-    #     format.html { render 'projects/show' }
-    #     format.json # Follow the classic Rails flow and look for a create.json view
-    #   end
-    # end
+  def sent
+    @project = Project.find(params[:project_id])
+    @project.status = "pending"
+    @project.save!
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      # format.json # Follow the classic Rails flow and look for a create.json view
+      format.text {render plain: "ok" }
+    end
+
   end
 
   def destroy
