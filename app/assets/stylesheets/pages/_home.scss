@@ -1,10 +1,10 @@
 // Specific CSS for your home-page
 .dropdown-custom {
-  border-bottom:none;
-  background: linear-gradient(to right, #9eb2fd 0%, #b692ff 100%);
-  color:white;
+  border-bottom:1px dashed $purple;
+  color:black;
 }
 .dropdown-custom:hover {
+  border:1px dashed $purple;
   color:darkgray;
 }
 .custom-row {
