@@ -44,7 +44,7 @@ document.addEventListener('turbolinks:load', () => {
   }
 
   if (notifList) {
-    setInterval(updateNotif, 10000);
+    setInterval(updateNotif, 8000);
   }
 
 });
