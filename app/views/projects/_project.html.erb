@@ -3,7 +3,14 @@
     <div class="card-white h-100 mb-4" data-delete-project-target="content">
       <div class="card-custom-body">
         <div class="card-custom-title">
-          <%= project.name %>
+          <div class="col-11 truncate pl-0">
+            <%= project.name %>
+          </div>
+          <%if project.status=="saved"%>
+            <div value="<%=project_path(project)%>" class=" col-1 trash-icon-position" data-delete-project-target="delete" data-action="click->delete-project#deleteProject">
+              <i class="fas fa-trash"></i>
+            </div>
+          <% end %>
         </div>
         <div class="d-flex align-items-center mb-3 mt-3">
           <img class="avatar" src="<%= project.user.profile_pic %>">
@@ -27,13 +34,6 @@
             <% end %>
           <% end %>
         </ul>
-        <div>
-          <%if project.status=="saved"%>
-            <div value="<%=project_path(project)%>" class="trash-icon-position" data-delete-project-target="delete" data-action="click->delete-project#deleteProject">
-              <i class="fas fa-trash"></i>
-            </div>
-          <% end %>
-        </div>
       </div>
     </div>
   </a>
