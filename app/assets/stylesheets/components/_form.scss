@@ -10,7 +10,7 @@ label.optional {
 }
 
 .form-margin-bottom {
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0.2rem !important;
 }
 
 .new-project-form {
@@ -19,13 +19,6 @@ label.optional {
   .form-group {
     margin-bottom: 0.5rem !important;
   }
-}
-
-.custom-form-layout {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  height: fit-content;
 }
 
 .add-deliverables-form {
@@ -39,19 +32,6 @@ label.optional {
 
 .form-header-details {
   display: flex;
-}
-
-.project-header-name {
-  display: flex;
-  justify-content: space-between;
-
-  .project_brand {
-    width: 49% !important;
-  }
-
-  .project_name {
-    width: 49% !important;
-  }
 }
 
 .project_project_end {
