@@ -36,15 +36,12 @@ select {
   height: auto;
 }
 
-.header {
-  font-size: 24px;
-}
-
 .action-panel {
   max-height: 220px;
   width: 100%;
   margin: 10px auto;
-  padding: 10px;
+  padding: 1rem;
+
 }
 .action-bar-categories {
   display: flex;

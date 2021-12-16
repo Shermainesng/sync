@@ -21,6 +21,7 @@ class DraftsController < ApplicationController
     @draft = Draft.new(draft_params)
     @draft.deliverable = @deliverable
     @draft.user = current_user
+    @draft.status = "pending"
     if @draft.save!
       redirect_to draft_path(@draft), notice: "Your draft has been uploaded."
     else
@@ -32,7 +33,17 @@ class DraftsController < ApplicationController
     @draft = Draft.find(params[:draft_id])
     @draft.status = "approved"
     @draft.save!
+    raise
     DraftStatus.with(draft: @draft, user: current_user, action: "approved").deliver(@draft.user)
+    redirect_to draft_path(@draft)
+  end
+
+  def reject
+    @draft = Draft.find(params[:draft_id])
+    @draft.status = "rejected"
+    @draft.save!
+    raise
+    DraftStatus.with(draft: @draft, user: current_user, action: "rejected").deliver(@draft.user)
     redirect_to draft_path(@draft)
   end
 

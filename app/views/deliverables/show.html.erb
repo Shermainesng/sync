@@ -1,31 +1,30 @@
-<div class="container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb breadcrumb-custom">
-      <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-      <li class="breadcrumb-item"><a href="/projects/<%= @project.id %>">Existing Project</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Deliverables</li>
-    </ol>
-  </nav>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="/projects/<%= @project.id %>">Existing Project</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Deliverables</li>
+  </ol>
+</nav>
 <%# heading %>
-  <div class="card-white py-3 pl-3 mb-4 d-flex align-items-center justify-content-between">
-    <div>
-      <div class="review-card-title"><%=@project.brand.username %>: <%= @project.name %></div>
-      <div class="review-card-description"><%= @project.description %></div>
-    </div>
-    <div class='pr-4'>
-      <h2><%= @project.project_end.strftime("%e %b")%></h2>
-    </div>
+<div class="card-white py-3 pl-3 mb-4">
+  <div class="d-flex justify-content-between">
+    <div class="review-card-title header-lg"><%=@project.brand.username %>: <%= @project.name %></div>
+    <div><%= @project.project_end.strftime("%e %b")%></div>
   </div>
-<div class="d-flex justify-content-between align-items-center">
+  <div class='pr-4 header-lg'>
+    <div class="review-card-description header-md"><%= @project.description %></div>
+  </div>
+</div>
+
   <%# deliverable panel %>
-  <div class="card-frosted d-flex w-100 p-3">
-    <div class="col-3">
-      <%= render partial: "deliverables/cards/project_details", collection: @deliverables, as: :deliverable %>
-    </div>
-    <div class="col-9 card-white py-4 px-3">
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="w-60 col-9">
-          <div class="deliverable-title">
+<div class="card-frosted d-flex w-100 p-3">
+  <div class="col-3">
+    <%= render partial: "deliverables/cards/project_details", collection: @deliverables, as: :deliverable %>
+  </div>
+  <div class="col-9 card-white py-4 px-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="w-60 col-9">
+          <div class="deliverable-title header-lg">
             <%= @deliverable.deliverable_type %>
           </div>
           <%= render 'deliverables/tag', deliverable: @deliverable %>
@@ -33,30 +32,29 @@
             <%= @deliverable.description %>
           </div>
         </div>
-        <% due_days = (@deliverable.due_date - Date.today).to_i  %>
-        <div class="col-3 deliverable-due-date">
-          <span class="<%if due_days<0%> overdue <%end%>">
-            <% if due_days == 0 %>
-              Due today
-            <% elsif due_days < 0 %>
-              Overdue by <%= pluralize due_days.abs, "day" %>
-            <% else %>
-              Due in <%= pluralize due_days, "day"%>
-            <% end %>
-          </span>
-          <a href="/projects/<%= @deliverable.project.id %>/edit">Edit</a>
-        </div>
+      <% due_days = (@deliverable.due_date - Date.today).to_i  %>
+      <div class="col-3 deliverable-due-date">
+        <span class="<%if due_days<0%> overdue <%end%>">
+          <% if due_days == 0 %>
+            Due today
+          <% elsif due_days < 0 %>
+            Overdue by <%= pluralize due_days.abs, "day" %>
+          <% else %>
+            Due in <%= pluralize due_days, "day"%>
+          <% end %>
+        </span>
+        <a href="/projects/<%= @deliverable.project.id %>/edit">Edit</a>
       </div>
-
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-block submit-draft my-4" data-toggle="modal" data-target="#exampleModal">
-        Submit New Draft
-      </button>
-      <% if @drafts.length.zero? %>
-        <p>No drafts yet</p>
-      <% else %>
-        <%= render @drafts %>
-      <% end %>
+    </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-block submit-draft my-4" data-toggle="modal" data-target="#exampleModal">
+      Submit New Draft
+    </button>
+    <% if @drafts.length.zero? %>
+      <p>No drafts yet</p>
+    <% else %>
+      <%= render @drafts %>
+    <% end %>
   </div>
 </div>
 
@@ -87,4 +85,3 @@
       </div>
     </div>
   </div>
-</div>

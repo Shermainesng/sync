@@ -11,10 +11,11 @@
 <%# heading %>
   <div class="card-white py-3 pl-3 mb-4 d-flex align-items-center justify-content-between">
     <div>
-      <div class="review-card-title"><%=@draft.deliverable.project.brand.username %>: <%= @draft.deliverable.project.name %></div>
-      <div class="review-card-description"><%= @draft.deliverable.project.description %></div>
+      <div class="review-card-title header-lg"><%=@draft.deliverable.project.brand.username %>: <%= @draft.deliverable.project.name %></div>
+      <div class="review-card-description header-md"><%= @draft.deliverable.project.description %></div>
     </div>
-      <% if (@draft.user != current_user) && (@draft.status!= "approved")%><a class="comment-btn" href="<%=draft_approve_path(@draft)%>">Approve this draft</a> <% end %>
+      <% if (@draft.deliverable.project.brand == current_user) && (@draft.status!= "approved")%><a class="comment-btn" href="<%=draft_approve_path(@draft)%>">Approve this draft</a> <% end %>
+      <% if (@draft.deliverable.project.brand == current_user) && (@draft.status!= "rejected")%><a class="comment-btn" href="<%=draft_reject_path(@draft)%>">Reject this draft</a> <% end %>
     <div>
     </div>
   </div>
@@ -23,7 +24,7 @@
   <div class="card-frosted draft-panel" data-controller="toggle">
     <div class="d-flex justify-content-between align-items-center">
       <div class="custom-header py-3 pl-3">
-        <h2 class="mb-0"><%= @draft.deliverable.deliverable_type %></h2>
+        <h2 class="mb-0 header-lg"><%= @draft.deliverable.deliverable_type %></h2>
         <p class='pl-1 pb-3'>Deliverable due in  <%= pluralize (@draft.deliverable.due_date - Date.today).to_i,"day"%></p>
         <h3><%= @draft.deliverable.description %></h3>
       </div>
