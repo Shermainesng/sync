@@ -11,11 +11,14 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap');
+    </style>
   </head>
 
   <body>
   <div class="custom-layout">
-    <div class="d-flex">
+    <div class="row">
       <div class="col-3 nav-stick">
         <%= render 'shared/navbar' %>
       </div>

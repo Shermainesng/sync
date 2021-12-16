@@ -3,9 +3,11 @@ class PagesController < ApplicationController
 
   def home
     date = Date.today + 7
-    @deliverables = current_user.deliverables.where("due_date <= ?", date).order(:due_date)
+    # @deliverables = current_user.deliverables.where("due_date <= ?", date).order(:due_date)
     @all = current_user.projects
     @ongoing = @all.where(status: "ongoing")
+    deliverables = Deliverable.all.where("due_date <= ?", date).order(:due_date) #array of deliverables
+    @deliverables = deliverables.select{|d| @ongoing.includes(d.project) }
     @notifications = current_user.notifications
   end
 
