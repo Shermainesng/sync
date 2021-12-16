@@ -1,0 +1,11 @@
+<% if deliverable.deliverable_type.downcase.include?("instagram")  || deliverable.deliverable_type.downcase.include?("ig") %>
+  <i class="fab fa-instagram icon"></i>
+<% elsif deliverable.deliverable_type.downcase.include?("tik tok") || deliverable.deliverable_type.downcase.include?("tiktok") || deliverable.deliverable_type.downcase.include?("tt") %>
+  <i class="fab fa-tiktok icon"></i>
+<% elsif deliverable.deliverable_type.downcase.include?("facebook") || deliverable.deliverable_type.downcase.include?("fb") %>
+  <i class="fab fa-facebook-f icon"></i>
+<% elsif deliverable.deliverable_type.downcase.include?("youtube") %>
+  <i class="fab fa-youtube icon"></i>
+<% else %>
+  <i class="fas fa-hashtag icon"></i>
+<% end %>

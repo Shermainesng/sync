@@ -8,9 +8,9 @@
       <div><%= deliverable.due_date.strftime("%Y") %></div>
     </div>
 
-    <div class="card-deliverable-content">
+    <div class="card-deliverable-content pt-1">
       <div class="card-custom-title">
-        <%= deliverable.deliverable_type.length > 35 ? deliverable.deliverable_type[0..35] + "..." : deliverable.deliverable_type %>
+        <%= render 'deliverables/icon', deliverable: deliverable %> <%= deliverable.deliverable_type.length > 35 ? deliverable.deliverable_type[0..35] + "..." : deliverable.deliverable_type %>
       </div>
     </div>
   <% end %>
@@ -25,7 +25,7 @@
 
     <div class="card-deliverable-content">
       <div class="card-custom-title">
-        <%= deliverable.deliverable_type.length > 35 ? deliverable.deliverable_type[0..35] + "..." : deliverable.deliverable_type %>
+         <%= render 'deliverables/icon', deliverable: deliverable %> <%= deliverable.deliverable_type.length > 35 ? deliverable.deliverable_type[0..35] + "..." : deliverable.deliverable_type %>
       </div>
       <div>
         <%= deliverable.description.length > 35 ? deliverable.description[0..35] + "..." : deliverable.description %>
