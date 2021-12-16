@@ -1,10 +1,11 @@
 <% deliverable.tag_list.each do |tag|%>
   <% if ["important","urgent","impt","difficult"].include? tag.downcase %> <%# impt tasks %>
-    <span class="badge badge-custom-red custom-tag-badge"><%= tag %></span>
-  <% elsif ["photoshoot","video","modelling","photography","on-site"].include? tag.downcase %> <%# what the creator has to do %>
-    <span class="badge badge-custom-purple custom-tag-badge"><%= tag %></span>
-  <% elsif ["giveaway","sponsored","promotion","advertisement"].include? tag.downcase %> <%# types of campaign %>
-    <span class="badge badge-custom-pink custom-tag-badge"><%= tag %></span>
+    <span class="badge badge-custom-red"><%= tag %></span>
+  <% elsif ["photoshoot","video","modelling","photography","on-site",'writing'].include? tag.downcase %> <%# what the creator has to do %>
+    <span class="badge badge-custom-purple"><%= tag %></span>
+  <% elsif ["giveaway","sponsored","promotion","advertisement","education"].include? tag.downcase %> <%# types of campaign %>
+    <span class="badge badge-custom-pink"><%= tag %></span>
+
   <% elsif ["review","brainstorm","ideate","creative","storytelling"].include? tag.downcase %> <%# work-method %>
     <span class="badge badge-custom-yellow custom-tag-badge"><%= tag %></span>
   <% else %>
