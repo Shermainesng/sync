@@ -3,16 +3,16 @@
   <a id="link" href="<%=path%>" class="btn-deleted" data-delete-project-target="link">
     <div class="card-white h-100 mb-4" data-delete-project-target="content">
       <div class="card-custom-body">
-        <div class="card-custom-title">
-          <div class="col-11 truncate pl-0">
+        <div class="card-custom-title header-md">
+          <div class="col-11 pl-0">
             <% if project.name == "" %>
               <p>untitled project</p>
             <% else %>
-              <p><%= project.name %></p>
+              <p class="w-100"><%= project.name.length > 16 ? project.name[0..15] + "..."  : project.name %></p>
             <% end %>
           </div>
           <%if project.status=="saved"%>
-            <div value="<%=project_path(project)%>" class=" col-1 trash-icon-position" data-delete-project-target="delete" data-action="click->delete-project#deleteProject">
+            <div value="<%=project_path(project)%>" class="col-1 trash-icon-position" data-delete-project-target="delete" data-action="click->delete-project#deleteProject">
               <i class="fas fa-trash"></i>
             </div>
           <% end %>
@@ -20,9 +20,9 @@
         <% if project.brand_id.nil? %>
           <p> Send to brand</p>
         <% else %>
-          <div class="d-flex align-items-center mb-3 mt-3">
-            <img class="avatar" src="<%= project.brand.profile_pic %>">
-            <div class="card-custom-subtitle">
+          <div class="d-flex align-items-center mb-3 mt-2">
+            <img class="avatar avatar-sm" src="<%= project.brand.profile_pic %>">
+            <div class="card-custom-subtitle header-sm">
               <%= project.brand.username %>
             </div>
           </div>
