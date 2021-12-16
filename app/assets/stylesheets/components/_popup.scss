@@ -4,7 +4,11 @@
   right: 0px;
   padding: 10px;
   border-radius: 10px 10px 0 0;
-  width: 250px;
+  width: 300px;
+  border: none;
+  color: white;
+  background-color: $primary;
+  box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
 }
 
 .close-btn {

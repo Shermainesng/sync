@@ -25,7 +25,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <div class="w-60 col-9">
           <div class="deliverable-title header-lg">
-            <%= @deliverable.deliverable_type %>
+              <%= render 'deliverables/icon', deliverable: @deliverable%> <%= @deliverable.deliverable_type %>
           </div>
           <%= render 'deliverables/tag', deliverable: @deliverable %>
           <div class="pt-2">
@@ -76,12 +76,12 @@
           </div>
           <div class="draft-text-area d-flex flex-column justify-content-center align-items-center">
             <%= f.text_area :description, placeholder: "Add your draft description here"%>
-            <%= f.submit "Submit Draft", class: "btn btn-primary" %>
+            <%= f.submit "Submit Draft", class: "btn btn-sync-primary" %>
           </div>
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sync-dark-grey" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

@@ -74,6 +74,12 @@ a {
   margin-right: 10px;
 }
 
+.icon {
+  background: -webkit-linear-gradient(#26ECA2, #03A4F5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .deliverable-due-date{
   position: absolute;
   top: 1.5rem;

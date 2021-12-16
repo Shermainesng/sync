@@ -23,10 +23,13 @@
       <div>
         <div class="review-card-title header-lg"><%= @project.name %></div>
         <div class="review-card-description header-md"><%= @project.description %></div>
+        <div class="review-card-description header-sm">Campaign ends on <%= @project.project_end.strftime("%e %b") %></div>
       </div>
-      <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <a class="btn btn-outline-primary" href="<%=edit_project_path(@project)%>">Edit Project</a>
-        <button type="button" class="btn btn-outline-primary" data-action="click->email-popup#show">Send Project</button>
+      <div class="edit-send-group">
+        <a class="btn btn-sync-light-grey btn-round" href="<%=edit_project_path(@project)%>">Edit Project</a>
+        <% if @project.status == "saved"  %>
+          <button type="button" class="btn btn-sync-primary btn-round" data-action="click->email-popup#show">Send Project</button>
+        <% end %>
       </div>
     </div>
 
@@ -37,7 +40,7 @@
   </div>
 
   <% if @project.status == "saved" %>
-    <button class="custom-popup btn-primary" data-email-popup-target="button" data-action="click->email-popup#toggle">Send project to brand</button>
+    <button class="custom-popup" data-email-popup-target="button" data-action="click->email-popup#toggle">Send project to brand</button>
     <form action="/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup d-none" style="width: 20rem;">
       <div class="form-header-details">
         <div>Send project to brand</div>

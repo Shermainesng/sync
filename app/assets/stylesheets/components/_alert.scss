@@ -3,4 +3,9 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+
+  color: $dark-grey;
+  box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
+  border: 0.1rem solid $primary !important;
+  background-color: rgba($primary, 0.2) ;
 }

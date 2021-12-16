@@ -2,14 +2,48 @@
 .btn-sync-success{
   background-color: $sync-success;
   color: white;
+  border-radius: 10px;
 }
 .btn-sync-danger{
   background-color: $sync-danger;
+  border-radius: 10px;
 }
 .btn-sync-info {
   background-color: $light-grey;
   color: $dark-grey;
+  border-radius: 10px;
 }
+
+.btn-sync-primary {
+  background-color: $primary;
+  color: white;
+  border-radius: 10px;
+}
+
+.btn-sync-blue {
+  background-color: $blue;
+  color: white;
+  border-radius: 10px;
+}
+
+.btn-sync-light-grey {
+  background-color: $light-grey;
+  color: white;
+  border-radius: 10px;
+}
+
+.btn-sync-dark-grey {
+  background-color: $dark-grey;
+  color: white;
+  border-radius: 10px;
+}
+/////
+
+// utility buttons
+.btn-round {
+  border-radius: 10px;
+}
+
 /////
 
 .cancelBtn {
@@ -113,4 +147,10 @@
   font-size: 12px;
   border-radius: 5px;
   width: 100%;
+}
+
+.edit-send-group {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
 }
