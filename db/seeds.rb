@@ -49,6 +49,46 @@ px_user = User.create!({
   profile_pic: "https://dcassetcdn.com/design_img/976333/489042/489042_5454366_976333_image.jpg"
 })
 
+dame_user = User.create!({
+  email: "brand5@gmail.com",
+  password: "123456",
+  username: "Dame",
+  first_name: "Alexandra",
+  last_name: "protein",
+  account_type: "Brand",
+  profile_pic: "data:image/png;base64,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"
+})
+
+lora_user = User.create!({
+  email: "brand6@gmail.com",
+  password: "123456",
+  username: "LoraD",
+  first_name: "Cara",
+  last_name: "protein",
+  account_type: "Brand",
+  profile_pic: "https://images.milledcdn.com/2020-10-30/FR4TOwDi6w2qAAQU/qIuuM3Z6lyxO.png"
+})
+
+hims_user = User.create!({
+  email: "brand7@gmail.com",
+  password: "123456",
+  username: "hims&hers",
+  first_name: "Keith",
+  last_name: "protein",
+  account_type: "Brand",
+  profile_pic: "data:image/png;base64,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"
+})
+
+one_user = User.create!({
+  email: "one@gmail.com",
+  password: "123456",
+  username: "ONE Condoms",
+  first_name: "Huei Huei",
+  last_name: "protein",
+  account_type: "Brand",
+  profile_pic: "https://cdn.shopify.com/s/files/1/1065/4262/files/checkout_logo_3_e6b29679-8a10-437b-a177-eaff910b7c84.png"
+})
+
 User.create!({
   email: "testuser@gmail.com",
   password: "123456",
@@ -113,7 +153,7 @@ User.create!({
     name: "Polyamory #Unicorn",
     project_end: '2022-02-01',
     status: 'ongoing',
-    description: "Promote Rachel Lark's song about polyamory",
+    description: "Promote Rachel Lark's song 'Unicorn', which takes a hilarious look at polyamory",
     brand_id: syn_user.id
   })
     puts "Creating deliverables for #{Project.last.name}"
@@ -126,11 +166,20 @@ User.create!({
     })
     polyamorous_deliv1.tag_list.add("video, creative", parse: true)
     polyamorous_deliv1.save!
+
+    polyamorous_deliv2 = Deliverable.create!({
+      project: polyamorous,
+      deliverable_type: "Podcast ad",
+      due_date: '2022-01-16',
+      description:"Play Rachel's song in our podcast episode and mention her name"
+    })
+    polyamorous_deliv2.tag_list.add("promotion, podcast", parse: true)
+    polyamorous_deliv2.save!
 #project 3
   pinklifestyle = Project.create!({
     user: User.last,
     name: "Womanizer 2.0",
-    project_end: '2021-01-24',
+    project_end: '2022-01-24',
     status: 'ongoing',
     description: "Womanizer has launched its brand new vibe! Doing a soft launch on their socials",
     brand_id: pl_user.id
@@ -199,4 +248,93 @@ User.create!({
       px_deliv1.tag_list.add("interview, storytelling", parse: true)
       px_deliv1.save
 
-puts "All done!"
+#project 5
+  dame = Project.create!({
+    user: User.last,
+    name: "Get in Touch w Yourself",
+    project_end: '2022-02-20',
+    status: 'ongoing',
+    description: "Empowering young women to own their pleasures",
+    brand_id: dame_user.id
+  })
+
+    dame_deliv1 = Deliverable.create!({
+      project: dame,
+      deliverable_type: "Youtube Video",
+      due_date: '2021-12-28',
+      description:"A youtube video that reviews some of Dame's products, in a Singaporean context."
+    })
+      dame_deliv1.tag_list.add("video, difficult", parse: true)
+      dame_deliv1.save
+
+    dame_deliv2 = Deliverable.create!({
+      project: dame,
+      deliverable_type: "Tiktok Vid",
+      due_date: '2021-12-25',
+      description:"A empowering video about how Singaporean women can take control of their own pleasure"
+    })
+      dame_deliv2.tag_list.add("creative,storytelling", parse: true)
+      dame_deliv2.save
+
+    dame_deliv3 = Deliverable.create!({
+      project: dame,
+      deliverable_type: "Blog Post",
+      due_date: '2022-01-29',
+      description:"An article of how Singaporeans can benefit from masturbating"
+    })
+      dame_deliv3.tag_list.add("writing,education", parse: true)
+      dame_deliv3.save
+
+  lora = Project.create!({
+    user: User.last,
+    name: "Bringing joy to SEA",
+    project_end: '2022-02-20',
+    status: 'ongoing',
+    description: "Promote Lora's toys to SEA audiences, via our socials",
+    brand_id: lora_user.id
+  })
+    lora_deliv1 = Deliverable.create!({
+      project: lora,
+      deliverable_type: "Tiktok Vid",
+      due_date: '2021-12-26',
+      description:"A 10secs video about how Cara Delevigne has her own sex toy brand"
+    })
+      lora_deliv1.tag_list.add("advertisement", parse: true)
+      lora_deliv1.save
+
+    lora_deliv2 = Deliverable.create!({
+      project: lora,
+      deliverable_type: "Blog Post",
+      due_date: '2021-12-26',
+      description:"Talk about how the founder has built her own empire"
+    })
+      lora_deliv2.tag_list.add("writing,storytelling", parse: true)
+      lora_deliv2.save
+
+  hims= Project.create!({
+    user: User.last,
+    name: "Last longer and harder",
+    project_end: '2022-01-15',
+    status: 'ongoing',
+    description: "Promote hims supplements for ED and PE, and how they can benefit men",
+    brand_id: hims_user.id
+  })
+
+    hims_deliv1 = Deliverable.create!({
+      project: hims,
+      deliverable_type: "Tiktok Vid",
+      due_date: '2022-01-15',
+      description:"A short and entertaining vid on how PE can ruin one's sex life"
+    })
+      hims_deliv1.tag_list.add("funny,video", parse: true)
+      hims_deliv1.save
+
+    hims_deliv2 = Deliverable.create!({
+      project: hims,
+      deliverable_type: "Tiktok Vid",
+      due_date: '2022-01-15',
+      description:"A short and entertaining vid on how PE can ruin one's sex life"
+    })
+      hims_deliv2.tag_list.add("funny,video", parse: true)
+      hims_deliv2.save
+  puts "All done!"
