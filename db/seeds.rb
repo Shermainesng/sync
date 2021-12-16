@@ -126,8 +126,8 @@ User.create!({
       })
       gv_draft1.user = User.last
       gv_draft1.attachments = [
-        File.open(File.join(Rails.root, "app/assets/images/GV1.jpg")),
-        File.open(File.join(Rails.root, "app/assets/images/GV2.jpg"))
+        File.open(File.join(Rails.root, "uploads/draft/attachments/7/GV1.jpg")),
+        File.open(File.join(Rails.root, "uploads/draft/attachments/7/GV2.jpg"))
       ]
       gv_draft1.save!
 
