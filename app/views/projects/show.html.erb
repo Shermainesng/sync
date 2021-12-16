@@ -23,7 +23,7 @@
       <div>
         <div class="review-card-title header-lg"><%= @project.name %></div>
         <div class="review-card-description header-md"><%= @project.description %></div>
-        <div class="review-card-description header-sm">Campaign ends on <%= @project.project_end.strftime("%e %b") %></div>
+        <div class=" header-sm end-date">Campaign ends on <%= @project.project_end.strftime("%e %b") %></div>
       </div>
       <div class="edit-send-group">
         <a class="btn btn-sync-light-grey btn-round" href="<%=edit_project_path(@project)%>">Edit Project</a>

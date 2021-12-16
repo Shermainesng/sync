@@ -124,11 +124,9 @@ a.deliverable-card:hover {
 .card-white-less-radius-urgent {
   border-radius: 5px;
   box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
-  border: 0.3rem solid $sync-danger !important;
-  // background-color: rgba($sync-danger,0.1) ;
-
+  border: 0.1rem solid $red !important;
   background-color: white;
-  backdrop-filter: hue-rotate(20);
+  background-image: linear-gradient(165deg, white, #fd2d2d2e);
 }
 .deliverable-type {
 font-size: 24px;
