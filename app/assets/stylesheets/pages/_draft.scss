@@ -39,7 +39,7 @@
 
   p {
     line-height: 10px;
-    font-size:12px;
+    font-size:13px;
     vertical-align: middle;
     margin: 2px 0px;
   }
@@ -50,4 +50,10 @@ a.see-more {
   text-decoration: none;
   text-align: right;
   margin-bottom: 10px;
+}
+
+.draft-status {
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
 }

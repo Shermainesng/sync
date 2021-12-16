@@ -6,7 +6,7 @@
           <img src="<%=comment.user.profile_pic%>" alt="avatar" class="avatar">
         </div>
         <div>
-          <p><%= comment.user.first_name %></p>
+          <p class="mb-2"><%= comment.user.first_name %></p>
           <p>
             <% if (Time.now - comment.created_at)< 1.hour%>
               <%= distance_of_time_in_words_to_now(comment.created_at)%> ago

@@ -9,7 +9,7 @@
     <% if @project.status == "saved" %>
       <%= render 'form' %>
     <% else %>
-    <div class="card-white">
+    <div class="card-white py-3 px-3 mb-4 ">
       <div class="review-card-title header-lg"><%= @project.name %></div>
       <div class="review-card-description header-md"><%= @project.description %></div>
     </div>
@@ -19,7 +19,9 @@
   <div class="deliverable-form-show card-frosted my-3 p-3" data-controller="insert-deliverables">
     <div class="col-6">
       <% if @project.deliverables.empty? %>
-        <div data-insert-deliverables-target="message">Add your first deliverable here!</div>
+        <div data-insert-deliverables-target="message" class="text-muted text-center">
+          Nothing here yet. Add your first deliverable!
+        </div>
       <% end %>
 
       <div class="custom-list">

@@ -5,7 +5,7 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-custom">
           <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Existing Project</li>
+          <li class="breadcrumb-item active" aria-current="page">Review Project: <%= @project.name %></li>
         </ol>
       </nav>
     <% else %>
@@ -31,7 +31,7 @@
     </div>
 
     <div class="card-frosted d-flex flex-column p-2">
-      <div class="review-card-description pt-3 pl-3">Deliverables</div>
+      <div class="review-card-description header-md pt-3 pl-3"><%= pluralize @deliverables.length, "deliverable" %> in this project</div>
       <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
     </div>
   </div>

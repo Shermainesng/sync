@@ -31,7 +31,7 @@ class DeliverablesController < ApplicationController
 
   def show
     @project = @deliverable.project
-    @deliverables = @project.deliverables
+    @deliverables = @project.deliverables.order(:due_date)
     @drafts = @deliverable.drafts.order(created_at: :desc)
     @new_draft = Draft.new
   end
