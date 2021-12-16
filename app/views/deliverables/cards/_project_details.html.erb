@@ -10,7 +10,7 @@
 
     <div class="card-deliverable-content">
       <div class="card-custom-title">
-        <%= deliverable.deliverable_type > 35 ? deliverable.deliverable_type[0..35] + "..." : deliverable.deliverable_type %>
+        <%= deliverable.deliverable_type.length > 35 ? deliverable.deliverable_type[0..35] + "..." : deliverable.deliverable_type %>
       </div>
     </div>
   <% end %>
