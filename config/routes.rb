@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :drafts, only: [:show] do
     resources :comments, only: [:index, :new, :create]
     get 'approve', to: 'drafts#approve'
+    get 'reject', to: 'drafts#reject'
   end
 
   resources :comments, only: [:show] do

@@ -1,7 +1,24 @@
-<% @projects.each do |proj| %>
-<div class="row">
-  <div class="col-4"><%= link_to proj.name, project_path(proj) %>:</div>
-  <div class="col-4"> <%= proj.status %> <%if proj.status == "pending"%></div>
-  <div class="col-4"><%= link_to  "confirm project", project_confirm_path(proj), class: "btn btn-primary" %><% end %></div>
+<div class="card-frosted px-2">
+  <% @projects.each do |proj| %>
+  <div class="row">
+    <div class="col-4">
+      <%= link_to proj.name, project_path(proj),class: "text-decoration=none text-dark" %>:
+    </div>
+    <div class="col-4">
+      <% if proj.brand_id.nil? %>
+        <p>no brand yet</p>
+      <% else %>
+        <%= link_to proj.brand.username%>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <%= proj.status %>
+    </div>
+    <%if proj.status == "pending"%>
+      <div class="col-4">
+        <%= link_to  "confirm project", project_confirm_path(proj), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
 </div>
-<% end %>
