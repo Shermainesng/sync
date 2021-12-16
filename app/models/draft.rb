@@ -3,4 +3,5 @@ class Draft < ApplicationRecord
   belongs_to :deliverable
   has_many :comments, dependent: :destroy
   belongs_to :user
+
 end
