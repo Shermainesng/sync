@@ -6,10 +6,10 @@
   </ol>
 </nav>
 <%# heading %>
-<div class="card-white py-3 pl-3 mb-4">
-  <div class="d-flex justify-content-between">
+<div class="card-white p-3 mb-4">
+  <div class="d-flex align-items-center">
     <div class="review-card-title header-lg"><%=@project.brand.username %>: <%= @project.name %></div>
-    <div><%= @project.project_end.strftime("%e %b")%></div>
+    <div class="review-card-date"><%= @project.project_end.strftime("%e %b")%></div>
   </div>
   <div class='pr-4 header-lg'>
     <div class="review-card-description header-md"><%= @project.description %></div>
