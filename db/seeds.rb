@@ -1,17 +1,20 @@
-puts "Cleaning users"
-User.destroy_all
-puts "Cleaning projects"
-Project.destroy_all
+require 'pry-byebug'
+
 puts "Cleaning deliverables"
 Deliverable.destroy_all
+puts "Cleaning projects"
+Project.destroy_all
+puts "Cleaning users"
+User.destroy_all
 
 puts "Creating brand and main user"
+
 
 gv_user = User.create!({
   email: "brand1@gmail.com",
   password: "123456",
   username: "GoodVibesOnly",
-  first_name: "Josh",
+  first_name: "Meryl",
   last_name: "protein",
   account_type: "Brand",
   profile_pic: "https://media-exp1.licdn.com/dms/image/C560BAQFCE905w1ontQ/company-logo_200_200/0/1619769400393?e=2159024400&v=beta&t=XQCvNbVz_H2S1fSGnpe2pfbI25WWr2_ZOwzODNBk1BQ"
@@ -21,7 +24,7 @@ syn_user = User.create!({
   email: "brand2@gmail.com",
   password: "123456",
   username: "TheSyn",
-  first_name: "Meryl",
+  first_name: "Josh",
   last_name: "protein",
   account_type: "Brand",
   profile_pic: "https://pbs.twimg.com/profile_images/1367579036390744069/apUbZjTe_400x400.jpg"
@@ -35,6 +38,16 @@ pl_user = User.create!({
   last_name: "protein",
   account_type: "Brand",
   profile_pic: "https://pbs.twimg.com/profile_images/796310707050409984/u0femTwg_400x400.jpg"
+})
+
+px_user = User.create!({
+  email: "brand4@gmail.com",
+  password: "123456",
+  username: "Project X",
+  first_name: "Celine",
+  last_name: "protein",
+  account_type: "Brand",
+  profile_pic: "https://dcassetcdn.com/design_img/976333/489042/489042_5454366_976333_image.jpg"
 })
 
 User.create!({
@@ -61,7 +74,7 @@ User.create!({
     gv_deliv1 = Deliverable.create!({
       project: goodvibesonly,
       deliverable_type: "IG Post",
-      due_date: '2021-12-20',
+      due_date: '2021-12-17',
       description:"Create a post about self-care, and find a way to introduce the brand new sex bomb"
     })
     gv_deliv1.tag_list.add("urgent, advertisement", parse: true)
@@ -69,31 +82,26 @@ User.create!({
 
       gv_draft1 = Draft.new({
         deliverable: gv_deliv1,
-        attachment: Faker::Placeholdit.image(format: 'jpg'),
         description: "A perfect gift for a friend/partner! Get 10% off by using promo code HELA. Limited stocks!!",
         status: "rejected"
       })
       gv_draft1.user = User.last
+      gv_draft1.attachments = [
+        File.open(File.join(Rails.root, "app/assets/images/GV1.jpg")),
+        File.open(File.join(Rails.root, "app/assets/images/GV2.jpg"))
+      ]
 
         gv_draft1_comment1 = Comment.new({
             user: gv_user,
             draft: gv_draft1,
-            content: "Copy sounds good, but could you use a different image? You may use one of the photos we provided"
+            content: "Copy sounds good, but could you use a different background? This might be too distracting"
           })
           gv_draft1_comment1.save!
-
-      gv_draft2 = Draft.new({
-        deliverable: gv_deliv1,
-        attachment: Faker::Placeholdit.image(format: 'jpg'),
-        description: "A perfect gift for a friend/partner! Get 10% off by using promo code HELA. Limited stocks!!",
-        status: "in progress"
-      })
-      gv_draft1.user = User.last
 
     gv_deliv2 = Deliverable.create!({
       project: goodvibesonly,
       deliverable_type: "Tiktok Vid",
-      due_date: '2021-12-17',
+      due_date: '2021-12-24',
       description:"10 seconds Tiktok vid that features the sex bomb in water. Use viral track"
     })
     gv_deliv2.tag_list.add("video, funny", parse: true)
@@ -105,7 +113,7 @@ User.create!({
     name: "Polyamory #Unicorn",
     project_end: '2022-02-01',
     status: 'ongoing',
-    description: "Promote Rachel Lark's about polyamory",
+    description: "Promote Rachel Lark's song about polyamory",
     brand_id: syn_user.id
   })
     puts "Creating deliverables for #{Project.last.name}"
@@ -122,7 +130,7 @@ User.create!({
   pinklifestyle = Project.create!({
     user: User.last,
     name: "Womanizer 2.0",
-    project_end: '2021-01-20',
+    project_end: '2021-01-24',
     status: 'ongoing',
     description: "Womanizer has launched its brand new vibe! Doing a soft launch on their socials",
     brand_id: pl_user.id
@@ -132,7 +140,7 @@ User.create!({
     pl_deliv1 = Deliverable.create!({
       project: pinklifestyle,
       deliverable_type: "IG Post",
-      due_date: '2021-12-17',
+      due_date: '2021-12-18',
       description:"Create a post that sells the product, and also encourage our followers to participate in our giveaway"
     })
     pl_deliv1.tag_list.add("photoshoot, giveaway", parse: true)
@@ -172,5 +180,23 @@ User.create!({
     pl_deliv2.tag_list.add("video, giveaway", parse: true)
     pl_deliv2.save
 
+#project 4
+  projectx = Project.create!({
+    user: User.last,
+    name: "Destigmatize",
+    project_end: '2021-01-23',
+    status: 'pending',
+    description: "To spread awareness about the exploitation of sex workers",
+    brand_id: px_user.id
+  })
+  puts "Creating deliverables for #{Project.last.name}"
+    px_deliv1 = Deliverable.create!({
+        project: projectx,
+        deliverable_type: "IG Post",
+        due_date: '2021-01-20',
+        description:"Interview with a sex worker to get the inside scoop, and summarize the story in a post"
+      })
+      px_deliv1.tag_list.add("interview, storytelling", parse: true)
+      px_deliv1.save
 
 puts "All done!"

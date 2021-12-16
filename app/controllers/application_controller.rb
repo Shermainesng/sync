@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :account_type])
   end
+
+  def default_url_options
+    { host: ENV["https://www.syncnergy.live/"] || "localhost:3000" }
+  end
 end
