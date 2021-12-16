@@ -88,7 +88,9 @@
         <div class="col-4">
           <div class="comments-list">
             <div class="new-comment">
-              <a class="comment-btn block-btn" data-toggle-target="button" data-action="click->toggle#newComment">Add new comment</a>
+              <div class="comment-btn block-btn" data-toggle-target="button" data-action="click->toggle#newComment">
+                <i class="fas fa-comments mx-2"></i>Add new comment
+              </div>
               <div data-toggle-target="commentForm" class="d-none">
                 <%= render 'comments/new'%>
               </div>
