@@ -16,4 +16,9 @@ class Deliverable < ApplicationRecord
       "in progress"
     end
   end
+
+  def project_status
+    self.project.status
+  end
+
 end
