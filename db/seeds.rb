@@ -1,4 +1,3 @@
-require 'pry-byebug'
 
 puts "Cleaning deliverables"
 Deliverable.destroy_all
