@@ -7,8 +7,6 @@ class ProjectsController < ApplicationController
   def index
     @projects = apply_scopes(Project).all
     respond_to do |format|
-      # format.json {render json: { status: "ok" } }
-      # format.text {render plain: "ok"}
 
       format.html { redirect_to root_path }
       format.text { render partial: 'projects/project', collection: @projects, as: :project, formats: [:html] }
@@ -73,10 +71,9 @@ class ProjectsController < ApplicationController
   def confirm
     @project = Project.find(params[:project_id])
     @project.status = "ongoing"
-    @project.brand = current_user
+    @project.brand_id = current_user.id
     @project.save!
     ProjectStatus.with(project: @project, action: "confirmed", user: current_user).deliver(@project.user)
-
     redirect_to('/test')
   end
 
