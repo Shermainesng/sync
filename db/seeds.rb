@@ -254,7 +254,7 @@ User.create!({
     name: "Get in Touch w Yourself",
     project_end: '2022-02-20',
     status: 'ongoing',
-    description: "Empowering young women to own their pleasures",
+    description: "Empowering young women to own their pleasures, and break the stigma that embracing pleasure is wrong",
     brand_id: dame_user.id
   })
 
@@ -290,7 +290,7 @@ User.create!({
     name: "Bringing joy to SEA",
     project_end: '2022-02-20',
     status: 'ongoing',
-    description: "Promote Lora's toys to SEA audiences, via our socials",
+    description: "Promote Lora's toys to SEA audiences, via our socials. Women's sexual empowerment and confidence.",
     brand_id: lora_user.id
   })
     lora_deliv1 = Deliverable.create!({
