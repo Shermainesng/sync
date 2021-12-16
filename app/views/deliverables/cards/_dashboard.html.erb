@@ -10,7 +10,11 @@
           <%= deliverable.due_date.strftime("%e") %>,
           <%= deliverable.due_date.strftime("%a") %>
         </div>
-        <div><%= deliverable.project.brand.username.length > 15 ? deliverable.project.brand.username[0..15] + "..."  : deliverable.project.brand.username %></div>
+        <% if deliverable.project.brand.nil? %>
+          <div>"untitled"</div>
+        <% else %>
+          <div><%= deliverable.project.brand.username.length > 15 ? deliverable.project.brand.username[0..15] + "..."  : deliverable.project.brand.username %></div>
+        <% end %>
         <div><%= deliverable.project.name.length > 14 ? deliverable.project.name[0..14] + "..."  : deliverable.project.name %></div>
         <div><%= deliverable.deliverable_type.length > 15 ? deliverable.deliverable_type[0..15] + "..."  : deliverable.deliverable_type %></div>
         <div class="truncate">

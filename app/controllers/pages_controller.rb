@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     @all = current_user.projects
     @ongoing = @all.where(status: "ongoing")
     deliverables = Deliverable.all.where("due_date <= ?", date).order(:due_date) #array of deliverables
-    @deliverables = deliverables.select{|d| @ongoing.includes(d.project) }
+    @deliverables = deliverables.select{|d| d.project_status == "ongoing" }
     @notifications = current_user.notifications
   end
 
