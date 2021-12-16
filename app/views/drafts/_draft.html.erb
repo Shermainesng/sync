@@ -5,8 +5,8 @@
       <%= draft.created_at.strftime("%b %e, %a") %>
     </div>
     <div class="summary">
-      <div class="description truncate">
-        <p class="text-left"><%= draft.description %></p>
+      <div class="description pr-1">
+        <p class="text-left"><%= draft.description.length > 85 ? draft.description[0..85] + "..." : draft.description %></p>
       </div>
       <div class="status">
         <%
