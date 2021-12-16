@@ -102,12 +102,11 @@ a.deliverable-card:hover {
 .date-cat {
   font-size:larger;
   font-weight:bold;
-  padding-left:10px;
   padding-bottom:7px;
 }
 .card-white-and-date {
   padding: 16px 16px 0 16px;
-  width:75%;
+  width:90%;
 }
 .card-white-and-date a {
   text-decoration: none;
@@ -124,6 +123,7 @@ a.deliverable-card:hover {
 .card-white-less-radius-urgent {
   border-radius: 5px;
   background: $sync-danger;
+  box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
 }
 .deliverable-type {
 font-size: 24px;
@@ -220,10 +220,6 @@ font-weight: bold;
   white-space: nowrap;
 }
 //end
-
-// .card-long {
-//   width: 550px;
-// }
 
 .card-equal-size {
   height: max-content;

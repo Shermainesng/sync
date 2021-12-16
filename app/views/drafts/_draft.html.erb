@@ -8,17 +8,18 @@
       <div class="description pr-1">
         <p class="text-left"><%= draft.description.length > 85 ? draft.description[0..85] + "..." : draft.description %></p>
       </div>
-      <div class="flex-grow-1">
-      <% case draft.status%>
-      <% when "approved" %>
-        <p class="btn btn-sync-success view-draft-btn">Draft approved</p>
-      <% when "pending" %>
-        <p class="btn btn-sync-info view-draft-btn">Awaiting review </p>
-      <% when "rejected" %>
-        <p class="btn btn-sync-danger view-draft-btn">Rejected, view comments</p>
-      <% else %>
-        <p class="btn btn-primary view-draft-btn">View draft</p>
-      <% end %>
+      <div class="status">
+        <%
+        btn_color = case draft.status
+          when "pending"
+          "btn-sync-info"
+          when "approved"
+          "btn-sync-success"
+          when "rejected"
+          "btn-sync-danger"
+          end
+            %>
+        <p class="btn <%=btn_color%> view-draft-btn"><%= draft.status %></p>
       </div>
     </div>
   </div>

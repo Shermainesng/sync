@@ -12,6 +12,14 @@ class DraftsController < ApplicationController
   def show
     @draft = Draft.find(params[:id])
     @deliverable = @draft.deliverable
+    @status_color = case @draft.status
+                    when "pending"
+                      "btn-sync-info"
+                    when "approved"
+                      "btn-sync-success"
+                    when "rejected"
+                      "btn-sync-danger"
+                    end
     @comments = @draft.comments.select { |comment| comment.parent_id.nil?}
     @comment = Comment.new
   end
