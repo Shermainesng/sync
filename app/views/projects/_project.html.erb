@@ -8,7 +8,7 @@
             <% if project.name == "" %>
               <p>untitled project</p>
             <% else %>
-              <p class="w-100"><%= project.name.length > 16 ? project.name[0..15] + "..."  : project.name %></p>
+              <p class="w-100"><%= project.name.length > 24 ? project.name[0..23] + "..."  : project.name %></p>
             <% end %>
           </div>
           <%if project.status=="saved"%>
