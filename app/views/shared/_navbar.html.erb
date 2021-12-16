@@ -1,5 +1,5 @@
 <div class="card h-100 px-3 py-2 card-white">
-  <a href="/" class="logo"><h2>Sync</h2></a>
+  <a href="/" class="logo">Sync</a>
   <a href="<%=new_project_path%>" class="submit-form-btn btn-bold btn-linkless">+ New project</a>
   <div class="custom-profile">
     <% if current_user.present? %>
@@ -10,11 +10,6 @@
       <strong>Sign in!</strong>
     <% end %>
   </div>
-  <div>
-    <p>Hello, <%= current_user.username %></p>
-    <p>It's <%=Time.now.strftime("%e %b %Y") %>
-  </div>
-
   <% if user_signed_in? %>
     <div class="notification-panel section">
       <h4>Notifications</h4>
