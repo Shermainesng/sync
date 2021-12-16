@@ -10,9 +10,9 @@
           <%= deliverable.due_date.strftime("%e") %>,
           <%= deliverable.due_date.strftime("%a") %>
         </div>
-        <div class="truncate"><%= deliverable.project.brand.username %></div>
-        <div class="truncate"><%= deliverable.project.name %></div>
-        <div class="truncate"><%= deliverable.deliverable_type %></div>
+        <div><%= deliverable.project.brand.username.length > 15 ? deliverable.project.brand.username[0..15] + "..."  : deliverable.project.brand.username %></div>
+        <div><%= deliverable.project.name.length > 14 ? deliverable.project.name[0..14] + "..."  : deliverable.project.name %></div>
+        <div><%= deliverable.deliverable_type.length > 15 ? deliverable.deliverable_type[0..15] + "..."  : deliverable.deliverable_type %></div>
         <div class="truncate">
           <%= render 'deliverables/tag', deliverable: deliverable %>
         </div>
