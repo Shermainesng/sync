@@ -9,3 +9,30 @@
   text-align: center;
   padding: 0 5px;
 }
+
+.bordeless-input {
+  border: none !important;
+  // background-image: linear-gradient(#bdbdbd, #bdbdbd) !important;
+  background-size: 0% 2px !important;
+  background-position: bottom left !important;
+  font-size: 18px !important;
+  background-image: linear-gradient($blue, $pink) !important;
+  border-bottom: 0.5px solid $light-grey !important;
+  transition: 500ms;
+}
+
+.bordeless-input:focus {
+  border: 1px solid #ced4da !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-size: 100% 2px !important;
+}
+
+.project_project_end {
+  padding-left: 0.75rem;
+}
+
+.select-padding {
+  margin: 0 !important;
+}
