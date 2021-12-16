@@ -8,8 +8,10 @@
       <div><%= deliverable.due_date.strftime("%Y") %></div>
     </div>
 
-    <div class="card-deliverable-content truncate">
-      <div class="card-custom-title truncate"><%= deliverable.deliverable_type %></div>
+    <div class="card-deliverable-content">
+      <div class="card-custom-title">
+        <%= deliverable.deliverable_type > 35 ? deliverable.deliverable_type[0..35] + "..." : deliverable.deliverable_type %>
+      </div>
     </div>
   <% end %>
 
@@ -22,13 +24,15 @@
     </div>
 
     <div class="card-deliverable-content">
-      <div class="card-custom-title truncate"><%= deliverable.deliverable_type %></div>
-        <div class="truncate">
-          <%= deliverable.description %>
-        </div>
-        <div>
-          <%= render 'deliverables/tag', deliverable: deliverable %>
-        </div>
+      <div class="card-custom-title">
+        <%= deliverable.deliverable_type.length > 35 ? deliverable.deliverable_type[0..35] + "..." : deliverable.deliverable_type %>
+      </div>
+      <div>
+        <%= deliverable.description.length > 35 ? deliverable.description[0..35] + "..." : deliverable.description %>
+      </div>
+      <div>
+        <%= render 'deliverables/tag', deliverable: deliverable %>
+      </div>
     </div>
       <div class="format-link">
         <a data-href="/deliverables/<%= deliverable.id %>/edit" data-action="click->edit-deliverable#edit" class="btn custom-edit-btn">Edit</a>
