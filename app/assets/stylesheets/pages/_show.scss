@@ -97,3 +97,18 @@ a {
   color:black !important;
   background-color: lightgray;
 }
+
+.end-date {
+    position: absolute;
+    width: auto;
+    top: 0px;
+    right: 32px;
+    background-color: $primary;
+    box-shadow: 2px 2px 8px 3px rgba(176, 176, 176, 0.3);
+    color: white;
+    height: 32px;
+    margin-top: -32px;
+    transition: 300ms;
+    transform: translateY(100%);
+    z-index: -1;
+}
