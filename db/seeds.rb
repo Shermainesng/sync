@@ -89,6 +89,7 @@ User.create!({
         File.open(File.join(Rails.root, "app/assets/images/GV1.jpg")),
         File.open(File.join(Rails.root, "app/assets/images/GV2.jpg"))
       ]
+      gv_draft1.save!
 
         gv_draft1_comment1 = Comment.new({
             user: gv_user,

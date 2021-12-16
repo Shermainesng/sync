@@ -42,7 +42,7 @@
         <div class="col-8">
           <div class="pl-3">
             <div class='d-flex flex-column justify-content-start pb-5 pl-2 preview card-frosted'>
-              <% unless @draft.attachment.nil? %>
+              <% unless @draft.attachments.nil? %>
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators">
                   <% @draft.attachments.each_with_index do |attachment,index| %>
