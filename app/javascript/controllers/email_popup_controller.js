@@ -7,6 +7,7 @@ export default class extends Controller {
   toggle(e) {
     this.emailTarget.classList.toggle("d-none")
     this.buttonTarget.classList.toggle("d-none")
+    this.emailTarget.classList.remove("primary-background")
   }
 
   show(e) {
