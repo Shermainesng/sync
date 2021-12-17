@@ -116,7 +116,7 @@ User.create!({
       due_date: '2021-12-17',
       description:"Create a post about self-care, and find a way to introduce the brand new sex bomb"
     })
-    gv_deliv1.tag_list.add("urgent, advertisement", parse: true)
+    gv_deliv1.tag_list.add("urgent", parse: true)
     gv_deliv1.save!
 
       gv_draft1 = Draft.new({
