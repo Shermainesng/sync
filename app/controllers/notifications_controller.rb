@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
     if @notifications.empty?
       respond_to do |format|
         format.html { redirect_to root_path }
-        format.text { render plain: "<p>No notifications yet</p>" }
+        format.text { render partial: 'shared/no_notifs', formats: [:html]}
       end
     else
       respond_to do |format|
