@@ -5,10 +5,9 @@
     <span class="badge badge-custom-purple"><%= tag %></span>
   <% elsif ["giveaway","sponsored","promotion","advertisement","education"].include? tag.downcase %> <%# types of campaign %>
     <span class="badge badge-custom-pink"><%= tag %></span>
-
   <% elsif ["review","brainstorm","ideate","creative","storytelling"].include? tag.downcase %> <%# work-method %>
-    <span class="badge badge-custom-yellow custom-tag-badge"><%= tag %></span>
+    <span class="badge badge-custom-yellow"><%= tag %></span>
   <% else %>
-    <span class="badge badge-custom-blue custom-tag-badge"><%= tag %></span>
+    <span class="badge badge-custom-blue"><%= tag %></span>
   <% end %>
 <% end %>
