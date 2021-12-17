@@ -189,7 +189,7 @@ User.create!({
     pl_deliv1 = Deliverable.create!({
       project: pinklifestyle,
       deliverable_type: "IG Post",
-      due_date: '2021-12-18',
+      due_date: '2021-12-19',
       description:"Create a post that sells the product, and also encourage our followers to participate in our giveaway"
     })
     pl_deliv1.tag_list.add("photoshoot, giveaway", parse: true)

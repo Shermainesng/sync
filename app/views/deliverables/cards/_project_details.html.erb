@@ -1,7 +1,7 @@
 <% if @project.status != 'saved' %>
   <% active = deliverable.id == params[:id].to_i ? "deliverable-active" : "" %>
 
-  <%= link_to deliverable_path(deliverable), class: "deliverable-edit p-1 m-1 card-animation #{active}", data: {controller: "toggle", toggle_target: "card", action: "click->toggle#highlight"} do %>
+  <%= link_to deliverable_path(deliverable), class: "deliverable-edit border-grey p-1 m-1 card-animation #{active}", data: {controller: "toggle", toggle_target: "card", action: "click->toggle#highlight"} do %>
     <div class="deliverable-edit-date">
       <div><%= deliverable.due_date.strftime("%b") %></div>
       <div><%= deliverable.due_date.strftime("%e") %></div>
@@ -16,7 +16,7 @@
   <% end %>
 
 <% else %>
-  <div class="deliverable-edit p-1 m-1" data-controller="edit-deliverable" data-edit-deliverable-target="details">
+  <div class="deliverable-edit p-1 m-1 card-white" data-controller="edit-deliverable" data-edit-deliverable-target="details">
     <div class="deliverable-edit-date">
       <div><%= deliverable.due_date.strftime("%b") %></div>
       <div><%= deliverable.due_date.strftime("%e") %></div>

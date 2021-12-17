@@ -75,7 +75,7 @@
             <%= f.file_field :attachments, multiple: true, class: "custom-file-upload" %>
           </div>
           <div class="draft-text-area d-flex flex-column justify-content-center align-items-center">
-            <%= f.text_area :description, placeholder: "Add your draft description here"%>
+            <%= f.text_area :description, placeholder: "Add your draft description here", class: "p-2" %>
             <%= f.submit "Submit Draft", class: "btn btn-sync-primary" %>
           </div>
         <% end %>
