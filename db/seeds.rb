@@ -13,7 +13,7 @@ gv_user = User.create!({
   email: "brand1@gmail.com",
   password: "123456",
   username: "GoodVibesOnly",
-  first_name: "Meryl",
+  first_name: "GoodVibesOnly",
   last_name: "protein",
   account_type: "Brand",
   profile_pic: "https://media-exp1.licdn.com/dms/image/C560BAQFCE905w1ontQ/company-logo_200_200/0/1619769400393?e=2159024400&v=beta&t=XQCvNbVz_H2S1fSGnpe2pfbI25WWr2_ZOwzODNBk1BQ"
@@ -83,7 +83,7 @@ one_user = User.create!({
   email: "one@gmail.com",
   password: "123456",
   username: "ONE Condoms",
-  first_name: "Huei Huei",
+  first_name: "ONE",
   last_name: "protein",
   account_type: "Brand",
   profile_pic: "https://cdn.shopify.com/s/files/1/1065/4262/files/checkout_logo_3_e6b29679-8a10-437b-a177-eaff910b7c84.png"
@@ -119,24 +119,18 @@ User.create!({
     gv_deliv1.tag_list.add("urgent", parse: true)
     gv_deliv1.save!
 
-      gv_draft1 = Draft.new({
-        deliverable: gv_deliv1,
-        description: "A perfect gift for a friend/partner! Get 10% off by using promo code HELA. Limited stocks!!",
-        status: "rejected"
-      })
-      gv_draft1.user = User.last
-      gv_draft1.attachments = [
-        File.open(File.join(Rails.root, "app/assets/images/GV1.jpg")),
-        File.open(File.join(Rails.root, "app/assets/images/GV2.jpg"))
-      ]
-      gv_draft1.save!
+      # gv_draft1 = Draft.new
+      #   deliverable: gv_deliv1,
+      #   description: "A perfect gift for a friend/partner! Get 10% off by using promo code HELA. Limited stocks!!",
+      #   status: "rejected"
+      #
+      # gv_draft1.user = User.last
+      # gv_draft1.attachments =
+      #   File.open(File.join(Rails.root, "app/assets/images/GV1.jpg")),
+      #   File.open(File.join(Rails.root, "app/assets/images/GV2.jpg"))
+      #
+      # gv_draft1.save!
 
-        gv_draft1_comment1 = Comment.new({
-            user: gv_user,
-            draft: gv_draft1,
-            content: "Copy sounds good, but could you use a different background? This might be too distracting"
-          })
-          gv_draft1_comment1.save!
 
     gv_deliv2 = Deliverable.create!({
       project: goodvibesonly,
