@@ -19,7 +19,7 @@
     <% end %>
     </div>
 
-    <div class="card-white py-3 px-3 mb-4 d-flex align-items-center justify-content-between">
+    <div class="project-overview card-white py-3 px-3 mb-4 d-flex align-items-center justify-content-between">
       <div>
         <div class="review-card-title header-lg"><%= @project.name %></div>
         <div class="review-card-description header-md"><%= @project.description %></div>
@@ -41,7 +41,7 @@
 
   <% if @project.status == "saved" %>
     <button class="custom-popup" data-email-popup-target="button" data-action="click->email-popup#toggle">Send project to brand</button>
-    <form action="/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup d-none" style="width: 20rem;">
+    <form action="/project_confirmations/create" method="POST" data-email-popup-target="email" class="custom-popup d-none" style="width: 20rem;">
       <div class="form-header-details">
         <div>Send project to brand</div>
         <div class="close-btn" data-action="click->email-popup#toggle">X</div>
