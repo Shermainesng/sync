@@ -40,7 +40,9 @@
   </div>
 
   <% if @project.status == "saved" %>
-    <button class="custom-popup" data-email-popup-target="button" data-action="click->email-popup#toggle">Send project to brand</button>
+    <button class="custom-popup" data-email-popup-target="button" data-action="click->email-popup#toggle">
+      <i class="far fa-envelope mx-2"></i> Send project to brand
+    </button>
     <form action="/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup d-none" style="width: 20rem;">
       <div class="form-header-details">
         <div>Send project to brand</div>

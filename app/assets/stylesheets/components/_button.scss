@@ -76,8 +76,11 @@
   color: white;
   border: 1px solid $primary;
   padding: 10px;
-  // float: right;
   text-align: center;
+
+  &.btn-long {
+    width: 100%;
+  }
 }
 
 .submit-form-btn:hover {
