@@ -41,7 +41,6 @@ class DraftsController < ApplicationController
     @draft = Draft.find(params[:draft_id])
     @draft.status = "approved"
     @draft.save!
-    raise
     DraftStatus.with(draft: @draft, user: current_user, action: "approved").deliver(@draft.user)
     redirect_to draft_path(@draft)
   end
@@ -50,7 +49,6 @@ class DraftsController < ApplicationController
     @draft = Draft.find(params[:draft_id])
     @draft.status = "rejected"
     @draft.save!
-    raise
     DraftStatus.with(draft: @draft, user: current_user, action: "rejected").deliver(@draft.user)
     redirect_to draft_path(@draft)
   end
