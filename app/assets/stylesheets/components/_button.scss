@@ -157,3 +157,11 @@
   justify-content: space-between;
   width: 230px;
 }
+
+.logout-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  border-color: $primary;
+  border-radius: 10px;
+}
