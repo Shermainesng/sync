@@ -2,12 +2,12 @@
   <a href="/" class="logo">Sync</a>
   <a href="<%=new_project_path%>" class="submit-form-btn btn-bold btn-linkless">+ New project</a>
   <div class="custom-profile">
-    <% if current_user.present? %>
-      <%= image_tag current_user.profile_pic, class:"avatar"%>
-      <strong><%= current_user.username %></strong>
-    <% else %>
-      <strong>Sign in!</strong>
-    <% end %>
+      <% if current_user.profile_pic.nil? %>
+        <span class="imageless-avatar avatar"><%= current_user.username.first.upcase %> </span>
+      <% else %>
+        <%= image_tag current_user.profile_pic, class:"avatar"%>
+      <% end %>
+        <strong><%= current_user.username %></strong>
   </div>
   <% if user_signed_in? %>
     <div class="notification-panel section">
