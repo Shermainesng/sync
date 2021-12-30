@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_073538) do
+ActiveRecord::Schema.define(version: 2021_12_30_014923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,12 @@ ActiveRecord::Schema.define(version: 2021_12_15_073538) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
+  create_table "organisations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "project_users", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "project_id", null: false
@@ -79,8 +85,8 @@ ActiveRecord::Schema.define(version: 2021_12_15_073538) do
     t.string "status"
     t.text "description"
     t.bigint "user_id"
-    t.bigint "brand_id"
-    t.index ["brand_id"], name: "index_projects_on_brand_id"
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_projects_on_client_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -126,7 +132,9 @@ ActiveRecord::Schema.define(version: 2021_12_15_073538) do
     t.string "last_name"
     t.string "username"
     t.string "profile_pic"
+    t.bigint "organisation_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["organisation_id"], name: "index_users_on_organisation_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -136,7 +144,8 @@ ActiveRecord::Schema.define(version: 2021_12_15_073538) do
   add_foreign_key "drafts", "users"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
+  add_foreign_key "projects", "organisations", column: "client_id"
   add_foreign_key "projects", "users"
-  add_foreign_key "projects", "users", column: "brand_id"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "users", "organisations"
 end
