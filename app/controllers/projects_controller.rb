@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
     new = params[:project]
     @project.update!(
       name: new[:name],
-      project_end: "#{new["project_end(1i)"]}-#{new["project_end(2i)"]}-#{new["project_end(3i)"]}",
+      project_end: params[:project_end],
       description: new[:description],
       status: 'saved'
     )

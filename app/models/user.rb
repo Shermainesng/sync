@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :deliverables, through: :projects
   has_many :comments, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
-  has_many :paid_projects, class_name: "Project", foreign_key: "brand_id", dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
 
