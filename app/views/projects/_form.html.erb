@@ -14,12 +14,10 @@
           update_project_target: "description",
           action: "keyup->update-project#updateProject"
           }}%>
-      <%= f.input :project_end, name: "project_end", label: 'Project due date',
-      input_html: {
-        data: {
-          update_project_target: "projectEnd",
-          action: "change->update-project#updateProject"
-          }} %>
+      <div class="form-group">
+        <label for="project_end">Project end:</label>
+        <input type="date" id="project_end" name="project_end" class="form-control" value="<%=Date.today%>" min="<%=Date.today%>" max="<%=Date.today.next_year%>" data-update-project-target="projectEnd" data-action="change->update-project#updateProject">
+      </div>
     </div>
     <%= f.submit "Create Project", class: "submit-form-btn" %>
   <% end %>
