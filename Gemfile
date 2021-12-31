@@ -74,7 +74,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.6.1'
 
 gem "launchy", "~> 2.5"
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.0' # file uploader
 gem 'bootstrap-sass'
 gem 'has_scope'
 gem 'acts-as-taggable-on'
+
+gem 'poppler', '~> 3.0', '>= 3.0.7' # previewer for pdf
