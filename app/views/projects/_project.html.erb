@@ -1,5 +1,5 @@
 <div class="col-sm-6 col-md-4 mb-4 card-animation" data-controller="delete-project" data-delete-project-target="card">
-  <% path = project.brand_id.nil? ? edit_project_path(project) : project_path(project)%>
+  <% path = project.users.nil? ? edit_project_path(project) : project_path(project)%>
   <a id="link" href="<%=path%>" class="btn-deleted" data-delete-project-target="link">
     <div class="card-white h-100 mb-4" data-delete-project-target="content">
       <div class="card-custom-body">
@@ -11,19 +11,19 @@
               <p class="w-100"><%= project.name.length > 24 ? project.name[0..23] + "..."  : project.name %></p>
             <% end %>
           </div>
-          <%if project.status=="saved"%>
+          <% if project.status=="saved" %>
             <div value="<%=project_path(project)%>" class="col-1 trash-icon-position" data-delete-project-target="delete" data-action="click->delete-project#deleteProject">
               <i class="fas fa-trash"></i>
             </div>
           <% end %>
         </div>
-        <% if project.brand_id.nil? %>
-          <p> Send to brand</p>
+        <% if project.users.empty? %>
+          <p> Send to client</p>
         <% else %>
           <div class="d-flex align-items-center mb-3 mt-2">
-            <img class="avatar avatar-sm" src="<%= project.brand.profile_pic %>">
+            <img class="avatar avatar-sm" src="<%= project.users.first.profile_pic %>">
             <div class="card-custom-subtitle header-sm">
-              <%= project.brand.username %>
+              <%= Organisation.find(project.client_id).name %>
             </div>
           </div>
         <% end %>
