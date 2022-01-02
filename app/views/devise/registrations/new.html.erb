@@ -11,6 +11,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { class: "form-control-sm" }%>
+    <%= f.association :organisation,
+                required: true,
+                autofocus: true,
+                input_html: { class: "form-control-sm" }%>
+    <small>Don't see your organisation? <a href="<%=new_organisation_path%>">Create a new organisation profile here</a></small>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

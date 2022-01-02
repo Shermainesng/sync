@@ -37,4 +37,7 @@ Rails.application.routes.draw do
     resources :replies, only: [:new, :create]
   end
 
+
+  resources :organisations
+
 end
