@@ -13,7 +13,7 @@ class DeliverablesController < ApplicationController
         filtered_date = Date.today + 1.month
     end
 
-    @deliverables= current_user.deliverables.where("due_date <= ?", filtered_date).order(:due_date)
+    @deliverables= current_user.deliverables.where("due_date >= ?", Date.today).where("due_date <= ?", filtered_date).order(:due_date)
 
     respond_to do |format|
       # format.json {render json: { status: "ok" } }

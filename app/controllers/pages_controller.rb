@@ -6,18 +6,17 @@ class PagesController < ApplicationController
   end
 
   def home
+    @owned = current_user.projects# owned projects
+    @shared = Project.all.select {|proj| proj.users.include?(current_user)}
+    @all = @owned.concat(@shared)
+    @ongoing = @owned.where(status: "ongoing")
     date = Date.today + 7
-    # @deliverables = current_user.deliverables.where("due_date <= ?", date).order(:due_date)
-    @all = current_user.projects
-    @ongoing = @all.where(status: "ongoing")
-    deliverables = Deliverable.all.where("due_date <= ?", date).order(:due_date) #array of deliverables
+    deliverables = Deliverable.all.where("due_date >= ?", Date.today).where("due_date <= ?", date).order(:due_date) #array of deliverables
     @deliverables = deliverables.select{|d| d.project_status == "ongoing" }
     @notifications = current_user.notifications
   end
 
   def test
     @projects = Project.where(user: User.find_by(email: "testuser@gmail.com"))
-
   end
-
 end

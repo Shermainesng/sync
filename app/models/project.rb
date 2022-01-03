@@ -11,6 +11,6 @@ class Project < ApplicationRecord
   scope :status, ->status { where("status ILIKE ?", "%#{status}%")}
 
   def brand
-    User.find(self.client_id)
+  Organisation.find(self.client_id)
   end
 end
