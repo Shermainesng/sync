@@ -19,7 +19,11 @@
         <li>Tags</li>
       </ul>
       <ul data-filter-target="deliverables" class="action-bar-list">
-        <%= render partial: "deliverables/cards/dashboard", collection: @deliverables, as: :deliverable %>
+        <% if @deliverables.empty? %>
+          <p class="text-center header-lg">nothing due this week. ☀(▀U ▀-͠) </p>
+        <% else %>
+          <%= render partial: "deliverables/cards/dashboard", collection: @deliverables, as: :deliverable %>
+        <% end %>
       </ul>
     </div>
 </div>
