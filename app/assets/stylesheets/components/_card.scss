@@ -163,10 +163,7 @@ a.deliverable-card:hover {
 
 
 // see drafts page (deliverables#show)
-  // mini deliv summaries
-  .deliverable-mini {
 
-  }
   // drafts of deliverable
 .deliv-drafts {
   padding: 5px;
@@ -193,21 +190,13 @@ a.deliverable-card:hover {
     width: 65%;
     text-align: left;
   }
-
 }
 
-  .deliv-drafts:hover {
-    background-color: rgba(51, 50, 50, 0.1);
-    border-radius: 10px;
-    transition: 150ms;
-    color: black;
-  }
-
-////
-
-// drafts
-
-.draft-card {
+.deliv-drafts:hover {
+  background-color: rgba(51, 50, 50, 0.1);
+  border-radius: 10px;
+  transition: 150ms;
+  color: black;
 }
 
 // comments
@@ -260,6 +249,16 @@ a.deliverable-card:hover {
 
 .card-custom-title {
   font-weight: bold;
+
+  .confirmation-notice {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-weight: normal;
+    background-color: #b3c7f5;
+    border-radius: 0 5px;
+    padding: 0 5px;
+  }
 }
 
 .card-animation {

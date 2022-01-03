@@ -11,22 +11,25 @@
               <p class="w-100"><%= project.name.length > 24 ? project.name[0..23] + "..."  : project.name %></p>
             <% end %>
           </div>
-          <% if project.status=="saved" %>
+          <% if project.status== "saved" %>
             <div value="<%=project_path(project)%>" class="col-1 trash-icon-position" data-delete-project-target="delete" data-action="click->delete-project#deleteProject">
               <i class="fas fa-trash"></i>
             </div>
+            <div class="pt-3">Send to client</div>
+          <% else %>
+            <div class="d-flex align-items-center mb-3 mt-2">
+              <% if project.users.empty? %>
+                <div class="confirmation-notice header-sm mb-2">Awaiting confirmation</div>
+              <% else %>
+                <img class="avatar avatar-sm" src="<%= project.users.first.profile_pic %>">
+                <div class="card-custom-subtitle header-sm">
+                  <%= Organisation.find(project.client_id).name %>
+                </div>
+              <% end %>
+            </div>
           <% end %>
         </div>
-        <% if project.users.empty? %>
-          <p> Send to client</p>
-        <% else %>
-          <div class="d-flex align-items-center mb-3 mt-2">
-            <img class="avatar avatar-sm" src="<%= project.users.first.profile_pic %>">
-            <div class="card-custom-subtitle header-sm">
-              <%= Organisation.find(project.client_id).name %>
-            </div>
-          </div>
-        <% end %>
+
         <div class="card-custom-text"><%= project.description %></div>
         <ul>
           <% project.deliverables.each do |d| %>
