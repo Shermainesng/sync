@@ -11,7 +11,7 @@
 <%# heading %>
   <div class="card-white py-3 pl-3 mb-4 d-flex align-items-center justify-content-between">
     <div>
-      <div class="review-card-title header-lg"><%=@draft.deliverable.project.brand.username %>: <%= @draft.deliverable.project.name %></div>
+      <div class="review-card-title header-lg"><%=@client.name %>: <%= @draft.deliverable.project.name %></div>
       <div class="review-card-description header-md"><%= @draft.deliverable.project.description %></div>
     </div>
     <%# brand view -- approve and reject buttons %>
@@ -37,41 +37,39 @@
         <h3><%= @draft.deliverable.description %></h3>
       </div>
     </div>
-    <div class=''>
-      <div class="row">
-        <div class="col-8">
-          <div class="pl-3">
-            <div class='d-flex flex-column justify-content-start pb-5 p-2 preview card-frosted'>
-              <ul class="list-group">
-                <% @draft.attachments.each do |attachment| %>
-                  <li class="d-block w-100">
-                    <% if attachment.url.match(/\S*.pdf$/) %>
-                      <embed src="<%= attachment.url %>" type="application/pdf" class="w-100" height="500"/>
-                    <% else %>
-                      <img src="<%= attachment.url %>" class="w-100 mb-2" alt="image">
-                    <% end %>
-                  </li>
-                <% end %>
-              </ul>
-              <div class='pt-4'>
-                <h3>Description:</h3>
-                <p><%= @draft.description %></p>
-              </div>
+    <div class="row">
+      <div class="col-8 sticky-panel">
+        <div class="pl-3 ">
+          <div class='d-flex flex-column justify-content-start pb-5 p-2 preview card-frosted'>
+            <ul class="list-group">
+              <% @draft.attachments.each do |attachment| %>
+                <li class="d-block w-100">
+                  <% if attachment.url.match(/\S*.pdf$/) %>
+                    <embed src="<%= attachment.url %>" type="application/pdf" class="w-100 pdf-draft"/>
+                  <% else %>
+                    <img src="<%= attachment.url %>" class="w-100 mb-2" alt="image">
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+            <div class='pt-4'>
+              <h3>Description:</h3>
+              <p><%= @draft.description %></p>
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <div class="comments-list">
-            <div class="new-comment">
-              <div class="comment-btn block-btn" data-toggle-target="button" data-action="click->toggle#newComment">
-                <i class="fas fa-comments mx-2"></i>Add new comment
-              </div>
-              <div data-toggle-target="commentForm" class="d-none">
-                <%= render 'comments/new'%>
-              </div>
+      </div>
+      <div class="col-4">
+        <div class="comments-list">
+          <div class="new-comment">
+            <div class="comment-btn block-btn" data-toggle-target="button" data-action="click->toggle#newComment">
+              <i class="fas fa-comments mx-2"></i>Add new comment
             </div>
-            <%= render @comments %>
+            <div data-toggle-target="commentForm" class="d-none">
+              <%= render 'comments/new'%>
+            </div>
           </div>
+          <%= render @comments %>
         </div>
       </div>
     </div>

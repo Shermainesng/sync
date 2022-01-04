@@ -31,6 +31,7 @@ class DeliverablesController < ApplicationController
 
   def show
     @project = @deliverable.project
+    @client = Organisation.find(@project.client_id)
     @deliverables = @project.deliverables.order(:due_date)
     @drafts = @deliverable.drafts.order(created_at: :desc)
     @new_draft = Draft.new
@@ -39,6 +40,7 @@ class DeliverablesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @deliverable = Deliverable.new(deliverable_params)
+    @deliverable.due_date = params[:due_date]
     @project.deliverables << @deliverable
     @project.save!
     @deliverable.save!
@@ -94,7 +96,7 @@ class DeliverablesController < ApplicationController
 
   private
   def deliverable_params
-    params.require(:deliverable).permit(:deliverable_type, :due_date, :description, :tag_list)
+    params.require(:deliverable).permit(:deliverable_type, :description, :tag_list)
   end
 
   def set_deliverable

@@ -8,7 +8,7 @@
 <%# heading %>
 <div class="card-white p-3 mb-4">
   <div class="d-flex align-items-center">
-    <div class="review-card-title header-lg"><%=@project.brand.username %>: <%= @project.name %></div>
+    <div class="review-card-title header-lg"><%= @client.name %>: <%= @project.name %></div>
     <div class="review-card-date"><%= @project.project_end.strftime("%e %b")%></div>
   </div>
   <div class='pr-4 header-lg'>

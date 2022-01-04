@@ -13,14 +13,10 @@
 
 .preview {
   // margin-right: 10px;
-  position: sticky;
-  top: 33px;
+  // position: sticky;
+  // top: 33px;
   border-radius: 10px;
   min-height: 70vh;
-}
-
-.comments-list {
-  overflow-y: scroll;
 }
 
 .new-comment {
@@ -56,4 +52,14 @@ a.see-more {
   color: white;
   padding: 5px;
   border-radius: 5px;
+}
+
+.pdf-draft {
+  min-height: 80vh;
+}
+
+.sticky-panel {
+  position: sticky;
+  top: 0px;
+  height: 100%;
 }

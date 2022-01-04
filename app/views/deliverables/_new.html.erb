@@ -5,11 +5,10 @@
         data: {
           insert_deliverables_target: "deliverable_type"
           }}%>
-    <%= f.input :due_date, name: "due_date",
-      input_html: {
-        data: {
-          insert_deliverables_target: "due_date"
-          }}%>
+    <div class="form-group">
+        <label for="due_date">Due date:</label>
+        <input type="date" id="due_date" name="due_date" class="form-control" value="<%=Date.today%>" min="<%=Date.today%>" max="<%=Date.today.next_year%>" data-insert-deliverables-target="due_date">
+      </div>
     <%= f.input :description, name: "description",
       input_html: {
         data: {
