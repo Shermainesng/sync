@@ -12,6 +12,7 @@ class DraftsController < ApplicationController
   def show
     @draft = Draft.find(params[:id])
     @deliverable = @draft.deliverable
+    @client = Organisation.find(@deliverable.project.client_id)
     @status_color = case @draft.status
                     when "pending"
                       "btn-sync-info"
