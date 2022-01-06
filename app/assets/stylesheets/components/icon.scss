@@ -13,3 +13,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.notification-trash-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: $dark-grey;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

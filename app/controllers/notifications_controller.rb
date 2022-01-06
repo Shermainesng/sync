@@ -19,4 +19,10 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.mark_as_read!
   end
+
+  def destroy
+    @notification = Notification.find(params[:id])
+    @notification.destroy
+    format.html { redirect_to root_path }
+  end
 end
