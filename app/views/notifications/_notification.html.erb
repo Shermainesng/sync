@@ -6,7 +6,7 @@
         <img src="<%=notif.to_notification.user.profile_pic%>" alt="avatar" class="avatar">
       </div>
       <div>
-        <p id="author"><%= notif.to_notification.user.first_name %></p>
+        <p id="author"><%= notif.to_notification.user.first_name.length > 10 ? notif.to_notification.user.first_name[0..10] + '...' : notif.to_notification.user.first_name %></p>
         <p>
           <% if (Time.now - notif.created_at)< 1.hour%>
             <%= distance_of_time_in_words_to_now(notif.created_at)%> ago
@@ -15,6 +15,7 @@
           <% end %>
         </p>
       </div>
+      <i class="fas fa-trash notification-trash-icon" data-value="<%=notif.id%>" data-mark-read-target="trash" data-action="click->mark-read#destroy"></i>
     </div>
     <div>
       <p><%= notif.to_notification.message %></p>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get '/notifications', to: "notifications#index"
 
-  resources :notifications, only: [:update]
+  resources :notifications, only: [:update, :destroy]
 
   resources :projects do
     resources :deliverables,only: [:new, :create]
