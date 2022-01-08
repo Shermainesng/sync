@@ -4,10 +4,30 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :organisation_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :organisation_id, :token])
   end
 
   def default_url_options
     { host: ENV["https://www.syncnergy.live/"] || "localhost:3000" }
+  end
+
+  def after_sign_in_path_for(resource)
+    if params[:token].present?
+      @project = Project.find_by(token: params[:token])
+      @project.users << current_user if !(@project.users.include?(current_user))
+      show_project_path(@project)
+    else
+      root_path
+    end
+  end
+
+  def after_sign_up_path_for(resource)
+    if params[:token].present?
+      @project = Project.find_by(token: params[:token])
+      @project.users << current_user if !(@project.users.include?(current_user))
+      show_project_path(@project)
+    else
+      root_path
+    end
   end
 end
