@@ -21,4 +21,8 @@
   background: $dark-grey;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  &:hover {
+    background: $pink;
+  }
 }
