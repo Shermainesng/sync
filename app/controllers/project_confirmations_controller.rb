@@ -2,7 +2,8 @@ class ProjectConfirmationsController < ApplicationController
   def create
     @user = current_user
     @project = params[:project]
-    @project_url = "https://www.syncnergy.live/projects/#{@project}"
+    @token = Project.find(@project).token
+
     ConfirmationMailer.with(client_email: email_params[:client_email],
                             email_subject: email_params[:email_subject],
                             email_body: email_params[:email_body],

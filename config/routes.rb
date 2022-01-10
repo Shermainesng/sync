@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  post 'project_confirmations/create'
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
   root to: 'pages#landing'
   get '/home', to: 'pages#home'
 
@@ -15,13 +14,15 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:update, :destroy]
 
-  resources :projects do
-    resources :deliverables,only: [:new, :create]
+  resources :projects, except: :show do
+    resources :deliverables, only: [:new, :create]
+    post 'project_confirmations/create'
     get 'confirm', to: "projects#confirm"
     get 'sent', to: "projects#sent"
   end
 
-  post "projects/:id/", to: "projects#show"
+  get "projects/:id(/:token)", to: "projects#show", as: 'show_project'
+  get "projects/:id/:token/sign_up", to: "projects#sign_up"
 
   resources :deliverables, only: [:show, :destroy, :edit, :update, :index] do
     resources :drafts, only: [:new, :create, :index]

@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show, :destroy]
-  # has_scope :filter_status
+  before_action :nested_project, only: [:sent, :confirm]
+  skip_before_action :authenticate_user!, only: [ :sign_up, :show ]
+
   has_scope :filter_name
   has_scope :status
 
@@ -14,8 +16,23 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    if params[:token].present?
+      if user_signed_in?
+        @project = Project.find_by(token: params[:token])
+        @project.users << current_user if !(@project.users.include?(current_user))
+      else
+        redirect_to new_user_session_path(token: params[:token])
+      end
+    else
+      redirect_to new_user_session_path if !(user_signed_in?)
+    end
+
     @deliverables = @project.deliverables.order(:due_date)
     @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
+  end
+
+  def sign_up
+    redirect_to new_user_registration_path(token: params[:token])
   end
 
   def new
@@ -26,12 +43,10 @@ class ProjectsController < ApplicationController
       status: 'saved'
     )
 
-
     redirect_to edit_project_path(@project)
   end
 
   def edit
-    @project = Project.find(params[:id])
     @deliverables = @project.deliverables.order(:due_date)
     @deliverable = Deliverable.new
   end
@@ -46,18 +61,6 @@ class ProjectsController < ApplicationController
     )
   end
 
-  def sent
-    @project = Project.find(params[:project_id])
-    @project.status = "pending"
-    @project.save!
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      # format.json # Follow the classic Rails flow and look for a create.json view
-      format.text {render plain: "ok" }
-    end
-
-  end
-
   def destroy
     @project.destroy
 
@@ -68,8 +71,18 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def sent
+    @project.status = "pending"
+    @project.save!
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      # format.json # Follow the classic Rails flow and look for a create.json view
+      format.text {render plain: "ok" }
+    end
+
+  end
+
   def confirm
-    @project = Project.find(params[:project_id])
     @project.status = "ongoing"
     @project.brand_id = current_user.id
     @project.save!
@@ -81,6 +94,10 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def nested_project
+    @project = Project.find(params[:project_id])
   end
 
 end
