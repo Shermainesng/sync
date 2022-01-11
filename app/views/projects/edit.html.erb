@@ -8,44 +8,11 @@
   <div>
     <% if @project.status == "saved" %>
       <%= render 'form' %>
-      <form action="/projects/<%= @project.id %>/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup" style="width: 20rem;">
-      <div class="form-header-details">
-        <div class="header-md email-header">Send project to brand</div>
-        <div class="close-btn close-header" data-action="click->email-popup#toggle">X</div>
-      </div>
-      <div class="card-body custom-card-body">
-        <input type="text" name="client_email" placeholder="Email" class="bordeless-input my-1">
-        <input type="text" name="email_subject" placeholder="Subject" class="bordeless-input my-1">
-        <textarea name="email_body" cols="30" rows="10" placeholder="Type your message here" class="bordeless-input my-1"></textarea>
-        <input type="hidden" name="project" value=<%= @project.id %>>
-        <input type="hidden" name="token" value=<%= @project.token %>>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <button type="submit" class="btn btn-primary btn-sm btn-trigger mt-2" value="<%= @project.id %>" data-email-popup-target="emailBtn" data-action="click->email-popup#updateStatus">Confirm</button>
-      </div>
-    </form>
-
     <% else %>
     <div class="card-white py-3 px-3 mb-4 ">
       <div class="review-card-title header-lg"><%= @project.name %></div>
       <div class="review-card-description header-md"><%= @project.description %></div>
     </div>
-
-    <form action="/projects/<%= @project.id %>/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup" style="width: 20rem;">
-      <div class="form-header-details">
-        <div class="header-md email-header">Send project to brand</div>
-        <div class="close-btn close-header" data-action="click->email-popup#toggle">X</div>
-      </div>
-      <div class="card-body custom-card-body">
-        <input type="text" name="client_email" placeholder="Email" class="bordeless-input my-1">
-        <input type="text" name="email_subject" placeholder="Subject" class="bordeless-input my-1">
-        <textarea name="email_body" cols="30" rows="10" placeholder="Type your message here" class="bordeless-input my-1"></textarea>
-        <input type="hidden" name="project" value=<%= @project.id %>>
-        <input type="hidden" name="token" value=<%= @project.token %>>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <button type="submit" class="btn btn-primary btn-sm btn-trigger mt-2" value="<%= @project.id %>" data-email-popup-target="emailBtn" data-action="click->email-popup#updateStatus">Confirm</button>
-      </div>
-    </form>
-
     <% end %>
 </div>
 

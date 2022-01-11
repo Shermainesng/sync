@@ -2,16 +2,19 @@ class ProjectConfirmationsController < ApplicationController
   def create
     @user = current_user
     @project = params[:project]
-    @token = Project.find(@project).token
+    @subject = Project.find(@project).name
+    @client_email = email_params[:client_email]
 
-    ConfirmationMailer.with(client_email: email_params[:client_email],
-                            email_subject: email_params[:email_subject],
-                            email_body: email_params[:email_body],
-                            user: @user,
-                            project: @project,
-                            )
-                      .send_project
-                      .deliver_now!
+    @client_email.split(',').each do |email|
+      ConfirmationMailer.with(client_email: email.strip,
+                              email_subject: @subject,
+                              email_body: email_params[:email_body],
+                              user: @user,
+                              project: @project,
+                              )
+                        .send_project
+                        .deliver_now!
+    end
 
     redirect_to root_path
   end
@@ -19,6 +22,6 @@ class ProjectConfirmationsController < ApplicationController
   private
 
   def email_params
-    params.permit(:email_body, :client_email, :email_subject)
+    params.permit(:email_body, :client_email)
   end
 end
