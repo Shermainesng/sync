@@ -1,72 +1,49 @@
 <nav aria-label="breadcrumb">
-      <ol class="breadcrumb breadcrumb-custom">
-        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Edit Project</li>
-      </ol>
-    </nav>
-<div class="custom-form-layout">
-  <div>
-    <% if @project.status == "saved" %>
-      <%= render 'form' %>
-      <form action="/projects/<%= @project.id %>/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup" style="width: 20rem;">
-      <div class="form-header-details">
-        <div class="header-md email-header">Send project to brand</div>
-        <div class="close-btn close-header" data-action="click->email-popup#toggle">X</div>
-      </div>
-      <div class="card-body custom-card-body">
-        <input type="text" name="client_email" placeholder="Email" class="bordeless-input my-1">
-        <input type="text" name="email_subject" placeholder="Subject" class="bordeless-input my-1">
-        <textarea name="email_body" cols="30" rows="10" placeholder="Type your message here" class="bordeless-input my-1"></textarea>
-        <input type="hidden" name="project" value=<%= @project.id %>>
-        <input type="hidden" name="token" value=<%= @project.token %>>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <button type="submit" class="btn btn-primary btn-sm btn-trigger mt-2" value="<%= @project.id %>" data-email-popup-target="emailBtn" data-action="click->email-popup#updateStatus">Confirm</button>
-      </div>
-    </form>
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit Project</li>
+  </ol>
+</nav>
 
-    <% else %>
-    <div class="card-white py-3 px-3 mb-4 ">
-      <div class="review-card-title header-lg"><%= @project.name %></div>
-      <div class="review-card-description header-md"><%= @project.description %></div>
+<% if @project.status=="saved" %>
+  <%= render 'form' %>
+<% else %>
+  <div class="card-white py-3 px-3 mb-4 ">
+    <div class="review-card-title header-lg">
+      <%= @project.name %>
     </div>
+    <div class="review-card-description header-md">
+      <%= @project.description %>
+    </div>
+  </div>
+<% end %>
 
-    <form action="/projects/<%= @project.id %>/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup" style="width: 20rem;">
-      <div class="form-header-details">
-        <div class="header-md email-header">Send project to brand</div>
-        <div class="close-btn close-header" data-action="click->email-popup#toggle">X</div>
-      </div>
-      <div class="card-body custom-card-body">
-        <input type="text" name="client_email" placeholder="Email" class="bordeless-input my-1">
-        <input type="text" name="email_subject" placeholder="Subject" class="bordeless-input my-1">
-        <textarea name="email_body" cols="30" rows="10" placeholder="Type your message here" class="bordeless-input my-1"></textarea>
-        <input type="hidden" name="project" value=<%= @project.id %>>
-        <input type="hidden" name="token" value=<%= @project.token %>>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <button type="submit" class="btn btn-primary btn-sm btn-trigger mt-2" value="<%= @project.id %>" data-email-popup-target="emailBtn" data-action="click->email-popup#updateStatus">Confirm</button>
-      </div>
-    </form>
 
-    <% end %>
+<div class="card-frosted my-3 p-3" data-controller="insert-deliverables">
+  <ul class="custom-list" data-insert-deliverables-target="list" >
+      <%= render partial: 'deliverables/cards/project_details', collection: @deliverables, as: :deliverable%>
+      <button class="card-frosted card-white-and-date mx-auto" data-toggle="modal" data-target="#newDeliverableModal">
+        + Add new deliverable
+      </button>
+  </div>
 </div>
 
-  <div class="deliverable-form-show card-frosted my-3 p-3" data-controller="insert-deliverables">
-    <div class="col-6">
-      <% if @project.deliverables.empty? %>
-        <div data-insert-deliverables-target="message" class="text-muted text-center">
-          Nothing here yet. Add your first deliverable!
-        </div>
-      <% end %>
 
-      <div class="custom-list">
-        <ul data-insert-deliverables-target="list" class="custom-list">
-          <%= render partial: 'deliverables/cards/project_details', collection: @deliverables, as: :deliverable%>
-        </ul>
+<!-- Modal -->
+<div class="modal fade" id="newDeliverableModal" tabindex="-1" aria-labelledby="newDeliverableModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newDeliverableModalLabel">Describe your deliverable</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-    <div class="col-6" data-controller="edit-deliverable">
-      <div class="card-white p-3">
-        <%= render 'deliverables/new' %>
+      <div class="modal-body text-center">
+        <%= render  "deliverables/new" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sync-dark-grey" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-</div>
