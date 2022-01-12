@@ -21,14 +21,18 @@ class ProjectsController < ApplicationController
         @project = Project.find_by(token: params[:token])
         @project.users << current_user if !(@project.users.include?(current_user))
       else
-        redirect_to new_user_session_path(token: params[:token])
+        redirect_to new_user_session_path(token: params[:token]) and return
       end
     else
-      redirect_to new_user_session_path if !(user_signed_in?)
+      redirect_to new_user_session_path if !(user_signed_in?) and return
     end
 
-    @deliverables = @project.deliverables.order(:due_date)
-    @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
+    if @project.user == current_user || @project.users == current_user
+      @deliverables = @project.deliverables.order(:due_date)
+      @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
+    else
+      redirect_to home_path
+    end
   end
 
   def sign_up
