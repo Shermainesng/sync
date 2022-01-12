@@ -362,6 +362,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_form
   spring
+  sprockets-rails
   sweet-alert2-rails
   turbolinks (~> 5)
   tzinfo-data

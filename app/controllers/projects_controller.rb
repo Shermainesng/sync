@@ -59,6 +59,7 @@ class ProjectsController < ApplicationController
       description: new[:description],
       status: 'saved'
     )
+    redirect_to edit_project_path(params[:id])
   end
 
   def destroy
