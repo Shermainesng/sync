@@ -27,8 +27,12 @@ class ProjectsController < ApplicationController
       redirect_to new_user_session_path if !(user_signed_in?)
     end
 
-    @deliverables = @project.deliverables.order(:due_date)
-    @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
+    if @project.user == current_user || @project.users == current_user
+      @deliverables = @project.deliverables.order(:due_date)
+      @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def sign_up
