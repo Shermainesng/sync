@@ -1,7 +1,7 @@
 <%- if controller_name != 'sessions' %>
-  <% if @project %>
+  <% if params[:token].present? %>
     <div>
-      Already have an account? <%= link_to " Log in", new_session_path(resource_name, token: @project.token) %><br />
+      Already have an account? <%= link_to " Log in", new_session_path(resource_name, token: params[:token]) %><br />
     </div>
   <% else %>
     <div>
@@ -11,9 +11,9 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <% if @project %>
+  <% if params[:token].present? %>
     <div>
-      Don't have an account? <%= link_to " Sign up for free", new_registration_path(resource_name, token: @project.token) %><br />
+      Don't have an account? <%= link_to " Sign up for free", new_registration_path(resource_name, token: params[:token]) %><br />
     </div>
   <% else %>
     <div>
