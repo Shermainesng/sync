@@ -7,6 +7,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 Rails.start()
 Turbolinks.start()
@@ -50,3 +52,9 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 import "controllers"
+import Deliverable from "../components/deliverable"
+
+ReactDOM.render(
+  <Deliverable date={"today"} description={"gfghf"}/>,
+  document.getElementById('root')
+)
