@@ -240,15 +240,15 @@ puts "Creating projects"
       description:"Create a post that sells the product, and also encourage our followers to participate in our giveaway"
     })
     pl_deliv1.tag_list.add("photoshoot, giveaway", parse: true)
-    pl_deliv1.save
+    pl_deliv1.save!
 
       pl_draft1 = Draft.new({
         deliverable: pl_deliv1,
-        attachment: Faker::Placeholdit.image(format: 'jpg'),
         description: "Thinking of trying something new? Why not give Womanizer 2.0 a try? Intense sensations promised",
         status: "rejected"
       })
       pl_draft1.user = hela_user
+      # pl_draft1.attachments << Faker::Placeholdit.image(format: 'jpg')
       pl_draft1.save!
 
         pl_draft1_comment1 = Comment.new({
@@ -260,11 +260,11 @@ puts "Creating projects"
 
       pl_draft2 = Draft.new({
         deliverable: pl_deliv1,
-        attachment: Faker::Placeholdit.image(format: 'jpg'),
         description: "Thinking of getting her jewellery for xmas? Shake things up!",
         status: "in progress"
       })
       pl_draft2.user = hela_user
+      # pl_draft1.attachments << Faker::Placeholdit.image(format: 'jpg')
       pl_draft2.save!
 
     pl_deliv2 = Deliverable.create!({
@@ -274,7 +274,7 @@ puts "Creating projects"
       description:"Create a story that sells the product, and also encourage our followers to participate in our giveaway"
     })
     pl_deliv2.tag_list.add("video, giveaway", parse: true)
-    pl_deliv2.save
+    pl_deliv2.save!
 
 #project 4
   projectx = Project.create!({
@@ -353,7 +353,7 @@ puts "Creating projects"
       description:"A 10secs video about how Cara Delevigne has her own sex toy brand"
     })
       lora_deliv1.tag_list.add("advertisement", parse: true)
-      lora_deliv1.save
+      lora_deliv1.save!
 
     lora_deliv2 = Deliverable.create!({
       project: lora,
@@ -362,7 +362,7 @@ puts "Creating projects"
       description:"Talk about how the founder has built her own empire"
     })
       lora_deliv2.tag_list.add("writing,storytelling", parse: true)
-      lora_deliv2.save
+      lora_deliv2.save!
 
 #project 7
   hims= Project.create!({
@@ -382,7 +382,7 @@ puts "Creating projects"
       description:"A short and entertaining vid on how PE can ruin one's sex life"
     })
       hims_deliv1.tag_list.add("funny,video", parse: true)
-      hims_deliv1.save
+      hims_deliv1.save!
 
     hims_deliv2 = Deliverable.create!({
       project: hims,
@@ -391,6 +391,6 @@ puts "Creating projects"
       description:"A short and entertaining vid on how PE can ruin one's sex life"
     })
     hims_deliv2.tag_list.add("funny,video", parse: true)
-    hims_deliv2.save
+    hims_deliv2.save!
 
 puts "All done!"
