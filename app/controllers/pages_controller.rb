@@ -19,4 +19,7 @@ class PagesController < ApplicationController
   def test
     @projects = Project.where(user: User.find_by(email: "testuser@gmail.com"))
   end
+
+  def dashboard
+  end
 end
