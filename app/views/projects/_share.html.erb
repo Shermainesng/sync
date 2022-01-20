@@ -1,18 +1,54 @@
-<form action="/projects/<%= @project.id %>/project_confirmations/create" method="POST" data-email-popup-target="email" >
+<form action="/projects/<%= @project.id %>/project_confirmations/create" method="POST" data-controller="toggle">
   <div class="card-body custom-card-body">
-    <input type="text" name="client_email" placeholder="Email" class="bordeless-input my-1">
+  <div class='d-flex justify-content-between'>
+    <input type="text" name="client_email" placeholder="Email" class="borderless-input my-1" data-action="click->toggle#show">
 
-    <select name="role" id="role">
-        <option value="viewer" selected="selected">Viewer</option>
-        <option value="commenter">Commenter</option>
-        <option value="editor">Editor</option>
+    <select name="role" id="role" class="role-margin">
+        <option value="admin">Admin</option>
+        <option value="collaborator" selected="selected">Collaborator</option>
     </select>
+  </div>
 
-    <%# <input type="text" name="email_subject" placeholder="Subject" class="bordeless-input my-1"> %>
-    <textarea name="email_body" cols="20" rows="5" placeholder="Type your message here" class="bordeless-input my-1"></textarea>
+  <div class="d-none" data-toggle-target="emailBodyField">
+    <textarea name="email_body" cols="20" rows="5" placeholder="Type your message here" class="borderless-input my-1"></textarea>
     <input type="hidden" name="project" value=<%= @project.id %>>
     <input type="hidden" name="token" value=<%= @project.token %>>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <button type="submit" class="btn btn-primary btn-sm btn-trigger mt-2" value="<%= @project.id %>" data-email-popup-target="emailBtn" data-action="click->email-popup#updateStatus">Confirm</button>
+    <div class="d-flex align-items-center">
+      <div class="btn" data-action="click->toggle#hide">Cancel</div>
+      <button type="submit" class="btn btn-primary btn-sm btn-trigger" value="<%= @project.id %>">Confirm</button>
+    </div>
   </div>
+  </div>
+
 </form>
+
+<% if @collaborators.nil? %>
+  <p class="text-center header-lg">
+    ¯\_(ツ)_/¯
+  </p>
+  <p class="text-center">No collaborators yet</p>
+<% else %>
+  <% @collaborators.each do |collaborator| %>
+    <div class='d-flex'>
+      <div>
+        <img src="<%=collaborator.profile_pic%>" alt="avatar" class="avatar">
+      </div>
+      <div>
+        <div>
+          <%= collaborator.username %>
+        </div>
+        <div>
+          <%= collaborator.email %>
+        </div>
+      </div>
+      <div class="role-position-right">
+        <select name="role" id="role">
+          <% role = ProjectUser.find_by(user_id: collaborator.id).role %>
+          <option value="admin" <% role == 'admin' ? selected : "" %>>Admin</option>
+          <option value="collaborator" <% role == 'collaborator' ? selected : "" %>>Collaborator</option>
+        </select>
+      </div>
+    </div>
+  <% end %>
+<% end %>
