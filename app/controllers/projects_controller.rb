@@ -27,10 +27,11 @@ class ProjectsController < ApplicationController
       redirect_to new_user_session_path if !(user_signed_in?) and return
     end
 
-    if @project.user == current_user || @project.users == current_user
+    if @project.user == current_user || @project.users.include?(current_user)
       @deliverables = @project.deliverables.order(:due_date)
       @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
     else
+      #ask for permission, direct to request access page
       redirect_to home_path
     end
   end
@@ -77,8 +78,6 @@ class ProjectsController < ApplicationController
   end
 
   def sent
-    @project.status = "pending"
-    @project.save!
     respond_to do |format|
       format.html { redirect_to root_path }
       # format.json # Follow the classic Rails flow and look for a create.json view
