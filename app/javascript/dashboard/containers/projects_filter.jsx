@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { loadProjects } from '../actions';
+import { loadProjects, filterStatus } from '../actions';
 
 
 
 class ProjectsFilter extends Component {
 
   handleClick(e) {
-    this.props.loadProjects({ status: e.target.attributes.value.value, name: "" });
+    this.props.filterStatus(e.target.attributes.value.value);
   }
 
   render() {
@@ -38,13 +38,14 @@ class ProjectsFilter extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { loadProjects: loadProjects },
+    { loadProjects: loadProjects,
+      filterStatus: filterStatus },
     dispatch);
 }
 
 function mapStateToProps(state) {
   return {
-    projects: state.projects
+    projectStatus: state.projectStatus
   };
 }
 

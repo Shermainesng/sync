@@ -10,7 +10,7 @@ class Project < ApplicationRecord
   has_many :users, through: :project_users
 
   # scope :filter_status, ->status { where("status ILIKE ?", status) }
-  scope :filter_name, ->name { where("name ILIKE ?", "%#{name}%")}
+  scope :filter_name, ->name { where("name ILIKE ?", "%#{name}%").or(Organisation.where("name ILIKE ?", "%#{name}%"))}
   scope :status, ->status { where("status ILIKE ?", "%#{status}%")}
 
   def brand
