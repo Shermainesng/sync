@@ -15,10 +15,10 @@
             <div class="close-btn close-header" data-action="click->email-popup#toggle">X</div>
           </div>
           <div class="card-body custom-card-body">
-            <input type="text" name="client_email" placeholder="Email" class="bordeless-input my-1">
-            <input type="text" name="email_subject" placeholder="Subject" class="bordeless-input my-1">
+            <input type="text" name="client_email" placeholder="Email" class="borderless-input my-1">
+            <input type="text" name="email_subject" placeholder="Subject" class="borderless-input my-1">
             <textarea name="email_body" cols="30" rows="10" placeholder="Type your message here"
-              class="bordeless-input my-1"></textarea>
+              class="borderless-input my-1"></textarea>
             <input type="hidden" name="project" value=<%=@project.id %>>
             <input type="hidden" name="token" value=<%=@project.token %>>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -44,10 +44,10 @@
               <div class="close-btn close-header" data-action="click->email-popup#toggle">X</div>
             </div>
             <div class="card-body custom-card-body">
-              <input type="text" name="client_email" placeholder="Email" class="bordeless-input my-1">
-              <input type="text" name="email_subject" placeholder="Subject" class="bordeless-input my-1">
+              <input type="text" name="client_email" placeholder="Email" class="borderless-input my-1">
+              <input type="text" name="email_subject" placeholder="Subject" class="borderless-input my-1">
               <textarea name="email_body" cols="30" rows="10" placeholder="Type your message here"
-                class="bordeless-input my-1"></textarea>
+                class="borderless-input my-1"></textarea>
               <input type="hidden" name="project" value=<%=@project.id %>>
               <input type="hidden" name="token" value=<%=@project.token %>>
               <%= hidden_field_tag :authenticity_token, form_authenticity_token %>

@@ -1,28 +1,28 @@
 <%= simple_form_for @project, action:"projects/#{@project.id}", method: :patch, data: {controller: "update-project", update_project_target: "form"}, html: { class: "card-white custom-form-card" } do |f| %>
-    <div class="new-project-form">
-      <div>
-        <%= f.input :name, name: "project_name", label:false,  placeholder: "Project name",
-        input_html: { class: 'bordeless-input',
-          data: {
-            update_project_target: "projectName",
-            action: "keyup->update-project#updateProject"
-            }}%>
-        </div>
-      <%= f.input :description, name: "description", label:false, placeholder: "Project description",
-      input_html: { class: 'bordeless-input',
+  <div class="new-project-form">
+    <div>
+      <%= f.input :name, name: "project_name", label:false,  placeholder: "Project name",
+      input_html: { class: 'borderless-input',
         data: {
-          update_project_target: "description",
+          update_project_target: "projectName",
           action: "keyup->update-project#updateProject"
           }}%>
-      <div class="form-group">
-        <label for="project_end">Project end:</label>
-        <input type="date" id="project_end" name="project_end" class="form-control" value="<%=Date.today%>" min="<%=Date.today%>" max="<%=Date.today.next_year%>" data-update-project-target="projectEnd" data-action="change->update-project#updateProject">
       </div>
+    <%= f.input :description, name: "description", label:false, placeholder: "Project description",
+    input_html: { class: 'borderless-input',
+      data: {
+        update_project_target: "description",
+        action: "keyup->update-project#updateProject"
+        }}%>
+    <div class="form-group">
+      <label for="project_end">Project end:</label>
+      <input type="date" id="project_end" name="project_end" class="form-control" value="<%=Date.today%>" min="<%=Date.today%>" max="<%=Date.today.next_year%>" data-update-project-target="projectEnd" data-action="change->update-project#updateProject">
     </div>
-    <button type="button" class="submit-form-btn" data-toggle="modal" data-target="#popupModal">
-      Share project
-    </button>
-  <% end %>
+  </div>
+  <button type="button" class="submit-form-btn" data-toggle="modal" data-target="#popupModal">
+    Share project
+  </button>
+<% end %>
 
 <!-- Modal -->
 <div class="modal fade" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="popupModalTitle" aria-hidden="true">
@@ -36,10 +36,6 @@
       </div>
       <div class="modal-body">
         <%= render 'share' %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

@@ -27,9 +27,9 @@
       </div>
       <div class="edit-send-group">
         <a class="btn btn-sync-light-grey btn-round" href="<%=edit_project_path(@project)%>">Edit Project</a>
-        <% if @project.status == "saved"  %>
-          <button type="button" class="btn btn-sync-primary btn-round" data-action="click->email-popup#show">Send Project</button>
-        <% end %>
+        <button type="button" class="submit-form-btn" data-toggle="modal" data-target="#popupModal">
+          Share project
+        </button>
       </div>
     </div>
 
@@ -38,26 +38,27 @@
       <%= render partial: "deliverables/cards/review", collection: @deliverables_by_date_hash, as: :deliverable %>
     </div>
   </div>
+</div>
 
-  <% if @project.status == "saved" %>
-    <button class="custom-popup primary-background" data-email-popup-target="button" data-action="click->email-popup#toggle">
-      <i class="far fa-envelope mx-2"></i> Send project to brand
-    </button>
-    <form action="/project_confirmations/create" method="POST" data-email-popup-target="email" class="card custom-popup d-none" style="width: 20rem;">
-      <div class="form-header-details">
-        <div class="header-md email-header">Send project to brand</div>
-        <div class="close-btn close-header" data-action="click->email-popup#toggle">X</div>
+<!-- Modal -->
+<div class="modal fade" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="popupModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Share with people and groups</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="card-body custom-card-body">
-        <input type="text" name="client_email" placeholder="Email" class="bordeless-input my-1">
-        <input type="text" name="email_subject" placeholder="Subject" class="bordeless-input my-1">
-        <textarea name="email_body" cols="30" rows="10" placeholder="Type your message here" class="bordeless-input my-1"></textarea>
-        <input type="hidden" name="project" value=<%= @project.id %>>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <button type="submit" class="btn btn-primary btn-sm btn-trigger mt-2" value="<%= @project.id %>" data-email-popup-target="emailBtn" data-action="click->email-popup#updateStatus">Confirm</button>
+      <div class="modal-body">
+        <%= render 'share' %>
       </div>
-    </form>
-  <% end %>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>

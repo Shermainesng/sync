@@ -10,7 +10,7 @@
   padding: 0 5px;
 }
 
-.bordeless-input {
+.borderless-input {
   border: none !important;
   // background-image: linear-gradient(#bdbdbd, #bdbdbd) !important;
   background-size: 0% 2px !important;
@@ -20,9 +20,10 @@
   border-bottom: 0.5px solid $light-grey !important;
   transition: 500ms;
   background-repeat: no-repeat;
+  width: 100%;
 }
 
-.bordeless-input:focus {
+.borderless-input:focus {
   border: 1px solid #ced4da !important;
   border: none !important;
   outline: none !important;

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show, :destroy]
   before_action :nested_project, only: [:sent, :confirm]
-  skip_before_action :authenticate_user!, only: [ :sign_up, :show ]
+  skip_before_action :authenticate_user!, only: [:sign_up, :show]
 
   has_scope :filter_name
   has_scope :status
@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
     if @project.user == current_user || @project.users.include?(current_user)
       @deliverables = @project.deliverables.order(:due_date)
       @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
+      @collaborators = @project.users
     else
       #ask for permission, direct to request access page
       redirect_to home_path
