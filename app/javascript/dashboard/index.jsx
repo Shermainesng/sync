@@ -28,4 +28,4 @@ ReactDOM.render(
     <DeliverablesList />
     <ProjectsList />
   </Provider>,
-  document.getElementById('deliverables'));
+  document.getElementById('root'));

@@ -12,7 +12,6 @@ class SearchBar extends Component {
     setTimeout(() => {
       this.props.loadProjects({ status: this.props.projectStatus, name: this.props.search });
     }, 2000);
-
   }
 
   render() {

@@ -3,7 +3,7 @@ const ROOT_URL = '/api/v1';
 
 export const LOAD_DELIVERABLES = 'LOAD_DELIVERABLES';
 export const LOAD_PROJECTS = 'LOAD_PROJECTS';
-export const SEARCH = 'SEARCH';
+export const UPDATE_SEARCH = 'UPDATE_SEARCH';
 export const FILTER_STATUS = 'FILTER_STATUS';
 
 export function loadDeliverables(period) {
@@ -32,7 +32,7 @@ export function loadProjects(params) {
 
 export function updateSearch(value) {
   return {
-    type: SEARCH,
+    type: UPDATE_SEARCH,
     payload: value
   };
 }

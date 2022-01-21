@@ -9,12 +9,12 @@ class Api::V1::ProjectsController < ActionController::Base
 
     @projects.each do |proj|
       project = {
+        id: proj.id,
         name: proj.name,
         brand: proj.brand,
-        description: proj.description
+        description: proj.description,
+        deliverables: proj.deliverables
       }
-      project.icons = []
-      project.icons = proj.deliverables.map { &:deliverable_type }
       projects << project
     end
 

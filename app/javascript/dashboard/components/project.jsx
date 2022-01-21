@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './icon';
 
 function Project(props) {
   const proj = props.proj
@@ -11,7 +12,7 @@ function Project(props) {
               <p className="pl-0 w-100">{proj.name}</p>
               <div className="d-flex align-items-center mb-3 mt-2">
                 <img className="avatar avatar-sm" src="/" alt="avatar"/>
-                <div className="card-custom-subtitle header-sm">{proj.brand}</div>
+                <div className="card-custom-subtitle header-sm">{proj.brand.name}</div>
               </div>
             </div>
 
@@ -19,7 +20,7 @@ function Project(props) {
               {proj.description}
             </div>
             <ul>
-              <li>ICON</li>
+              {proj.deliverables.map((deliverable) => <Icon type={deliverable.deliverable_type} key={deliverable.id}/>)}
             </ul>
           </div>
         </div>
