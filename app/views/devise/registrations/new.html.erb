@@ -4,6 +4,7 @@
 
   <div class="form-inputs">
     <%= f.hidden_field :token, value: params[:token], name: 'token' if params[:token].present? %>
+    <%= f.hidden_field :role_token, value: params[:role_token], name: 'role_token' if params[:role_token].present? %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
