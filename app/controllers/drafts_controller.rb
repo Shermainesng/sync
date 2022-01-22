@@ -23,6 +23,8 @@ class DraftsController < ApplicationController
                     end
     @comments = @draft.comments.select { |comment| comment.parent_id.nil?}
     @comment = Comment.new
+    @project = @draft.deliverable.project
+    @approver = ProjectUser.find_by(user_id: current_user, project_id: @project).role.name
   end
 
   def create
