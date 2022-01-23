@@ -43,8 +43,8 @@
         </div>
       </div>
       <div class="role-position-right">
-        <select name="role" id="role">
-          <% role = ProjectUser.find_by(user_id: collaborator.id).role %>
+        <% role = ProjectUser.find_by(user_id: collaborator.id).role %>
+        <select name="role" id="role" <%= role.name == 'admin' ? "" : disabled="disabled" %>>
           <option value="admin" <% role == 'admin' ? selected : "" %>>Admin</option>
           <option value="collaborator" <% role == 'collaborator' ? selected : "" %>>Collaborator</option>
         </select>
