@@ -22,4 +22,8 @@ class PagesController < ApplicationController
 
   def dashboard
   end
+
+  def error
+    @error = true
+  end
 end
