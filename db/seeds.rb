@@ -6,6 +6,8 @@ puts "Cleaning users"
 User.destroy_all
 puts "Cleaning organizations"
 Organisation.destroy_all
+puts "Cleaning roles"
+Role.destroy_all
 
 puts "Creating organisations"
 
@@ -166,8 +168,23 @@ puts "Creating projects"
     status: 'ongoing',
     description: "Good Vibes Only is launching a one-of-a-kind sex bomb! Need our help to advertise their product on our socials",
     client_id: gv_organisation.id,
-    users: [gv_user_1, gv_user_2]
+    users: [hela_user, gv_user_1, gv_user_2]
   })
+
+ role1 = ProjectUser.find_by(user_id: hela_user.id, project_id: goodvibesonly.id)
+ Role.create!({name: 'admin'})
+ role1.role = Role.last
+ role1.save!
+
+ role2 = ProjectUser.find_by(user_id: gv_user_1.id, project_id: goodvibesonly.id)
+ Role.create!({name: 'admin'})
+ role2.role = Role.last
+ role2.save!
+
+ role3 = ProjectUser.find_by(user_id: gv_user_2.id, project_id: goodvibesonly.id)
+ collaborator = Role.create!({name: 'collaborator'})
+ role3.role = Role.last
+ role3.save!
 
     puts "Creating deliverables for #{Project.last.name}"
 
@@ -179,6 +196,31 @@ puts "Creating projects"
     })
     gv_deliv1.tag_list.add("urgent", parse: true)
     gv_deliv1.save!
+
+      gv_draft1 = Draft.new({
+          deliverable: gv_deliv1,
+          description: "Good vibes, good life",
+          status: "rejected"
+        })
+        gv_draft1.user = hela_user
+        # gv_draft1.attachments << Faker::Placeholdit.image(format: 'jpg')
+        gv_draft1.save!
+
+          gv_draft1_comment1 = Comment.new({
+            user: gv_user_1,
+            draft: gv_draft1,
+            content: "Love the visuals, but could you change the copy? Angle it from a partner POV"
+          })
+          gv_draft1_comment1.save!
+
+        gv_draft2 = Draft.new({
+          deliverable: gv_deliv1,
+          description: "It's all about feeling good",
+          status: "in progress"
+        })
+        gv_draft2.user = hela_user
+        # gv_draft1.attachments << Faker::Placeholdit.image(format: 'jpg')
+        gv_draft2.save!
 
     gv_deliv2 = Deliverable.create!({
       project: goodvibesonly,
@@ -197,7 +239,7 @@ puts "Creating projects"
     status: 'ongoing',
     description: "Promote Rachel Lark's song 'Unicorn', which takes a hilarious look at polyamory",
     client_id: syn_organisation.id,
-    users: [syn_user_1, syn_user_2]
+    users: [hela_user, syn_user_1, syn_user_2]
   })
 
     puts "Creating deliverables for #{Project.last.name}"
@@ -364,7 +406,7 @@ puts "Creating projects"
       lora_deliv2.tag_list.add("writing,storytelling", parse: true)
       lora_deliv2.save!
 
-#project 7
+# project 7
   hims= Project.create!({
     user: hela_user,
     name: "Last longer and harder",

@@ -16,17 +16,15 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    if params[:token].present?
+    if params[:token].present? && params[:role_token]
       if user_signed_in?
-        @project = Project.find_by(token: params[:token])
-        @project.users << current_user if !(@project.users.include?(current_user))
+        add_project_and_role
       else
-        redirect_to new_user_session_path(token: params[:token]) and return
+        redirect_to new_user_session_path(token: params[:token], role_token: params[:role_token]) and return
       end
     else
       redirect_to new_user_session_path if !(user_signed_in?) and return
     end
-
     if @project.user == current_user || @project.users.include?(current_user)
       @deliverables = @project.deliverables.order(:due_date)
       @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
@@ -38,7 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def sign_up
-    redirect_to new_user_registration_path(token: params[:token])
+    redirect_to new_user_registration_path(token: params[:token], role_token: params[:role_token])
   end
 
   def new
@@ -48,6 +46,13 @@ class ProjectsController < ApplicationController
       project_end: Date.today,
       status: 'saved'
     )
+    @role = Role.create!({
+      name: 'admin'
+    })
+    @project.users << current_user
+    @proj_user = ProjectUser.find_by(user_id: current_user, project_id: @project)
+    @proj_user.role = @role
+    @proj_user.save!
 
     redirect_to edit_project_path(@project)
   end
@@ -93,6 +98,21 @@ class ProjectsController < ApplicationController
     @project.save!
     ProjectStatus.with(project: @project, action: "confirmed", user: current_user).deliver(@project.user)
     redirect_to('/test')
+  end
+
+  def add_project_and_role
+    if params[:token].present? && params[:role_token].present?
+      @project = Project.find_by(token: params[:token])
+      @role = Role.find_by(role_token: params[:role_token])
+
+      if !(@project.nil?) && !(@role.nil?)
+        @project.users << current_user if !(@project.users.include?(current_user))
+        @proj_user = ProjectUser.find_by(user_id: current_user, project_id: @project)
+        @proj_user.role = @role
+        @proj_user.save!
+        show_project_path(@project)
+      end
+    end
   end
 
   private

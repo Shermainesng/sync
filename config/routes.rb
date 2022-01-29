@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get "/test", to: "pages#test"
   get "/dashboard", to: "pages#dashboard"
+  get "/error", to: "pages#error"
 
   get '/notifications', to: "notifications#index"
 
@@ -22,8 +23,8 @@ Rails.application.routes.draw do
     get 'sent', to: "projects#sent"
   end
 
-  get "projects/:id(/:token)", to: "projects#show", as: 'show_project'
-  get "projects/:id/:token/sign_up", to: "projects#sign_up"
+  get "projects/:id(/:token)(/:role_token)", to: "projects#show", as: 'show_project'
+  get "projects/:id/:token/:role_token/sign_up", to: "projects#sign_up"
 
   resources :deliverables, only: [:show, :destroy, :edit, :update, :index] do
     resources :drafts, only: [:new, :create, :index]
@@ -39,8 +40,9 @@ Rails.application.routes.draw do
     resources :replies, only: [:new, :create]
   end
 
-
   resources :organisations
+
+  resources :roles, only: [:update]
 
   namespace :api do
     namespace :v1 do

@@ -35,9 +35,11 @@
     <% if user_signed_in?  %>
       <div class="custom-layout">
         <div class="row">
-          <div class="col-3 nav-stick">
-            <%= render 'shared/navbar' %>
-          </div>
+          <% if !(@error) %>
+            <div class="col-3 nav-stick">
+              <%= render 'shared/navbar'  %>
+            </div>
+          <% end %>
           <div class="col-9">
             <%= yield %>
           </div>

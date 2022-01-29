@@ -5,12 +5,19 @@ import { connect } from 'react-redux';
 import Project from '../components/project';
 import Message from '../components/message';
 import ProjectsFilter from '../containers/projects_filter';
-import { loadProjects } from '../actions';
+import SearchBar from './search_bar';
+import { loadProjects, filterStatus } from '../actions';
 
 class ProjectsList extends Component{
 
   componentDidMount() {
-    this.props.loadProjects({status: "", name: ""});
+    this.props.filterStatus("ongoing");
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.projectStatus != this.props.projectStatus) {
+      this.props.loadProjects({status: this.props.projectStatus, name: ""});
+    }
   }
 
   renderList(projects) {
@@ -22,7 +29,10 @@ class ProjectsList extends Component{
 
     return(
       <div className='card-frosted my-3 p-4 projects'>
-        <ProjectsFilter />
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <ProjectsFilter />
+          <SearchBar />
+        </div>
         <div className="row projects-results">
           {projectsEmpty ? <Message content="Nothing here!" /> : this.renderList(this.props.projects)}
         </div>
@@ -33,13 +43,17 @@ class ProjectsList extends Component{
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { loadProjects: loadProjects },
+    {
+      loadProjects: loadProjects,
+      filterStatus: filterStatus
+    },
     dispatch);
 }
 
 function mapStateToProps(state) {
   return {
-    projects: state.projects
+    projects: state.projects,
+    projectStatus: state.projectStatus
   };
 }
 
