@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get "/test", to: "pages#test"
   get "/dashboard", to: "pages#dashboard"
+  get "/error", to: "pages#error"
 
   get '/notifications', to: "notifications#index"
 
