@@ -1,0 +1,26 @@
+<div class='d-flex' data-controller="update-role">
+  <div>
+    <% if current_user.profile_pic.nil? %>
+      <span class="imageless-avatar avatar"><%= current_user.username.first.upcase %> </span>
+    <% else %>
+      <%= image_tag current_user.profile_pic, class:"avatar"%>
+    <% end %>
+  </div>
+  <div>
+    <div>
+      <%= collaborator.username %>
+    </div>
+    <div>
+      <%= collaborator.email %>
+    </div>
+  </div>
+  <div class="role-position-right">
+    <% role = ProjectUser.find_by(user_id: collaborator, project_id: @project).role %>
+    <select name="role" id="role" data-update-role-target="dropdown" data-value="<%= role.id %>" data-action="change->update-role#updateRoles">
+      <option value="admin" data-update-role-target="admin" <%= role.name == 'admin' ? selected="selected" : "" %>>Admin</option>
+      <option value="collaborator" data-update-role-target="collaborator" <%= role.name == 'collaborator' ? selected="selected" : "" %>>Collaborator</option>
+      <%# raise %>
+    </select>
+
+  </div>
+</div>

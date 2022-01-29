@@ -15,7 +15,7 @@
       <div class="review-card-description header-md"><%= @draft.deliverable.project.description %></div>
     </div>
     <%# brand view -- approve and reject buttons %>
-    <% if (@draft.deliverable.project.brand == current_user) && (@draft.status == "pending") %>
+    <% if (@draft.deliverable.project.brand == current_user.organisation) && (@draft.status == "in progress") && (@approver == 'admin') %>
       <a class="comment-btn mx-1 w-15" href="<%=draft_approve_path(@draft)%>">Approve draft</a>
       <a class="comment-btn mx-1 w-15" href="<%=draft_reject_path(@draft)%>">Reject draft</a>
     <% end %>
