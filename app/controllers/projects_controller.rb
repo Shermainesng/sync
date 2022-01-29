@@ -1,7 +1,10 @@
 class ProjectsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   before_action :set_project, only: [:edit, :update, :show, :destroy]
   before_action :nested_project, only: [:sent, :confirm]
   skip_before_action :authenticate_user!, only: [:sign_up, :show]
+
 
   has_scope :filter_name
   has_scope :status
@@ -25,13 +28,13 @@ class ProjectsController < ApplicationController
     else
       redirect_to new_user_session_path if !(user_signed_in?) and return
     end
+
     if @project.user == current_user || @project.users.include?(current_user)
       @deliverables = @project.deliverables.order(:due_date)
       @deliverables_by_date_hash = @deliverables.group_by { |deliverable| deliverable.due_date}
       @collaborators = @project.users
     else
-      #ask for permission, direct to request access page
-      redirect_to home_path
+      redirect_to error_path
     end
   end
 
@@ -58,6 +61,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    redirect_to error_path  if @project.user != current_user || !(@project.users.include?(current_user))
     @deliverables = @project.deliverables.order(:due_date)
     @deliverable = Deliverable.new
   end
@@ -101,17 +105,15 @@ class ProjectsController < ApplicationController
   end
 
   def add_project_and_role
-    if params[:token].present? && params[:role_token].present?
-      @project = Project.find_by(token: params[:token])
-      @role = Role.find_by(role_token: params[:role_token])
+    @project = Project.find_by(token: params[:token])
+    @role = Role.find_by(role_token: params[:role_token])
 
-      if !(@project.nil?) && !(@role.nil?)
-        @project.users << current_user if !(@project.users.include?(current_user))
-        @proj_user = ProjectUser.find_by(user_id: current_user, project_id: @project)
-        @proj_user.role = @role
-        @proj_user.save!
-        show_project_path(@project)
-      end
+    if !(@project.nil?) && !(@role.nil?)
+      @project.users << current_user if !(@project.users.include?(current_user))
+      @proj_user = ProjectUser.find_by(user_id: current_user, project_id: @project)
+      @proj_user.role = @role
+      @proj_user.save!
+      show_project_path(@project)
     end
   end
 
@@ -123,6 +125,10 @@ class ProjectsController < ApplicationController
 
   def nested_project
     @project = Project.find(params[:project_id])
+  end
+
+  def record_not_found
+    render "pages/error", status: 404
   end
 
 end

@@ -1,5 +1,7 @@
 class DeliverablesController < ApplicationController
-  before_action :set_deliverable, only: [:show, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
+  before_action :set_deliverable, only: [:show, :destroy, :edit, :update]
 
   def index
     filter = params[:deliv_by] #week or month
@@ -16,9 +18,6 @@ class DeliverablesController < ApplicationController
     @deliverables= current_user.deliverables.where("due_date >= ?", Date.today).where("due_date <= ?", filtered_date).order(:due_date)
 
     respond_to do |format|
-      # format.json {render json: { status: "ok" } }
-      # format.text {render plain: "ok"}
-
       format.html { redirect_to root_path}
       format.text { render partial: 'deliverables/cards/dashboard', collection: @deliverables, as: :deliverable, formats: [:html] }
     end
@@ -30,7 +29,6 @@ class DeliverablesController < ApplicationController
   end
 
   def show
-    @project = @deliverable.project
     @client = Organisation.find(@project.client_id)
     @deliverables = @project.deliverables.order(:due_date)
     @drafts = @deliverable.drafts.order(created_at: :desc)
@@ -56,7 +54,6 @@ class DeliverablesController < ApplicationController
   end
 
   def destroy
-    @deliverable = Deliverable.find(params[:id])
     @deliverable.destroy
 
     respond_to do |format|
@@ -67,7 +64,6 @@ class DeliverablesController < ApplicationController
   end
 
   def edit
-    @deliverable = Deliverable.find(params[:id])
     respond_to do |format|
       format.html { redirect_to edit_project_path(@project) }
       format.text {render partial: 'deliverables/update', locals: { deliverable: @deliverable }, formats: [:html]}
@@ -75,7 +71,6 @@ class DeliverablesController < ApplicationController
   end
 
   def update
-    @deliverable = Deliverable.find(params[:id])
     @project = Project.find(@deliverable[:project_id])
 
     updated = params[:deliverable]
@@ -101,6 +96,12 @@ class DeliverablesController < ApplicationController
 
   def set_deliverable
     @deliverable = Deliverable.find(params[:id])
+    @project = @deliverable.project
+    redirect_to error_path if @project.user != current_user || !(@project.users.include?(current_user))
+  end
+
+  def record_not_found
+    render "pages/error", status: 404
   end
 
 end
