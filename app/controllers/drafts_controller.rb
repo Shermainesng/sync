@@ -1,8 +1,7 @@
 class DraftsController < ApplicationController
-  # def index
-  #   @deliverable = Deliverable.find(params[:deliverable_id])
-  #   @drafts = @deliverable.drafts
-  # end
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
+  before_action :set_draft, only: [:show]
 
   def new
     @deliverable = Deliverable.find(params[:deliverable_id])
@@ -10,7 +9,6 @@ class DraftsController < ApplicationController
   end
 
   def show
-    @draft = Draft.find(params[:id])
     @deliverable = @draft.deliverable
     @client = Organisation.find(@deliverable.project.client_id)
     @status_color = case @draft.status
@@ -59,6 +57,16 @@ class DraftsController < ApplicationController
   private
   def draft_params
     params.require(:draft).permit(:description, {attachments: []})
+  end
+
+  def set_draft
+    @draft = Draft.find(params[:id])
+    @project = @draft.deliverable.project
+    redirect_to error_path if @project.user != current_user || !(@project.users.include?(current_user))
+  end
+
+  def record_not_found
+    render "pages/error", status: 404
   end
 
 end

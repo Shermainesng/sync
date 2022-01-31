@@ -242,6 +242,21 @@ puts "Creating projects"
     users: [hela_user, syn_user_1, syn_user_2]
   })
 
+  role1 = ProjectUser.find_by(user_id: hela_user.id, project_id: polyamorous.id)
+  Role.create!({name: 'admin'})
+  role1.role = Role.last
+  role1.save!
+
+  role2 = ProjectUser.find_by(user_id: syn_user_1.id, project_id: polyamorous.id)
+  Role.create!({name: 'admin'})
+  role2.role = Role.last
+  role2.save!
+
+  role3 = ProjectUser.find_by(user_id: syn_user_2.id, project_id: polyamorous.id)
+  collaborator = Role.create!({name: 'collaborator'})
+  role3.role = Role.last
+  role3.save!
+
     puts "Creating deliverables for #{Project.last.name}"
 
     polyamorous_deliv1 = Deliverable.create!({
@@ -272,6 +287,11 @@ puts "Creating projects"
     client_id: pl_organisation.id,
     users: [pl_user_1]
   })
+
+  role1 = ProjectUser.find_by(user_id: pl_user_1.id, project_id: pinklifestyle.id)
+  Role.create!({name: 'admin'})
+  role1.role = Role.last
+  role1.save!
 
   puts "Creating deliverables for #{Project.last.name}"
 
@@ -329,6 +349,11 @@ puts "Creating projects"
     users: [px_user_1]
   })
 
+  role1 = ProjectUser.find_by(user_id: px_user_1.id, project_id: projectx.id)
+  Role.create!({name: 'admin'})
+  role1.role = Role.last
+  role1.save!
+
   puts "Creating deliverables for #{Project.last.name}"
 
     px_deliv1 = Deliverable.create!({
@@ -350,6 +375,11 @@ puts "Creating projects"
     client_id: dame_organisation.id,
     users: [dame_user_1]
   })
+
+  role1 = ProjectUser.find_by(user_id: dame_user_1.id, project_id: dame.id)
+  Role.create!({name: 'admin'})
+  role1.role = Role.last
+  role1.save!
 
     dame_deliv1 = Deliverable.create!({
       project: dame,
@@ -388,6 +418,12 @@ puts "Creating projects"
     client_id: lora_organisation.id,
     users: [lora_user_1]
   })
+
+  role1 = ProjectUser.find_by(user_id: lora_user_1.id, project_id: lora.id)
+  Role.create!({name: 'admin'})
+  role1.role = Role.last
+  role1.save!
+
     lora_deliv1 = Deliverable.create!({
       project: lora,
       deliverable_type: "Tiktok Vid",
@@ -407,7 +443,7 @@ puts "Creating projects"
       lora_deliv2.save!
 
 # project 7
-  hims= Project.create!({
+  hims = Project.create!({
     user: hela_user,
     name: "Last longer and harder",
     project_end: '2022-01-15',
@@ -416,6 +452,11 @@ puts "Creating projects"
     client_id: hims_organisation.id,
     users: [hims_user_1]
   })
+
+  role1 = ProjectUser.find_by(user_id: hims_user_1.id, project_id: hims.id)
+  Role.create!({name: 'admin'})
+  role1.role = Role.last
+  role1.save!
 
     hims_deliv1 = Deliverable.create!({
       project: hims,
