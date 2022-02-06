@@ -342,6 +342,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   font-awesome-sass
+  gobject-introspection (~> 3.4, >= 3.4.9)
   has_scope
   jbuilder (~> 2.7)
   launchy (~> 2.5)
