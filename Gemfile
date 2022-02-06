@@ -79,5 +79,4 @@ gem 'bootstrap-sass'
 gem 'has_scope'
 gem 'acts-as-taggable-on'
 
-gem 'poppler', '~> 3.0', '>= 3.0.7' # previewer for pdf
 gem 'sprockets-rails'
