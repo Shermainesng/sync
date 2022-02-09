@@ -201,8 +201,6 @@ GEM
     pg (1.2.3)
     pkg-config (1.4.6)
     popper_js (1.16.0)
-      cairo-gobject (= 3.4.9)
-      gio2 (= 3.4.9)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
