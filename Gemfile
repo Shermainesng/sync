@@ -80,4 +80,4 @@ gem 'has_scope'
 gem 'acts-as-taggable-on'
 
 gem 'sprockets-rails'
-gem 'gobject-introspection', '~> 3.4', '>= 3.4.9'
+gem 'gobject-introspection', '~> 3.5'
