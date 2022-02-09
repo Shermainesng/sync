@@ -70,8 +70,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'bootstrap', '~> 4.6.1'
+gem 'gobject-introspection', '~> 3.5'
+gem 'bootstrap', '~> 5.1'
 
 gem "launchy", "~> 2.5"
 gem 'carrierwave', '~> 2.0' # file uploader
@@ -80,4 +80,3 @@ gem 'has_scope'
 gem 'acts-as-taggable-on'
 
 gem 'sprockets-rails'
-gem 'gobject-introspection', '~> 3.5'
