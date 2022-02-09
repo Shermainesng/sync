@@ -1,10 +1,10 @@
 // colored buttons
-.btn-sync-success{
+.btn-sync-success {
   background-color: $sync-success;
   color: white;
   border-radius: 10px;
 }
-.btn-sync-danger{
+.btn-sync-danger {
   background-color: $sync-danger;
   border-radius: 10px;
 }
@@ -36,6 +36,25 @@
   background-color: $dark-grey;
   color: white;
   border-radius: 10px;
+}
+
+.btn-sync-purple {
+  background-color: $purple;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 10px 8px 10px;
+  height: 50px;
+  width: 180px;
+}
+.btn-sync-pink {
+  background-color: $pink;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 10px 8px 10px;
+  height: 50px;
+  width: 180px;
 }
 /////
 
@@ -104,7 +123,7 @@
 }
 
 .custom-edit-btn {
-  background-color: #94B3FD;
+  background-color: #94b3fd;
   border-radius: 5px;
   color: black;
   padding: 4px 12px;
