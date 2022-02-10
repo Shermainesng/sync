@@ -19,6 +19,31 @@
 }
 
 //landing page content
-.landing-title {
+.container-landing {
+  height: 100vh;
+}
+.landing-title-lineone {
+  font-family: $headers-font;
+  font-weight: lighter;
+  font-size: 70px;
   padding-top: 60px;
+  color: $gray;
+  margin-bottom: -6px;
+}
+.landing-title-linetwo {
+  font-family: $body-font;
+  font-weight: bold;
+  font-size: 60px;
+  color: $gray;
+}
+.container-para {
+  width: 50%;
+  text-align: center;
+}
+.button-holder {
+  width: 60%;
+  text-align: center;
+}
+.container-about {
+  background-color: white;
 }
