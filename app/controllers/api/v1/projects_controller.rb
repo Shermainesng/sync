@@ -13,11 +13,18 @@ class Api::V1::ProjectsController < ActionController::Base
         name: proj.name,
         brand: proj.brand,
         description: proj.description,
-        deliverables: proj.deliverables
+        deliverables: proj.deliverables,
+        img: proj.users.first.profile_pic
       }
       projects << project
     end
 
     render json: projects
+  end
+
+  def show
+    @project= Project.find(params[:id])
+
+    render json:@project
   end
 end

@@ -10,13 +10,14 @@ Rails.application.routes.draw do
 
   get '/test', to: 'pages#test'
   get '/dashboard', to: 'pages#dashboard'
+  get '/projects/:id/edit', to:'pages#dashboard'
   get '/error', to: 'pages#error'
 
   get '/notifications', to: 'notifications#index'
 
   resources :notifications, only: %i[update destroy]
 
-  resources :projects, except: :show do
+  resources :projects, except: [:show] do
     resources :deliverables, only: %i[new create]
     post 'project_confirmations/create'
     get 'confirm', to: 'projects#confirm'
@@ -47,7 +48,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :deliverables, only: [:index]
-      resources :projects, only: [:index]
+      resources :projects, only: [:index, :show]
     end
   end
 end
