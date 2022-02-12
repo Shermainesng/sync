@@ -23,8 +23,14 @@ class Api::V1::ProjectsController < ActionController::Base
   end
 
   def show
-    @project= Project.find(params[:id])
+    proj= Project.find(params[:id])
 
     render json:@project
+  end
+
+  def deliverables
+    proj= Project.find(params[:project_id])
+
+    render json: proj.deliverables
   end
 end

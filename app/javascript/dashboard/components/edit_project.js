@@ -6,15 +6,18 @@ import { fetchProject } from '../actions/index';
 
 import FrostedCard from './frostedcard';
 import ProjectHeader from '../containers/project_header';
+import DeliverablesList from './deliverables_list';
 
 function EditProject(props) {
-    const params = useParams();
-    const project = props.projects.find(p => p.id === params.projectId);
+
+    const id = useParams().projectId;
+    const project = props.fetchProject(id);
 
     return(
       <FrostedCard classes="my-3 p-3">
         {/* <DeliverablesList/> */}
         <ProjectHeader proj={project}/>
+        <DeliverablesList projectId={id}/>
       </FrostedCard>
     );
 }
@@ -24,6 +27,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { projects: state.projects };
+  return { project: state.selectedProject };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditProject);

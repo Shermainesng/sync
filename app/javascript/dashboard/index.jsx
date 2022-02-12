@@ -15,12 +15,14 @@ import deliverablesReducer from './reducers/deliverables_reducer'
 import projectsReducer from './reducers/projects_reducer'
 import searchReducer from './reducers/search_reducer'
 import projectStatusReducer from './reducers/project_status_reducer'
+import selectedProjectReducer from './reducers/selected_project_reducer'
 
 const reducers = combineReducers({
   deliverables: deliverablesReducer,
   projects: projectsReducer,
   search: searchReducer,
-  projectStatus:projectStatusReducer
+  projectStatus:projectStatusReducer,
+  selectedProject:selectedProjectReducer,
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = composeEnhancers(applyMiddleware(reduxPromise));

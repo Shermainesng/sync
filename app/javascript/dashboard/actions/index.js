@@ -6,6 +6,7 @@ export const LOAD_PROJECTS = 'LOAD_PROJECTS';
 export const UPDATE_SEARCH = 'UPDATE_SEARCH';
 export const FILTER_STATUS = 'FILTER_STATUS';
 export const FETCH_PROJECT = 'FETCH_PROJECT';
+export const LOAD_PROJECT_DELIVERABLES = 'LOAD_PROJECT_DELIVERABLES';
 
 
 export function loadDeliverables(period) {
@@ -48,10 +49,21 @@ export function filterStatus(value) {
 }
 
 export function fetchProject(id) {
-  const promise = fetch(`${ROOT_URL}/${id}`)
+  const promise = fetch(`${ROOT_URL}/projects/${id}`)
     .then(response => response.json());
   return {
-    type: FETCH_POST,
+    type: FETCH_PROJECT,
+    payload: promise
+  };
+}
+
+export function loadProjectDeliverables(id) {
+  console.log("loading project deliverables");
+  const promise = fetch(`${ROOT_URL}/projects/${id}/deliverables`)
+    .then(response => response.json());
+  console.log('loaded project deliverables');
+  return {
+    type: LOAD_PROJECT_DELIVERABLES,
     payload: promise
   };
 }
