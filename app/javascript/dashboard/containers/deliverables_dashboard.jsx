@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import Deliverable from '../components/deliverable';
 import Message from '../components/message';
-import Select from '../containers/select';
+import Select from './select';
 import { loadDeliverables } from '../actions';
 
-class DeliverablesList extends Component{
+class DeliverablesDashboard extends Component{
 
   componentDidMount() {
     this.props.loadDeliverables("week");
@@ -53,4 +53,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeliverablesList);
+export default connect(mapStateToProps, mapDispatchToProps)(DeliverablesDashboard);
