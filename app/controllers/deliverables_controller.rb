@@ -74,13 +74,10 @@ class DeliverablesController < ApplicationController
     @project = Project.find(@deliverable[:project_id])
 
     updated = params[:deliverable]
-    @deliverable.update!({
-      deliverable_type: updated[:deliverable_type],
-      due_date: "#{updated["due_date(1i)"]}-#{updated["due_date(2i)"]}-#{updated["due_date(3i)"]}",
-      description: updated[:description],
-      tag_list: updated[:tag_list].split.join(",")
-    })
-
+    @deliverable.update!({  deliverable_type: updated[:deliverable_type],
+                            description: updated[:description],
+                            tag_list: updated[:tag_list].split.join(",") })
+    @deliverable.due_date = params[:due_date]
     respond_to do |format|
         # format.html { redirect_to edit_project_path(@project) }
         format.json # Follow the classic Rails flow and look for a create.json view
@@ -91,7 +88,7 @@ class DeliverablesController < ApplicationController
 
   private
   def deliverable_params
-    params.require(:deliverable).permit(:deliverable_type, :description, :tag_list)
+    params.require(:deliverable).permit(:deliverable_type, :description, :tag_list, :due_date)
   end
 
   def set_deliverable
