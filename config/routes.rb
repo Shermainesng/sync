@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # patch "/deliverables/:id", to: "deliverables#update" , as: 'update_deliverable'
 
   get '/test', to: 'pages#test'
+
   # get '/dashboard', to: 'pages#dashboard'
   # get '/projects/:id/edit', to:'pages#dashboard'
   get '/error', to: 'pages#error'
@@ -48,8 +49,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :deliverables, only: [:index]
-      resources :projects, only: [:index, :show] do
-        get 'deliverables', to: "projects#deliverables"
+      resources :projects, only: %i[index show] do
+        get 'deliverables', to: 'projects#deliverables'
       end
     end
   end
