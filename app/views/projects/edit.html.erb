@@ -20,12 +20,13 @@
 
 
 <div class="card-frosted my-3 p-3" data-controller="insert-deliverables">
-  <ul class="custom-list" data-insert-deliverables-target="list" id="deliverable-list">
-      <%= render partial: 'deliverables/cards/project_details', collection: @deliverables, as: :deliverable%>
-      <button class="card-frosted card-white-and-date mx-auto" data-toggle="modal" data-target="#newDeliverableModal">
-        + Add new deliverable
-      </button>
+  <div class="custom-list" data-insert-deliverables-target="list" id="deliverable-list">
+    <%= render partial: 'deliverables/cards/project_details', collection: @deliverables, as: :deliverable%>
   </div>
+  <a class="btn btn-sync-primary btn-block my-4" data-toggle="modal" data-target="#newDeliverableModal">
+    + Add new deliverable
+  </a>
+</div>
 
 </div>
 

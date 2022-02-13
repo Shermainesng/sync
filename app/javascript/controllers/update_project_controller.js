@@ -15,11 +15,11 @@ export default class extends Controller {
     this.timer = setTimeout(()=>{
       fetch(this.formTarget.action, {
         method: 'PATCH',
-        headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
+        headers: { 'Accept': "text/plain", 'X-CSRF-Token': csrfToken() },
         body: new FormData(this.formTarget)
         // goes to controller in ruby here!!
       })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(() => {
           console.log("updated project");
         });

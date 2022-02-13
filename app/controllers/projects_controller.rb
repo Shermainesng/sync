@@ -74,7 +74,11 @@ class ProjectsController < ApplicationController
       description: new[:description],
       status: 'saved'
     )
-    redirect_to edit_project_path(params[:id])
+
+    respond_to do |format|
+      format.html { redirect_to edit_project_path(params[:id]) }
+      format.text { render plain: "ok"}
+    end
   end
 
   def destroy

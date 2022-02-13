@@ -3,7 +3,7 @@ import { Link, Outlet} from 'react-router-dom';
 // import { bindActionCreators } from 'redux';
 // import { connect } from 'react-redux';
 
-import DeliverablesList from './deliverables_list';
+import DeliverablesList from '../components/deliverables_list';
 import FrostedCard from '../components/frostedcard';
 
 class ShowProject extends Component {

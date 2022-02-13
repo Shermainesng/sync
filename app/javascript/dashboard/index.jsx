@@ -27,16 +27,17 @@ const reducers = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = composeEnhancers(applyMiddleware(reduxPromise));
 
-ReactDOM.render(
-  <Provider store={createStore(reducers, {}, middlewares)}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="dashboard" element={<Dashboard />} />
-        {/* <Route path="projects/:projectId">
-          <Route path=":edit" element={<EditProject />} /> */}
-        {/* </Route> */}
-      </Routes>
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById("dashboard")
-);
+// ReactDOM.render(
+//   <Provider store={createStore(reducers, {}, middlewares)}>
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="dashboard" element={<Dashboard />} />
+//         <Route path="projects/:projectId">
+//             <Route path=":edit" element={<EditProject />} />
+//         </Route>
+//       </Routes>
+//     </BrowserRouter>
+
+//   </Provider>,
+//   document.getElementById('dashboard'));
+
