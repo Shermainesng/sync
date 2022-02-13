@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-import { Link, Outlet} from 'react-router-dom';
+import React, { Component } from "react";
+import { Link, Outlet } from "react-router-dom";
 // import { bindActionCreators } from 'redux';
 // import { connect } from 'react-redux';
 
-import DeliverablesList from './deliverables_list';
-import FrostedCard from '../components/frostedcard';
+// import DeliverablesList from './deliverables_list';
+import FrostedCard from "../components/frostedcard";
 
 class ShowProject extends Component {
-
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -34,4 +32,4 @@ class ShowProject extends Component {
 //   };
 // }
 // connect(mapStateToProps, mapDispatchToProps)
-export default (ShowProject);
+export default ShowProject;
