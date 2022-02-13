@@ -29,11 +29,5 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3"
-<<<<<<< HEAD
-  },
-  "engines": {
-    "yarn": "1.22.15"
-=======
->>>>>>> 34e3a2c384aceb6a4dfa0a1b9a722bdde26fa248
   }
 }
