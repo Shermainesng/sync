@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   # patch "/deliverables/:id", to: "deliverables#update" , as: 'update_deliverable'
 
   get '/test', to: 'pages#test'
-  get '/dashboard', to: 'pages#dashboard'
-  get '/projects/:id/edit', to:'pages#dashboard'
+  # get '/dashboard', to: 'pages#dashboard'
+  # get '/projects/:id/edit', to:'pages#dashboard'
   get '/error', to: 'pages#error'
 
   get '/notifications', to: 'notifications#index'
