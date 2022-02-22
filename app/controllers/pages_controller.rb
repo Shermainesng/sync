@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :landing ]
+  skip_before_action :authenticate_user!, only: [ :landing, :faq]
 
   def landing
     redirect_to '/home' if user_signed_in?
