@@ -101,13 +101,13 @@ a {
   .end-date {
       position: absolute;
       width: auto;
-      top: 0;
-      right: 32px;
+      top: -10px;
+      right: -189px;
       background: rgba(255, 255, 255, 0.3);
       box-shadow: 2px 2px 10px 1px rgba(176, 176, 176, 0.3);
       color: $dark-grey;
       height: 32px;
-      transition: 300ms;
+      transition: 200ms;
       z-index: -1;
       border-radius: 5px 5px 0px 0px;
       padding: 5px;

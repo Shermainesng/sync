@@ -18,43 +18,45 @@
 
   <%# deliverable panel %>
 <div class="card-frosted d-flex w-100 p-3">
-  <div class="col-3">
-    <%= render partial: "deliverables/cards/project_details", collection: @deliverables, as: :deliverable %>
-  </div>
-  <div class="col-9 card-white py-3 px-3">
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="w-60 col-9">
-          <div class="deliverable-title header-lg">
-              <%= render 'deliverables/icon', deliverable: @deliverable%> <%= @deliverable.deliverable_type %>
-          </div>
-          <%= render 'deliverables/tag', deliverable: @deliverable %>
-          <div class="pt-2">
-            <%= @deliverable.description %>
-          </div>
-        </div>
-      <% due_days = (@deliverable.due_date - Date.today).to_i  %>
-      <div class="col-3 deliverable-due-date">
-        <span class="<%if due_days<0%> overdue <%end%>">
-          <% if due_days == 0 %>
-            Due today
-          <% elsif due_days < 0 %>
-            Overdue by <%= pluralize due_days.abs, "day" %>
-          <% else %>
-            Due in <%= pluralize due_days, "day"%>
-          <% end %>
-        </span>
-        <a href="/projects/<%= @deliverable.project.id %>/edit">Edit</a>
-      </div>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "deliverables/cards/project_details", collection: @deliverables, as: :deliverable %>
     </div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-block submit-draft my-4" data-toggle="modal" data-target="#newDraftModal">
-      Submit New Draft
-    </button>
-    <% if @drafts.length.zero? %>
-      <p>No drafts yet</p>
-    <% else %>
-      <%= render @drafts %>
-    <% end %>
+    <div class="col-md-9 card-white py-3 px-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="w-60 col-9">
+            <div class="deliverable-title header-lg">
+                <%= render 'deliverables/icon', deliverable: @deliverable%> <%= @deliverable.deliverable_type %>
+            </div>
+            <%= render 'deliverables/tag', deliverable: @deliverable %>
+            <div class="pt-2">
+              <%= @deliverable.description %>
+            </div>
+          </div>
+        <% due_days = (@deliverable.due_date - Date.today).to_i  %>
+        <div class="col-3 deliverable-due-date">
+          <span class="<%if due_days<0%> overdue <%end%>">
+            <% if due_days == 0 %>
+              Due today
+            <% elsif due_days < 0 %>
+              Overdue by <%= pluralize due_days.abs, "day" %>
+            <% else %>
+              Due in <%= pluralize due_days, "day"%>
+            <% end %>
+          </span>
+          <a href="/projects/<%= @deliverable.project.id %>/edit">Edit</a>
+        </div>
+      </div>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-block submit-draft my-4" data-toggle="modal" data-target="#newDraftModal">
+        Submit New Draft
+      </button>
+      <% if @drafts.length.zero? %>
+        <p>No drafts yet</p>
+      <% else %>
+        <%= render @drafts %>
+      <% end %>
+    </div>
   </div>
 </div>
 

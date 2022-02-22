@@ -20,16 +20,18 @@
     </div>
 
     <div class="project-overview card-white py-3 px-3 mb-4 d-flex align-items-center justify-content-between">
-      <div>
-        <div class="review-card-title header-lg"><%= @project.name %></div>
-        <div class="review-card-description header-md"><%= @project.description %></div>
-        <div class=" header-sm end-date">Campaign ends on <%= @project.project_end.strftime("%e %b") %></div>
-      </div>
-      <div class="edit-send-group">
-        <a class="btn btn-sync-light-grey btn-round" href="<%=edit_project_path(@project)%>">Edit Project</a>
-        <button type="button" class="submit-form-btn" data-toggle="modal" data-target="#popupModal">
-          Share project
-        </button>
+      <div class="row">
+        <div class="col-md-12 col-lg-9">
+          <div class="review-card-title header-lg"><%= @project.name %></div>
+          <div class="review-card-description header-md"><%= @project.description %></div>
+          <div class="header-sm end-date">Campaign ends on <%= @project.project_end.strftime("%e %b") %></div>
+        </div>
+        <div class="col-md-12 col-lg-3 d-flex align-items-center">
+          <button class="btn btn-sync-light-grey mr-2" href="<%=edit_project_path(@project)%>">Edit Project</button>
+          <button type="button" class="btn btn-sync-primary" data-toggle="modal" data-target="#popupModal">
+            Share project
+          </button>
+        </div>
       </div>
     </div>
 

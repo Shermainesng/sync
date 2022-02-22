@@ -10,13 +10,15 @@
 .nav-stick {
   position: sticky;
   top: 33px;
-  height: 90vh;
 }
 
 .nav-stick > a:hover {
   text-decoration: none;
 }
 
+.custom-navbar {
+  min-height: 90vh;
+}
 .notification-panel {
   overflow-y: scroll;
 
