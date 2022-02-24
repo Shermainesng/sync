@@ -5,7 +5,6 @@ class Deliverable < ApplicationRecord
 
 
   acts_as_taggable_on :tags
-  acts_as_taggable_on :type, :details
 
   def status
     if self.drafts.empty?
