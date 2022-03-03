@@ -10,14 +10,19 @@ function Date(props) {
 }
 function Deliverable(props) {
   const deliv = props.deliverable
+  const three_days_later = moment().add(3, 'days')
+  const urgent = three_days_later > moment(deliv.date, "YYYY-MM-DD")
+  const cardClass = urgent ? "card-flat-urgent" : 'card-flat'
   return(
     //urgent logic
-    <div className="card-flat border my-1 py-1 card-animation d-flex justify-content-between" >
-      <li>{deliv.date}</li>
-      <div>{deliv.brand}</div>
-      <div>{deliv.project}</div>
-      <div>{deliv.type}</div>
-      <div>tags</div>
+    <div className={`${cardClass} border my-1 py-1 card-animation`} >
+      <a className="deliverable-card">
+        <div>{deliv.date}</div>
+        <div>{deliv.brand}</div>
+        <div class="truncate">{deliv.project}</div>
+        <div>{deliv.type}</div>
+        <div className="truncate">tags</div>
+      </a>
     </div>
   );
 }

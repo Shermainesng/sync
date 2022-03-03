@@ -8,21 +8,19 @@ function Icon(props) {
 
   switch (deliverable.toLowerCase()) {
     case ("instagram" || "ig"):
-      icon = "instagram"
+      icon = "fab fa-instagram"
       break;
     case ("tiktok" || "tt" || "tik tok"):
-      icon = "tiktok"
+      icon = "fab fa-tiktok"
       break;
     case "youtube":
-      icon = "youtube"
+      icon = "fab fa-youtube"
       break;
     default:
-      icon = "hashtag";
+      icon = "fas fa-hashtag";
   }
-
-  const iconClass = "fab fa-" + icon;
   return (
-    <li><i className={iconClass}/>{deliverable}</li>
+    <li><i className={icon}/>{deliverable}</li>
   );
 }
 
