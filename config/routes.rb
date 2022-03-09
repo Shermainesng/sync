@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get '/test', to: 'pages#test'
 
-  # get '/dashboard', to: 'pages#dashboard'
+  get '/dashboard', to: 'pages#dashboard'
   # get '/projects/:id/edit', to:'pages#dashboard'
   get '/error', to: 'pages#error'
 

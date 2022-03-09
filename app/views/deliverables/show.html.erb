@@ -63,7 +63,7 @@
 <!-- Modal -->
 <div class="modal fade" id="newDraftModal" tabindex="-1" aria-labelledby="newDraftModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content border rounded">
       <div class="modal-header">
         <h5 class="modal-title" id="newDraftModalLabel">Upload your draft here</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -77,7 +77,7 @@
             <%= f.file_field :attachments, multiple: true, class: "custom-file-upload" %>
           </div>
           <div class="draft-text-area d-flex flex-column justify-content-center align-items-center">
-            <%= f.text_area :description, placeholder: "Add your draft description here", class: "p-2" %>
+            <%= f.text_area :description, placeholder: "Add your draft description here", class: "p-2 w-100 text-area" %>
             <%= f.submit "Submit Draft", class: "btn btn-sync-primary" %>
           </div>
         <% end %>

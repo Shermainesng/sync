@@ -1,9 +1,9 @@
 <div class="card px-3 py-2 card-white collapse navbar-collapse custom-navbar" id="navbarSupportedContent">
-  <a href="/" class="logo">Sync</a>
-  <a href="<%=new_project_path%>" class="submit-form-btn btn-bold btn-linkless">+ New project</a>
-  <div class="custom-profile">
+  <a href="/" class="logo w-100">Sync</a>
+  <a href="<%=new_project_path%>" class="submit-form-btn btn-bold btn-linkless w-100">+ New project</a>
+  <div class="custom-profile w-100">
       <% if current_user.profile_pic.nil? %>
-        <span class="imageless-avatar avatar"><%= current_user.username.first.upcase %> </span>
+        <span class="imageless-avatar avatar w-100"><%= current_user.username.first.upcase %> </span>
       <% else %>
         <%= image_tag current_user.profile_pic, class:"avatar"%>
       <% end %>

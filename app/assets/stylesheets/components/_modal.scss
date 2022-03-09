@@ -1,8 +1,22 @@
+.attachment {
+  padding: 36px 0;
+  width:100%;
+  border: 1px solid #ccc;
+  margin: 10px 0px;
+  border-radius: 5px;
+}
+
 .custom-file-upload {
     border: 1px solid #ccc;
+    border-radius: 5px;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+}
+
+.text-area {
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 // _share modal
