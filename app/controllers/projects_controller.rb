@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
       user: current_user,
       name: "",
       project_end: Date.today,
-      status: 'saved'
+      status: 'ongoing'
     )
     @role = Role.create!({
       name: 'admin'
