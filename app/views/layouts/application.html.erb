@@ -36,11 +36,16 @@
       <div class="custom-layout">
         <div class="row">
           <% if !(@error) %>
-            <div class="col-3 nav-stick">
-              <%= render 'shared/navbar'  %>
+            <div class="col-sm-3">
+              <nav class="navbar-expand-md navbar-light nav-stick">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <%=render "shared/navbar"%>
+              </nav>
             </div>
           <% end %>
-          <div class="col-9">
+          <div class="col-sm-9">
             <%= yield %>
           </div>
         </div>

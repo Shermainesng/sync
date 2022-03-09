@@ -97,22 +97,20 @@ a {
   color:black !important;
   background-color: lightgray;
 }
-.project-overview {
-  .end-date {
-      position: absolute;
-      width: auto;
-      top: 0;
-      right: 32px;
-      background: rgba(255, 255, 255, 0.3);
-      box-shadow: 2px 2px 10px 1px rgba(176, 176, 176, 0.3);
-      color: $dark-grey;
-      height: 32px;
-      transition: 300ms;
-      z-index: -1;
-      border-radius: 5px 5px 0px 0px;
-      padding: 5px;
-      animation: 200ms slide-in 1000ms forwards ease-in;
-  }
+.end-date {
+    position: absolute;
+    width: auto;
+    top: 3px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 2px 2px 10px 1px rgba(176, 176, 176, 0.3);
+    color: $dark-grey;
+    height: 32px;
+    transition: 200ms;
+    z-index: -1;
+    border-radius: 5px 5px 0px 0px;
+    padding: 5px;
+    animation: 200ms slide-in 1000ms forwards ease-in;
 }
 
 @keyframes slide-in {

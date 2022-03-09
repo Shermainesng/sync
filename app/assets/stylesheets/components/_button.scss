@@ -18,6 +18,13 @@
   background-color: $primary;
   color: white;
   border-radius: 10px;
+
+  &:hover {
+    color: $primary;
+    background-color: $white;
+    border: 1px solid $primary;
+    transition: 150ms;
+  }
 }
 
 .btn-sync-blue {
@@ -47,6 +54,7 @@
   height: 50px;
   width: 180px;
 }
+
 .btn-sync-pink {
   background-color: $pink;
   color: white;
@@ -163,12 +171,6 @@
   font-size: 12px;
   border-radius: 5px;
   width: 100%;
-}
-
-.edit-send-group {
-  display: flex;
-  justify-content: space-between;
-  width: 230px;
 }
 
 .logout-button {
