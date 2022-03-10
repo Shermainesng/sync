@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'pages#dashboard'
   # get '/projects/:id/edit', to:'pages#dashboard'
-  get '/error', to: 'pages#error'
+  # get '/error', to: 'pages#error'
 
   get '/notifications', to: 'notifications#index'
 
