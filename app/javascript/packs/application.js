@@ -26,7 +26,7 @@ import "bootstrap";
 import "controllers"
 
 // react app
-// import '../dashboard';
+import '../dashboard';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
