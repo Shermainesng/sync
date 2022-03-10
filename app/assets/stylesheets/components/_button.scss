@@ -146,20 +146,19 @@
 .comment-btn {
   background-color: $primary;
   border-radius: 5px;
-  border: none;
+  border: 1px solid $primary;
   text-align: center;
   text-decoration: none;
   color: white;
   padding: 5px 10px;
   cursor: pointer;
-}
 
-.comment-btn:hover {
-  text-decoration: none;
-  border: 1px solid $primary;
-  background-color: white;
-  color: $primary;
-  transition: 150ms;
+  &:hover {
+    text-decoration: none;
+    background-color: white;
+    color: $primary;
+    transition: 150ms;
+  }
 }
 
 .block-btn {

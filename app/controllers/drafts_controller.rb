@@ -22,7 +22,7 @@ class DraftsController < ApplicationController
     @comments = @draft.comments.select { |comment| comment.parent_id.nil?}
     @comment = Comment.new
     @project = @draft.deliverable.project
-    @approver = ProjectUser.find_by(user_id: current_user, project_id: @project).role.name
+    @approver = ProjectUser.find_by(project_id: @project).role.name
   end
 
   def create
@@ -62,7 +62,7 @@ class DraftsController < ApplicationController
   def set_draft
     @draft = Draft.find(params[:id])
     @project = @draft.deliverable.project
-    redirect_to error_path if @project.user != current_user || !(@project.users.include?(current_user))
+    redirect_to error_path if @project.user != current_user && !(@project.users.include?(current_user))
   end
 
   def record_not_found

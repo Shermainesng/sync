@@ -94,7 +94,7 @@ class DeliverablesController < ApplicationController
   def set_deliverable
     @deliverable = Deliverable.find(params[:id])
     @project = @deliverable.project
-    redirect_to error_path if @project.user != current_user || !(@project.users.include?(current_user))
+    redirect_to error_path if @project.user != current_user && !(@project.users.include?(current_user))
   end
 
   def record_not_found
