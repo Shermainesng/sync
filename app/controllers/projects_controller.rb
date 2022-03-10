@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.create!(user: current_user, name: '', project_end: Date.today, status: 'ongoing')
+    @project = Project.create!(user: current_user, name: '', project_end: Date.today, status: 'saved')
     @role = Role.create!({ name: 'admin' })
     @project.users << current_user
     @proj_user = ProjectUser.find_by(user_id: current_user, project_id: @project)
