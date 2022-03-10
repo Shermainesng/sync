@@ -74,9 +74,8 @@ class DeliverablesController < ApplicationController
     @project = Project.find(@deliverable[:project_id])
 
     updated = params[:deliverable]
-    @deliverable.update!({  deliverable_type: updated[:deliverable_type],
-                            description: updated[:description],
-                            tag_list: updated[:tag_list].split.join(",") })
+    @deliverable.update!({ deliverable_type: updated[:deliverable_type], description: updated[:description], tag_list: updated[:tag_list].split.join(',') })
+
     @deliverable.due_date = params[:due_date]
     respond_to do |format|
       # format.html { redirect_to edit_project_path(@project) }
